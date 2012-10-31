@@ -1,0 +1,11 @@
+ebin/
+*~
+.eunit/
+*beam
+*.zip
+#*#
+logs/*
+
+test.spec
+
+FitNesseRoot/RecentChanges/
