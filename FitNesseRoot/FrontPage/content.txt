@@ -3,8 +3,8 @@ Read first [[UserManual][UserManual]]
 
 
 |''' Projects '''|
-| [[Small Cels OTP][OTP]] | ''Open Telecom Platform for Small Cells'' |
+| [[Small Cels OTP][OtpHome]] | ''Open Telecom Platform for Small Cells'' |
 
 
 | '''Aceptance Tests List '''|
-| [[TR-069 Agent Conformance Tests][OTP.TR69ConfTest]]|''Broadband Forum TR-069 (CWMP) CPE Conformance Test Suite''|
+| [[TR-069 Agent Conformance Tests][OtpHome.Tr69ConfTest]]|''Broadband Forum TR-069 (CWMP) CPE Conformance Test Suite''|

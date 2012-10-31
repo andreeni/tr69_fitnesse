@@ -2,3 +2,75 @@
 
 !contents -R2 -g -p -f -h
 
+
+OtpHome.Tr69ConfTest.TestSetup
+
+
+| Test Cases |
+TestTr69C.1.1
+
+ACS Discovery using DHCP
+ACS Rediscovery using DHCP
+DHCP Inform Retry to the DHCP server
+Handling Null Terminated ACS URL obtained from DHCP Server
+Handling DNS server response
+ACS Modifies URL
+Connection upon Initial Installation
+Connection after Connection Request
+Connection after PeriodicInformInterval
+Connection Establishment using SSL/TLS
+Connection Request over SSL/TLS
+Rejection of Invalid SSL Certificate
+Session Initiation and Termination
+Persistent TCP Connection Across a Single CWMP session
+Multiple TCP Connections Across a Single CWMP session
+Use of Session Cookies Across Multiple Transactions in a Session
+Session Retry
+SOAP Response in an HTTP Request
+HTTP Redirection Test – 302 Redirect
+HTTP Redirection Test – 307 Redirect
+HTTP Redirection – Multiple Redirections
+HTTP Redirection – SSL
+HTTP Redirection – Use of session cookies
+HTTP – No Pipelining
+HTTP Authentication - Basic Authentication
+HTTP Authentication - Digest Authentication
+SOAP Envelope Format
+SOAP Fault Format
+SetParameterValues SOAP Fault Format
+GetRPCMethods and Required RPCs
+GetParameterNames – Complete Path
+GetParameterNames – Partial Path – Next Level True
+GetParameterNames – Partial Path – Next Level False
+GetParameterNames – Invalid Path
+GetParameterNames – Entire Object Model
+GetParameterValues – Simple Complete Path
+GetParameterValues – Multiple Complete Paths
+GetParameterValues – Partial Path
+GetParameterValues – Complete and Partial Paths
+GetParameterValues – Entire Object Model
+SetParameterValues – Single Parameter
+SetParameterValues – Multiple Parameters
+GetParameterAttributes – Complete Path
+GetParameterAttributes – Multiple Complete Paths
+GetParameterAttributes – Partial Path
+GetParameterAttributes – Complete and Partial Path
+SetParameterAttributes – Active Notifications
+SetParameterAttributes – Passive Notification – Complete Path
+SetParameterAttributes – Passive Notification – Partial Path
+SetParameterAttributes – Passive Notification – Complete and Partial Path
+SetParameterAttributes – Disable Notification
+AddObject
+DeleteObject
+Reboot
+Download Test – Basic Version Upgrade
+Upload
+ScheduleInform Test
+FactoryReset
+CWMP Faults – Basic RPC Faults
+CWMP Faults - SetParameterValues
+CWMP Faults – Download and Upload Failure
+
+
+
+
