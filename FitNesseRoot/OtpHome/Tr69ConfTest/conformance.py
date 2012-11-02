@@ -32,7 +32,7 @@ def getTXTContent(path):
 			    continue
 
 		    elif found_tc == True:
-			    pgn = re.split('\.*', line.strip())[1]
+			    (_, pgn) = re.split('\.*', line.strip())
 			    pgn = pgn.strip()
 			    tc_pages.append(pgn)
 			    continue
@@ -69,20 +69,34 @@ def getTXTContent(path):
 		    if line.find(PAGE) != -1:
 			    continue
 		    else:
-			    clean += line
+			    clean.append(line)
 	    return clean
 
     this_tc = 0
-    for number in range(1, len(tc_pages)):	    
-	    f = open('TestTr69C' + str(number), 'w')
 
-	    next_tc = find_page(tc_pages[number])	    
-	    testcases = clean(rest[this_tc:next_tc])
-	    text = add_markup("".join(testcases))
-	    this_tc = next_tc + 1
+    content = True
+
+    if content:
+	    for number in range(1, len(tc_pages)):	    
+		    name = 'TestTr69C' + str(number)
+		    next_tc = find_page(tc_pages[number])
+		    testcases = clean(rest[this_tc:next_tc])
+		    		    
+		    print str(number) + ". [[\"" + testcases[0].strip()+ "\"][Tr69ConfTest." + name +"]]"
+		    this_tc = next_tc + 1
+		    
+    else:
+	    for number in range(1, len(tc_pages)):	    
+		    f = open('TestTr69C' + str(number), 'w')
+
+		    next_tc = find_page(tc_pages[number])
+		    testcases = clean(rest[this_tc:next_tc])	    
+		    text = add_markup("".join(testcases))
+		    this_tc = next_tc + 1
 	    
-	    f.write(text)
-	    f.close()
+		    f.write(text)
+		    f.close()
+	    
     return
 
 getTXTContent("TR_069_Conformance_1_0.txt")
