@@ -1,0 +1,71 @@
+Upload 
+
+!4 Purpose:
+ 
+         The purpose of this test is to verify DUT's upload functionality. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+          [1]      Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+         According to Broadband Forum TR-069[1], if an ACS issues an Upload RPC on the DUT, the DUT 
+may choose to upload the specified file to the designated location. If the file cannot be successfully 
+uploaded, the DUT must not attempt to retry the file upload on its own initiative, but instead must 
+report the failure of the upload to the ACS via either the Upload response 
+Test Setup: 
+     1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+     2.  Install or acquire a vendor configuration or log file that is installed on the DUT. 
+     3.  Configure and provide a file server (i.e., http or ftp) that can be accessed by DUT through the 
+          network infrastructure.  Authentication may or may not be configured on the file server. 
+     4.  Connect all components of the test setup to the network infrastructure. 
+
+!4 Procedure:
+ 
+     1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+         exchanges. 
+     2.   Instruct the CWMP analyzer to issue an Upload Request with the following parameters: 
+         CommandKey                                               Empty String 
+                                                                 An integer followed by a space followed by the 
+                                                                 file type description. For a vendor 
+                                                                 configuration file, set this parameter to “1  
+          FileType 
+                                                                 Vendor Configuration File”, and for a vendor 
+                                                                  log file, set this parameter to “2 Vendor Log  
+                                                                  File”. 
+                                                                 The URL of the destination server configured 
+          URL 
+                                                                 in the test setup. 
+          Username                                                Username to be used by the CPE to 
+                                                             authenticate with the file server (if any). 
+                                                             Password to be used by the CPE to 
+         Password 
+                                                             authenticate with the file server (if any). 
+         FileSize                                           The size of the file to be downloaded in bytes. 
+         TargetFileName                                     The name of the firmware image 
+                                                            A random time between 60 and 120 seconds. 
+         DelaySeconds                                       This exercises the device’s ability to wait  
+                                                             before performing the upload. 
+    3.   Allow the DUT to respond with an UploadResponse message. 
+         a)  A status code of 0 in the UploadResponse means the Upload has completed. 
+         b)  A status code of 1 menas the DUT will need time or certain actions to upload the file. 
+             i.  Allow the DUT to finish uploading the file. Allow the DUT to reboot if needed. 
+             ii. If the session has not been terminated, allow the DUT to send a TransferComplete 
+                 message in the same session. 
+             iii. If the session has been terminated (as a result of reboot or similar action), allow the DUT 
+                 to initiate a session with the CWMP analyzer. 
+    4.   Check the file server to verify if the file has been uploaded. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT successfully responds to the Download RPC with a DownloadResponse. 
+    2.  The DUT performs the Download. 
+    3.  The DUT performs the firmware upgrade. 
+    4.   If the upgrade was performed after the session has closed, in the Inform following the upgrade, 
+         the DUT includes the events “7 TRANSFER COMPLETE” and “M Upload”. 
+    5.  The DUT makes the TransferComplete RPC to indicate the Upload was successful. 

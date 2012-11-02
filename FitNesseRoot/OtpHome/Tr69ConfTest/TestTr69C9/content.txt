@@ -1,0 +1,50 @@
+Connection after PeriodicInformInterval 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE attempts to establish a connection with the ACS after 
+a time period equal to PeriodicInformInterval. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], the CPE MUST establish connection to the ACS after 
+PeriodicInformInterval (example, after every 60 seconds).    This is differentiated from a CPE connecting to 
+an ACS for the first time, or a CPE connecting to the ACS after reboot. 
+        All CWMP sessions begin with the use of the Inform RPC.     Each Inform RPC contains event codes 
+in its arguments that indicate the event which caused the session to be initiated.  In this case, the 
+behavior is indicated by the event code “2 PERIODIC”. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Choose a short value for the PeriodicInformInterval, between 60 and 300 seconds.  Configure 
+        the DUT to use this value for PeriodicInformInterval. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Allow the session to terminate successfully. 
+    3.  Wait for the PeriodicInformInterval determined in test setup step 2. 
+    4.  Allow the DUT to initiate a session with the CWMP analyzer with successful Inform exchanges. 
+    5.  Allow the session to terminate successfully. 
+    6.  After the period determined in test setup step 2 has expired, allow the DUT initiate a new 
+        session. 
+    7.   Respond to the Inform RPC with an appropriate InformResponse. 
+    8.  Allow the DUT to successfully terminate the session. 
+    9.  Validate all CWMP messages. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT attempts to re-establish a CWMP session with the CWMP analyzer after the 
+        predetermined PeriodicInformInterval by sending an Inform message with an event code of “2  
+        PERIODIC”.  
+    2.  The DUT’s CWMP messages are valid. 
+    3.  The DUT successfully terminates the session. 

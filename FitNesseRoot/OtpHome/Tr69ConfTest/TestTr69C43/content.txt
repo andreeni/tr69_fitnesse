@@ -1,0 +1,37 @@
+GetParameterAttributes -Complete Path 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE can provide attribute information of a single complete 
+path. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], if an ACS requests for attribute information of a 
+parameter using GetParameterAttributes method, the CPE must reply to the request with attribute 
+information of the parameter. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Choose a valid parameter path in the DUT’s supported data model. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a GetParameterAttributes request on the single complete path chosen in test setup 
+        step 2. 
+    3.  Allow the DUT to respond with GetParameterAttributesResponse. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT can properly respond to GetParameterAttributes request on a single path with attribute 
+         information of the path. 

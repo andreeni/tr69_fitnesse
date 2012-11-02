@@ -1,0 +1,39 @@
+SOAP Response in an HTTP Request 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the SOAP Response is encoded properly in an HTTP Request 
+Message. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], when there is a SOAP response in an HTTP Request, or 
+when there is a SOAP Fault response in an HTTP Request, the SOAPAction header in the HTTP Request 
+must have no value, indicating that this header provides no information as to the intent of the message. 
+That is, it must appear as follows: 
+        SOAPAction: 
+         In addition to that, when an HTTP Request contains a SOAP Envelope, the HTTP Content-Type 
+header must have a type/subtype of ”text/xml”  
+Test Setup: 
+    1.   Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.   Instruct the ACS to issue a valid RPC RPC on the DUT. 
+    3.  Allow the DUT to respond to the RPC request. 
+    4.  Analyze the  HTTP POST message containing the SOAP response. 
+
+!4 Test Metrics:
+ 
+    1.  The HTTP POST message has an empty SOAPAction header, and the HTTP Content-type header 
+         must have a type/subtype of “text/xml”. 

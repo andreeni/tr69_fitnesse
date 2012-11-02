@@ -1,0 +1,44 @@
+Handling DNS server response 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the DUT does not cache the DNS server response beyond the 
+duration of time to live (TTL) returned by DNS server. 
+
+!4 Target:
+ 
+        The type of CWMP enabled equipment valid for the test. 
+
+!4 References:
+ 
+        [1]    Broadband Forum TR-069 
+        [2]    DNS RFC 1034 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], the CPE must not cache the DNS server response 
+beyond the duration of time to live (TTL) returned by DNS server unless it cannot contact the DNS server 
+for an update. This behavior is required by DNS RFC 1034 and provides an opportunity for the DNS 
+Server to update stale data. 
+Test Setup: 
+    1.  Configure the DHCP server or simulator to include the ACS URL in its DHCP options. 
+    2.  Configure the DUT to have an empty or null value for the ManagementServer.URL parameter. 
+    3.  Connect the DUT, DNS server, DHCP server, and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Allow the DUT to request an ACS URL through DHCP. 
+    2.  Respond to the DHCP request using the generator with a valid response to set the ACS URL. 
+    3.  Allow the DUT to contact the DNS server to resolve the ACS URL. 
+    6.  Set a new ACS URL through a manual mechanism. 
+    7.  Allow the DUT to attempt to communicate with the ACS at the new URL, without response. 
+    8.  Allow the DUT to attempt to rediscover the ACS URL via DHCP after the TTL specified in the DNS 
+        response has expired. 
+    9.  Respond to the rediscover request with a valid response to set the ACS URL. 
+    10. Allow the DUT to contact the DNS server again to resolve the ACS URL. 
+    11. Allow the DUT to establish a CWMP session with the ACS. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT contacts the DNS server again to resolve the ACS URL without caching the previous 
+        response from the DNS server. 

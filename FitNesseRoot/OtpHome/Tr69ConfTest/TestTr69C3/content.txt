@@ -1,0 +1,42 @@
+DHCP Inform Retry to the DHCP server 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the DUT retries its DHCP INFORM message when it does not 
+receive a reply from the DHCP server. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that implements DHCP discovery of the ACS URL. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+        [2]     RFC 2131 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1] section 3.1, a CWMP enabled CPE must send a DHCP 
+INFORM if it cannot communicate with the ACS indicated by the negotiated ACS URL value.  Further, it 
+must retry its DHCP INFORM message if it does not receive a DHCPACK from the DHCP server within a 
+reasonable time.  This requirement is in accordance with RFC 2131 [2]. 
+Test Setup: 
+    1.  Configure the DHCP server or simulator to include the ACS URL in its DHCP options. 
+    2.  Configure the DUT to have an empty or null value for the ManagementServer.URL parameter. 
+    3.  Connect the DUT, DHCP server or simulator, and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Allow the DUT to request an ACS URL through DHCP. 
+    2.  Respond to the DHCP request with a valid response to set the ACS URL. 
+    3.  Allow the DUT to attempt to communicate with the CWMP analyzer, without response for 300 
+        seconds. 
+    4.  Allow the DUT to send a DHCP INFORM, without response for 300 seconds. 
+    5.  Allow the DUT to resend the DHCP INFORM. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT sends an initial DHCP INFORM message when receiving no response from the CWMP 
+        generator after 300 seconds. 
+    2.  The DUT resends the DHCP INFORM message w hen it receives no response for the DHCP server 
+        after 300 seconds. 

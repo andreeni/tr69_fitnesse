@@ -1,0 +1,46 @@
+HTTP Redirection Test -302 Redirect 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE supports the use of HTTP redirection by the ACS using 
+the 302 (Found) status code. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CPE must support the use of HTTP redirection by 
+the ACS. In doing so, the CPE must support the 302(Found) HTTP status code. In case of redirection, the 
+CPE must attempt to continue the session using the URL provided in the HTTP redirect response. The CPE 
+must resend the HTTP POST that resulted in the redirect response to the ACS at the redirected URL, and 
+the CPE must then attempt to proceed with the session exactly as if no redirection had occurred. The 
+redirected URL must not be saved by the CPE (i.e. as the value of the IGD.ManagementServer.URL) for 
+use in any subsequent session or any subsequent retries of the session. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  If the CWMP analyzer is capable of supporting multiple ACS URLs, configure an alternate ACS 
+        URL on the CWMP analyzer. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Issue an HTTP response with a 302(Found) Status Code and the location of the new URL. 
+    3.  Allow the DUT to issue the same HTTP POST message to the new URL. 
+    4.  Using the new URL at the CWMP analyzer, reply back with an Inform Response. 
+    5.  Issue a GetParameterValue RPC on InternetGatewayDevice.ManagementServer.URL to the DUT. 
+    6.  Allow the DUT to respond with a GetParameterValueResponse. 
+    7.  Analyze the response. The value of the parameter should be the old URL before redirection, and 
+        not the new URL. 
+    8.  Allow the DUT to close the connection. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT properly resends the HTTP POST to the redirected URL. 
+    2.  The GetParameterValueResponse includes URL of the old ACS. 

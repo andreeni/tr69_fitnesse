@@ -1,1 +1,22 @@
-!contents -R2 -g -p -f -h
+!4 Abstract: 
+This test suite contains test cases designed to exercise and validate CWMP enabled Customer Premises Equipment based on the normative requirements defined in Broadband Forum TR-069 Amendment 2.
+!4 Organization of Tests
+Each test contains an identification section that describes the test and provides cross-reference information. The discussion section covers background information and specifies why the test is to be performed. Tests are grouped in order to reduce setup time in the lab environment. Each test contains the following information:
+!4 Purpose
+The purpose is a brief statement outlining what the test attempts to achieve. This also includes background information on why one needs to perform such a test to show that the device complies with the standard.
+!4 Target
+The target section describes the type of DUT that is an appropriate subject for the test.
+!4 References
+The references section lists standards and other documentation that might be helpful in understanding and evaluating the test and results.
+!4 Test setup
+The setup section describes the configuration of the test environment. Small changes in the configuration should be included in the test procedure.
+!4 Normative Description
+The normative description is a general discussion of the test and relevant section of the specification, including any assumptions made in the design or implementation of the test as well as known limitations.
+!4 Procedure
+The procedure section of the test description contains the step-by-step instructions for carrying out the test.
+!4 Test metrics
+The test metrics section lists occurring events that can be examined by the tester to verify that the DUT is operating properly. When multiple values are possible for a specific event, this section provides a short discussion on how to interpret them. The determination of passing or failing a certain test is often based on the successful (or unsuccessful) detection of a certain predetermined event.
+
+!4 Test Setup
+!5 General Test Setup
+

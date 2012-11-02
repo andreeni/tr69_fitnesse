@@ -1,0 +1,36 @@
+GetParameterNames -Invalid Path 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE can identify an invalid path and respond with 
+appropriate error message to a GetParameterNames request on an invalid parameter. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+        According to Broadband Forum[1], when a GetParameterNames is attempted on an invalid 
+parameter, the CPE must respond with a 9005 (Invalid Parameter Name) fault code. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Choose an incorrect parameter path name that has some contextual meaning to the DUT’s  
+        supported data model.  For example, “Device.DeviceInfo.Invalid.” 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a GetParameterNames RPC on the DUT using the invalid parameter chosen in test 
+        setup step 2.. 
+    3.  Allow the DUT to respond with GetParameterNamesResponse. 
+
+!4 Test Metrics:
+ 
+    1.  The CPE can identify an invalid path and respond with a 9005 fault code. 

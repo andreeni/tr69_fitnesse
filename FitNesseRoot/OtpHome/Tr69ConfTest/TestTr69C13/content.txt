@@ -1,0 +1,51 @@
+Session Initiation and Termination 
+
+!4 Purpose:
+ 
+         This test is designed to verify that the CPE is able to initiate and terminate a session properly. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]      Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+         According to Broadband Forum TR-069[1], once a connection between a CPE and an ACS is 
+established, the CPE initiates a session by sending an initial Inform RPC on the ACS in an HTTP POST 
+message. If and only if the CPE receives a successful Inform response to the Inform Request, the CPE 
+considers the session to have been successfully initiated. Once initiated, the CPE must terminate the 
+transaction session only when all of the following conditions are met: 
+      The ACS has no further requests to send the CPE. The CPE concludes this if and only if the most 
+         recent HTTP response from the ACS was empty. 
+      The CPE has no further requests to send to the ACS and the CPE has issued an empty HTTP POST 
+         to the ACS while HoldRequests is false (which indicates to the ACS that the CPE has no further 
+         requests for the remainder of the session). As defined in Table 6, if this condition has not been 
+         met but the CPE has no further requests or responses, it MUST send an empty HTTP POST, which 
+         will then fulfill this condition. 
+      The CPE has received all outstanding response messages from the ACS. 
+      The CPE has sent all outstanding response messages to the ACS resulting from prior requests. 
+Figure below is an example of a session. 
+Test Setup: 
+    1.  Configure the CPE to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the CPE, and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Stimulate the CPE to initiate a CWMP session with the CWMP analyzer. 
+    2.  Reply with a successful Inform Response. 
+    3.  Allow the CPE to respond with an empty HTTP POST. 
+    4.  Make a valid RPC RPC on the CPE. 
+    5.  Allow the CPE to respond with a valid response to the RPC request. 
+    6.  Verify if the CPE used the existing TCP connection. 
+    7.  Respond with an empty HTTP POST. 
+    8.  Allow the CPE to close the connection. 
+
+!4 Test Metrics:
+ 
+    1.  The CPE does not close existing TCP connection when replying to the RPC request. 
+    2.  The CPE closes existing TCP connection after receiving empty HTTP POST from the  CWMP 
+        Analyzer. 

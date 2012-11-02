@@ -1,0 +1,44 @@
+HTTP Redirection - Multiple Redirections 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE allows up to 5 consecutive redirections. 
+
+!4 Target:
+ 
+        Any CWMP enabled CP E that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CPE must allow up to 5 consecutive redirections. If 
+the CPE is redirected more than 5 times consecutively, it may consider the session unsuccessfully 
+terminated. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.   If the CWMP analyzer is capable of supporting multiple ACS URLs, configure an alternate ACS 
+         URL on the CWMP analyzer. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.   Issue an HTTP response with a 307 (Temporary Redirect) Status Code and the location of the new 
+         URL. 
+    3.  Allow the DUT to issue the same HTTP POST message to the new URL. 
+    4.   Issue an HTTP response with a 307 (Temporary Redirect) Status Code and the location of the old 
+         URL again. 
+    5.   Repeat the back and forth process for two more times, so that the redirection count now is 4. 
+    6.   Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    7.   Issue an HTTP response with a 307 (Temporary Redirect) Status Code and the location of the new 
+         URL. 
+    8.   Using the new URL at the CWMP analyzer, reply back with an Inform Response. 
+    9.  Allow the DUT to close the connection. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT honors each redirection request and sends an HTTP post to the redirected URL. 
+    2.  The DUT successfully terminates the connection. 

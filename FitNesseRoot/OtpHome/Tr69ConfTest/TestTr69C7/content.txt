@@ -1,0 +1,46 @@
+Connection upon Initial Installation 
+
+!4 Purpose:
+ 
+         This test is designed to verify that the DUT attempts to establish a connection with the ACS upon 
+installation into the network. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], the CPE MUST establish connection to ACS the first 
+time it is connected to the access network on initial installation. 
+        All CWMP sessions begin with the use of the Inform RPC.      Each Inform RPC contains event codes 
+in its arguments that indicate the event which caused the session to be initiated.  In this case, the 
+behavior is indicated by the event code “0 BOOTSTRAP”. 
+        As this is presumably the first time the CPE is contacting a particular ACS, the “0 BOOTSTRAP”  
+event is the only event that may be included in the Inform, unless further events have occurred after an 
+unsuccessful attempt to contact the ACS (that is, if the Session Retry count is greater than 0). 
+         This test verifies that the DUT attempts to establish a connection with the ACS upon installation 
+into the network, that it uses the Inform RPC with the correct event codes, and that all CWMP messages 
+in the process are valid. 
+Test Setup: 
+    1.   Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Stimulate the DUT to send a CWMP Inform message to the CWMP analyzer as if it was contacting 
+         the ACS for the first time, such as by changing the ACS URL locally. 
+    2.   Respond to the Inform Request with an InformResponse. 
+    3.   Allow the DUT to successfully terminate the session. 
+    4.   Validate all CWMP messages. 
+
+!4 Test Metrics:
+ 
+    1.   The DUT attempts to establish a session by sending an Inform message. 
+    2.  The Inform RPC arguments contain the “0 BOOTSTRAP” event code. 
+    3.  The DUT’s CWMP messages are valid. 
+    4.  The DUT successfully terminates the session. 

@@ -1,0 +1,88 @@
+CWMP Faults - SetParameterValues 
+
+!4 Purpose:
+ 
+         The purpose of this test is to verify that the DUT uses the appropriate and well formed fault 
+codes when the ACS attempts to alter its state. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+         Section A.5.1 of Broadband Forum TR-069[1] specifies the CWMP Fault codes that can be 
+returned by the CPE in a variety of circumstances.  These faults, listed in Table 65 of [1], consist of a fault 
+code which must be used as the value of the SOAP fault code element, as well as arguments that may be 
+required as part of the fault’s functionality.  Different fault codes are allowed or required for each of the  
+RPCs described in CWMP. 
+        This test attempts to exercise as many fault scenarios on the DUT as is possible from a practical 
+test setup. Since it is not necessarily possible to force the DUT to send arbitrary fault codes, the 
+procedure focuses on those faults that can be stimulated through normal CMWP operation. 
+         For the SetParameterValues RPC, it is required that changes be applied atomically, that is, either 
+all the changes are made or none of them are made.       In the event of a CWMP fault, no changes to the 
+data model should be made when the request is rejected. 
+         Specific to the SetParameterValues RPC is the SetParameterValuesFault element in the fault 
+response.  For all parameter errors during a SetParameterValues call, the base fault must be “9003 - 
+Invalid arguments”.  Within the fault structure, additional fault codes are conveyed containing 
+information specific to the parameters that failed.  When the values would result in an invalid 
+configuration, the error used is “9007 - Invalid parameter value”. 
+Test Setup: 
+     1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.   Choose a valid, writable parameter from the DUT’s supported data model. 
+    3.   Construct an invalid parameter name within the context of the DUT’s supported data model. 
+    4.   Select a non-writable parameter from the DUT’s supported data model. 
+    5.   Choose a parameter with a restrictive data type in the DUT’s supported data model. 
+    6.   Choose a parameter with restricted possible values in the DUT’s supported data model. 
+    7.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a SetParameterValues RPC on the DUT with the CWMP analyzer, using the invalid 
+        parameter name determined in test setup step 3. 
+    3.  Allow the DUT to respond with fault code “9003 - Invalid arguments” with the 
+        SetParameterValuesFault “9005 - Invalid parameter name”. 
+    4.  Allow the session to terminate successfully. 
+    5.  Repeat step 1. 
+    6.  Schedule a SetParameterValues RPC on the DUT with the CWMP analyzer, using the non-writable 
+        parameter determined in test setup step 4. 
+    7.  Allow the DUT to respond with fault code “9003 - Invalid arguments” with the  
+        SetParameterValuesFault    “9008 - Attempt to set non-writable parameter”. 
+    8.  Allow the session to terminate successfully. 
+    9.  Repeat step 1. 
+    10. Schedule a SetParameterValues RPC on the DUT with the CWMP analyzer, using the parameter 
+        determined in test setup step 5.  Set the value to be of a data type not supported by the 
+        parameter (for example, setting a string in an integer). 
+    11. Allow the DUT to respond with fault code “9003 - Invalid arguments” with the  
+        SetParameterValuesFault “9006 - Invalid parameter type”. 
+    12. Allow the session to terminate successfully. 
+    13. Repeat step 1. 
+    14. Schedule a SetParameterValues RPC on the DUT with the CWMP analyzer, using the parameter 
+        determined in test setup step 6.  Set the value to be outside the range of possible values. 
+    15. Allow the DUT to respond with fault code “9003 - Invalid arguments” with the  
+        SetParameterValuesFault    “9007 - Invalid parameter values”. 
+    16. Allow the session to terminate successfully. 
+    17. Repeat step 1. 
+    18. Schedule a SetParameterValues RPC on the DUT with the CWMP analyzer, using the invalid 
+        parameter name determined in test setup step 3 and the valid parameter determined in test 
+        setup step 2 with a value set to a changed, valid value. 
+    19. Allow the DUT to respond with fault code “9003 - Invalid arguments” with the  
+        SetParameterValuesFault “9005 - Invalid parameter name.” 
+    20. Schedule a GetParameterValues RPC on the DUT with the CWMP analyzer, using the valid 
+        parameter determined in test setup step 2. 
+    21. Allow the DUT to respond with a GetParameterValues response. 
+    22. Record the value reported by the DUT. 
+    23. Allow the session to terminate successfully. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT responds with properly formed fault codes. 
+    2.  The DUT includes the offending parameters in the SetParameterValuesFault. 
+    3.  The DUT does not alter the valid parameter when invalid parameters are included in the same 
+        procedure call arguments. 

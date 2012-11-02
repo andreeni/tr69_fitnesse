@@ -1,0 +1,37 @@
+ACS Rediscovery using DHCP 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the DUT consistently utilizes DHCP to discover the ACS URL. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that implements DHCP discovery of the ACS URL. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+         [2]     RFC 2131 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1] section 3.1, a CWMP enabled CPE must utilize the 
+same method for acquiring an ACS URL that it was originally configured to use, regardless of the 
+mechanism used to change the ACS URL at a later point. 
+Test Setup: 
+    1.  Configure the DHCP server or simulator to include the ACS URL in its DHCP options. 
+    2.  Configure the DUT to have an empty or null value for the ManagementServer.URL parameter. 
+    3.  Connect the DUT, DHCP server or simulator, and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Allow the DUT to request an ACS URL through DHCP. 
+    2.   Respond to the DHCP request using the generator with a valid response to set the ACS URL. 
+    3.  Set the ACS URL through a manual mechanism. 
+    4.  Allow the DUT to attempt to communicate with the ACS at the new URL, without response. 
+    5.  Allow the DUT to attempt to rediscover the ACS URL via DHCP. 
+
+!4 Test Metrics:
+ 
+     1. The DUT attempts to rediscover the ACS URL via DHCP when it had previously set the ACS URL 
+         via DHCP and cannot communicate with the ACS. 

@@ -1,0 +1,38 @@
+Reboot 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE is capable of performing a reboot when instructed by 
+the ACS. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+        According to Broadband Forum TR-069[1], when an ACS instructs the CPE to perform a reboot by 
+issuing the Reboot method call, the CPE must send a successful method response and complete the 
+remainder of the session prior to rebooting. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a Reboot RPC to the DUT. 
+    3.  Allow the DUT to reply with a successful RebootResponse. 
+    4.  Allow the DUT to terminate the session and perform reboot. 
+    5.  Allow the DUT to issue an Inform RPC to the ACS with an event code of “1 BOOT” and “M  
+        Reboot”.  
+
+!4 Test Metrics:
+ 
+    1.  The DUT successfully responds with a RebootResponse message. 
+    2.  The Inform message from DUT after reboot includes the event codes “1 BOOT” and “M Reboot”.  

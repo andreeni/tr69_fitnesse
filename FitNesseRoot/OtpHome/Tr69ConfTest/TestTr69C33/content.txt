@@ -1,0 +1,47 @@
+GetParameterNames -Partial Path -Next Level False 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE is capable of responding to a partial path request 
+made by the ACS when next level is set to false. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+        According to Broadband Forum TR-069 [1], when next level argument in GetParameterNames is 
+set to false, the response must contain the parameter or object whose name exactly matches the 
+ParameterPath argument, if any (all levels below the specified object in the object hierarchy). For 
+example, if ParameterPath were “InternetGatewayDevice.LANDevice.1.Hosts”, the response may include 
+the following: 
+         InternetGatewayDevice.LANDevice.1.Hosts. 
+         InternetGatewayDevice.LANDevice.1.Hosts.HostNumberOfEntries 
+         InternetGatewayDevice.LANDevice.1.Hosts.Host. 
+         InternetGatewayDevice.LANDevice.1.Hosts.Host.1. 
+         InternetGatewayDevice.LANDevice.1.Hosts.Host.1.IPAddress 
+         InternetGatewayDevice.LANDevice.1.Hosts.Host.1.AddressSource 
+         InternetGatewayDevice.LANDevice.1.Hosts.Host.1.LeaseTimeRemaining 
+         InternetGatewayDevice.LANDevice.1.Hosts.Host.1.MACAddress 
+         InternetGatewayDevice.LANDevice.1.Hosts.Host.1.HostName 
+         InternetGatewayDevice.LANDevice.1.Hosts.Host.1.InterfaceType 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.   Schedule a GetParameterNames RPC on the DUT using a partial path and next level set to false. 
+    3.   Allow the DUT to respond with GetParameterNamesResponse. 
+
+!4 Test Metrics:
+ 
+    1.   The DUT is able to successfully respond to the partial path request at all levels below the 
+         specified partial path. 

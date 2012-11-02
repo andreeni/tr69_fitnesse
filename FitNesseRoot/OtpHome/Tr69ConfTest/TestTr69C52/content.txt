@@ -1,0 +1,57 @@
+AddObject 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE is capable of creating an instance of a multi-instance 
+object. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+        According to Broadband Forum TR-069[1], if an ACS uses AddObject RPC to create a new 
+instance of a multi-instance object in the DUT, the DUT should honor the request, perform necessary 
+action, create a new instance, and report back to ACS with the instanceNumber of the newly created 
+object. The AddObject method call from the ACS takes as an argument the path name of the collection of 
+objects for which a new instance is to be created. For example: 
+        Top.Group.Object. 
+This path name does not include an instance number for the object to be created. The instance number 
+is assigned by the CPE and returned in the response. 
+Test Setup: 
+    1.   Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.   Choose a multi-instance, writable object within the DUT’s supported data model. 
+    3.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule an AddObject RPC on the DUT on a parameter of which another instance can be 
+        created. 
+    3.  Allow the DUT to respond with AddObjectResponse. 
+         1.  If the status code in AddObjectResponse is 0, the DUT was successful in creating the 
+             parameter. 
+         2.  If the status code in AddObjectResponse is 1, the DUT either requires a reboot or other 
+             action to create the object. In such case: 
+             1.  Allow the DUT to terminate the session with the ACS. 
+            2.  Allow the DUT to perform reboot (if required) or other steps necessary to create the 
+                 object. 
+            3.  Allow the DUT to issue an Inform RPC to the CWMP analyzer in order to establish CWMP 
+                 session. 
+            4.   Respond with a successful Inform Response 
+    4.  Schedule a GetParameterNames RPC with the newly added object as an argument. 
+    5.  Allow the DUT to reply back with a GetParameterNamesResponse. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT successfully responds with an AddObjectResponse containing the InstanceNumber of 
+        the newly created object and either a 0 or a 1 as the status code. 
+    2.  If the status code is 1, the DUT performs all necessary action for addition and contacts the 
+        CWMP analyzer again by issuing an Inform RPC once addition is complete. 
+    3.  The DUT successfully responds to the GetParameterNames Request without a fault code. 

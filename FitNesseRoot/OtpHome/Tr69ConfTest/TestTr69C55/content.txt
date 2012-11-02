@@ -1,0 +1,93 @@
+Download Test -Basic Version Upgrade 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE is capable of peforming the Download RPC and apply 
+the new software or firmware image. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+        According to the Broadband Forum TR-069 [1], when Download method call is used by the ACS 
+instructing the CPE to download a specified file from the designated location, the CPE must indicate 
+successful or unsuccessful completion of the download using one of the following three means: 
+     A download Response with the status argument having a value of 0 (indicating success), or a 
+        fault response to the Download request (indicating failure). 
+     A TransferComplete RPC called later in the same session as the Download request(indicating 
+        either success or failure). In this case, the Status argument in the corresponding 
+         DownloadResponse must have a value of 1. 
+     A TransferComplete RPC made in a subsequent session (indicating either a success or failure). In 
+        this case, the Status argument in the corresponding DownloadResponse must have a value of 1. 
+Regardless of which mechanism is used, the CPE must only indicate successful completion of the 
+download after the downloaded file has both been successfully transferred and applied. If the 
+downloaded file is a software image, the CPE must consider the downloaded file to be successfully 
+applied only after the new software image is actually installed and operational. If the software image 
+replaces the overall software of the CPE (which would typically require a reboot to install and begin 
+execution), the SoftwareVersion represented in the data model must already reflect the updated 
+software image in the session in which the CPE makes a TransferComplete RPC on the ACS indicating 
+successful download. 
+If the CPE requires a reboot to apply the downloaded file, then the only appropriate means of indicating 
+successful completion is the third option listed above - a TransferComplete message sent in a 
+subsequent session. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Obtain a firmware image for the DUT that, while structurally identical to the operating firmware 
+        under test, contains a different image version number. 
+    3.   Configure and provide a file server (i.e., http or ftp) that can be accessed by DUT through the 
+         network infrastructure.  Authentication may or may not be configured on the file server. 
+    4.   Copy the provided firmware image to the file server. 
+    5.   Connect all components of the test setup to the network infrastructure. 
+
+!4 Procedure:
+ 
+     1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+         exchanges. 
+    2.   Schedule a Download RPC with the following arguments: 
+         CommandKey                                          Empty String 
+         FileType                                            “1 Firmware Upgrade Image” 
+         URL                                                 Location of the firmware image 
+                                                             Username to be used by the CPE to 
+         Username 
+                                                             authenticate with the file server (if any). 
+                                                             Password to be used by the CPE to 
+         Password 
+                                                             authenticate with the file server (if any). 
+         FileSize                                           The size of the file to be downloaded in bytes. 
+         TargetFileName                                     The name of the firmware image 
+                                                            A random time between 60 and 120 seconds. 
+         DelaySeconds                                       This exercises the device’s ability to wait  
+                                                             before performing the download. 
+         SuccessURL                                          Empty string 
+         FailureURL                                          Empty string 
+    3.   Allow the DUT to respond with DownloadResponse. 
+         a)  A status code of 0 in the DownloadResponse means the DUT successfully finished download 
+             and applied the change. 
+         b)  A status code of 1 means the DUT will need time to download the file or need certain actions 
+             like Reboot to complete the download. In such case: 
+             1.  Allow the DUT to finish downloading the firmware image. Allow the DUT to reboot if 
+                 needed. 
+             2.  If the session has not been terminated, allow the DUT to send a TransferComplete 
+                 message in the same session. 
+             3.  If the session has been terminated (as a result of reboot or similar action), allow the DUT 
+                 to initiate a connection with the ACS by sending an Inform message and instruct the ACS 
+                 to respond with a successful InformResponse. 
+    4.   Issue a GetParameterValues request from the ACS to the DUT on SoftwareVersion parameter to 
+        verify if the new firmware image has been applied by the DUT. 
+    5.  Allow the DUT to respond with a GetParameterValues Response. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT successfully responds to the Download RPC with a DownloadResponse. 
+    2.  The DUT performs the Download. 
+    3.  The DUT performs the firmware upgrade. 
+    4.   If the upgrade was performed after the session has closed, in the Inform following the upgrade, 
+        the DUT includes the events “7 TRANSFER COMPLETE” and “M Download”. 
+    5.  The version information given in the same Inform contains the NEW firmware version. 
+    6.  The DUT makes the TransferComplete RPC to indicate the Download was successful. 

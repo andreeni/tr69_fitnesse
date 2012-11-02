@@ -1,0 +1,37 @@
+FactoryReset 
+
+!4 Purpose:
+ 
+        The purpose of this test is to verify that the DUT is capable of performing factory reset procedure 
+upon receipt of FactoryReset RPC from the ACS. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], if an ACS issues a FactoryReset RPC to the DUT, the 
+DUT can choose to perform factory reset. The DUT must initiate the factory reset procedure only after 
+successful completion of the session. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a FactoryReset RPC on the DUT with the CWMP analyzer. 
+    3.  Allow the DUT to respond with FactoryResetResponse message. 
+    4.  Allow the session to terminate successfully. 
+    5.  Manually check the CPE’s state. 
+
+!4 Test Metrics:
+ 
+    1.  The CPE does not attempt the Factory Reset before terminating the session. 
+    2.  The CPE has returned to its Factory Reset state. 

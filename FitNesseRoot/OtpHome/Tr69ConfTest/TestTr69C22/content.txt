@@ -1,0 +1,44 @@
+HTTP Redirection -SSL 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE supports the use of HTTP redirection by the ACS to an 
+HTTPS URL. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], if an HTTPS URL is provided in the HTTP redirection 
+by the ACS, the CPE must use SSL/TLS as transport mechanism, and establish connection with the HTTPS 
+URL. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  If the CWMP analyzer is capable of supporting multiple ACS URLs, configure an alternate https 
+        ACS URL on the CWMP analyzer. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Issue an HTTP response with a 307 (Temporary Redirect) Status Code and the location of the new 
+        HTTPS URL. 
+    3.  Allow the DUT to establish an SSL connection with the ACS represented by the new URL. 
+    4.  Allow the DUT to issue the same HTTP POST message to the new URL. 
+    5.  Using the new URL at the CWMP Analzyer, reply back with an Inform Response. 
+    6.  Issue a GetParameterValue RPC on InternetGatewayDevice.ManagementServer.URL to the DUT. 
+    7.  Allow the DUT to respond with a GetParameterValueResponse. 
+    8.  Analyze the response. The value of the parameter should be the old URL before redirection, and 
+        not the new URL. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT establishes SSL connection with the new ACS represented by the new URL. 
+    2.  The DUT properly resends the HTTP POST to the redirected URL. 
+    3.  The GetParameterValueResponse includes URL of the old ACS. 

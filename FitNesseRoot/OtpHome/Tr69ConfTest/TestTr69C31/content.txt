@@ -1,0 +1,40 @@
+GetParameterNames -Complete Path 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE is capable of responding to a simple complete path 
+request made by the ACS to determine its accessibility. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+Normative References 
+        According to Broadband Forum TR-069 [1], a CPE must support the following required RPCs, and 
+may optionally support other RPCs: GetRPCMethods, SetParameterValues , SetParameterValues, 
+GetParameterNames, SetParameterAttributes, GetParameterAttributes, AddObject, DeleteObject, 
+Reboot, Download. 
+        The GetParameterNames RPC is used to determine the availability of parameters in the CPEs 
+data model and their access level.  The RPC can a complete or partial path as its argument; this test 
+exercises the ability to complete the GetParameterNames RPC using a complete parameter path. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Respond with a successful Inform Response. 
+    3.  Schedule a GetParameterNames RPC on the DUT using complete path name of any parameter 
+        supported by the DUT. 
+    4.  Allow the DUT to respond with GetParameterNamesResponse. 
+ 
+!4 Test Metrics:
+ 
+    1.  The CPE is able to respond to the GetParameterNames request from the CWMP analyzer with a 
+        response that includes the complete path of the requested parameter and whether the 
+        parameter is writable or not. 

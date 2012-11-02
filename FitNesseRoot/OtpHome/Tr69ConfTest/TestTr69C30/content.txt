@@ -1,0 +1,37 @@
+GetRPCMethods and Required RPCs 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE supports all the required RPCs. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CPE must support the following required RPCs, and 
+may optionally support other RPCs: GetRPCMethods, SetParameterValues , SetParameterValues, 
+GetParameterNames, SetParameterAttributes, GetParameterAttributes, AddObject, DeleteObject, 
+Reboot, Download. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a GetRPCMethods RPC on the DUT. 
+    3.  Allow the DUT to respond with GetRPCMethodsResponse. 
+    4.  Allow the DUT to successfully terminate session with the ACS. 
+    5.  Analyze the GetRPCMethodResponse. 
+
+!4 Test Metrics:
+ 
+    1.  The CPE responds to the GetRPCMethods call. 
+    2.  The GetRPCMethodsResponse from the DUT must contain all the required RPCs. 

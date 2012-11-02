@@ -1,0 +1,39 @@
+SOAP Fault Format 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the SOAP Fault response enclosed inside a SOAP envelope is 
+formed properly. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], a fault response from the CPE must make use of the 
+following conventions: 
+     The SOAP faultcode element must indicate the source of the fault, either Client or Server, as 
+        appropriate for the particular fault. In the example used below, Client represents the originator 
+        of the SOAP request, and Server represents the SOAP responder. 
+     The SOAP faultstring sub-element must contain the string “CWMP fault”.  
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Instruct the CWMP analyzer to issue an arbitrary RPC not supported by the CPE. 
+    3.  Allow the DUT to respond with a SOAP Fault. 
+    4.  Analyze the SOAP Fault. 
+
+!4 Test Metrics:
+ 
+    1.  The SOAP faultcode element indicates the source of fault with either “Server” or “Client”.  
+    2.  The SOAP faultstring sub-element contains the string “CWMP fault”.  

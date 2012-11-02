@@ -1,0 +1,39 @@
+ScheduleInform Test 
+
+!4 Purpose:
+ 
+        The purpose of this test is to verify that the CPE is able to schedule a one-time Inform method 
+call when requested by the CWMP analyzer using ScheduleInform Test. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], if an ACS issues a ScheduleInform RPC, the CPE may 
+schedule a one-time Inform method call sometime in the future. The time the CPE must wait before 
+issuing an Inform message is specified as a parameter in the ScheduleInform request. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Choose a time interval between 60 and 300 seconds for the DUT to perform the scheduled 
+        inform. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Instruct the CWMP analyzer to issue a ScheduleInform to the DUT. 
+    3.  Allow the DUT to respond with a successful ScheduleInformResponse. 
+    4.  Wait for the DUT to issue an Inform RPC to the CWMP analyzer. 
+    5.  Respond with a successful Inform Response. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT successfully responds with a ScheduleInformResponse message. 
+    2.  The DUT issues an Inform RPC to the CWMP analyzer with event code “3 SCHEDULED” 

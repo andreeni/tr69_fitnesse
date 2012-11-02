@@ -1,45 +1,43 @@
-!2 ACS Discovery using DHCP
+ACS Discovery using DHCP 
 
-!4 Purpose: 
-This test is designed to verify that the DUT attempts to use DHCP to discover the ACS URL when the DUT has no value for the ManagementServer.URL
+!4 Purpose:
+ 
+        This test is designed to verify that the DUT attempts to use DHCP to discover the ACS URL when 
+the DUT has no value for the ManagementServer.URL 
 
 !4 Target:
-Any CWMP enabled CPE that implements DHCP discovery of the ACS URL.
-
-!4 Normative Description:
- According to Broadband Forum TR-069 [1], a CWMP enabled CPE must use DHCP to attempt to discover the ACS URL when the CPE has no value (empty or null) for the parameter ManagementServer.URL . A CPE identifies itself to the DHCP server as supporting this method by including the string “dslforum.org” (all lower case) anywhere in the Vendor Class Identifier ( DHCP option 60 ). The CPE may then use the values received from the DHCP server in the Vendor Specific Information ( DHCP option 43 )to set the URL of the ACS and the Provisioning Code.
-
-
-!4 Test Setup:
- 1. Configure the DHCP server or simulator to include the ACS URL in its DHCP options.
- 2. Configure the DUT to have an empty or null value for the ManagementServer.URL parameter.
- 3. Connect the DUT, DHCP server or simulator, and CWMP analyzer to the network infrastructure.
-
-
-
-
-!4 Procedure:
- 1. Allow the DUT to request an ACS URL using DHCP.
- 2. Respond to the DHCP request with a valid response to set the ACS URL.
- 3. Allow the DUT to use the value received from the DHCP server in the Vendor Specification Information ( DHCP option 43 ) to set the ManagementServer.URL
- 4. Allow the DUT to establish a CWMP session with the ACS specified by the URL.
- 5. Allow the DUT to terminate the session.
-
-|script|login dialog driver|Bob|xyzzy|
-|login with username|Bob|and password|xyzzy|
-|check|login message|Bob logged in.|
-|reject|login with username|Bob|and password|bad password|
-|check|login message|Bob not logged in.|
-|ensure|login with username|Bob|and password|xyzzy|
-|note|this is a comment|
-|show|number of login attempts|
-|$symbol=|login message|
-
-
-!4 Test Metrics:
- 1. The DUT attempts to discover the ACS URL via DHCP when its ManagementServer.URL parameter is blank.
+ 
+        Any CWMP enabled CPE that implements DHCP discovery of the ACS URL. 
 
 !4 References:
- * [1] Broadband Forum TR-069
- * [2] RFC 2132 
+ 
+        [1]    Broadband Forum TR-069 
+        [2]    RFC 2132 
 
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CWMP enabled CPE must use DHCP to attempt to 
+discover the ACS URL when the CPE has no value (empty or null) for the parameter 
+ManagementServer.URL . A CPE identifies itself to the DHCP server as supporting this method by 
+including the string “dslforum.org” (all lower case) anywhere in the Vendor Class Identifier ( DHCP option 
+60 ). The CPE may then use the values received from the DHCP server in the Vendor Specific Information 
+( DHCP option 43 )to set the URL of the ACS and the Provisioning Code. 
+Test Setup: 
+    1.  Configure the DHCP server or simulator to include the ACS URL in its DHCP options. 
+    2.  Configure the DUT to have an empty or null value for the ManagementServer.URL parameter. 
+    3.  Connect the DUT, DHCP server or simulator, and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Allow the DUT to request an ACS URL using DHCP. 
+    2.  Respond to the DHCP request with a valid response to set the ACS URL. 
+    3.  Allow the DUT to use the value received from the DHCP server in the Vendor Specification 
+        Information ( DHCP option 43 ) to set the ManagementServer.URL 
+    4.  Allow the DUT to establish a CWMP session with the ACS specified by the URL. 
+    5.  Allow the DUT to terminate the session. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT attempts to discover the ACS URL via DHCP when its ManagementServer.URL 
+        parameter is blank. 
+    2.  The DUT establishes CWMP session with the ACS specified by the URL. 

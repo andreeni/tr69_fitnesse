@@ -1,0 +1,22 @@
+HTTP -No Pipelining 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE does not use pipelining as defined in HTTP 1.1 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CPE must not make use of pipelining when it is 
+using HTTP 1.1. This means, the CPE must not send multiple HTTP requests without getting response for 
+the previous HTTP request. 
+
+!4 Procedure:
+ 

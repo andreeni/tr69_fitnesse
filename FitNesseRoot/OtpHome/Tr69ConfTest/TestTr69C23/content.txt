@@ -1,0 +1,47 @@
+HTTP Redirection -Use of session cookies 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE can successfully communicate using cookies even 
+after HTTP redirection. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CPE must include all cookies associated with the 
+session in subsequent HTTP requests to the redirected ACS. The CPE must consider a redirect from an 
+ACS to be a “verifiable transaction” and thus it must send cookies to the redirected ACS without  
+performing domain validation of each cookie. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.   If the CWMP analyzer is capable of supporting multiple ACS URLs, configure an alternate ACS 
+         URL on the CWMP analyzer. 
+    3.  Configure the CWMP analyzer to use session cookies. 
+    4.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Set the HTTP cookie in the HTTP response. 
+    3.  Allow the DUT to send an empty HTTP POST or an Inform RPC to the CWMP analyzer. 
+    4.  Analyze the HTTP message from the DUT to check if it is using the cookie sent by the ACS in its 
+         POST. 
+    5.   Issue an HTTP response with a 307 (Temporary Redirect) Status Code and the location of the new 
+         HTTPS URL. 
+    6.  Allow the DUT to issue the same HTTP POST message to the new URL. 
+    7.  Analyze the HTTP message from the DUT to check if it is using the cookie sent by the previous 
+        ACS in its POST. 
+    8.  Allow the DUT to close the connection. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT establishes SSL connection with the new ACS represented by the new URL. 
+    2.  The DUT includes cookie from old ACS to the new ACS in its HTTP POST. 
+    3.  The DUT successfully terminates the connection. 

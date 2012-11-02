@@ -1,0 +1,37 @@
+Handling Null Terminated ACS URL obtained from DHCP Server 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the DUT correctly interprets and acts upon the ACS URL used. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that implements DHCP discovery of the ACS URL. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+        [2]     RFC 2131 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1] section 3.1, a CWMP enabled CPE must handle a null 
+terminated ACS URL by accepting the URL as valid, without including the null terminating character in 
+the URL. 
+Test Setup: 
+    1.  Configure the DHCP server or simulator to include the ACS URL in its DHCP options. 
+    2.  Configure the DUT to have an empty or null value for the ManagementServer.URL parameter. 
+    3.  Connect the DUT, DHCP server or simulator, and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Allow the DUT to request an ACS URL through DHCP. 
+    2.  Respond to the DHCP request with a valid response to set the ACS URL with a URL that is null- 
+        terminated. 
+    3.  Verify that the DUT has correctly interpreted the URL. 
+    4.  Allow the DUT to attempt to communicate with the ACS at the new URL. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT interprets the ACS URL without the null-termination. 
+    2.  The DUT attempts a secure connection to the CWM P analyzer. 

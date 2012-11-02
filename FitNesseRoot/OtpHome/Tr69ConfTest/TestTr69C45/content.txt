@@ -1,0 +1,38 @@
+GetParameterAttributes -Partial Path 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE can return attribute information of all the parameters 
+in the branch of the name hierarchy that shares the same prefix as the partial path argument. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], if an ACS requests for attribute information of an 
+array of parameters using GetParameterAttributes method, the CPE must reply to the request with 
+attribute information of all the parameters in the array. If a parameter name argument is given as a 
+partial path name, the request is to be interpreted as a RPC on return all of the Parameters in the branch 
+of the naming hierarchy that shares the same prefix as the argument. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Choose a valid partial parameter path from the DUT’s supported data model. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a GetParameterAttributes request on the partial path chosen in test setup step 2. 
+    3.  Allow the DUT to respond with GetParameterAttributesResponse. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT can properly respond to GetParameterAttributes request on multiple complete paths 
+        with attribute information of the paths. 

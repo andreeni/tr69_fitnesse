@@ -1,0 +1,41 @@
+Multiple TCP Connections Across a Single CWMP session 
+
+!4 Purpose:
+ 
+        This test is designed to verify that ACS and CPE can maintain multiple TCP connections over a 
+single CWMP session. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], for a sequence of transactions forming a single 
+session, a CPE should maintain a TCP connection that persists throughout the duration of the session. 
+However, if the TCP connection is cleanly closed after an HTTP request/response round trip, and if the 
+session has not otherwise terminated (either successfully or unsuccessfully) at the time of the last HTTP 
+response, the CPE MUST continue the session by sending the next HTTP request in a new TCP 
+connection. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Reply with an Authentication Challenge containing “Connection:close” in its header. 
+    3.  Allow the DUT to close its existing TCP connection. 
+    4.  Allow the DUT to issue an Inform RPC to the ACS again ( with the “Authentication” HTTP header)  
+        in order to establish a CWMP session. 
+    5.  Respond to the Inform RPC with a successful InformResponse. 
+    6.  Allow the DUT to terminate the session. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT closes its existing TCP connection and sends the second HTTP request (with the 
+        “Authentication” header) in a new TCP connection. 

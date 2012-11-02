@@ -1,0 +1,42 @@
+CWMP Faults -Basic RPC Faults 
+
+!4 Purpose:
+ 
+         The purpose of this test is to verify that the DUT is capable of rejecting RPCs that it does not 
+support. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        Section A.5.1 of Broadband Forum TR-069[1] specifies the CWMP Fault codes that can be 
+returned by the CPE in a variety of circumstances.    These faults, listed in Table 65 of [1], consist of a fault 
+code which must be used as the value of the SOAP fault code element, as well as arguments that may be 
+required as part of the fault’s functionality.  Different fault codes are allowed or required for each of the  
+RPCs described in CWMP. 
+        This test exercises the basic fault, “9000 - Method not supported”. 
+Test Setup: 
+    1.   Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.   Choose a valid RPC that is not listed as supported by the DUT. 
+    3.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+         exchanges. 
+    2.  Schedule a GetRPCMethods RPC on the DUT with the CWMP analyzer. 
+    3.  Allow the DUT to respond with GetRPCMethodsResponse message. 
+    4.   Ensure that the RPC selected in test setup step 2 is not listed in the GetRPCMethodsResponse. 
+    5.  Schedule the RPC selected in test setup step 2 on the DUT with the CWMP analyzer. 
+    6.  Allow the DUT to respond with fault “9000 - Method not supported”. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT rejects an RPC that it does not support. 
+    2.  The fault is correctly formed. 

@@ -1,0 +1,49 @@
+SetParameterAttributes - Passive Notification -Complete Path 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE can successfully process SetParameterAttributes 
+request from the ACS on a complete path with notification set to Passive. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], when the CPE receives a SetParameterAttributes 
+request from the ACS on a complete path with notification set to Passive, whenever the specified 
+parameter value changes, the CPE must include the new value in the ParameterList in the Inform 
+message that is sent the next time a session is established to the ACS. If the CPE has rebooted, or the 
+URL of the ACS has changed since the last session, the CPE can choose to not include the changed 
+parameter in the first session established with either the old ACS or the new ACS. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Choose a parameter from the DUT’s supported data model that can be altered locally from the  
+         DUT’s interface. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a SetParameterAttributes RPC on the DUT on the parameter chosen in test setup step 
+        2. 
+    3.  Allow the DUT to respond with a SetParameterAttributes response. 
+    4.   Modify the parameter locally in the DUT. 
+    5.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer with a successful Inform 
+        exchange. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT can respond with a SetParameterAttributesResponse to the request from the CWMP 
+        analyzer. 
+    2.  The Inform, after the modification of the parameter, includes the event code “4 VALUE CHANGE”. 
+    3.  The Inform, after modification of the parameter, includes the event code of the event that 
+        stimulated the DUT to contact the CWMP analyzer. 
+    4.  The Inform after the modification includes the changed parameter in the ParameterList in the 
+        Inform Message. 

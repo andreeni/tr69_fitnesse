@@ -1,0 +1,49 @@
+SetParameterValues SOAP Fault Format 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the SetParameterValuesFault element in a SOAP Fault 
+response is formed properly. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Any referenced documents or RFCs. 
+
+!4 Normative Description:
+ 
+        According to the Broadband Forum TR-069[1], along with the SOAP fault requirements outlined 
+in the SOAP Fault Format test case, a SOAP Fault error during SetParameterValues must contain a 
+SetParameterValuesFault element. This element is to be used only in an error response to the 
+SetParameterValues method, that contains a list of one or more structures indicating the specific fault 
+associated with each parameter in errror. The structure contains the following elements: 
+     A ParameterName element that contains the full path name of the parameter in error. 
+     A FaultCode element that contains a single numeric fault code that indicates the fault associated 
+        with the particular parameter in error. 
+     A FaultString element that contains a human readable description of the fault for the particular 
+        parameter in error. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Instruct the CWMP analyzer to issue a SetParameterValues request on an invalid parameter. 
+    3.  Allow the DUT to respond with a SOAP Fault. 
+    4.  Analyze the SOAP Fault. 
+
+!4 Test Metrics:
+ 
+    1.  The SOAP faultcode element indicates the source of fault with either “Server” or “Client”.  
+    2.  The SOAP faultstring sub-element contains the string “CWMP fault”. 
+    3.  The SOAP message consists of a ParameterName element that contains the full path name of the 
+        parameter in error. 
+    4.   The SOAP message consists of a FaultCode element that contains a single numeric fault code 
+         that indicates the fault associated with the particular parameter in error. 
+    5.   The SOAP message consists of a FaultString element that contains a human readable description 
+         of the fault for the particular parameter in error. 

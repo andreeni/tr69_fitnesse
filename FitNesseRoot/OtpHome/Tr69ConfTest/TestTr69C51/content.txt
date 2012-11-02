@@ -1,0 +1,45 @@
+SetParameterAttributes -Disable Notification 
+
+!4 Purpose:
+ 
+         This test is designed to verify that the CPE is capable of disabling previously set notification 
+attribute. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+         According to Broadband Forum TR-069[1], when the CPE receives a SetParameterAttributes 
+request from the ACS on a particular path with notification set to 0 (disable notification), the CPE must 
+cease informing the ACS of value change events on that parameter. 
+Test Setup: 
+     1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+     2.  Choose a parameter path (complete or partial) in the DUT’s supported data model that is current 
+         set for either active or passive notification. 
+     3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+     1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+         exchanges. 
+     2.  Instruct the ACS to respond with a successful Inform Response. 
+     3.  Instruct the ACS to send a SetParameterAttributes on a complete path or a partial path with 
+         notification set to 0 (disable notification). 
+     4.  Allow the DUT to respond with SetParameterAttributes response. 
+     5.  Modify the parameters represented by a complete path if specified in the request, or one 
+         representing a parameter within the name hierarchy of a partial path if specified in the request. 
+     6.  Ensure the DUT does not communicate an event to the CWMP analyzer indicating a change in 
+         the parameter. 
+
+!4 Test Metrics:
+ 
+     1.  The DUT can respond with a SetParameterAttributesResponse to the request from the CWMP 
+         analyzer. 
+    2.  The DUT does not communicate an event to the CWMP analyzer indicated a change in the 
+        parameter. 

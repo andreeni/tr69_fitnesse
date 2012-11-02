@@ -1,0 +1,90 @@
+Session Retry 
+
+!4 Purpose:
+ 
+         This test is designed to verify that the DUT retries a failed session with the ACS. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+         According to Broadband Forum TR-069[1], a CPE must retry failed sessions to attempt to 
+redeliver events that it has previously failed to deliver and to allow the ACS to make additional requests 
+in a timely fashion. The CPE MUST keep track of the number of times it has attempted to retry a failed 
+session. 
+         If the CPE fails to establish a session, this might be because the CPE supports CPE WAN 
+Management Protocol v1.1 (or later) and the ACS supports only v1.0. If this situation is suspected, the 
+CPE MUST revert to v1.0 when retrying the failed session. 
+         A CPE MUST retry a failed session after waiting for an interval of time specified in the following 
+Table or when a new event occurs, whichever comes first. The CPE MUST choose the wait interval by 
+randomly selecting a number of seconds from a range given by the post-reboot session retry count. 
+Beginning with the tenth post-reboot session retry attempt, the CPE MUST choose from a range between 
+2560 and 5120 seconds. The CPE MUST continue to retry a failed session until it is successfully 
+terminated.  Once a session terminates successfully, the CPE MUST reset the session retry count to zero 
+and no longer applies the session retry policy to determine when to initiate the next session. 
+        This test case tests three different parts: 
+     1.  The CPE receives an HTTP layer fault from the ACS notifying it to revert back to CWMP v 1.0. It 
+         retries session with the ACS by reverting back to v1.0 when retrying the failed session. 
+    2.   The CPE receives an HTTP layer fault from the ACS.     It retries the session. 
+    3.   The CPE receives a SOAP layer fault from the ACS.     It retries the session. 
+Test Setup: 
+        Part A: Revert back to previous CWMP version 
+    1.   Configure the CPE to use the ACS URL set on the CWMP analyzer. 
+    2.   Configure the CWMP Analyzer to use a CWMP version earlier than that of the DUT. If the DUT 
+         supports a later CWMP version, configure it to use this version. If it does not, this section of the 
+        test can be skipped. 
+    3.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+        Part B: Session Retry on HTTP Fault and Part C: Session Retry on SOAP Fault 
+    1.   Configure the CPE to use the ACS URL set on the CWMP analyzer. 
+    2.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+        Part A: Revert back to CWMP v1.0 
+    1.   Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.   Instruct the CWMP Analyzer to respond with an HTTP response with status code of 400 (Bad 
+         Request) instead of 200 OK. 
+    3.  Allow the DUT to terminate the session. 
+    4.  Allow the DUT to retry the session in accordance to the session retry policy by sending an Inform 
+         message after the designated wait period, and with CWMP version set to an earlier version in 
+        the SOAP Envelope. 
+    5.   Respond to the Inform RPC with a successful InformResponse. 
+    6.  Allow the DUT to successfully terminate the connection. 
+        Part B: Session Retry on HTTP Fault 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Respond with an HTTP response with status code of 400 (Bad Request) instead of 200 OK. 
+    3.  Allow the DUT to terminate the session. 
+    4.  Allow the DUT to retry the session in accordance to the session retry policy by sending an Inform 
+        message after the designated wait period. 
+    5.  Respond to the Inform RPC with a successful InformResponse. 
+    6.  Allow the DUT to successfully terminate the connection. 
+        Part C: Session Retry on SOAP Fault 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Respond with an HTTP response with a SOAP fault response with fault code other than 8005 
+        (Retry Request). 
+    3.  Allow the DUT to terminate the session. 
+    4.  Allow the DUT to retry the session in accordance to the session retry policy by sending an Inform 
+        message after the designated wait period. 
+    5.  Respond to the Inform RPC with a successful InformResponse. 
+    6.  Allow the DUT to successfully terminate the connection. 
+
+!4 Test Metrics:
+ 
+        Part A: Revert back to CWMP v1.0 
+    1.  The DUT is capable of successfully handling the HTTP error. 
+    2.  The DUT retries the session within the time window of the session retry, and uses CWMP v 1.0 
+    3.  The DUT increments the session retry counter in the Inform call. 
+        Part B: Session Retry on HTTP Fault Code 
+    1.  The DUT is capable of successfully handling the HTTP error. 
+    2.  The DUT retries the session within the time window of the session retry. 
+    3.  The DUT increments the session retry counter in the Inform call. 
+        Part C: Session Retry on SOAP Fault Code 
+    1.  The DUT is capable of successfully handling the SOAP Fault Code. 
+    2.  The DUT retries the session within the time window of the session retry. 
+    3.  The DUT increments the session retry counter in the Inform call. 

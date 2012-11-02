@@ -1,0 +1,44 @@
+SOAP Envelope Format 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the SOAP envelope encoded inside HTTP Messages sent by the 
+DUT is properly formed. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], SOAP 1.1 is the encoding syntax to transport the RPC 
+method calls and responses in CPE WAN Management Protocol.        In doing so, the encoding must use the 
+standard SOAP 1.1 envelope namespace identifier: “http://schemas.xmlsoap.org/soap/envelope”, and  
+the standard SOAP 1.1 serialization namespace identifier: “http://schemas.xmlsoap.org/soap/encoding”.  
+        All elements and attributes are associated with the namespace identifier “urn:dslforum- 
+org:cwmp-1-1”. The namespace identifier for CPE WAN Management Protocol version 1.n is always  
+“urn:dslforum-org:cwmp:1-n”, e.g. for v1.0 it was “urn:dslforum-org:cwmp:1-0” and for v1.42 it will be  
+“urn:dslforum-org:cwmp:1-42”.  
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Instruct the CWMP analyzer to issue an arbitrary RPC supported by the DUT. 
+    3.  Allow the DUT to respond with a successful response. 
+    4.  Analyze the SOAP response from the CPE. 
+
+!4 Test Metrics:
+ 
+    1.  The SOAP message uses SOAP 1.1 envelope namespace identifier: 
+        “http://schemas.xmlsoap.org/soap/envelope” 
+    2.  The SOAP message uses SOAP 1.1 serialization namespace identifier: 
+        “http://schemas.xmlsoap.org/soap/encoding” 
+    3.  The SOAP message uses a namespace identifier compliant with the CWMP Protocol version. 

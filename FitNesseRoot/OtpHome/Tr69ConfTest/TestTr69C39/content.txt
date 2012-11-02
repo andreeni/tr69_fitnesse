@@ -1,0 +1,40 @@
+GetParameterValues -Complete and Partial Paths 
+
+!4 Purpose:
+ 
+         This test is designed to verify that the CPE can respond to a GetParameterValues request by the 
+ACS on both complete and partial paths. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+         According to BroadBand Forum[1], a CPE must be able to respond to a GetParameterValues 
+Request from an ACS when the argument is an array of strings, each representing the name of a 
+requested parameter.    If the parameter name argument is given as a partial path, the request is to be 
+interpreted as a RPC to return all of the Parameters in the branch of the naming hierarchy that shares the 
+same prefix as the argument. A partial path name must end with a “.”(dot) after the last node name in 
+the hierarchy.  An empty string indicates the top of the name hierarchy. 
+Test Setup: 
+    1.   Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.   Choose two valid parameter paths from the DUT’s supported data model, one partial and one  
+         complete path. 
+    3.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+         exchanges. 
+    2.   Schedule a GetParameterValues RPC on the DUT using both a complete path and a partial path. 
+    3.   Allow the DUT to respond with GetParameterValuesResponse. 
+
+!4 Test Metrics:
+ 
+    1.   The CPE can properly respond to GetParameterValues request by the ACS on both complete and 
+         partial path. 

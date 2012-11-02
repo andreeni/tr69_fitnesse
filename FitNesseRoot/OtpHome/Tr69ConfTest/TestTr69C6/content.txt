@@ -1,0 +1,36 @@
+ACS Modifies URL 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the DUT accepts, interprets, and utilizes a new ACS URL set by 
+the ACS via CWMP. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], once the CPE has established a connection to the 
+ACS, the ACS may at any time modify the ACS address Parameter stored within the CPE. Once modified, 
+the CPE must use the modified address for all subsequent connections to the ACS. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Configure an alternate instance or ACS URL on the CWMP analyzer. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a SetParameterValues RPC on the DUT using the CWMP generator, setting the value of 
+        the Management.URL parameter to the value of the alternate URL provided in the test setup. 
+    3.  Allow the DUT to attempt to communicate with the CWMP analyzer at the new URL. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT accepts, interprets and utilizes the new ACS URL. 

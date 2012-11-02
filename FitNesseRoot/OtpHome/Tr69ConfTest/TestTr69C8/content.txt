@@ -1,0 +1,51 @@
+Connection after Connection Request 
+
+!4 Purpose:
+ 
+         This test is designed to verify that the DUT attempts to establish a connection with the ACS upon 
+receiving a valid connection request from the ACS. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], the CPE MUST establish connection to the ACS after a 
+valid connection request is received from an ACS.  This is differentiated from a CPE that is connecting to 
+an ACS in all previous tests. 
+        A connection request is an empty HTTP 1.1 GET to a URL predetermined by the CPE.  This GET 
+must be authenticated using digest or certificate based authentication.  Password information can be 
+pre-configured on the CPE or set by the ACS upon initial communication. 
+        All CWMP sessions begin with the use of the Inform RPC.       Each Inform RPC contains event codes 
+in its arguments that indicate the event which caused the session to be initiated.  In this case, the 
+behavior is indicated by the event code “6 CONNECTION REQUEST”. 
+Test Setup: 
+    1.   Configure the DUT with a connection request URL, connection request username, and 
+         connection request password. 
+    2.   Configure the CWMP analyzer to use the preconfigured URL, username, and password for 
+         connection requests. 
+    3.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Send a valid Connection RPC on the DUT. 
+    2.   Allow the DUT to authenticate the connection request. 
+    3.   Allow the DUT to initiate a session with the CWMP analyzer with successful Inform exchanges. 
+    4.   Allow the DUT to successfully terminate the session. 
+    5.   Validate all CWMP messages. 
+
+!4 Test Metrics:
+ 
+    1.   The DUT uses digest authentication to authenticate the connection request. 
+    2.  The HTTP response from the DUT contains the “200 (OK)” or “204 (No Content)” status code. 
+    3.  The HTTP response is sent before the DUT attempts to establish the CWMP session. 
+    4.  The length of the HTTP response body is zero. 
+    5.  The DUT successfully establishes a session with the ACS by sending an Inform Message with an 
+        event code of “6 CONNECTION REQUEST”. 
+    6.  The DUT’s CWMP messages are valid. 
+    7.  The DUT successfully terminates the session. 

@@ -1,0 +1,52 @@
+SetParameterValues -Multiple Parameters 
+
+!4 Purpose:
+ 
+        T This test is designed to verify that the CPE supports the required SetParameterValues RPC and 
+can change multiple parameters in a single procedure call. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+        According to Broadband Forum TR-069[1], if an ACS calls SetParameterValues on a DUT, the DUT 
+must support the request and respond appropriately. On successful receipt of a SetParameterValues RPC, 
+the CPE must apply the changes to all of the specified Parameters atomically. That is, either all of the 
+value changes are applied together, or none of the changes are applied at all. In the latter case, the CPE 
+must return a fault response indicating the reason for the failure to apply the changes. The CPE must not 
+apply any of the specified changes without applying all of them. This requirement must hold true even if 
+the CPE experiences a crash during the process of applying the changes. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Choose at least two valid, writable parameters from the DUT’s supported data model. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    7.  Allow the DUT toEstablish a CWMP session between the CWMP analyzer and DUT with 
+        successful Inform exchanges. 
+    8.  Instruct the ACS to respond with a successful Inform Response. 
+    9.  Schedule a SetParameterValues RPC on the DUT on a writable parameter. 
+    10. Allow the DUT to respond with SetParameterValuesResponse. 
+             a.  If the he status code in SetParameterValuesResponse is 0, it means the DUT can change 
+                 the parameter immediately. 
+             b.  If the status code in SetParameterValuesResponse is 1, it means the DUT requires a 
+                 reboot to apply the change to the parameter. In this case: 
+                      i. Allow the DUT to terminate session with the ACS. 
+                     ii. Allow the DUT to apply the change and reboot. 
+    11.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    12. Schedule a GetParameterValues RPC on the DUT on the same parameter that was used for 
+        SetParameterValues. 
+    13. Analyze the value. The value should be the new changed value. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT successfully changes the value of the parameter and reports the correct changed value 
+        in subsequent GetParameterValues request. 

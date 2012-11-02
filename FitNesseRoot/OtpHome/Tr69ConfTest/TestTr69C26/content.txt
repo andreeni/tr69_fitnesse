@@ -1,0 +1,38 @@
+HTTP Authentication - Digest Authentication 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE can successfully establish a CWMP session with the 
+ACS using digest authentication. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CPE must support Basic Authentication. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Configure both the DUT and the CWMP analyzer to use digest authentication. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Send an Authentication Challenge with a status code of “401 Unauthorized” in its HTTP  
+        response. 
+    3.  Allow the DUT to issue an Inform RPC to the ACS again with the authentication credentials in its 
+        HTTP header. 
+    4.  Reply with a successful Inform Response. 
+    5.  Allow the DUT to successfully terminate the session. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT passes Authentication Challenge by issuing proper authentication credentials to the 
+        ACS. 
+    2.  The DUT successfully terminates the session. 

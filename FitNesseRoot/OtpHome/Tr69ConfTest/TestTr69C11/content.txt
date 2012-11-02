@@ -1,0 +1,41 @@
+Connection Request over SSL/TLS 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE is able to authenticate a Connection Request from the 
+ACS over SSL/TLS. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CPE MAY use certificate based authentication to 
+validate Connection Requests from the ACS. 
+Test Setup: 
+     1. Configure the CWMP analyzer to use SSL/TLS for Connection Requests. 
+     2. Configure the DUT and CWMP analyzer with a pre-determined username and password for 
+         authentication. 
+     3. Generate and install on the CWMP analyzer a valid certificate for use in authentication with the 
+         CPE. 
+     4. Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+     1. Send a Connection RPC on the DUT over https. 
+     2. Allow the DUT to authenticate the Connection Request. 
+     3. Allow the DUT to initiate a session with the CWMP analyzer with successful Inform exchanges. 
+     4. Allow the DUT to successfully terminate the session. 
+     5. Validate all CWMP messages. 
+
+!4 Test Metrics:
+ 
+     1. The DUT authenticates the Connection Request. 
+     2. The DUT initiates a CWMP session based on the Connection Request. 
+     3. The DUT’s CWMP messages are valid. 
+     4. The DUT successfully terminates the session. 

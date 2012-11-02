@@ -1,0 +1,37 @@
+Rejection of Invalid SSL Certificate 
+
+!4 Purpose:
+ 
+        This test is designed to verify t hat the CPE does not authenticate a Connection Request from the 
+ACS when the SSL certificate is invalid. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS and supports certificate 
+authentication of Connection Requests. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1], a CPE MAY use certificate based authentication to 
+validate Connection Requests from the ACS.  If the DUT implements this functionality, it must not 
+validate Connection Requests from the ACS when the certificate is invalid. 
+Test Setup: 
+    1.   Configure the CWMP analyzer to use SSL/TLS. 
+    2.   Configure the DUT to use the HTTPS URL of the analyzer. 
+    3.   Configure the DUT with a pre-determined username and password for authentication. 
+    4.   Install mismatched certificates in the DUT and CWMP analyzer. 
+    5.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Send a Connection RPC on the DUT over https. 
+    2.  Allow the DUT to reject the Connection Request from the CWMP analyzer. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT rejects the Connection Request from the CWMP analyzer and does not attempt to 
+         establish a session. 

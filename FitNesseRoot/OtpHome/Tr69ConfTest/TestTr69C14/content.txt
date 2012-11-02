@@ -1,0 +1,38 @@
+Persistent TCP Connection Across a Single CWMP session 
+
+!4 Purpose:
+ 
+        The purpose of this test is to verify that the ACS and CPE can maintain a persistent TCP 
+connection across multiple CWMP sessions. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], when a CPE receives an authentication challenge 
+from ACS, the CPE must send the next HTTP request (including the “Authorization” HTTP header) in the  
+same TCP connection. The authentication challenge from the ACS must not have “Connection:close” in  
+the HTTP header. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Reply with an Authentication Challenge. 
+    3.  Allow the DUT to issue an Inform RPC to the ACS again (with the “Authentication” HTTP header)  
+        in order to establish a CWMP session. 
+    4.  Respond to the Inform RPC with a successful InformResponse. 
+    5.  Allow the DUT to terminate the session. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT must not close its existing TCP connection and must send the second HTTP request 
+        (with the “Authentication” header) in the same TCP connection.  

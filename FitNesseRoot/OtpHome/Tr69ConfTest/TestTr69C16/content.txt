@@ -1,0 +1,38 @@
+Use of Session Cookies Across Multiple Transactions in a Session 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE can successfully interact using cookies across multiple 
+CWMP sessions. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069[1], a CPE must support the use of cookies including the 
+return of the cookie value in each subsequent HTTP POST, with the exception that a CPE need not 
+support storage of cookies beyond the duration of a session. The CPE must support the compatibility 
+requirements of section 9.1 of [7]. The CPE must support the use of multiple cookies by the ACS, and 
+must make available at least 512 bytes for storage of cookies. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Configure the CWMP analyzer to use session cookies. 
+    3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Stimulate the DUT to initiate a CWMP session with the CWMP analyzer. 
+    2.  Set the HTTP cookie in the HTTP response. 
+    3.  Allow the DUT to send an empty HTTP POST or an Inform RPC to the CWMP analyzer. 
+    4.  Analyze the HTTP message from the DUT to check if it is using the cookie sent in the POST. 
+    5.  Allow the DUT to terminate the session. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT returns the cookie value in each subsequent HTTP POST after the cookie has been set. 

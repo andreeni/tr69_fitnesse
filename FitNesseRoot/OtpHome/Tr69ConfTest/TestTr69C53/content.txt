@@ -1,0 +1,54 @@
+DeleteObject 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE is capable of removing a particular instance of an 
+object. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+        According to Broadband Forum TR-069[1], if an ACS uses DeleteObject RPC to remove a 
+particular instance of an object in the DUT, the DUT must honor the request, delete the particular 
+instance of the object, and disregard the state previously associated with all Parameters(values and 
+attributes) and sub-objects contained within this instance. The DeleteObject method call from the ACS 
+takes as an argument the path name of the object instance including the instance number. For example: 
+        Top.Group.Object.2. 
+ When an object instance is deleted, the instance numbers associated with any other instances of the 
+same collection of objects remain unchanged. Thus, the instance numbers of object instances in a 
+collection might not be consecutive. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a DeleteObject RPC on the DUT on an accessible parameter. 
+    3.  Allow the DUT to respond with DeleteObjectResponse. 
+         1.  If the status code in DeleteObjectResponse is 0, the DUT was successful in deleting the 
+             instance of the parameter. 
+         2.  If the status code in DeleteObjectResponse is 1, the DUT either requires a reboot or other 
+             action to delete the object. In such case: 
+             1.  Allow the DUT to terminate the session with the ACS. 
+             2.  Allow the DUT to perform reboot ( if required ) or other DUT specific actions to delete 
+                 the object. 
+             3.  Allow the DUT to issue an Inform RPC to the ACS in order to establish CWMP session. 
+             4.  Respond with a successful Inform Response 
+    4.  Schedule a GetParameterNames request on the recently deleted parameter. 
+    5.  Allow the DUT to send a GetParameterNamesResponse. 
+
+!4 Test Metrics:
+ 
+    1.  The DUT successfully responds with a DeleteObjectResponse with either a 0 or a 1 as the status 
+        code. 
+    2.   If the status code is 1, the DUT performs all necessary action for deletion. 
+    3.  The DUT responds to the GetParameterNames Request with a fault code. 

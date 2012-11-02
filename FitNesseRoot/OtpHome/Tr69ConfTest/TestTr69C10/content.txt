@@ -1,0 +1,42 @@
+Connection Establishment using SSL/TLS 
+
+!4 Purpose:
+ 
+         This test is designed to verify that the CPE is able to establish a connection with the ACS using 
+SSL or TLS. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]     Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+        According to Broadband Forum TR-069 [1] section 3.3, a CPE must support SSL, TLS, or both, in 
+order to facilitate secure communication.  In addition, if at any time the ACS URL is specified with an 
+“https” prefix, the CPE must attempt to establish a connection utilizing SSL/TLS. 
+        This test utilizes this second required functionality to stimulate the DUT to attempt a connection 
+using SSL/TLS.  This is included in the test metrics. 
+Test Setup: 
+    1.   Configure the CWMP analyzer to use SSL/TLS. 
+    2.   Configure the DUT to use the HTTPS URL of the analyzer. 
+    3.   Configure the DUT with a pre-determined username and password for authentication. 
+    4.   Generate and install on the DUT a valid certificate for use in authentication with the CWMP 
+         analyzer. 
+    5.   Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.   Stimulate the DUT to send a CWMP Inform message to the CWMP analyzer. 
+    2.   Respond to the Inform Request with an InformResponse. 
+    3.   Allow the DUT to successfully terminate the session. 
+    4.   Validate all CWMP messages. 
+
+!4 Test Metrics:
+ 
+    1.   The DUT attempts to establish a session by sending an Inform message. 
+    2.   The DUT’s CWMP messages are valid. 
+    3.   The DUT successfully terminates the session. 

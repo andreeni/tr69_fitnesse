@@ -1,0 +1,34 @@
+GetParameterNames -Entire Object Model 
+
+!4 Purpose:
+ 
+        This test is designed to verify that the CPE can communicate its entire object model to the ACS. 
+
+!4 Target:
+ 
+        Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+        [1]     Broadband Forum TR-069 
+Normative 
+!4 References:
+ 
+        According to Broadband Forum TR-069 [1], when ParameterPath argument in the 
+GetParameterNames is set to the root object in the DUT’s data model (i.e., “InternetGatewayDevice.”, or  
+“Device.”), and next level argument in GetParameterNames is set to false, the response must contain the 
+entire object model supported by the DUT. 
+Test Setup: 
+    1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+    2.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+    1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+        exchanges. 
+    2.  Schedule a GetParameterNames RPC on the DUT using a partial path and next level set to true. 
+    3.  Allow the DUT to respond with GetParameterNamesResponse. 
+
+!4 Test Metrics:
+ 
+    1.  The CPE can respond with its entire object model to the ACS. 

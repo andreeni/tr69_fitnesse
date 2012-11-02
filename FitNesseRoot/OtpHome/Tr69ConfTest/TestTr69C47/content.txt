@@ -1,0 +1,43 @@
+SetParameterAttributes -Active Notifications 
+
+!4 Purpose:
+ 
+         This test is designed to verify that the CPE can successfully process SetParameterAttributes 
+request from the ACS on a complete path with notification set to Active. 
+
+!4 Target:
+ 
+         Any CWMP enabled CPE that communicates directly with the ACS. 
+
+!4 References:
+ 
+         [1]      Broadband Forum TR-069 
+
+!4 Normative Description:
+ 
+         According to Broadband Forum TR-069[1], when the CPE receives a SetParameterAttributes 
+request from the ACS on a complete path with notification set to Active, the CPE must initiate a session 
+to the ACS, and include the new value in the ParameterList in the associated Inform message when the 
+specified parameter value changes. 
+Test Setup: 
+     1.  Configure the DUT to use the ACS URL set on the CWMP analyzer. 
+     2.  Choose a parameter from the DUT’s supported data model that can be altered locally from the  
+         DUT’s interface and is capable of performing active notification. 
+     3.  Connect the DUT and CWMP analyzer to the network infrastructure. 
+
+!4 Procedure:
+ 
+     1.  Establish a CWMP session between the CWMP analyzer and DUT with successful Inform 
+         exchanges. 
+     2.  Schedule a SetParameterAttributes RPC on the selected parameter with notification set to Active 
+         (2). 
+     3.  Allow the DUT to respond with SetParameterAttributes response. 
+     4.  Modify the parameter in the DUT. 
+     5.  Allow the DUT to initiate a new session with the ACS by sending an Inform message. 
+
+!4 Test Metrics:
+ 
+     1.  The DUT can respond with a SetParameterAttributesResponse to the request from the ACS. 
+     2.  The Inform after the modification of the parameter includes the event code “4 VALUE CHANGE”. 
+     3.  The Inform after the modification includes the changed parameter in the ParameterList in the 
+         Inform Message. 
