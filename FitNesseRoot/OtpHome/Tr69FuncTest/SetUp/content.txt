@@ -1,0 +1,9 @@
+!*> setup
+|import|
+|fitnesse.slim.test|
+|fitnesse.fixtures|
+
+*!
+
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {erl -noshell -pa /local/downloads/slimerl-0.1 -run slimserver listen}
