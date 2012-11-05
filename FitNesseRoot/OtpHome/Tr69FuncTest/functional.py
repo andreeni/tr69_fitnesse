@@ -1,102 +1,90 @@
 import re
 
-TC = "Test Cases"
-UNIV =  "2010 University of New Hampshire InterOperability Laboratory"
+UNIV =  "2006 University of New Hampshire InterOperability Laboratory"
+HEADER1 = "The University of New Hampshire \n"
+HEADER2 = "InterOperability Laboratory \n"
+FOOTER1 = "TR069 CPE Conformance \n"
+FOOTER2 = "Test Suite (TR69) v1.0 \n"
+
 PAGE = "----------------------- Page "
 
 def add_markup(text):
-	replace = ["Purpose:", "Target:", "Normative Description:", "Procedure:", "Test Metrics:", "References:"]
+	replace = ["Purpose:", "References:", "Test setup:", "Discussion",  "Procedure:", "Test Metrics:", "Possible Problems:"]
 	for re in replace:
 		text = text.replace(re, "\n!4 " + re + "\n")
 	
 	return text
 
+replacements = {"\xe2\x80\x99": "'",
+		"\xe2\x80\x9c": "\"",
+		"\xe2\x80\x9d": "\"",
+		"\xe2\x80\xa2": "-",
+		"\xe2\x80\x93": "-"}
+
+def to_string(test_list):
+	return "".join(test_list)
+
+def camel_case(name):
+	return re.sub('[.| ]', '', name).replace('R','r')
+
+def write_to_file(fname, tc_list):
+    f = open(fname, 'w')		    
+    f.write(add_markup(to_string(tc_list)))
+    f.close()	
+		
 def getTXTContent(path):
     content = []
-    tc_pages = []
+    tc_names = []
+    
+    found_first_tc = False
+
     f = open(path, 'r')
     
-    found_tc = False
+    
     for line in f:	    	    
-	    if line.find(UNIV) != -1:
-		    continue	    
-	    if line == '\n':
+	    if ((line.find(UNIV) != -1) \
+		or (line.find(HEADER1) != -1) \
+		or (line.find(HEADER2) != -1) \
+		or (line.find(FOOTER1) != -1) \
+		or (line.find(FOOTER2) != -1) \
+		or (line.find(PAGE) != -1) \
+		or (line == '\n')):		    
 		    continue
-	    
-	    if re.findall(r"^\s+\d+\s*$", line) != []:
-		    continue
-	    
-	    if re.findall(".*\.{2,}\s?\d+\s*$", line) != []:
-		    if line.find(TC) != -1:
-			    found_tc = True
-			    continue
 
-		    elif found_tc == True:
-			    (_, pgn) = re.split('\.*', line.strip())
-			    pgn = pgn.strip()
-			    tc_pages.append(pgn)
-			    continue
-		    else:
-			    continue
-		    
-	    line = line.replace("\xe2\x80\x93", "-")
-	    content.append(line)
+	    if re.findall(".*\:.*\.{2,}\s?\d+\s*$", line) != []:
+		    (name, _) = re.split('\:*', line.strip())
+		    tc_names.append(name)
+		    continue
+
+	    if (tc_names != [] and line.find(tc_names[0]) != -1):
+		    found_first_tc = True
+
+	    if found_first_tc == True:			    
+		    for key in replacements.keys(): 
+			    line = line.replace(key, replacements[key])
+	    
+		    content.append(line)
 
     f.close()
 
-    rest = []
-    found_tc = False
-    for line in content:
-	    if line.find(TC) != -1:
-		    found_tc = True
-		    continue		    
-	    elif found_tc == True:
-		    rest.append(line)
-	    else:
-		    continue
-
-    content = []
-		    
-    def find_page(pgn):
-	    for line in rest:
-		    if re.findall(PAGE+''+str(pgn)+"[ |-]", line) != []:
-			    return rest.index(line)
+    def find_next_tc(name):
+	    for line in content:
+		    if line.find(name + ":") != -1:
+			    return content.index(line)
 	    return -1
 
-    def clean(testcase):
-	    clean = []
-	    for line in testcase:
-		    if line.find(PAGE) != -1:
-			    continue
-		    else:
-			    clean.append(line)
-	    return clean
+    tc = 0
+    for name in tc_names[1:]:
+	    next_tc = find_next_tc(name)
+	    if next_tc != -1:
+		    this_tc = tc_names[tc_names.index(name) - 1]
+		    file_name = camel_case(this_tc)		    
+		    write_to_file(file_name, content[tc:next_tc])
+		    tc = next_tc
 
-    this_tc = 0
-
-    content = True
-
-    if content:
-	    for number in range(1, len(tc_pages)):	    
-		    name = 'TestTr69C' + str(number)
-		    next_tc = find_page(tc_pages[number])
-		    testcases = clean(rest[this_tc:next_tc])
+    file_name = camel_case(tc_names[-1])
+    write_to_file(file_name, content[tc:])    
 		    		    
-		    print str(number) + ". [[\"" + testcases[0].strip()+ "\"][Tr69ConfTest." + name +"]]"
-		    this_tc = next_tc + 1
-		    
-    else:
-	    for number in range(1, len(tc_pages)):	    
-		    f = open('TestTr69C' + str(number), 'w')
-
-		    next_tc = find_page(tc_pages[number])
-		    testcases = clean(rest[this_tc:next_tc])	    
-		    text = add_markup("".join(testcases))
-		    this_tc = next_tc + 1
-	    
-		    f.write(text)
-		    f.close()
-	    
     return
 
-getTXTContent("TR_069_Conformance_1_0.txt")
+getTXTContent("TR069_functional_test_suite_v1_0.txt")
