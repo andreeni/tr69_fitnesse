@@ -1,0 +1,146 @@
+Test TR69.2.1:     Initial Provisioning Test 
+
+!4 Purpose:
+     This test is designed to verify that the DUT can successfully connect to the network, 
+communicate with the ACS for the first time, and undergo some baseline initial provisioning. 
+
+!4 References:
+ 
+          [1]        Broadband Forum TR-069 Amendment 2 
+          [3]        Broadband Forum TR-098 
+
+!4 Resource Requirements:
+ 
+          -    CPE (DUT) 
+          -    CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+          1.    Test Setup 1 or 2 
+
+!4 Discussion:
+ 
+          One use case of the CPE WAN Management Protocol is to allow those deploying customer 
+premises equipment to remotely provision parameters on the CPE in order to set up a user's home network 
+and internet access.   The parameters for provisioning of the home gateway (or IGD, Internet Gateway 
+Device) are specified in Broadband Forum TR-098 [2]. 
+          When a CPE first contacts the ACS, it must initiate a session containing the "0 BOOTSTRAP" 
+event code.   Unless the CPE has failed to contact the ACS for this purpose and has accumulated other 
+events, no other event codes can be included with the BOOTSTRAP event.              This initial Inform instructs the 
+ACS that the CPE has contacted it for the first time and should undergo initial provisioning. 
+          The particular objects and parameters altered during initial provisioning will vary from 
+deployment to deployment.      This test suggests a set of parameters that may or may not be available on the 
+CPE but are presumed to be supported by an Internet Gateway Device or are convenient for test setup 
+purposes.   For example, many deployments may utilize the WANPPPConnection object, while for test 
+setup purposes WANIPConnection may be more appropriate, and a static WANIPConnection can be better 
+exercised than one whose address is automatically configured. 
+          This test attempts the following functions: 
+                    1.    Set the Connection Request username and password. 
+                    2.    Set the DUT to accept management of upgrades only from the ACS. 
+                    3.    Set the network time parameters of the DUT. 
+                    4.    Read the current WANConnectionDevice table to see what the main 
+                         WANConnectionDevice (the one that is communicating with the ACS) has been set 
+                         to. 
+                    5.    Create a new WANConnectionDevice, with its own LinkConfig and 
+                         WANIPConnection. 
+                    6.    Set the WANIPConnection's parameters. 
+          Steps 5 and 6 are dependent on the type of physical interface used for the WAN port of the DUT. 
+For DSL, this would include the WANDSLLinkConfig or WANPTMLinkConfig.                      Other 
+WANConnectionDevice configuration objects can be used for this test as well. 
+           At minimum, this test configures the following generic parameters based on Broadband Forum 
+TR-098 [3]: 
+Parameter (prefixed with)                                   Value 
+InternetGatewayDevice. 
+ManagementServer.ConnectionRequestUsername                   Cwmpuser 
+ManagementServer.ConnectionRequestPassword                   Password 
+ManagementServer.UpgradesManaged                             True 
+Time.Enable                                                  True 
+Time.NTPServer1                                            <public NTP URL> 
+Time.LocalTimeZoneName                                     POSIX Encoded Time Zone of the DUTs location 
+                          Table 2.1.1 - Base parameters for Initial Provisioning Test 
+For an ATM DSL based gateway: 
+Parameter (prefixed with)                                                      Value 
+InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{i}. 
+WANDSLLinkConfig.Enable                                                         True 
+WANDSLLinkConfig.LinkType                                                       "EoA" 
+WANDSLLinkConfig.DestinationAddress                                             "PVC:0/38" 
+WANDSLLinkConfig.ATMEncapsulation                                               "LLC" 
+WANDSLLinkConfig.ATMQoS                                                         "UBR" 
+               Table 2.1.2 - ATM DSL based gateway parameters for Initial Provisioning Test 
+For a PTM DSL based gateway or Ethernet WAN based gateways, the associated WANPTMLinkConfig or 
+WANEthernetLinkConfig simply needs to be enabled, while the associated other LinkConfig objects are 
+disabled. 
+Once this WANConnecitonDevice is created and configured, an associated WANIPConnection can be 
+created with the following parameters: 
+Parameter (prefixed with)                                                      Value 
+InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{i}. 
+WANIPConnection. 
+Enable                                                                           True 
+ConnectionType                                                                   "IP_Routed" 
+Name                                                                            "Test_Interface" 
+AutoDisconnectTime                                                              0 
+IdleDisconnectTime                                                               0 
+NATEnabled                                                                      True 
+AddressingType                                                                  Static 
+ExternalIPAddress                                                                <IP Address appropriate to test 
+                                                                               network> 
+SubnetMask                                                                       <Subnet mask appropriate to test 
+                                                                               network> 
+DefaultGateway                                                                  <Default gateway appropriate to test 
+                                                                               network> 
+DNSEnabled                                                                       False* 
+ConnectionTrigger                                                                "AlwaysOn" 
+                  Table 2.1.3 - WANIPConnection parameters for Initial Provisioning Test 
+*It is assumed that the WANIPConnection used for CWMP will be the interface that DNS queries are sent 
+through. 
+
+!4 Procedure:
+ 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+     3.    Allow the DUT to make an Inform RPC including the "0 BOOTSTRAP" event. 
+     4.    Schedule a SetParameterValues RPC on the DUT with the parameters and values contained in 
+          Table 2.1.1. 
+     5.    Allow the DUT to send a SetParameterValuesResponse. 
+     6.    Allow the session to terminate successfully. 
+     7.    Schedule a GetParameterValues RPC on the .ManagementServer., .Time., and .WANDevice. 
+          partial paths. 
+     8.   Allow the DUT to send a GetParameterValuesResponse. 
+     9.   Verify that the parameters set in step 4 have been changed. 
+     10.   Record the existing WANConnectionDevice objects. 
+     11.   Make a Connection Request on the DUT using the new values for username and password. 
+     12.   Allow the DUT to initiate a CMWP session with the CWMP Generator/Analyzer and make an 
+         Inform RPC with the "6 CONNECTION REQUEST" event. 
+     13.   Schedule an AddObject RPC on the 
+         InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice object, where {i} is the existing 
+         WANDevice object instance discovered in step 10. 
+     14.   All the DUT to send an AddObjectResponse and reboot if necessary. 
+     15.   Schedule a SetParameterValues RPC on the DUT with the parameters and values specified in the 
+         appropriate LinkConfig object in Table 2.1.2. 
+     16.   Repeat step 5. 
+     17.   Schedule an AddObject RPC on the 
+         InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{j}.WANIPConnection. object, 
+         where {i} is the existing WANDevice object instance discovered in step 10, and {j} is the 
+         WANConnectionDevice object instance discovered in step 14. 
+     18.   Repeat step14. 
+     19.   Schedule a SetParameterValues RPC on the DUT with the parameters and values specified in the 
+         appropriate LinkConfig object in Table 2.1.3. 
+     20.  Repeat step 5. 
+     21.  Schedule a GetParameterValues RPC on the .WANDevice.{i}.WANConnectionDevice.{j}. partial 
+         path. 
+     22.  Repeat step 8. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT is able to provision the parameters in Table x. 
+     2.   The DUT accepts a Connection Request with the new username and password. 
+     3.   The DUT is able to create a new WANConnectionDevice object. 
+     4.   The DUT is able to provision the parameters in Table y. 
+     5.   The DUT is able to create a new WANIPConnection. 
+     6.   The DUT is able to provision the parameters in Table z. 
+
+!4 Possible Problems:
+ 
+     1.    The DUT may not support the use of the WANIPConnection object.         If this is the case, treat these 
+         metrics as optional. 
+     2.   The DUT may not correctly route CWMP traffic upon the creation of a new WANIPConnection. 

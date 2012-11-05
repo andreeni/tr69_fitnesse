@@ -1,0 +1,61 @@
+Test TR69.2.3:    DSL Diagnostics Test 
+
+!4 Purpose:
+    This test is designed to verify that the DUT can successfully perform an IP Ping Diagnostics 
+Test as defined in Broadband Forum TR-098 [3]. 
+
+!4 References:
+ 
+          [1]       Broadband Forum TR-069 Amendment 2 
+          [3]       Broadband Forum TR-098 
+          [4]       IETF RFC 792 
+
+!4 Resource Requirements:
+ 
+          -   CPE (DUT) 
+          -   CWMP Generator/Analyzer 
+          -   Wireless LAN station 
+
+!4 Test setup:
+ 
+          2.   Test Setup 1 or 2 
+
+!4 Discussion:
+ 
+          Broadband Forum TR-098 [3] defines an object and set of parameters for performing a simple 
+DSL Diagnostics test.    The test is initiated by the ACS using a SetParameterValues remote procedure call 
+that changes the value of the LoopDiagnosticsState parameter in the WANDSLDiagnostics object to a 
+value of "Requested".    The CPE then performs the diagnostic test; generally after the CWMP session 
+terminates successfully. 
+          Upon conclusion of the test, the CPE initiates a CWMP session with an event code of "8 
+DIAGNOSTICS COMPLETE" in the Inform arguments. 
+
+!4 Procedure:
+ 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+     3.    Schedule a SetParameterValues call to be made on the 
+          "InternetGatewayDevice.WANDevice.{i}.WANDSLDiagnostics.LoopDiagnosticsState" object 
+          on the DUT, changing the value of the "LoopDiagnosticsState" parameter to "Requested". 
+     4.    Allow the DUT to send a SetParameterValuesResponse. 
+     5.    Allow the session to terminate successfully. 
+     6.    Allow the DUT to perform the DSL Diagnostics Test. 
+     7.    Allow the DUT to initiate a CWMP connection with the CWMP Analyzer to report the completion 
+          of the diagnostics test. 
+     8.    Schedule a GetParameterValues call to be made on the 
+          "InternetGatewayDevice.WANDevice.{i}.WANDSLDiagnostics.LoopDiagnosticsState." object 
+          on the DUT. 
+     9.    Allow the CPE to send a GetParameterValuesResponse. 
+     10.   Record the parameter values of the LoopDiagnosticsState object. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT is able to initiate an IP Ping Diagnostics test. 
+     2.    The DUT updates the results of the IP Ping Diagnostics test. 
+
+!4 Possible Problems:
+ 
+     5.    The CPE and ACS cannot establish a transport layer connection. 
+     6.    The CPE and ACS cannot initiate a CWMP session. 
+     7.    The CPE or ACS has an invalid CWMP message structure. 
+     8.    The CPE cannot perform the ping test correctly. 

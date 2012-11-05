@@ -1,0 +1,72 @@
+Test TR69F.1.2:      Periodic Inform 
+
+!4 Purpose:
+     This test is designed to demonstrate that the DUT makes use of the CWMP Periodic Inform. 
+
+!4 References:
+ 
+          [1]        Broadband Forum TR-069 
+          [2]        Broadband Forum TR-106 Amendment 2 
+
+!4 Resource Requirements:
+ 
+          -    CPE (DUT) 
+          -    CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+          -    Test Setup 1 
+
+!4 Discussion:
+ 
+          CWMP allows for numerous events that trigger the CPE to initiate a session with the ACS.               One 
+such event is the PeriodicInform, defined in Broadband Forum TR-106 Amendment 2 [2].                  According to 
+[2], when the PeriodicInformEnable parameter is set to "True" by either local means or by the ACS, the 
+CPE MUST initiate a CMWP session at every recurrence of the PeriodicInformInterval parameter, 
+specified in seconds from PeriodicInformTime. 
+          According to Broadband Forum TR-069 [1], all CWMP sessions begin with the CPE making an 
+Inform RPC on the ACS.        The Inform RPC contains a list of event codes as one of its arguments that 
+specifies the reason that the CPE initiated the session.     For periodic sessions, the event code list MUST 
+contain the event code "2 PERIODIC". 
+          This test is designed to verify that the DUT will initiate CWMP sessions when Periodic Inform is 
+enabled and that the proper event code is delivered.       Further, it verifies that when the 
+PeriodicInformInterval is changed, the DUT will adjust the period in which it initiates sessions. 
+
+!4 Procedure:
+ 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.    Utilizing the GetParameterValues RPC, retrieve and record the value of the 
+          PeriodicInformInterval parameter. 
+     4.    Utilizing the SetParameterValues RPC, instruct the DUT to set the PeriodicInformInterval to 
+          either 45 or 60 seconds (ensuring that it is different from its current value), and record this value. 
+     5.    Utilizing the SetParameterValues RPC, instruct the DUT to set the PeriodicInformEnable 
+          parameter to "true". 
+     6.    Allow the session to terminate successfully. 
+     7.    Repeat step 2. 
+     8.    Utilizing the Reboot RPC, instruct the DUT to reboot. 
+     9.    Wait for the DUT to reconnect to the network and initiate a session with the CWMP 
+          Generator/Analyzer. 
+     10.   Repeat step 3.  Ensure that the PeriodicInformInterval and PeriodicInformEnable parameter 
+          changes were retained. 
+     11.   Allow the session to terminate successfully. 
+     12.   Wait for a period greater than the value set in step 4. 
+     13.   Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     14.   Record the time elapsed between the initiation of sessions and ensure that it is equal to the value 
+          set in step 4. 
+     15.   Analyze the CWMP Inform RPC made by the DUT and ensure it contains the event code "2 
+          PERIODIC" 
+     16.   Allow the session to terminate successfully. 
+
+!4 Test Metrics:
+ 
+     1.   The DUT accepts the changes to the PeriodicInform parameters and retains them across reboot. 
+     2.   The DUT initiates CWMP sessions on the periodic interval when Periodic Inform is enabled. 
+     3.   The DUT includes the event code "2 PERIODIC" in the event code list in the Inform RPC. 
+
+!4 Possible Problems:
+ 
+     1.   The DUT cannot complete the SetParameterValues RPC.        If this is the case, record the error and 
+         attempt to set the PeriodicInformInterval through local means. 
+     2.   The DUT does not have a value provided for PeriodicInformTime ([2]).     Some DUT may require 
+         that an absolute time reference be acquired before properly utilizing the periodic inform function. 

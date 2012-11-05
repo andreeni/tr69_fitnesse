@@ -1,1630 +1,1630 @@
 ﻿----------------------- Page 1-----------------------
 
-                                                               TR-069 CPE Functionality 
-                                                                                      Test Suite 
-                                                                                        (TR69F) 
-                                                                                       Version 1.0 
-
-                                                                         Last Updated: May 25, 2007 
-
- TR-069 Consortium                                                                                                              121 Technology Drive, Suite 2 
- University of New Hampshire                                                                                                                          Durham, NH 03824 
-Research Computing Center                                                                                                                  Phone: +1-603-862-2911 
-InterOperability Laboratory                                                                                                                     Fax: +1-603-862-4181 
-                                                                                                                                                                 www.iol.unh.eduT TT 
-
-                                       © 2006 University of New Hampshire InterOperability Laboratory 
+                                                               TR-069 CPE Functionality 
+                                                                                      Test Suite 
+                                                                                        (TR69F) 
+                                                                                       Version 1.0 
+
+                                                                         Last Updated: May 25, 2007 
+
+ TR-069 Consortium                                                                                                              121 Technology Drive, Suite 2 
+ University of New Hampshire                                                                                                                          Durham, NH 03824 
+Research Computing Center                                                                                                                  Phone: +1-603-862-2911 
+InterOperability Laboratory                                                                                                                     Fax: +1-603-862-4181 
+                                                                                                                                                                 www.iol.unh.eduT TT 
+
+                                       © 2006 University of New Hampshire InterOperability Laboratory 
 
 ----------------------- Page 2-----------------------
 
-                                 The University of New Hampshire 
-                                    InterOperability Laboratory 
-
-Modification Report 
-
- Version       Date                    Editor(s)                Comments 
-                                      Jason Walls and 
-  1.0          May 25, 2007                                    First release 
-                                      Adam Rozumek 
-  0.2          May 24, 2007            Adam Rozumek             Formatting and clean up 
-  0.1          April 6, 2006           Jason Walls              Creation of document. 
-
-DSL Consortium                                     i                             TR069 CPE Conformance 
-                                                                                     Test Suite (TR69) v1.0 
+                                 The University of New Hampshire 
+                                    InterOperability Laboratory 
+
+Modification Report 
+
+ Version       Date                    Editor(s)                Comments 
+                                      Jason Walls and 
+  1.0          May 25, 2007                                    First release 
+                                      Adam Rozumek 
+  0.2          May 24, 2007            Adam Rozumek             Formatting and clean up 
+  0.1          April 6, 2006           Jason Walls              Creation of document. 
+
+DSL Consortium                                     i                             TR069 CPE Conformance 
+                                                                                     Test Suite (TR69) v1.0 
 
 ----------------------- Page 3-----------------------
 
-                                  The University of New Hampshire 
-                                     InterOperability Laboratory 
-
-Acknowledgments 
-
-The University of New Hampshire would like to acknowledge the efforts of the following individuals in the 
-development of this test suite. 
-
-  Jason Walls                          University of New Hampshire 
- Adam Rozumek                          University of New Hampshire 
- Anup Khadka                           University of New Hampshire 
- Blessto Baugh                         University of New Hampshire 
-  Jeff Houle                           University of New Hampshire 
-  Joe McEachern                        QACafé 
-
-DSL Consortium                                       ii                            TR069 CPE Conformance 
-                                                                                       Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                     InterOperability Laboratory 
+
+Acknowledgments 
+
+The University of New Hampshire would like to acknowledge the efforts of the following individuals in the 
+development of this test suite. 
+
+  Jason Walls                          University of New Hampshire 
+ Adam Rozumek                          University of New Hampshire 
+ Anup Khadka                           University of New Hampshire 
+ Blessto Baugh                         University of New Hampshire 
+  Jeff Houle                           University of New Hampshire 
+  Joe McEachern                        QACafé 
+
+DSL Consortium                                       ii                            TR069 CPE Conformance 
+                                                                                       Test Suite (TR69) v1.0 
 
 ----------------------- Page 4-----------------------
 
-                                         The University of New Hampshire 
-                                             InterOperability Laboratory 
-
-Table of Contents 
-
-Modification Report ............................................................................................................ i 
-
-Acknowledgments............................................................................................................... ii 
-
- Table of Contents ..............................................................................................................iii 
-
-Introduction....................................................................................................................... iv 
-
-References ......................................................................................................................... vi 
-
- Terms, Definitions and Abbreviations............................................................................. vii 
-
- Test Setups......................................................................................................................... ix 
-
-Group 1 – Basic Protocol Functionality ........................................................................... 1 
-
-    Test TR69F.1.1:             TCP Connection Request ............................................................... 2 
-
-    Test TR69F.1.2:             Periodic Inform ............................................................................... 3 
-
-    Test TR69.1.3:  Session Retry ...................................................................................... 5 
-
-    Test TR69F.1.4:             GetRPCMethods.............................................................................. 6 
-
-    Test TR69F.1.5:             GetParameterNames....................................................................... 7 
-
-    Test TR69F.1.6:  GetParameterValues....................................................................... 9 
-
-    Test TR69.1.7:  Reboot ............................................................................................... 11 
-
-    Test TR69F.1.8:  SetParameterValues...................................................................... 12 
-
-    Test TR69F.1.9:  Object Handling RPCs ................................................................. 14 
-
-    Test TR69F.1.10:             Parameter Notifications.............................................................. 16 
-
-    Test TR69.1.11:            Firmware Download...................................................................... 18 
-
-Group 2 – CWMP Use Case Functionality..................................................................... 20 
-
-    Test TR69.2.1:  Initial Provisioning Test.................................................................. 21 
-
-    Test TR69.2.2:  IP Ping Diagnostics Test.................................................................. 24 
-
-    Test TR69.2.3:  DSL Diagnostics Test....................................................................... 26 
-
-    Test TR69.2.4: Wireless LAN Activation and Provisioning Test ........................... 27 
-
-DSL Consortium                                                  ii                                   TR069 CPE Conformance 
-                                                                                                          Test Suite (TR69) v1.0 
+                                         The University of New Hampshire 
+                                             InterOperability Laboratory 
+
+Table of Contents 
+
+Modification Report ............................................................................................................ i 
+
+Acknowledgments............................................................................................................... ii 
+
+ Table of Contents ..............................................................................................................iii 
+
+Introduction....................................................................................................................... iv 
+
+References ......................................................................................................................... vi 
+
+ Terms, Definitions and Abbreviations............................................................................. vii 
+
+ Test Setups......................................................................................................................... ix 
+
+Group 1 – Basic Protocol Functionality ........................................................................... 1 
+
+    Test TR69F.1.1:             TCP Connection Request ............................................................... 2 
+
+    Test TR69F.1.2:             Periodic Inform ............................................................................... 3 
+
+    Test TR69.1.3:  Session Retry ...................................................................................... 5 
+
+    Test TR69F.1.4:             GetRPCMethods.............................................................................. 6 
+
+    Test TR69F.1.5:             GetParameterNames....................................................................... 7 
+
+    Test TR69F.1.6:  GetParameterValues....................................................................... 9 
+
+    Test TR69.1.7:  Reboot ............................................................................................... 11 
+
+    Test TR69F.1.8:  SetParameterValues...................................................................... 12 
+
+    Test TR69F.1.9:  Object Handling RPCs ................................................................. 14 
+
+    Test TR69F.1.10:             Parameter Notifications.............................................................. 16 
+
+    Test TR69.1.11:            Firmware Download...................................................................... 18 
+
+Group 2 – CWMP Use Case Functionality..................................................................... 20 
+
+    Test TR69.2.1:  Initial Provisioning Test.................................................................. 21 
+
+    Test TR69.2.2:  IP Ping Diagnostics Test.................................................................. 24 
+
+    Test TR69.2.3:  DSL Diagnostics Test....................................................................... 26 
+
+    Test TR69.2.4: Wireless LAN Activation and Provisioning Test ........................... 27 
+
+DSL Consortium                                                  ii                                   TR069 CPE Conformance 
+                                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 5-----------------------
 
-Introduction 
-
-Overview 
-           The   University   of   New   Hampshire’s   InterOperability   Laboratory   (UNH-IOL)   is   an   institution 
-designed to improve the interoperability of standards based products by providing an environment where a 
-product can be tested against the criteria of that standard. This suite of tests has been developed to help 
-implementers   evaluate   the   functionality   of   their   CWMP   implementations   when   tested   for   common   use 
-cases. 
-           The   success   metrics   of   these   tests   are   based   on  the   functional   intentions   of   the   standards 
-referenced   in   this   document.       Successful   completion  of   all   tests   contained   in   this   suite   does   not 
-guarantee that the tested devices will operate with other devices, nor are the tests comprehensive of 
-the   complete   functionality   of   these   standards.   However,   these   tests   provide   a   reasonable   level   of 
-confidence that the Device Under Test will function well in most standard deployments. 
-
-Organization of Tests: 
-Each test contains an identification section that describes the test and provides cross-reference information. 
-The discussion section covers background information and specifies why the test is to be performed. Tests 
-are   grouped    in  order   to  reduce   setup   time  in  the  lab   environment.   Each   test   contains   the   following 
-information: 
-
-     Test number 
-     The Test Number associated with each test follows a simple grouping structure. Listed first is the Test 
-     Group Number followed by the test's number within the group. This allows for the addition of future 
-     tests to the appropriate groups of the test suite without requiring the renumbering of the subsequent 
-     tests. 
-
-     Purpose 
-     The   purpose   is   a   brief   statement   outlining   what   the   test   attempts   to   achieve. This   also   includes 
-     background information on why one needs to perform such a test to show that the device complies 
-     with the standard. 
-
-     References 
-     The references section lists standards and other documentation that might be helpful in understanding 
-     and evaluating the test and results. 
-
-     Resource requirements 
-     The requirements section specifies the hardware, and test equipment that will be needed to perform the 
-     test. The items contained in this section are special test devices or other facilities, which may not be 
-     available on all devices. 
-
-     Test setup 
-     The     setup   section   describes    the  configuration     of  the   test  environment.     Small    changes    in  the 
-     configuration should be included in the test procedure. 
-
-     Discussion 
-     The   discussion   section   is   optional.  It is a general discussion of the test and relevant section of the 
-     specification, including any assumptions made in the design or implementation of the test as well as 
-     known limitations. 
-
-     Procedure 
-     The procedure section of the test description contains the step-by-step instructions for carrying out the 
-     test. It provides a cookbook approach to testing, and may be interspersed with test metrics. 
+Introduction 
+
+Overview 
+           The   University   of   New   Hampshire’s   InterOperability   Laboratory   (UNH-IOL)   is   an   institution 
+designed to improve the interoperability of standards based products by providing an environment where a 
+product can be tested against the criteria of that standard. This suite of tests has been developed to help 
+implementers   evaluate   the   functionality   of   their   CWMP   implementations   when   tested   for   common   use 
+cases. 
+           The   success   metrics   of   these   tests   are   based   on  the   functional   intentions   of   the   standards 
+referenced   in   this   document.       Successful   completion  of   all   tests   contained   in   this   suite   does   not 
+guarantee that the tested devices will operate with other devices, nor are the tests comprehensive of 
+the   complete   functionality   of   these   standards.   However,   these   tests   provide   a   reasonable   level   of 
+confidence that the Device Under Test will function well in most standard deployments. 
+
+Organization of Tests: 
+Each test contains an identification section that describes the test and provides cross-reference information. 
+The discussion section covers background information and specifies why the test is to be performed. Tests 
+are   grouped    in  order   to  reduce   setup   time  in  the  lab   environment.   Each   test   contains   the   following 
+information: 
+
+     Test number 
+     The Test Number associated with each test follows a simple grouping structure. Listed first is the Test 
+     Group Number followed by the test's number within the group. This allows for the addition of future 
+     tests to the appropriate groups of the test suite without requiring the renumbering of the subsequent 
+     tests. 
+
+     Purpose 
+     The   purpose   is   a   brief   statement   outlining   what   the   test   attempts   to   achieve. This   also   includes 
+     background information on why one needs to perform such a test to show that the device complies 
+     with the standard. 
+
+     References 
+     The references section lists standards and other documentation that might be helpful in understanding 
+     and evaluating the test and results. 
+
+     Resource requirements 
+     The requirements section specifies the hardware, and test equipment that will be needed to perform the 
+     test. The items contained in this section are special test devices or other facilities, which may not be 
+     available on all devices. 
+
+     Test setup 
+     The     setup   section   describes    the  configuration     of  the   test  environment.     Small    changes    in  the 
+     configuration should be included in the test procedure. 
+
+     Discussion 
+     The   discussion   section   is   optional.  It is a general discussion of the test and relevant section of the 
+     specification, including any assumptions made in the design or implementation of the test as well as 
+     known limitations. 
+
+     Procedure 
+     The procedure section of the test description contains the step-by-step instructions for carrying out the 
+     test. It provides a cookbook approach to testing, and may be interspersed with test metrics. 
 
 ----------------------- Page 6-----------------------
 
-Test Metrics 
-The test metrics section lists the necessary parameters for success in a given test. When multiple values 
-are possible for a specific event, this section provides a short discussion on how to interpret them. The 
-tests   are   structured   so   that   failure   of   one   test   metric   will   result   in   a   failure   for   the   entire   test,   or   a 
-request to refer to comments. 
-
-Possible problems 
-This   section   contains   a   description   of   known   issues   with   the   test   procedure,   which   may   affect   test 
-results in certain situations. 
+Test Metrics 
+The test metrics section lists the necessary parameters for success in a given test. When multiple values 
+are possible for a specific event, this section provides a short discussion on how to interpret them. The 
+tests   are   structured   so   that   failure   of   one   test   metric   will   result   in   a   failure   for   the   entire   test,   or   a 
+request to refer to comments. 
+
+Possible problems 
+This   section   contains   a   description   of   known   issues   with   the   test   procedure,   which   may   affect   test 
+results in certain situations. 
 
 ----------------------- Page 7-----------------------
 
-References 
-
-  [1]     Broadband Forum Technical Report 069 (TR-069), “CPE WAN Management Protocol”. 
-  [2]     Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template for TR- 
-         069-Enabled Devices” 
-  [3]   Broadband Forum Technical Report 098 (TR-098) Amendment 1,  “Internet Gateway Device Data 
-        Model for TR-069” 
-  [4]     IETF RFC 792 – “Internet Control Message Protocol” 
-  [5]     IETF RFC 2617 – “HTTP Authentication: Basic and Digest Access Authentication” 
-  [6]     IETF RFC 2965 – “HTTP State Management Mechanism” 
-  [7]     IEFT RFC 2246 – “The TLS Protocol” 
+References 
+
+  [1]     Broadband Forum Technical Report 069 (TR-069), “CPE WAN Management Protocol”. 
+  [2]     Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template for TR- 
+         069-Enabled Devices” 
+  [3]   Broadband Forum Technical Report 098 (TR-098) Amendment 1,  “Internet Gateway Device Data 
+        Model for TR-069” 
+  [4]     IETF RFC 792 – “Internet Control Message Protocol” 
+  [5]     IETF RFC 2617 – “HTTP Authentication: Basic and Digest Access Authentication” 
+  [6]     IETF RFC 2965 – “HTTP State Management Mechanism” 
+  [7]     IEFT RFC 2246 – “The TLS Protocol” 
 
 ----------------------- Page 8-----------------------
 
-Terms, Definitions and Abbreviations 
-
-Definitions 
-
-  Argument                          One or more data that are sent as part of an RPC or response. 
-  Attribute                         One   of   two   meta-data   values   (Notification   and   AccessList)   that   apply   to   a 
-                                   particular parameter. 
-  Auto-Configuration               The   ACS   is   a   server   that  stores CPE information, responds to CPE requests, 
-  Server                           and schedules CWMP RPCs to be made on the CPE. 
-  Customer Premises                A CPE is any device that sits logically or physically on the subscriber end of 
-  Equipment                        the network.     It can refer to gateways as well as LAN side devices such as set- 
-                                   top-boxes. 
-  Data Model                        The   structure   of   objects   and   their   associated   parameters   that   correspond   to 
-                                   configuration   details   and   values   on   the   CPE.   In   CWMP,   these   are   usually 
-                                   organized   into   profiles   based   on   the   CPE’s   function,   and   are   detailed   in   an 
-                                   individual Broadband Forum Technical Report based on the type of CPE. 
-  Device Under Test                 The DUT is the CPE current the subject of this test suite. 
-  Event                             In   CWMP,   an   event   is   one   or   more   values   in   the   “Event”   argument   of   the 
-                                   Inform RPC that specifies the reason that the CPE initiated the CWMP session. 
-  Parameter                         CPE data with a specific value that can be read or changed by the ACS through 
-                                   CWMP. 
-  Profile                           The   list   of   objects,   parameters,   and   their   associated   data   types   and   access 
-                                   requirements for a particular function that the CPE may support.                 In CWMP, 
-                                   these    are  usually   detailed   in  an   individual    Broadband     Forum     data  model 
-                                   Technical Report. 
-  Remote Procedure Call             An   RPC    is  a  function   or  method     that  is  invoked   from   a  peer   process   or 
-                                   program.     In CWMP, they are used by the CPE and ACS to invoke functions 
-                                   on each other. 
-  Schema                            The list of data types, attributes, and syntax for a given XML implementation. 
-                                   An    individual   XML   document   can   be   checked,   using   a   schema   validation 
-                                   utility, to see if it complies with the definitions in the schema. 
-  Session                           A   complete   CWMP   transaction,   beginning   with   the   CPE’s   initiation   of   the 
-                                   session,    the   performance     of   the  Inform    RPC,    any   further   RPCs    or  fault 
-                                   messages, and the termination of the session. 
+Terms, Definitions and Abbreviations 
+
+Definitions 
+
+  Argument                          One or more data that are sent as part of an RPC or response. 
+  Attribute                         One   of   two   meta-data   values   (Notification   and   AccessList)   that   apply   to   a 
+                                   particular parameter. 
+  Auto-Configuration               The   ACS   is   a   server   that  stores CPE information, responds to CPE requests, 
+  Server                           and schedules CWMP RPCs to be made on the CPE. 
+  Customer Premises                A CPE is any device that sits logically or physically on the subscriber end of 
+  Equipment                        the network.     It can refer to gateways as well as LAN side devices such as set- 
+                                   top-boxes. 
+  Data Model                        The   structure   of   objects   and   their   associated   parameters   that   correspond   to 
+                                   configuration   details   and   values   on   the   CPE.   In   CWMP,   these   are   usually 
+                                   organized   into   profiles   based   on   the   CPE’s   function,   and   are   detailed   in   an 
+                                   individual Broadband Forum Technical Report based on the type of CPE. 
+  Device Under Test                 The DUT is the CPE current the subject of this test suite. 
+  Event                             In   CWMP,   an   event   is   one   or   more   values   in   the   “Event”   argument   of   the 
+                                   Inform RPC that specifies the reason that the CPE initiated the CWMP session. 
+  Parameter                         CPE data with a specific value that can be read or changed by the ACS through 
+                                   CWMP. 
+  Profile                           The   list   of   objects,   parameters,   and   their   associated   data   types   and   access 
+                                   requirements for a particular function that the CPE may support.                 In CWMP, 
+                                   these    are  usually   detailed   in  an   individual    Broadband     Forum     data  model 
+                                   Technical Report. 
+  Remote Procedure Call             An   RPC    is  a  function   or  method     that  is  invoked   from   a  peer   process   or 
+                                   program.     In CWMP, they are used by the CPE and ACS to invoke functions 
+                                   on each other. 
+  Schema                            The list of data types, attributes, and syntax for a given XML implementation. 
+                                   An    individual   XML   document   can   be   checked,   using   a   schema   validation 
+                                   utility, to see if it complies with the definitions in the schema. 
+  Session                           A   complete   CWMP   transaction,   beginning   with   the   CPE’s   initiation   of   the 
+                                   session,    the   performance     of   the  Inform    RPC,    any   further   RPCs    or  fault 
+                                   messages, and the termination of the session. 
 
 ----------------------- Page 9-----------------------
 
-Abbreviations 
-
-  ACS                      Auto-Configuration Server 
-  CPE                      Customer Premises Equipment 
-  CSR                      Certificate Signing Request 
-  CWMP                     CPE WAN Management Protocol 
-  DNS                      Domain Name System 
-  DSLAM                    DSL Access Multiplexer 
-  DUT                      Device Under Test 
-  FTP                      File Transfer Protocol 
-  HTTP                     Hyper Text Transfer Protocol 
-  HTTPS                    Secure Hyper Text Transfer Protocol 
-  IP                       Internet Protocol 
-  LAN                      Local Area Network 
-  RPC                      Remote Procedure Call 
-  SOAP                     Simple Object Access Protocol 
-  SSL                      Secure Socket Layer 
-  TCP                      Transport Control Protocol 
-  TLS                      Transport Layer Security 
-  TR                       Technical Report 
-  URL                      Uniform Resource Locator 
-  WAN                     Wide Area Network 
-  XML                      Extensible Markup Language 
+Abbreviations 
+
+  ACS                      Auto-Configuration Server 
+  CPE                      Customer Premises Equipment 
+  CSR                      Certificate Signing Request 
+  CWMP                     CPE WAN Management Protocol 
+  DNS                      Domain Name System 
+  DSLAM                    DSL Access Multiplexer 
+  DUT                      Device Under Test 
+  FTP                      File Transfer Protocol 
+  HTTP                     Hyper Text Transfer Protocol 
+  HTTPS                    Secure Hyper Text Transfer Protocol 
+  IP                       Internet Protocol 
+  LAN                      Local Area Network 
+  RPC                      Remote Procedure Call 
+  SOAP                     Simple Object Access Protocol 
+  SSL                      Secure Socket Layer 
+  TCP                      Transport Control Protocol 
+  TLS                      Transport Layer Security 
+  TR                       Technical Report 
+  URL                      Uniform Resource Locator 
+  WAN                     Wide Area Network 
+  XML                      Extensible Markup Language 
 
 ----------------------- Page 10-----------------------
 
-Test Setups 
-
-Test Setup 1 – DSL Gateway CPE connecting to the test network 
-
-                                                                      4. DNS/FTP/ 
-         DSL 
-                                                                      NTP/DHCP/ 
-                                                                     Authentication 
-         Ethernet 
-                                                                        Servers 
-
-                                                                                                     4. CWMP 
-                                                                       3. Layer 2 
-            1. CPE                      2. DSLAM                                                    Generator/ 
-                                                                         Switch 
-                                                                                                     Analyzer 
-
-Test Setup 2 – LAN side CPE connecting to the test network 
-
-                                                      4. DNS/FTP/ 
-                                                       NTP/DHCP/ 
-                                                      Authentication 
-                                                         Servers 
-
-                                                                                      4. CWMP 
-                                                        3. Layer 2 
-                           1. CPE                                                    Generator/ 
-                                                          Switch 
-                                                                                      Analyzer 
+Test Setups 
+
+Test Setup 1 – DSL Gateway CPE connecting to the test network 
+
+                                                                      4. DNS/FTP/ 
+         DSL 
+                                                                      NTP/DHCP/ 
+                                                                     Authentication 
+         Ethernet 
+                                                                        Servers 
+
+                                                                                                     4. CWMP 
+                                                                       3. Layer 2 
+            1. CPE                      2. DSLAM                                                    Generator/ 
+                                                                         Switch 
+                                                                                                     Analyzer 
+
+Test Setup 2 – LAN side CPE connecting to the test network 
+
+                                                      4. DNS/FTP/ 
+                                                       NTP/DHCP/ 
+                                                      Authentication 
+                                                         Servers 
+
+                                                                                      4. CWMP 
+                                                        3. Layer 2 
+                           1. CPE                                                    Generator/ 
+                                                          Switch 
+                                                                                      Analyzer 
 
 ----------------------- Page 11-----------------------
 
-                                  The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-Group 1 – Basic Protocol Functionality 
-
-          The tests in Group One are designed to validate that the DUT can perform the basic functionality 
-required for CWMP operation.     This includes the initiation and maintenance of sessions, the performance 
-of notifications, and error generation. 
-         In all tests, it is assumed that an underlying level of compliance (e.g., XML that is valid according 
-to the schemas provided in [1], [2], and [3]) exists for communication to occur.    The success metrics of 
-these tests DO NOT include these assumptions, and do not provide for normative protocol compliance – 
-they are meant to exercise the DUT’s ability to accomplish basic CWMP tasks.  Any issues that arise due to 
-obvious non-compliance will be recorded as part of the test reporting process. 
-
-TR-069 Consortium                                     1                              TR069 CPE Conformance 
-                                                                                         Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+Group 1 – Basic Protocol Functionality 
+
+          The tests in Group One are designed to validate that the DUT can perform the basic functionality 
+required for CWMP operation.     This includes the initiation and maintenance of sessions, the performance 
+of notifications, and error generation. 
+         In all tests, it is assumed that an underlying level of compliance (e.g., XML that is valid according 
+to the schemas provided in [1], [2], and [3]) exists for communication to occur.    The success metrics of 
+these tests DO NOT include these assumptions, and do not provide for normative protocol compliance – 
+they are meant to exercise the DUT’s ability to accomplish basic CWMP tasks.  Any issues that arise due to 
+obvious non-compliance will be recorded as part of the test reporting process. 
+
+TR-069 Consortium                                     1                              TR069 CPE Conformance 
+                                                                                         Test Suite (TR69) v1.0 
 
 ----------------------- Page 12-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
- Test TR69F.1.1:    TCP Connection Request 
-
-Purpose:    This test is designed to demonstrate that the DUT can receive a Connection Request over a TCP 
-connection and that it initiates a session based on it. 
-
-References: 
-          [1]       Broadband Forum TR-069 
-
-Resource Requirements: 
-          •   CPE (DUT) 
-          •   CWMP Generator/Analyzer 
-
-Test setup: 
-          •   Test Setup 1 
-
-Discussion: 
-          According to Broadband Forum TR-069 [1], the ACS may stimulate the CPE to initiate a CWMP 
-session by sending a Connection Request message.       This message is an HTTP 1.1 GET to a URL that is 
-specified by the CPE.   As such, it is dependent upon prior communication with the CPE. 
-          The CPE responds to the HTTP GET with either an HTTP “200 (OK)” or “204 (No Content)” 
-status message of zero length.   If the ability to service the Connection Request is not available (due to 
-resource constraints or denial of service protection), the CPE responds with an error “503 (Service 
-Unavailable)” message.    Within 30 seconds of completion of this transaction, the CPE then initiates a 
-CWMP session with the ACS.        If the session is not initiated within 30 seconds, the ACS may attempt to 
-retry the Connection Request. 
-          According to [1], all CWMP sessions begin with the CPE making an Inform RPC on the ACS. 
-The Inform RPC contains a list of event codes as one of its arguments that specifies the reason that the CPE 
-initiated the session. For connection request sessions, the event code list MUST contain the event code “6 
-CONNECTION REQUEST”. 
-          TR-069 demands that the CPE must authenticate the ACS before initiating the session (using 
-digest authentication) to prevent denial of service attacks, using pre-set usernames and passwords.  This test 
-acts as verification that the DUT can successfully authenticate and receive the Connection Request, and 
-that a subsequent CWMP session is initiated. 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator. 
-     2.    Configure a predetermined username and password to be used for authentication on the CPE. 
-     3.    Send a Connection Request to the CPE. 
-     4.    Allow the CPE to authenticate the Connection Request and initiate a CWMP Session. 
-     5.    Allow the session to terminate successfully. 
-
-Test Metrics: 
-     1.    The DUT successfully utilizes Connection Request to stimulate the CPE. 
-     2.    The CPE initiates a CWMP session. 
-
-Possible Problems: 
-     1.    The CPE firewall is not configured to allow the Connection Request to be received. 
-     2.    The CPE does not follow the steps necessary to initiate a CWMP connection, such as making a 
-          CMWP Inform RPC on the ACS. 
-
-TR-069 Consortium                                      2                              TR069 CPE Conformance 
-                                                                                          Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+ Test TR69F.1.1:    TCP Connection Request 
+
+Purpose:    This test is designed to demonstrate that the DUT can receive a Connection Request over a TCP 
+connection and that it initiates a session based on it. 
+
+References: 
+          [1]       Broadband Forum TR-069 
+
+Resource Requirements: 
+          •   CPE (DUT) 
+          •   CWMP Generator/Analyzer 
+
+Test setup: 
+          •   Test Setup 1 
+
+Discussion: 
+          According to Broadband Forum TR-069 [1], the ACS may stimulate the CPE to initiate a CWMP 
+session by sending a Connection Request message.       This message is an HTTP 1.1 GET to a URL that is 
+specified by the CPE.   As such, it is dependent upon prior communication with the CPE. 
+          The CPE responds to the HTTP GET with either an HTTP “200 (OK)” or “204 (No Content)” 
+status message of zero length.   If the ability to service the Connection Request is not available (due to 
+resource constraints or denial of service protection), the CPE responds with an error “503 (Service 
+Unavailable)” message.    Within 30 seconds of completion of this transaction, the CPE then initiates a 
+CWMP session with the ACS.        If the session is not initiated within 30 seconds, the ACS may attempt to 
+retry the Connection Request. 
+          According to [1], all CWMP sessions begin with the CPE making an Inform RPC on the ACS. 
+The Inform RPC contains a list of event codes as one of its arguments that specifies the reason that the CPE 
+initiated the session. For connection request sessions, the event code list MUST contain the event code “6 
+CONNECTION REQUEST”. 
+          TR-069 demands that the CPE must authenticate the ACS before initiating the session (using 
+digest authentication) to prevent denial of service attacks, using pre-set usernames and passwords.  This test 
+acts as verification that the DUT can successfully authenticate and receive the Connection Request, and 
+that a subsequent CWMP session is initiated. 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator. 
+     2.    Configure a predetermined username and password to be used for authentication on the CPE. 
+     3.    Send a Connection Request to the CPE. 
+     4.    Allow the CPE to authenticate the Connection Request and initiate a CWMP Session. 
+     5.    Allow the session to terminate successfully. 
+
+Test Metrics: 
+     1.    The DUT successfully utilizes Connection Request to stimulate the CPE. 
+     2.    The CPE initiates a CWMP session. 
+
+Possible Problems: 
+     1.    The CPE firewall is not configured to allow the Connection Request to be received. 
+     2.    The CPE does not follow the steps necessary to initiate a CWMP connection, such as making a 
+          CMWP Inform RPC on the ACS. 
+
+TR-069 Consortium                                      2                              TR069 CPE Conformance 
+                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 13-----------------------
 
-                                     The University of New Hampshire 
-                                         InterOperability Laboratory 
-
-Test TR69F.1.2:      Periodic Inform 
-
-Purpose:     This test is designed to demonstrate that the DUT makes use of the CWMP Periodic Inform. 
-
-References: 
-          [1]        Broadband Forum TR-069 
-          [2]        Broadband Forum TR-106 Amendment 2 
-
-Resource Requirements: 
-          •    CPE (DUT) 
-          •    CWMP Generator/Analyzer 
-
-Test setup: 
-          •    Test Setup 1 
-
-Discussion: 
-          CWMP allows for numerous events that trigger the CPE to initiate a session with the ACS.               One 
-such event is the PeriodicInform, defined in Broadband Forum TR-106 Amendment 2 [2].                  According to 
-[2], when the PeriodicInformEnable parameter is set to “True” by either local means or by the ACS, the 
-CPE MUST initiate a CMWP session at every recurrence of the PeriodicInformInterval parameter, 
-specified in seconds from PeriodicInformTime. 
-          According to Broadband Forum TR-069 [1], all CWMP sessions begin with the CPE making an 
-Inform RPC on the ACS.        The Inform RPC contains a list of event codes as one of its arguments that 
-specifies the reason that the CPE initiated the session.     For periodic sessions, the event code list MUST 
-contain the event code “2 PERIODIC”. 
-          This test is designed to verify that the DUT will initiate CWMP sessions when Periodic Inform is 
-enabled and that the proper event code is delivered.       Further, it verifies that when the 
-PeriodicInformInterval is changed, the DUT will adjust the period in which it initiates sessions. 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     3.    Utilizing the GetParameterValues RPC, retrieve and record the value of the 
-          PeriodicInformInterval parameter. 
-     4.    Utilizing the SetParameterValues RPC, instruct the DUT to set the PeriodicInformInterval to 
-          either 45 or 60 seconds (ensuring that it is different from its current value), and record this value. 
-     5.    Utilizing the SetParameterValues RPC, instruct the DUT to set the PeriodicInformEnable 
-          parameter to “true”. 
-     6.    Allow the session to terminate successfully. 
-     7.    Repeat step 2. 
-     8.    Utilizing the Reboot RPC, instruct the DUT to reboot. 
-     9.    Wait for the DUT to reconnect to the network and initiate a session with the CWMP 
-          Generator/Analyzer. 
-     10.   Repeat step 3.  Ensure that the PeriodicInformInterval and PeriodicInformEnable parameter 
-          changes were retained. 
-     11.   Allow the session to terminate successfully. 
-     12.   Wait for a period greater than the value set in step 4. 
-     13.   Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     14.   Record the time elapsed between the initiation of sessions and ensure that it is equal to the value 
-          set in step 4. 
-     15.   Analyze the CWMP Inform RPC made by the DUT and ensure it contains the event code “2 
-          PERIODIC” 
-     16.   Allow the session to terminate successfully. 
-
-Test Metrics: 
-
-TR-069 Consortium                                         3                                TR069 CPE Conformance 
-                                                                                               Test Suite (TR69) v1.0 
+                                     The University of New Hampshire 
+                                         InterOperability Laboratory 
+
+Test TR69F.1.2:      Periodic Inform 
+
+Purpose:     This test is designed to demonstrate that the DUT makes use of the CWMP Periodic Inform. 
+
+References: 
+          [1]        Broadband Forum TR-069 
+          [2]        Broadband Forum TR-106 Amendment 2 
+
+Resource Requirements: 
+          •    CPE (DUT) 
+          •    CWMP Generator/Analyzer 
+
+Test setup: 
+          •    Test Setup 1 
+
+Discussion: 
+          CWMP allows for numerous events that trigger the CPE to initiate a session with the ACS.               One 
+such event is the PeriodicInform, defined in Broadband Forum TR-106 Amendment 2 [2].                  According to 
+[2], when the PeriodicInformEnable parameter is set to “True” by either local means or by the ACS, the 
+CPE MUST initiate a CMWP session at every recurrence of the PeriodicInformInterval parameter, 
+specified in seconds from PeriodicInformTime. 
+          According to Broadband Forum TR-069 [1], all CWMP sessions begin with the CPE making an 
+Inform RPC on the ACS.        The Inform RPC contains a list of event codes as one of its arguments that 
+specifies the reason that the CPE initiated the session.     For periodic sessions, the event code list MUST 
+contain the event code “2 PERIODIC”. 
+          This test is designed to verify that the DUT will initiate CWMP sessions when Periodic Inform is 
+enabled and that the proper event code is delivered.       Further, it verifies that when the 
+PeriodicInformInterval is changed, the DUT will adjust the period in which it initiates sessions. 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.    Utilizing the GetParameterValues RPC, retrieve and record the value of the 
+          PeriodicInformInterval parameter. 
+     4.    Utilizing the SetParameterValues RPC, instruct the DUT to set the PeriodicInformInterval to 
+          either 45 or 60 seconds (ensuring that it is different from its current value), and record this value. 
+     5.    Utilizing the SetParameterValues RPC, instruct the DUT to set the PeriodicInformEnable 
+          parameter to “true”. 
+     6.    Allow the session to terminate successfully. 
+     7.    Repeat step 2. 
+     8.    Utilizing the Reboot RPC, instruct the DUT to reboot. 
+     9.    Wait for the DUT to reconnect to the network and initiate a session with the CWMP 
+          Generator/Analyzer. 
+     10.   Repeat step 3.  Ensure that the PeriodicInformInterval and PeriodicInformEnable parameter 
+          changes were retained. 
+     11.   Allow the session to terminate successfully. 
+     12.   Wait for a period greater than the value set in step 4. 
+     13.   Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     14.   Record the time elapsed between the initiation of sessions and ensure that it is equal to the value 
+          set in step 4. 
+     15.   Analyze the CWMP Inform RPC made by the DUT and ensure it contains the event code “2 
+          PERIODIC” 
+     16.   Allow the session to terminate successfully. 
+
+Test Metrics: 
+
+TR-069 Consortium                                         3                                TR069 CPE Conformance 
+                                                                                               Test Suite (TR69) v1.0 
 
 ----------------------- Page 14-----------------------
 
-                                 The University of New Hampshire 
-                                     InterOperability Laboratory 
-
-     1.   The DUT accepts the changes to the PeriodicInform parameters and retains them across reboot. 
-     2.   The DUT initiates CWMP sessions on the periodic interval when Periodic Inform is enabled. 
-     3.   The DUT includes the event code “2 PERIODIC” in the event code list in the Inform RPC. 
-
-Possible Problems: 
-     1.   The DUT cannot complete the SetParameterValues RPC.        If this is the case, record the error and 
-         attempt to set the PeriodicInformInterval through local means. 
-     2.   The DUT does not have a value provided for PeriodicInformTime ([2]).     Some DUT may require 
-         that an absolute time reference be acquired before properly utilizing the periodic inform function. 
-
-TR-069 Consortium                                   4                             TR069 CPE Conformance 
-                                                                                      Test Suite (TR69) v1.0 
+                                 The University of New Hampshire 
+                                     InterOperability Laboratory 
+
+     1.   The DUT accepts the changes to the PeriodicInform parameters and retains them across reboot. 
+     2.   The DUT initiates CWMP sessions on the periodic interval when Periodic Inform is enabled. 
+     3.   The DUT includes the event code “2 PERIODIC” in the event code list in the Inform RPC. 
+
+Possible Problems: 
+     1.   The DUT cannot complete the SetParameterValues RPC.        If this is the case, record the error and 
+         attempt to set the PeriodicInformInterval through local means. 
+     2.   The DUT does not have a value provided for PeriodicInformTime ([2]).     Some DUT may require 
+         that an absolute time reference be acquired before properly utilizing the periodic inform function. 
+
+TR-069 Consortium                                   4                             TR069 CPE Conformance 
+                                                                                      Test Suite (TR69) v1.0 
 
 ----------------------- Page 15-----------------------
 
-                                  The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-Test TR69.1.3:    Session Retry 
-
-Purpose:    This test is designed to demonstrate that the DUT can handle a broken communications session 
-using the retry policy defined in section 3.2.1.1 of Broadband Forum TR-069 [1]. 
-
-References: 
-          [1]       Broadband Forum TR-069 
-
-Resource Requirements: 
-         •    CPE (DUT) 
-         •    CWMP Generator/Analyzer 
-
-Test setup: 
-         •    Test Setup 1 
-
-Discussion: 
-         Broadband Forum TR-069 [1] specifies the behavior of a CWMP system in the event that CWMP 
-messages are lost during a session.  This allows lost events to be delivered and gives an opportunity for the 
-ACS to make additional requests that may have been missed.       In the event that a session is terminated 
-unsuccessfully (from a loss of transport, etc.), the CPE retries the session after a random interval time (in 
-seconds), which increases with each unsuccessful retry (see table 1.6.1).   The ACS is assumed to store 
-unsuccessfully transmitted requests for delivery when the session is again established. 
-
-                             Post-reboot retry count               Interval Range 
-                             #1                                    5-10 
-                             #2                                    10-20 
-                             #3                                    20-40 
-                             #4                                    40-80 
-                             #5                                    80-160 
-                             #6                                    160-320 
-                             #7                                    320-640 
-                             #8                                    640-1280 
-                             #9                                    1280-2560 
-                             #10 and subsequent                    2560-5120 
-
-                                  Table 1.6.1 – Session Retry Wait Intervals 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.   Stimulate the DUT to initiate a CWMP connection with the ACS. 
-     3.   Allow the CPE to make an Inform remote procedure call. 
-     4.   Terminate the TCP connection without sending an InformResponse. 
-     5.   Allow the CPE to retry the session.  Configure the CWMP Generator/Analyzer to not open a 
-         session when the HTTP POST is received. 
-     6.   Ensure that the new session occurs within the Interval Range specified in table 1.6.1. 
-     7.   Repeat steps 4-5 up to five times. 
-     8.   Upon the sixth attempt, allow the session to occur. 
-     9.   Allow the session to terminate successfully. 
-
-Test Metrics: 
-     1.    The DUT successfully uses the session retry functionality defined in [1] to complete the CWMP 
-         transaction. 
-
-TR-069 Consortium                                     5                              TR069 CPE Conformance 
-                                                                                         Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+Test TR69.1.3:    Session Retry 
+
+Purpose:    This test is designed to demonstrate that the DUT can handle a broken communications session 
+using the retry policy defined in section 3.2.1.1 of Broadband Forum TR-069 [1]. 
+
+References: 
+          [1]       Broadband Forum TR-069 
+
+Resource Requirements: 
+         •    CPE (DUT) 
+         •    CWMP Generator/Analyzer 
+
+Test setup: 
+         •    Test Setup 1 
+
+Discussion: 
+         Broadband Forum TR-069 [1] specifies the behavior of a CWMP system in the event that CWMP 
+messages are lost during a session.  This allows lost events to be delivered and gives an opportunity for the 
+ACS to make additional requests that may have been missed.       In the event that a session is terminated 
+unsuccessfully (from a loss of transport, etc.), the CPE retries the session after a random interval time (in 
+seconds), which increases with each unsuccessful retry (see table 1.6.1).   The ACS is assumed to store 
+unsuccessfully transmitted requests for delivery when the session is again established. 
+
+                             Post-reboot retry count               Interval Range 
+                             #1                                    5-10 
+                             #2                                    10-20 
+                             #3                                    20-40 
+                             #4                                    40-80 
+                             #5                                    80-160 
+                             #6                                    160-320 
+                             #7                                    320-640 
+                             #8                                    640-1280 
+                             #9                                    1280-2560 
+                             #10 and subsequent                    2560-5120 
+
+                                  Table 1.6.1 – Session Retry Wait Intervals 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.   Stimulate the DUT to initiate a CWMP connection with the ACS. 
+     3.   Allow the CPE to make an Inform remote procedure call. 
+     4.   Terminate the TCP connection without sending an InformResponse. 
+     5.   Allow the CPE to retry the session.  Configure the CWMP Generator/Analyzer to not open a 
+         session when the HTTP POST is received. 
+     6.   Ensure that the new session occurs within the Interval Range specified in table 1.6.1. 
+     7.   Repeat steps 4-5 up to five times. 
+     8.   Upon the sixth attempt, allow the session to occur. 
+     9.   Allow the session to terminate successfully. 
+
+Test Metrics: 
+     1.    The DUT successfully uses the session retry functionality defined in [1] to complete the CWMP 
+         transaction. 
+
+TR-069 Consortium                                     5                              TR069 CPE Conformance 
+                                                                                         Test Suite (TR69) v1.0 
 
 ----------------------- Page 16-----------------------
 
-                                  The University of New Hampshire 
-                                     InterOperability Laboratory 
-
-Test TR69F.1.4:    GetRPCMethods 
-
-Purpose:    This test is designed to verify that the DUT can perform the GetRPCMethods operation. 
-
-References: 
-         [1]        Broadband Forum TR-069 
-
-Resource Requirements: 
-         •    CPE (DUT) 
-         •    CWMP Generator/Analyzer 
-
-Test setup: 
-         •    Test Setup 1 
-
-Discussion: 
-         According to [1], the GetRPCMethods method is a required function on both ACS and CPE.          This 
-method allows the ACS to learn the CWMP methods that are supported by the CPE, or for the CPE to learn 
-the CWMP methods that are supported by the ACS. 
-         The first link partner, with a simple remote procedure call with no arguments, initiates the 
-GetRPCMethods method.       The GetRPCMethods response contains an argument called “MethodList”, 
-which is an array of strings containing the names of each RPC method the link partner supports.     Once this 
-operation is performed, the ACS or CPE presumably stores this information for future use.     This test 
-focuses on the CPE’s ability to respond to a GetRPCMethods call made by the ACS. 
-
-Procedure: 
-     1.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     3.   Schedule a GetRPCMethods call on the DUT. 
-     4.   Allow the DUT to send a GetRPCMethodsResponse. 
-     5.   Allow the session to terminate successfully. 
-     6.   Record the list reported by the DUT’s GetRPCMethodsResponse. 
-
-Test Metrics: 
-     1.   The DUT reports its supported Methods in the GetRPCMethodsResponse. 
-
-Possible Problems: 
-     1.   It is possible that the DUT does not report all of its supported Methods, or does not support 
-         Methods that are required by [1].  This case is beyond the scope of this test. 
-
-TR-069 Consortium                                    6                             TR069 CPE Conformance 
-                                                                                       Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                     InterOperability Laboratory 
+
+Test TR69F.1.4:    GetRPCMethods 
+
+Purpose:    This test is designed to verify that the DUT can perform the GetRPCMethods operation. 
+
+References: 
+         [1]        Broadband Forum TR-069 
+
+Resource Requirements: 
+         •    CPE (DUT) 
+         •    CWMP Generator/Analyzer 
+
+Test setup: 
+         •    Test Setup 1 
+
+Discussion: 
+         According to [1], the GetRPCMethods method is a required function on both ACS and CPE.          This 
+method allows the ACS to learn the CWMP methods that are supported by the CPE, or for the CPE to learn 
+the CWMP methods that are supported by the ACS. 
+         The first link partner, with a simple remote procedure call with no arguments, initiates the 
+GetRPCMethods method.       The GetRPCMethods response contains an argument called “MethodList”, 
+which is an array of strings containing the names of each RPC method the link partner supports.     Once this 
+operation is performed, the ACS or CPE presumably stores this information for future use.     This test 
+focuses on the CPE’s ability to respond to a GetRPCMethods call made by the ACS. 
+
+Procedure: 
+     1.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.   Schedule a GetRPCMethods call on the DUT. 
+     4.   Allow the DUT to send a GetRPCMethodsResponse. 
+     5.   Allow the session to terminate successfully. 
+     6.   Record the list reported by the DUT’s GetRPCMethodsResponse. 
+
+Test Metrics: 
+     1.   The DUT reports its supported Methods in the GetRPCMethodsResponse. 
+
+Possible Problems: 
+     1.   It is possible that the DUT does not report all of its supported Methods, or does not support 
+         Methods that are required by [1].  This case is beyond the scope of this test. 
+
+TR-069 Consortium                                    6                             TR069 CPE Conformance 
+                                                                                       Test Suite (TR69) v1.0 
 
 ----------------------- Page 17-----------------------
 
-                                  The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-Test TR69F.1.5:    GetParameterNames 
-
-Purpose:    This test is designed to verify that the DUT can perform a GetParameterNames function when 
-the entire device object model is requested. 
-
-References: 
-         [1]        Broadband Forum TR-069 
-         [2]       Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
-                  for TR-069-Enabled Devices ” 
-         [3]        Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
-                  Device Data Model for TR-069” 
-
-Resource Requirements: 
-         •    CPE (DUT) 
-         •    CWMP Generator/Analyzer 
-
-Test setup: 
-         •    Test Setup 1 
-
-Discussion: 
-         According to [1], the GetParameterNames method is a required function on the CPE.        The ACS 
-may use this method to learn the particular parameters (and their read/write attributes) that it can access on 
-the CPE. 
-         The ACS makes this procedure call with two arguments.       The first is the ParameterPath, which 
-indicates the path in the object hierarchy under which the ACS wishes to learn the names of supported 
-parameters.  This path may be “complete”, in which the specific parameter is named to determine if it is 
-available, or “partial”, in which all of an objects lower level parameters are returned (as determined by the 
-value of NextLevel, below). 
-         The second parameter is NextLevel, which is a Boolean value that determines whether or not to 
-return all objects and parameters beneath the specified partial path (NextLevel = False), or to only return 
-those that are “Next Level” children of the partial path (NextLevel = True).   Once this operation is 
-performed, the ACS presumably stores this information for future use. 
-         When the ACS sends a GetParameterNames procedure call containing a ParameterPath argument 
-that points to the root device object (for example, InternetGatewayDevice. or Device. depending on the 
-device type and data model used) and when NextLevel is set to false, the CPE responds with its entire 
-object model.  A CPE may not respond with a resources exceeded fault (Fault 9004) in this circumstance. 
-         The GetParameterNamesResponse from the CPE contains one argument.            This is ParameterList, 
-which is an array of ParameterInfoStruct structures, each containing the name of the parameter (Name) and 
-a Boolean value (Writable) which indicates the read/write capability of the parameter. 
-         This test is designed to verify that the DUT can perform this operation without error, and that it 
-uses correct error handling when a parameter does not exist.   An additional step is added to validate the 
-XML sent by the DUT to ensure that an ACS that correctly interprets CWMP messages will understand the 
-message sent by the DUT. 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     3.   Schedule a GetParameterNames call on the DUT with the following arguments: 
-                   ParameterPath = InternetGatewayDevice. or Device. 
-                  NextLevel = false 
-     4.   Allow the DUT to send a GetParameterNamesResponse. 
-     5.   Allow the session to terminate successfully. 
-     6.   Validate the GetParameterNamesResponse. 
-     7.   Repeat steps 2 and 3 with the following arguments: 
-              a.    ParameterPath=InternetGatewayDevice.DeviceInfo.Invalid or Device.DeviceInfo.Invalid 
-
-TR-069 Consortium                                    7                              TR069 CPE Conformance 
-                                                                                        Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+Test TR69F.1.5:    GetParameterNames 
+
+Purpose:    This test is designed to verify that the DUT can perform a GetParameterNames function when 
+the entire device object model is requested. 
+
+References: 
+         [1]        Broadband Forum TR-069 
+         [2]       Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
+                  for TR-069-Enabled Devices ” 
+         [3]        Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
+                  Device Data Model for TR-069” 
+
+Resource Requirements: 
+         •    CPE (DUT) 
+         •    CWMP Generator/Analyzer 
+
+Test setup: 
+         •    Test Setup 1 
+
+Discussion: 
+         According to [1], the GetParameterNames method is a required function on the CPE.        The ACS 
+may use this method to learn the particular parameters (and their read/write attributes) that it can access on 
+the CPE. 
+         The ACS makes this procedure call with two arguments.       The first is the ParameterPath, which 
+indicates the path in the object hierarchy under which the ACS wishes to learn the names of supported 
+parameters.  This path may be “complete”, in which the specific parameter is named to determine if it is 
+available, or “partial”, in which all of an objects lower level parameters are returned (as determined by the 
+value of NextLevel, below). 
+         The second parameter is NextLevel, which is a Boolean value that determines whether or not to 
+return all objects and parameters beneath the specified partial path (NextLevel = False), or to only return 
+those that are “Next Level” children of the partial path (NextLevel = True).   Once this operation is 
+performed, the ACS presumably stores this information for future use. 
+         When the ACS sends a GetParameterNames procedure call containing a ParameterPath argument 
+that points to the root device object (for example, InternetGatewayDevice. or Device. depending on the 
+device type and data model used) and when NextLevel is set to false, the CPE responds with its entire 
+object model.  A CPE may not respond with a resources exceeded fault (Fault 9004) in this circumstance. 
+         The GetParameterNamesResponse from the CPE contains one argument.            This is ParameterList, 
+which is an array of ParameterInfoStruct structures, each containing the name of the parameter (Name) and 
+a Boolean value (Writable) which indicates the read/write capability of the parameter. 
+         This test is designed to verify that the DUT can perform this operation without error, and that it 
+uses correct error handling when a parameter does not exist.   An additional step is added to validate the 
+XML sent by the DUT to ensure that an ACS that correctly interprets CWMP messages will understand the 
+message sent by the DUT. 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.   Schedule a GetParameterNames call on the DUT with the following arguments: 
+                   ParameterPath = InternetGatewayDevice. or Device. 
+                  NextLevel = false 
+     4.   Allow the DUT to send a GetParameterNamesResponse. 
+     5.   Allow the session to terminate successfully. 
+     6.   Validate the GetParameterNamesResponse. 
+     7.   Repeat steps 2 and 3 with the following arguments: 
+              a.    ParameterPath=InternetGatewayDevice.DeviceInfo.Invalid or Device.DeviceInfo.Invalid 
+
+TR-069 Consortium                                    7                              TR069 CPE Conformance 
+                                                                                        Test Suite (TR69) v1.0 
 
 ----------------------- Page 18-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-              b.    NextLevel = false 
-     8.    Allow the DUT to respond with a Fault, code 9005 (invalid parameter name). 
-     9.    Repeat steps 5-6, validating the error. 
-
-Test Metrics: 
-     1.    The DUT returns the parameter names and write status of all objects and parameters in its data 
-         hierarchy through the GetParameterNamesResponse. 
-     2.   The GetParameterNamesResponse XML is valid. 
-     3.    The GetParameterNames fault returned is code 9005, and is valid. 
-
-Possible Problems: 
-     1.    The GetParameterNamesResponse is often used by the ACS to learn the parameters supported by 
-         the CPE.   However, if certain objects do not have active instances in the CPE, the underlying 
-         parameters may not be reported.     This test is designed to verify the basic functionality of the 
-          GetParameterNames RPC and not its use by an ACS in discovering device capabilities. 
-
-TR-069 Consortium                                      8                              TR069 CPE Conformance 
-                                                                                          Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+              b.    NextLevel = false 
+     8.    Allow the DUT to respond with a Fault, code 9005 (invalid parameter name). 
+     9.    Repeat steps 5-6, validating the error. 
+
+Test Metrics: 
+     1.    The DUT returns the parameter names and write status of all objects and parameters in its data 
+         hierarchy through the GetParameterNamesResponse. 
+     2.   The GetParameterNamesResponse XML is valid. 
+     3.    The GetParameterNames fault returned is code 9005, and is valid. 
+
+Possible Problems: 
+     1.    The GetParameterNamesResponse is often used by the ACS to learn the parameters supported by 
+         the CPE.   However, if certain objects do not have active instances in the CPE, the underlying 
+         parameters may not be reported.     This test is designed to verify the basic functionality of the 
+          GetParameterNames RPC and not its use by an ACS in discovering device capabilities. 
+
+TR-069 Consortium                                      8                              TR069 CPE Conformance 
+                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 19-----------------------
 
-                                  The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-Test TR69F.1.6:    GetParameterValues 
-
-Purpose:    This test is designed to verify that the DUT can perform a GetParameterValues function when 
-the entire device object model is requested. 
-
-References: 
-         [1]        Broadband Forum TR-069 
-         [2]       Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
-                  for TR-069-Enabled Devices ” 
-         [3]        Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
-                  Device Data Model for TR-069” 
-
-Resource Requirements: 
-         •    CPE (DUT) 
-         •    CWMP Generator/Analyzer 
-
-Test setup: 
-         •    Test Setup 1 
-
-Discussion: 
-         According to [1], the GetParameterValues method is a required function on the CPE.       The ACS 
-may use this method to learn the particular parameters and their current values that exist on the CPE. 
-         The ACS makes this procedure call with two arguments.       The first is the ParameterPath, which 
-indicates the path in the object hierarchy under which the ACS wishes to learn the names of supported 
-parameters.  This path may be “complete”, in which the specific parameter is named to determine if it is 
-available, or “partial”, in which all of an objects lower level parameters are returned. 
-         When the ACS sends a GetParameteValues procedure call containing a ParameterPath argument 
-that points to the root device object (for example, InternetGatewayDevice. or Device. depending on the 
-device type and data model used), the CPE responds with its entire object model.     A CPE MAY instead 
-respond with a resources exceeded fault (Fault 9004) in this circumstance. 
-         The GetParameterValuesResponse from the CPE contains one argument.           This is ParameterList, 
-which is an array of ParameterValueStruct structures, each containing the name of the parameter (Name), 
-and its current value (Value). 
-         This test is designed to verify that the DUT can perform this operation without error.   An 
-additional step is added to validate the XML sent by the DUT to ensure that an ACS that correctly 
-interprets CWMP messages will understand the message sent by the DUT. 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     3.   Schedule a GetParameterValues call on the DUT with the following arguments: 
-              a.    ParameterPath = InternetGatewayDevice. or Device. 
-     4.   Allow the DUT to send a GetParameterNamesResponse or return a Resources Exceeded fault 
-         (Fault 9004). 
-     5.   Allow the session to terminate successfully. 
-     6.   Validate the GetParameterNamesResponse. 
-
-Test Metrics: 
-     1.    The DUT returns the parameter names and values of all parameters in its data hierarchy through 
-         the GetParameterValuesResponse. 
-     2.   The GetParameterNamesResponse XML is valid. 
-     3.   All sessions are terminated successfully. 
-
-Possible Problems: 
-
-TR-069 Consortium                                    9                              TR069 CPE Conformance 
-                                                                                        Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+Test TR69F.1.6:    GetParameterValues 
+
+Purpose:    This test is designed to verify that the DUT can perform a GetParameterValues function when 
+the entire device object model is requested. 
+
+References: 
+         [1]        Broadband Forum TR-069 
+         [2]       Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
+                  for TR-069-Enabled Devices ” 
+         [3]        Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
+                  Device Data Model for TR-069” 
+
+Resource Requirements: 
+         •    CPE (DUT) 
+         •    CWMP Generator/Analyzer 
+
+Test setup: 
+         •    Test Setup 1 
+
+Discussion: 
+         According to [1], the GetParameterValues method is a required function on the CPE.       The ACS 
+may use this method to learn the particular parameters and their current values that exist on the CPE. 
+         The ACS makes this procedure call with two arguments.       The first is the ParameterPath, which 
+indicates the path in the object hierarchy under which the ACS wishes to learn the names of supported 
+parameters.  This path may be “complete”, in which the specific parameter is named to determine if it is 
+available, or “partial”, in which all of an objects lower level parameters are returned. 
+         When the ACS sends a GetParameteValues procedure call containing a ParameterPath argument 
+that points to the root device object (for example, InternetGatewayDevice. or Device. depending on the 
+device type and data model used), the CPE responds with its entire object model.     A CPE MAY instead 
+respond with a resources exceeded fault (Fault 9004) in this circumstance. 
+         The GetParameterValuesResponse from the CPE contains one argument.           This is ParameterList, 
+which is an array of ParameterValueStruct structures, each containing the name of the parameter (Name), 
+and its current value (Value). 
+         This test is designed to verify that the DUT can perform this operation without error.   An 
+additional step is added to validate the XML sent by the DUT to ensure that an ACS that correctly 
+interprets CWMP messages will understand the message sent by the DUT. 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.   Schedule a GetParameterValues call on the DUT with the following arguments: 
+              a.    ParameterPath = InternetGatewayDevice. or Device. 
+     4.   Allow the DUT to send a GetParameterNamesResponse or return a Resources Exceeded fault 
+         (Fault 9004). 
+     5.   Allow the session to terminate successfully. 
+     6.   Validate the GetParameterNamesResponse. 
+
+Test Metrics: 
+     1.    The DUT returns the parameter names and values of all parameters in its data hierarchy through 
+         the GetParameterValuesResponse. 
+     2.   The GetParameterNamesResponse XML is valid. 
+     3.   All sessions are terminated successfully. 
+
+Possible Problems: 
+
+TR-069 Consortium                                    9                              TR069 CPE Conformance 
+                                                                                        Test Suite (TR69) v1.0 
 
 ----------------------- Page 20-----------------------
 
-                                 The University of New Hampshire 
-                                     InterOperability Laboratory 
-
-     1.   The GetParameterValuesResponse is often used by the ACS to learn the current data hierarchy of 
-         the CPE.  However, if certain objects do not have active instances in the CPE, the underlying 
-         parameters may not be reported.   This test is designed to verify the basic functionality of the 
-         GetParameterValues RPC and not its use by an ACS in discovering device capabilities. 
-
-TR-069 Consortium                                    1                            TR069 CPE Conformance 
-                                                                                      Test Suite (TR69) v1.0 
+                                 The University of New Hampshire 
+                                     InterOperability Laboratory 
+
+     1.   The GetParameterValuesResponse is often used by the ACS to learn the current data hierarchy of 
+         the CPE.  However, if certain objects do not have active instances in the CPE, the underlying 
+         parameters may not be reported.   This test is designed to verify the basic functionality of the 
+         GetParameterValues RPC and not its use by an ACS in discovering device capabilities. 
+
+TR-069 Consortium                                    1                            TR069 CPE Conformance 
+                                                                                      Test Suite (TR69) v1.0 
 
 ----------------------- Page 21-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-Test TR69.1.7:    Reboot 
-
-Purpose:    This test is designed to verify that the CPE can perform the Reboot function. 
-
-References: 
-          [1]       Broadband Forum TR-069 
-
-Resource Requirements: 
-          •  CPE (DUT) 
-          •  CWMP Generator/Analyzer 
-
-Test setup: 
-          1.  Test Setup 1 or 2 
-
-Discussion: 
-          According to [1], the ACS may trigger a reboot in the CPE through use of the Reboot remote 
-procedure call, primarily for troubleshooting purposes.     It is intended that the CPE sends the message 
-response and completes the current CWMP session before doing so. 
-          At the conclusion of the reboot, the CPE issues the standard Inform RPC on the ACS with the “1 
-BOOT” and “M Reboot” event codes. 
-
-Procedure: 
-     1.    Establish a network layer connection between the DUT and the CWMP Generator/Analyzer. 
-     2.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     3.    Schedule a Reboot RPC on the DUT. 
-     4.    Allow the DUT to respond to the Reboot remote procedure call. 
-     5.    Allow the CWMP session to terminate successfully. 
-     6.    Wait for the DUT to reboot. 
-     7.    Allow the DUT to communicate its boot inform to the ACS. 
-     8.    Allow the new session to terminate successfully. 
-     9.    If any of the test metrics below fail, record and report the entire transaction. 
-
-Test Metrics: 
-     1.    The DUT successfully initiates a CWMP session. 
-     2.    The RebootResponse is received. 
-     3.    The DUT Reboots. 
-     4.    The DUT successfully completes an Inform RPC upon reboot containing the event codes “1 
-          BOOT” and “M Reboot”. 
-
-Possible Problems: 
-     1.    The DUT may take an abnormal amount of time to reboot.         If this is the case, the DUT should be 
-          observed physically if possible to ensure this is the case and the test retried. 
-     2.    The DUT may have other events that had remained undelivered at the time of the Reboot.          While 
-          this test does not check to ensure that the events were delivered, these events should be recorded 
-          and it should be ensured that the events do not interfere with the “1 BOOT” and “M Reboot” 
-          events. 
-
-TR-069 Consortium                                      1                               TR069 CPE Conformance 
-                                                                                           Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+Test TR69.1.7:    Reboot 
+
+Purpose:    This test is designed to verify that the CPE can perform the Reboot function. 
+
+References: 
+          [1]       Broadband Forum TR-069 
+
+Resource Requirements: 
+          •  CPE (DUT) 
+          •  CWMP Generator/Analyzer 
+
+Test setup: 
+          1.  Test Setup 1 or 2 
+
+Discussion: 
+          According to [1], the ACS may trigger a reboot in the CPE through use of the Reboot remote 
+procedure call, primarily for troubleshooting purposes.     It is intended that the CPE sends the message 
+response and completes the current CWMP session before doing so. 
+          At the conclusion of the reboot, the CPE issues the standard Inform RPC on the ACS with the “1 
+BOOT” and “M Reboot” event codes. 
+
+Procedure: 
+     1.    Establish a network layer connection between the DUT and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.    Schedule a Reboot RPC on the DUT. 
+     4.    Allow the DUT to respond to the Reboot remote procedure call. 
+     5.    Allow the CWMP session to terminate successfully. 
+     6.    Wait for the DUT to reboot. 
+     7.    Allow the DUT to communicate its boot inform to the ACS. 
+     8.    Allow the new session to terminate successfully. 
+     9.    If any of the test metrics below fail, record and report the entire transaction. 
+
+Test Metrics: 
+     1.    The DUT successfully initiates a CWMP session. 
+     2.    The RebootResponse is received. 
+     3.    The DUT Reboots. 
+     4.    The DUT successfully completes an Inform RPC upon reboot containing the event codes “1 
+          BOOT” and “M Reboot”. 
+
+Possible Problems: 
+     1.    The DUT may take an abnormal amount of time to reboot.         If this is the case, the DUT should be 
+          observed physically if possible to ensure this is the case and the test retried. 
+     2.    The DUT may have other events that had remained undelivered at the time of the Reboot.          While 
+          this test does not check to ensure that the events were delivered, these events should be recorded 
+          and it should be ensured that the events do not interfere with the “1 BOOT” and “M Reboot” 
+          events. 
+
+TR-069 Consortium                                      1                               TR069 CPE Conformance 
+                                                                                           Test Suite (TR69) v1.0 
 
 ----------------------- Page 22-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-Test TR69F.1.8:     SetParameterValues 
-
-Purpose:    This test is designed to verify that the DUT can perform the SetParameterValues function. 
-
-References: 
-          [1]       Broadband Forum TR-069 
-          [2]      Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
-                   for TR-069-Enabled Devices ” 
-          [3]       Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
-                   Device Data Model for TR-069” 
-
-Resource Requirements: 
-          •   CPE (DUT) 
-          •   CWMP Generator/Analyzer 
-
-Test setup: 
-          •   Test Setup 1 
-
-Discussion: 
-          According to [1], the SetParameterValues method is a required function on the CPE. The ACS 
-may use this method to modify the value of one or more CPE parameters. 
-          The ACS makes this procedure call with two arguments.        The first is the ParameterList, which is 
-an array of name-value pairs specifying which parameters to change and what to change them to. If this 
-array contains more than one entry with the same parameter name, the CPE must respond with fault 9003 
-(Invalid Arguments). The second is the ParameterKey value which the CPE must set if and only if 
-SetParameterValues completes successfully and no fault response is generated. This parameter provides the 
-ACS a means to track changes it has made, the value is left to the discretion of the ACS and may be left 
-empty. 
-          The SetParameterValuesResponse must be returned by the CPE after any successful 
-SetParameterValues call. It contains a status argument which is set to either “0” or “1.” A “0” indicates that 
-all parameter changes have been validated and applied. A “1” indicates that all parameter changes have 
-been validated and committed, but some or all are not yet applied. The changes are required to be applied 
-by the next session. 
-          This test verifies the ability of the DUT to use the SetParameterValues RPC and to respond 
-correctly when presented with bad arguments.      These bad arguments include invalid parameters, invalid 
-values, invalid data types, and parameters that are not meant to be writable.    Each of these has a different 
-SOAP fault code associated with them. 
-
-Procedure: 
-     1.    Analyzing the DUT’s supported data model, choose two non-service affecting writable parameters 
-          to be changed on the DUT.     Record these parameters, their values, and the change values chosen. 
-     2.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     3.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     4.    Schedule a SetParameterValues call on the DUT with the parameters selected in step 1. 
-     5.    Allow the DUT to send a SetParameterValuesResponse. 
-     6.    Validate the SetParameterValuesResponse. 
-     7.    Schedule a GetParameterValues call on the parameters that were selected in step 1. 
-     8.    Verify that the retrieved values match what was set in the SetParameterValues call. 
-     9.    Repeat step 3. 
-     10.   Schedule a Reboot call on the DUT. 
-     11.   Repeat steps 6-7. 
-     12.   Repeat steps 3-4. Instead of the value selected above choose a value that is of the wrong data type 
-          or other invalid value for the parameter. 
-     13.   Allow the DUT to send a Fault code of either 9006 (Invalid Parameter Type) or 9007 (Invalid 
-          Parameter Value). 
-
-TR-069 Consortium                                      1                              TR069 CPE Conformance 
-                                                                                          Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+Test TR69F.1.8:     SetParameterValues 
+
+Purpose:    This test is designed to verify that the DUT can perform the SetParameterValues function. 
+
+References: 
+          [1]       Broadband Forum TR-069 
+          [2]      Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
+                   for TR-069-Enabled Devices ” 
+          [3]       Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
+                   Device Data Model for TR-069” 
+
+Resource Requirements: 
+          •   CPE (DUT) 
+          •   CWMP Generator/Analyzer 
+
+Test setup: 
+          •   Test Setup 1 
+
+Discussion: 
+          According to [1], the SetParameterValues method is a required function on the CPE. The ACS 
+may use this method to modify the value of one or more CPE parameters. 
+          The ACS makes this procedure call with two arguments.        The first is the ParameterList, which is 
+an array of name-value pairs specifying which parameters to change and what to change them to. If this 
+array contains more than one entry with the same parameter name, the CPE must respond with fault 9003 
+(Invalid Arguments). The second is the ParameterKey value which the CPE must set if and only if 
+SetParameterValues completes successfully and no fault response is generated. This parameter provides the 
+ACS a means to track changes it has made, the value is left to the discretion of the ACS and may be left 
+empty. 
+          The SetParameterValuesResponse must be returned by the CPE after any successful 
+SetParameterValues call. It contains a status argument which is set to either “0” or “1.” A “0” indicates that 
+all parameter changes have been validated and applied. A “1” indicates that all parameter changes have 
+been validated and committed, but some or all are not yet applied. The changes are required to be applied 
+by the next session. 
+          This test verifies the ability of the DUT to use the SetParameterValues RPC and to respond 
+correctly when presented with bad arguments.      These bad arguments include invalid parameters, invalid 
+values, invalid data types, and parameters that are not meant to be writable.    Each of these has a different 
+SOAP fault code associated with them. 
+
+Procedure: 
+     1.    Analyzing the DUT’s supported data model, choose two non-service affecting writable parameters 
+          to be changed on the DUT.     Record these parameters, their values, and the change values chosen. 
+     2.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     3.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     4.    Schedule a SetParameterValues call on the DUT with the parameters selected in step 1. 
+     5.    Allow the DUT to send a SetParameterValuesResponse. 
+     6.    Validate the SetParameterValuesResponse. 
+     7.    Schedule a GetParameterValues call on the parameters that were selected in step 1. 
+     8.    Verify that the retrieved values match what was set in the SetParameterValues call. 
+     9.    Repeat step 3. 
+     10.   Schedule a Reboot call on the DUT. 
+     11.   Repeat steps 6-7. 
+     12.   Repeat steps 3-4. Instead of the value selected above choose a value that is of the wrong data type 
+          or other invalid value for the parameter. 
+     13.   Allow the DUT to send a Fault code of either 9006 (Invalid Parameter Type) or 9007 (Invalid 
+          Parameter Value). 
+
+TR-069 Consortium                                      1                              TR069 CPE Conformance 
+                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 23-----------------------
 
-                                  The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-     14.   Validate the Fault code. 
-     15.  Repeat steps 3-4. Instead of the parameters selected above choose a parameter that does not exist 
-         in the DUT’s data model. 
-     16.  Allow the DUT to send a Fault code of either 9005 (Invalid Parameter Name). 
-     17.  Repeat step 14. 
-     18.  Repeat steps 3-4. Instead of the parameters selected above choose a parameter that is meant to be 
-         read-only according to [2] or any other CWMP data model that the DUT supports. 
-     19.  Allow the DUT to send a Fault code of either 9008 (Attempt to Set Non-writeable Parameter). 
-     20.  Repeat step 14. 
-     21.  Allow the session to terminate successfully. 
-
-Test Metrics: 
-     1.   The DUT responds with a 0 or 1 status in SetParameterValuesResponse 
-     2.   The SetParameterValuesResponse is valid. 
-     3.   Subsequent GetParameterValues calls using the test parameters return the correct values 
-     4.   The device retains the parameter changes across reboot. 
-     5.   The DUT responds to the invalid values with the correct, valid fault code. 
-     6.   The DUT responds to the invalid parameters with the correct, valid fault codes. 
-
-Possible Problems: 
-     1.   In some cases, parameters that are defined as write capable in the appropriate data models may be 
-         rejected by the DUT.   This case is beyond the scope of this test. If the DUT returns an error, 
-         “Attempt to Set Non-Writable Parameter”, new parameters should be attempted for step 1. 
-
-TR-069 Consortium                                    1                              TR069 CPE Conformance 
-                                                                                        Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+     14.   Validate the Fault code. 
+     15.  Repeat steps 3-4. Instead of the parameters selected above choose a parameter that does not exist 
+         in the DUT’s data model. 
+     16.  Allow the DUT to send a Fault code of either 9005 (Invalid Parameter Name). 
+     17.  Repeat step 14. 
+     18.  Repeat steps 3-4. Instead of the parameters selected above choose a parameter that is meant to be 
+         read-only according to [2] or any other CWMP data model that the DUT supports. 
+     19.  Allow the DUT to send a Fault code of either 9008 (Attempt to Set Non-writeable Parameter). 
+     20.  Repeat step 14. 
+     21.  Allow the session to terminate successfully. 
+
+Test Metrics: 
+     1.   The DUT responds with a 0 or 1 status in SetParameterValuesResponse 
+     2.   The SetParameterValuesResponse is valid. 
+     3.   Subsequent GetParameterValues calls using the test parameters return the correct values 
+     4.   The device retains the parameter changes across reboot. 
+     5.   The DUT responds to the invalid values with the correct, valid fault code. 
+     6.   The DUT responds to the invalid parameters with the correct, valid fault codes. 
+
+Possible Problems: 
+     1.   In some cases, parameters that are defined as write capable in the appropriate data models may be 
+         rejected by the DUT.   This case is beyond the scope of this test. If the DUT returns an error, 
+         “Attempt to Set Non-Writable Parameter”, new parameters should be attempted for step 1. 
+
+TR-069 Consortium                                    1                              TR069 CPE Conformance 
+                                                                                        Test Suite (TR69) v1.0 
 
 ----------------------- Page 24-----------------------
 
-                                  The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-Test TR69F.1.9:    Object Handling RPCs 
-
-Purpose:    This test is designed to verify that the DUT can perform the functions and behavior necessary 
-for object creation and deletion. 
-
-References: 
-         [1]        Broadband Forum TR-069 
-         [2]       Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
-                  for TR-069-Enabled Devices ” 
-         [3]        Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
-                  Device Data Model for TR-069” 
-
-Resource Requirements: 
-         •    CPE (DUT) 
-         •    CWMP Generator/Analyzer 
-
-Test setup: 
-         •    Test Setup 1 
-
-Discussion: 
-         According to [1], the AddObject and DeleteObject methods are required functions on the CPE. 
-The ACS may use these methods for a variety of purposes depending on the functionality described in the 
-corresponding CPE data model, most often the creation of new instances of interface or service objects. 
-         The ACS makes the AddObject procedure call with two arguments.         The first is the ObjectName, 
-which is a string containing the path name of the object to be created.  According to [1], the path name 
-MUST end with a “.” after the last node in the hierarchical name.    The second is the ParameterKey value 
-which the CPE must set if and only if AddObject completes successfully and no fault response is generated. 
-This parameter provides the ACS a means to track changes it has made, the value is left to the discretion of 
-the ACS and may be left empty. 
-         The AddObjectResponse must be returned by the CPE after any successful AddObject call. It 
-contains two arguments.   The first is InstanceNumber, which contains the numerical reference that the ACS 
-will use to address the object. This instance number must be unique to the object created, and can never be 
-reused or changed.   The second is a status argument which is set to either “0” or “1.” A “0” indicates that 
-all parameter changes have been validated and applied. A “1” indicates that all parameter changes have 
-been validated and committed, but some or all are not yet applied. The changes are required to be applied 
-by the next session. 
-         The ACS makes the DeleteObject call with two arguments.        The first is the ObjectName, which is 
-a string containing the full path name (including the instance number) of the object to be deleted. 
-According to [1], the path name MUST end with a “.” after the instance number.      The second is the 
-ParameterKey value which the CPE must set if and only if AddObject completes successfully and no fault 
-response is generated. This parameter provides the ACS a means to track changes it has made, the value is 
-left to the discretion of the ACS and may be left empty. 
-         The DeleteObjectResponse contains a status argument which is set to either “0” or “1.” A “0” 
-indicates that all parameter changes have been validated and applied. A “1” indicates that all parameter 
-changes have been validated and committed, but some or all are not yet applied. The changes are required 
-to be applied by the next session. 
-
-Procedure: 
-     1.    Analyzing the DUT’s supported data model, choose a     non-service affecting writable object to be 
-         created on the DUT.    Record the selected object. 
-     2.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     3.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     4.   Schedule an AddObject call on the DUT with the object selected in step 1. 
-     5.   Allow the DUT to send an AddObjectResponse.       Record the instance number created by the DUT. 
-
-TR-069 Consortium                                    1                              TR069 CPE Conformance 
-                                                                                        Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+Test TR69F.1.9:    Object Handling RPCs 
+
+Purpose:    This test is designed to verify that the DUT can perform the functions and behavior necessary 
+for object creation and deletion. 
+
+References: 
+         [1]        Broadband Forum TR-069 
+         [2]       Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
+                  for TR-069-Enabled Devices ” 
+         [3]        Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
+                  Device Data Model for TR-069” 
+
+Resource Requirements: 
+         •    CPE (DUT) 
+         •    CWMP Generator/Analyzer 
+
+Test setup: 
+         •    Test Setup 1 
+
+Discussion: 
+         According to [1], the AddObject and DeleteObject methods are required functions on the CPE. 
+The ACS may use these methods for a variety of purposes depending on the functionality described in the 
+corresponding CPE data model, most often the creation of new instances of interface or service objects. 
+         The ACS makes the AddObject procedure call with two arguments.         The first is the ObjectName, 
+which is a string containing the path name of the object to be created.  According to [1], the path name 
+MUST end with a “.” after the last node in the hierarchical name.    The second is the ParameterKey value 
+which the CPE must set if and only if AddObject completes successfully and no fault response is generated. 
+This parameter provides the ACS a means to track changes it has made, the value is left to the discretion of 
+the ACS and may be left empty. 
+         The AddObjectResponse must be returned by the CPE after any successful AddObject call. It 
+contains two arguments.   The first is InstanceNumber, which contains the numerical reference that the ACS 
+will use to address the object. This instance number must be unique to the object created, and can never be 
+reused or changed.   The second is a status argument which is set to either “0” or “1.” A “0” indicates that 
+all parameter changes have been validated and applied. A “1” indicates that all parameter changes have 
+been validated and committed, but some or all are not yet applied. The changes are required to be applied 
+by the next session. 
+         The ACS makes the DeleteObject call with two arguments.        The first is the ObjectName, which is 
+a string containing the full path name (including the instance number) of the object to be deleted. 
+According to [1], the path name MUST end with a “.” after the instance number.      The second is the 
+ParameterKey value which the CPE must set if and only if AddObject completes successfully and no fault 
+response is generated. This parameter provides the ACS a means to track changes it has made, the value is 
+left to the discretion of the ACS and may be left empty. 
+         The DeleteObjectResponse contains a status argument which is set to either “0” or “1.” A “0” 
+indicates that all parameter changes have been validated and applied. A “1” indicates that all parameter 
+changes have been validated and committed, but some or all are not yet applied. The changes are required 
+to be applied by the next session. 
+
+Procedure: 
+     1.    Analyzing the DUT’s supported data model, choose a     non-service affecting writable object to be 
+         created on the DUT.    Record the selected object. 
+     2.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     3.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     4.   Schedule an AddObject call on the DUT with the object selected in step 1. 
+     5.   Allow the DUT to send an AddObjectResponse.       Record the instance number created by the DUT. 
+
+TR-069 Consortium                                    1                              TR069 CPE Conformance 
+                                                                                        Test Suite (TR69) v1.0 
 
 ----------------------- Page 25-----------------------
 
-                                   The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-     6.   Repeat steps 4-5. 
-     7.   Schedule a GetParameterValues partial path call on the object path that was selected in step 1. 
-     8.    Verify that the <object>NumberOfEntries parameter has been incremented. 
-     9.   Verify that the created objects are listed with appropriately contained parameters. 
-     10.   Allow the session to terminate successfully. 
-     11.   Repeat step 3. 
-     12.   Schedule a DeleteObject call on the DUT with the first object created in step 5. 
-     13.   Allow the DUT to send a DeleteObjectResponse. 
-     14.   Repeat step 7. 
-     15.   Verify that the <object>NumberOfEntries parameter has been decremented. 
-     16.   Verify that the existing objects have not changed instance numbers. 
-     17.   Repeat step 3. 
-     18.   Schedule a Reboot call on the DUT. 
-     19.   Wait for the DUT to reboot. 
-     20.  Repeat step 7. 
-     21.  Repeat step 16. 
-     22.  Repeat step 10. 
-
-Test Metrics: 
-     1.    The DUT responds with a 0 or 1 status in the AddObject and DeleteObject Reponses. 
-     2.   The created objects are present when created and absent when deleted. 
-     3.   <object>NumberOfEntries parameter is set to the correct value. 
-     4.   The instance numbers of the created objects are retained after deletion. 
-
-Possible Problems: 
-     1.    Depending on the type of DUT and its supported object model, it may be impossible to find an 
-         object that supports creation or deletion. 
-
-TR-069 Consortium                                     1                              TR069 CPE Conformance 
-                                                                                          Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+     6.   Repeat steps 4-5. 
+     7.   Schedule a GetParameterValues partial path call on the object path that was selected in step 1. 
+     8.    Verify that the <object>NumberOfEntries parameter has been incremented. 
+     9.   Verify that the created objects are listed with appropriately contained parameters. 
+     10.   Allow the session to terminate successfully. 
+     11.   Repeat step 3. 
+     12.   Schedule a DeleteObject call on the DUT with the first object created in step 5. 
+     13.   Allow the DUT to send a DeleteObjectResponse. 
+     14.   Repeat step 7. 
+     15.   Verify that the <object>NumberOfEntries parameter has been decremented. 
+     16.   Verify that the existing objects have not changed instance numbers. 
+     17.   Repeat step 3. 
+     18.   Schedule a Reboot call on the DUT. 
+     19.   Wait for the DUT to reboot. 
+     20.  Repeat step 7. 
+     21.  Repeat step 16. 
+     22.  Repeat step 10. 
+
+Test Metrics: 
+     1.    The DUT responds with a 0 or 1 status in the AddObject and DeleteObject Reponses. 
+     2.   The created objects are present when created and absent when deleted. 
+     3.   <object>NumberOfEntries parameter is set to the correct value. 
+     4.   The instance numbers of the created objects are retained after deletion. 
+
+Possible Problems: 
+     1.    Depending on the type of DUT and its supported object model, it may be impossible to find an 
+         object that supports creation or deletion. 
+
+TR-069 Consortium                                     1                              TR069 CPE Conformance 
+                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 26-----------------------
 
-                                 The University of New Hampshire 
-                                     InterOperability Laboratory 
-
-Test TR69F.1.10:    Parameter Notifications 
-
-Purpose:    This test is designed to verify that the DUT can perform the functions and behavior necessary 
-for the operation of CWMP parameter notification. 
-
-References: 
-         [1]       Broadband Forum TR-069 
-         [2]      Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
-                  for TR-069-Enabled Devices ” 
-         [3]       Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
-                  Device Data Model for TR-069” 
-
-Resource Requirements: 
-         •    CPE (DUT) 
-         •    CWMP Generator/Analyzer 
-
-Test setup: 
-         •    Test Setup 1 
-
-Discussion: 
-         According to [2], parameters in any give CWMP data model contain two attributes.     These 
-attributes include the “Notification” attribute and the “Subscriber” attribute. This test is focused on 
-examining the functions of the Notification attribute. 
-         Attributes are manipulated via the SetParameterAttributes RPC and corresponding 
-SetParameterAttributesResponse ([1]).   The SetParameterAttributesResponse contains no arguments.      The 
-ACS makes the SetParameterAttributes procedure call with one argument.      The argument is the 
-ParameterList, which is an array of structures specific to the SetParameterAttributes RPC 
-(SetParameterAttributesStruct).  This structure contains five variables, three of which apply to 
-Notifications. The first is Name, which is the path name of the parameter to apply the new attributes. This 
-path may be “complete”, in which a specific parameter is named, or “partial”, in which all of an object’s 
-lower level parameters are intended to be changed.  Second is NotificationChange, which is a Boolean 
-value indicating that the value of the Notification variable (following) should replace the current value in 
-the CPE’s data model.   Third is Notification, an enumeration of three values from 0 to 2. From [1]: 
-
-          (Notification) Indicates whether the CPE will include changed 
-         values of the specified parameter(s) in the Inform message, and 
-         whether the CPE will initiate a session to the ACS when the 
-         specified parameter(s) change in value. The following values are 
-         defined: 
-
-         0 = Notification off. The CPE need not inform the ACS of a change 
-         to the specified parameter(s). 
-
-         1 = Passive notification. Whenever the specified parameter value 
-         changes, the CPE MUST include the new value in the ParameterList 
-         in the Inform message that is sent the next time a session is 
-         established to the ACS.  If the CPE has rebooted, or the URL of 
-         the ACS has changed since the last session, the CPE MAY choose 
-         not to include the list of changed parameters in the first 
-         session established with the new ACS. 
-
-         2 = Active notification. Whenever the specified parameter value 
-         changes, the CPE MUST initiate  a session to the ACS, and include 
-         the new value in the ParameterList in the associated Inform 
-         message. 
-
-TR-069 Consortium                                   1                             TR069 CPE Conformance 
-                                                                                      Test Suite (TR69) v1.0 
+                                 The University of New Hampshire 
+                                     InterOperability Laboratory 
+
+Test TR69F.1.10:    Parameter Notifications 
+
+Purpose:    This test is designed to verify that the DUT can perform the functions and behavior necessary 
+for the operation of CWMP parameter notification. 
+
+References: 
+         [1]       Broadband Forum TR-069 
+         [2]      Broadband Forum Technical Report 106 (TR-106) Amendment 2, “Data Model Template 
+                  for TR-069-Enabled Devices ” 
+         [3]       Broadband Forum Technical Report 098 (TR-098) Amendment 1, “Internet Gateway 
+                  Device Data Model for TR-069” 
+
+Resource Requirements: 
+         •    CPE (DUT) 
+         •    CWMP Generator/Analyzer 
+
+Test setup: 
+         •    Test Setup 1 
+
+Discussion: 
+         According to [2], parameters in any give CWMP data model contain two attributes.     These 
+attributes include the “Notification” attribute and the “Subscriber” attribute. This test is focused on 
+examining the functions of the Notification attribute. 
+         Attributes are manipulated via the SetParameterAttributes RPC and corresponding 
+SetParameterAttributesResponse ([1]).   The SetParameterAttributesResponse contains no arguments.      The 
+ACS makes the SetParameterAttributes procedure call with one argument.      The argument is the 
+ParameterList, which is an array of structures specific to the SetParameterAttributes RPC 
+(SetParameterAttributesStruct).  This structure contains five variables, three of which apply to 
+Notifications. The first is Name, which is the path name of the parameter to apply the new attributes. This 
+path may be “complete”, in which a specific parameter is named, or “partial”, in which all of an object’s 
+lower level parameters are intended to be changed.  Second is NotificationChange, which is a Boolean 
+value indicating that the value of the Notification variable (following) should replace the current value in 
+the CPE’s data model.   Third is Notification, an enumeration of three values from 0 to 2. From [1]: 
+
+          (Notification) Indicates whether the CPE will include changed 
+         values of the specified parameter(s) in the Inform message, and 
+         whether the CPE will initiate a session to the ACS when the 
+         specified parameter(s) change in value. The following values are 
+         defined: 
+
+         0 = Notification off. The CPE need not inform the ACS of a change 
+         to the specified parameter(s). 
+
+         1 = Passive notification. Whenever the specified parameter value 
+         changes, the CPE MUST include the new value in the ParameterList 
+         in the Inform message that is sent the next time a session is 
+         established to the ACS.  If the CPE has rebooted, or the URL of 
+         the ACS has changed since the last session, the CPE MAY choose 
+         not to include the list of changed parameters in the first 
+         session established with the new ACS. 
+
+         2 = Active notification. Whenever the specified parameter value 
+         changes, the CPE MUST initiate  a session to the ACS, and include 
+         the new value in the ParameterList in the associated Inform 
+         message. 
+
+TR-069 Consortium                                   1                             TR069 CPE Conformance 
+                                                                                      Test Suite (TR69) v1.0 
 
 ----------------------- Page 27-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-          Whatever notification means are assigned to the parameter, the session in which the change is later 
-conveyed must contain the event code “4 VALUE CHANGE” in the event list of the Inform RPC. 
-          The CPE may deny the application of Active notification to any parameter (other than those that 
-are Forced Active, [2]) that it decides may be disruptive if active notification were present.    The CPE may 
-not deny the application of passive notification to any parameter ([1]). 
-         Unless a set of parameters can be found that the CPE does not consider disruptive and will update 
-without human interaction (such as statistics or time counters), this test requires manual stimulation of the 
-CPE at some point during the test, particularly for Active notification. 
-
-Procedure: 
-     1.    Analyzing the DUT’s supported data model, choose a set of parameter paths (one for Active 
-         notification, one for Passive notification) that will automatically update or that can be changed 
-          locally on the CPE.  It is recommended to use a partial path for Passive notifications.    Record 
-          these parameters. 
-     2.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     3.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     4.    Schedule a SetParameterAttributes remote procedure call on the DUT with the parameter selected 
-          for Active notification in step 1. 
-     5.    Allow the DUT to send a SetParameterAttributesResponse. 
-     6.    Stimulate the DUT to alter the parameter(s) selected in step 1. 
-     7.    Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer, and analyze the 
-          Inform RPC. 
-     8.    Allow the session to terminate successfully. 
-     9.    Repeat step 3. 
-     10.   Schedule a SetParameterAttributes remote procedure call on the DUT with the parameter selected 
-          for Passive notification in step 1. 
-     11.   Repeat steps 5-6. 
-     12.   Make a ConnectionRequest to the DUT as described in test TR69F.1.1, above. 
-     13.   Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer, and analyze the 
-          Inform RPC. 
-     14.   Allow the session to terminate successfully. 
-
-Test Metrics: 
-     1.    The DUT successfully completes the SetParameterAttributes RPC. 
-     2.    The DUT performs Active notification by immediately initiating a session with the CWMP 
-          Generator/Analyzer. 
-     3.    The Inform RPC made during the Active notification session contains the event code “4 VALUE 
-          CHANGE”.      The parameter changed and their new values are listed in the list of parameters in the 
-          Inform RPC. 
-     4.    The DUT performs Passive notification in its next session with the CWMP Generator Analyzer. 
-          The Inform RPC during this session contains the event code “4 VALUE CHANGE”.               The 
-         parameter changed and their new values are listed in the list of parameters in the Inform RPC. 
-
-Possible Problems: 
-     1.    According to [1], the CPE may choose not to include the list of changed parameters if the first 
-          session established for passive notification is due to a “1 BOOT” or “0 BOOTSTRAP” event. 
-          This is problematic in the event that the CPE requires a reboot in order to apply the parameter 
-          change, and will cause the result of this test to be inconclusive. 
-
-TR-069 Consortium                                      1                              TR069 CPE Conformance 
-                                                                                          Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+          Whatever notification means are assigned to the parameter, the session in which the change is later 
+conveyed must contain the event code “4 VALUE CHANGE” in the event list of the Inform RPC. 
+          The CPE may deny the application of Active notification to any parameter (other than those that 
+are Forced Active, [2]) that it decides may be disruptive if active notification were present.    The CPE may 
+not deny the application of passive notification to any parameter ([1]). 
+         Unless a set of parameters can be found that the CPE does not consider disruptive and will update 
+without human interaction (such as statistics or time counters), this test requires manual stimulation of the 
+CPE at some point during the test, particularly for Active notification. 
+
+Procedure: 
+     1.    Analyzing the DUT’s supported data model, choose a set of parameter paths (one for Active 
+         notification, one for Passive notification) that will automatically update or that can be changed 
+          locally on the CPE.  It is recommended to use a partial path for Passive notifications.    Record 
+          these parameters. 
+     2.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     3.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     4.    Schedule a SetParameterAttributes remote procedure call on the DUT with the parameter selected 
+          for Active notification in step 1. 
+     5.    Allow the DUT to send a SetParameterAttributesResponse. 
+     6.    Stimulate the DUT to alter the parameter(s) selected in step 1. 
+     7.    Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer, and analyze the 
+          Inform RPC. 
+     8.    Allow the session to terminate successfully. 
+     9.    Repeat step 3. 
+     10.   Schedule a SetParameterAttributes remote procedure call on the DUT with the parameter selected 
+          for Passive notification in step 1. 
+     11.   Repeat steps 5-6. 
+     12.   Make a ConnectionRequest to the DUT as described in test TR69F.1.1, above. 
+     13.   Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer, and analyze the 
+          Inform RPC. 
+     14.   Allow the session to terminate successfully. 
+
+Test Metrics: 
+     1.    The DUT successfully completes the SetParameterAttributes RPC. 
+     2.    The DUT performs Active notification by immediately initiating a session with the CWMP 
+          Generator/Analyzer. 
+     3.    The Inform RPC made during the Active notification session contains the event code “4 VALUE 
+          CHANGE”.      The parameter changed and their new values are listed in the list of parameters in the 
+          Inform RPC. 
+     4.    The DUT performs Passive notification in its next session with the CWMP Generator Analyzer. 
+          The Inform RPC during this session contains the event code “4 VALUE CHANGE”.               The 
+         parameter changed and their new values are listed in the list of parameters in the Inform RPC. 
+
+Possible Problems: 
+     1.    According to [1], the CPE may choose not to include the list of changed parameters if the first 
+          session established for passive notification is due to a “1 BOOT” or “0 BOOTSTRAP” event. 
+          This is problematic in the event that the CPE requires a reboot in order to apply the parameter 
+          change, and will cause the result of this test to be inconclusive. 
+
+TR-069 Consortium                                      1                              TR069 CPE Conformance 
+                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 28-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-Test TR69.1.11:     Firmware Download 
-
-Purpose:    This test is designed to verify that the DUT can perform a Download, in particular a firmware 
-download, when the ACS specifies a delay before which it should occur and in the event the device is 
-rebooted during this time. 
-
-References: 
-          [1]        Broadband Forum TR-069 
-
-Resource Requirements: 
-          •    CPE (DUT) 
-          •    CWMP Generator/Analyzer 
-          •    File Server 
-
-Test setup: 
-          1.  Test Setup 1 or 2 
-
-Discussion: 
-          According to [1], the CWMP system can use the Download RPC to upgrade firmware on the CPE. 
-The firmware image can be downloaded through any common means (such as FTP or HTTP). 
-          The CPE can respond to the Download RPC in one of three ways, as defined in [1]: 
-
-     1.    It may issue a DownloadResponse with the Status argument set to 0, indicating that the download 
-          was a success, or 1 if it was a failure. These test metrics are designed to test for a successful 
-          firmware download. 
-     2.    It may call the TransferComplete RPC on the ACS later in the same session.        The 
-          DownloadResponse in this case has a Status argument of 1. 
-     3.    It may call the TransferComplete RPC on the ACS later in the next session.       The 
-          DownloadResponse in this case has a Status argument of 1. 
-
-In firmware/software upgrade situations, the Download RPC is only considered successful if the new image 
-is successfully installed and applied.   Since this is the most vigorous use of the Download RPC, it is 
-sufficient to test the DUT’s ability to use the RPC. 
-
-When the Download is complete, the CPE makes a TransferComplete call on the ACS.               If it is doing so in a 
-new session (3, above), it indicates its intent to call TransferComplete in its Inform with the event code “7 
-TRANSFER COMPLETE”.             Since in this case the TransferComplete is being called because of the use of 
-the Download RPC, it also includes the “M Download” event. 
-
-The ACS can specify the DelaySeconds argument to instruct the CPE to perform the download after a 
-certain period of time.  This is usually used to perform the download a specific time specified by the user of 
-the ACS.   When this delay is specified, the Download must occur after the delay has elapsed.         If the CPE 
-cannot perform the download, it must do so within an hour of the delay time. 
-
-This test is designed to test the scenario in which the device is rebooted after the Download RPC is called, 
-but before DelaySeconds is reached, to ensure that the DUT still performs the download.          To accomplish 
-this, additional firmware is required for the DUT, one in which no changes to the CWMP stack are 
-implemented but the version number or name has changed in some way that can be indicated to the CWMP 
-Analyzer.   The firmware upgrade is performed twice, once as a baseline to ensure that the upgrade can be 
-performed, and secondly after a reboot is applied during the delay. 
-
-For the purpose of this test, it is assumed that an external server is part of the test setup that allows access to 
-the firmware image.    In real world scenarios, the ACS may also act as the firmware repository and hence 
-make the file available through FTP or HTTP. 
-
-TR-069 Consortium                                       1                               TR069 CPE Conformance 
-                                                                                            Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+Test TR69.1.11:     Firmware Download 
+
+Purpose:    This test is designed to verify that the DUT can perform a Download, in particular a firmware 
+download, when the ACS specifies a delay before which it should occur and in the event the device is 
+rebooted during this time. 
+
+References: 
+          [1]        Broadband Forum TR-069 
+
+Resource Requirements: 
+          •    CPE (DUT) 
+          •    CWMP Generator/Analyzer 
+          •    File Server 
+
+Test setup: 
+          1.  Test Setup 1 or 2 
+
+Discussion: 
+          According to [1], the CWMP system can use the Download RPC to upgrade firmware on the CPE. 
+The firmware image can be downloaded through any common means (such as FTP or HTTP). 
+          The CPE can respond to the Download RPC in one of three ways, as defined in [1]: 
+
+     1.    It may issue a DownloadResponse with the Status argument set to 0, indicating that the download 
+          was a success, or 1 if it was a failure. These test metrics are designed to test for a successful 
+          firmware download. 
+     2.    It may call the TransferComplete RPC on the ACS later in the same session.        The 
+          DownloadResponse in this case has a Status argument of 1. 
+     3.    It may call the TransferComplete RPC on the ACS later in the next session.       The 
+          DownloadResponse in this case has a Status argument of 1. 
+
+In firmware/software upgrade situations, the Download RPC is only considered successful if the new image 
+is successfully installed and applied.   Since this is the most vigorous use of the Download RPC, it is 
+sufficient to test the DUT’s ability to use the RPC. 
+
+When the Download is complete, the CPE makes a TransferComplete call on the ACS.               If it is doing so in a 
+new session (3, above), it indicates its intent to call TransferComplete in its Inform with the event code “7 
+TRANSFER COMPLETE”.             Since in this case the TransferComplete is being called because of the use of 
+the Download RPC, it also includes the “M Download” event. 
+
+The ACS can specify the DelaySeconds argument to instruct the CPE to perform the download after a 
+certain period of time.  This is usually used to perform the download a specific time specified by the user of 
+the ACS.   When this delay is specified, the Download must occur after the delay has elapsed.         If the CPE 
+cannot perform the download, it must do so within an hour of the delay time. 
+
+This test is designed to test the scenario in which the device is rebooted after the Download RPC is called, 
+but before DelaySeconds is reached, to ensure that the DUT still performs the download.          To accomplish 
+this, additional firmware is required for the DUT, one in which no changes to the CWMP stack are 
+implemented but the version number or name has changed in some way that can be indicated to the CWMP 
+Analyzer.   The firmware upgrade is performed twice, once as a baseline to ensure that the upgrade can be 
+performed, and secondly after a reboot is applied during the delay. 
+
+For the purpose of this test, it is assumed that an external server is part of the test setup that allows access to 
+the firmware image.    In real world scenarios, the ACS may also act as the firmware repository and hence 
+make the file available through FTP or HTTP. 
+
+TR-069 Consortium                                       1                               TR069 CPE Conformance 
+                                                                                            Test Suite (TR69) v1.0 
 
 ----------------------- Page 29-----------------------
 
-                                  The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-Procedure: 
-     1.    Record the current firmware version of the DUT. 
-     2.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     3.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     4.   Schedule a Download remote procedure call on the DUT, specifying the filename to be used and 
-         the server URL, with DelaySeconds set to 0. 
-     5.   Allow the DUT to send a DownloadResponse. 
-     6.   Allow the DUT to perform the firmware download. 
-     7.   If the DUT must reboot to apply the image (and therefore issue a TransferComplete call), wait for 
-         the following: 
-              a.    The DUT to Reboot 
-              b.    The DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
-              c.    The DUT to make an Inform remote procedure call, with the “7 Transfer Complete” and 
-                   “M Download” event codes. 
-              d.    The DUT to initiate the TransferComplete RPC. 
-     8.   Allow the session to terminate successfully. 
-     9.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
-     10.   Analyze the DUT’s Inform message to ensure that it reports the new firmware version. 
-     11.   Allow the session to terminate successfully. 
-     12.   Repeat steps 3-5 with DelaySeconds set to a large value, default 300 seconds. 
-     13.   Schedule a Reboot RPC on the DUT or physically restart the device. 
-     14.   Allow the DUT to perform the firmware download when the value selected in step 11 has expired. 
-     15.   Repeat steps 7-11. 
-
-Test Metrics: 
-     1.    The DUT successfully performs the initial firmware upgrade. 
-     2.   The DUTs Inform messages contain the correct event codes. 
-     3.   The DUT successfully performs the firmware upgrade across reboot. 
-
-Possible Problems: 
-     1.    It may not be possible to obtain firmware upgrade files that change the version number on the 
-         DUT while maintaining the actual CWMP stack version. 
-     2.   The firmware upgrade may cause the device to become unstable.  This will cause the results of this 
-         test to be inconclusive. 
-
-TR-069 Consortium                                     1                              TR069 CPE Conformance 
-                                                                                         Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+Procedure: 
+     1.    Record the current firmware version of the DUT. 
+     2.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     3.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     4.   Schedule a Download remote procedure call on the DUT, specifying the filename to be used and 
+         the server URL, with DelaySeconds set to 0. 
+     5.   Allow the DUT to send a DownloadResponse. 
+     6.   Allow the DUT to perform the firmware download. 
+     7.   If the DUT must reboot to apply the image (and therefore issue a TransferComplete call), wait for 
+         the following: 
+              a.    The DUT to Reboot 
+              b.    The DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+              c.    The DUT to make an Inform remote procedure call, with the “7 Transfer Complete” and 
+                   “M Download” event codes. 
+              d.    The DUT to initiate the TransferComplete RPC. 
+     8.   Allow the session to terminate successfully. 
+     9.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     10.   Analyze the DUT’s Inform message to ensure that it reports the new firmware version. 
+     11.   Allow the session to terminate successfully. 
+     12.   Repeat steps 3-5 with DelaySeconds set to a large value, default 300 seconds. 
+     13.   Schedule a Reboot RPC on the DUT or physically restart the device. 
+     14.   Allow the DUT to perform the firmware download when the value selected in step 11 has expired. 
+     15.   Repeat steps 7-11. 
+
+Test Metrics: 
+     1.    The DUT successfully performs the initial firmware upgrade. 
+     2.   The DUTs Inform messages contain the correct event codes. 
+     3.   The DUT successfully performs the firmware upgrade across reboot. 
+
+Possible Problems: 
+     1.    It may not be possible to obtain firmware upgrade files that change the version number on the 
+         DUT while maintaining the actual CWMP stack version. 
+     2.   The firmware upgrade may cause the device to become unstable.  This will cause the results of this 
+         test to be inconclusive. 
+
+TR-069 Consortium                                     1                              TR069 CPE Conformance 
+                                                                                         Test Suite (TR69) v1.0 
 
 ----------------------- Page 30-----------------------
 
-                                   The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-Group 2 – CWMP Use Case Functionality 
-
-         The tests in Group Two are designed to test specific use cases of CWMP.        These use cases are 
-device specific; that is, the use cases will apply to a particular device type with a data model that is 
-specified in one or more documents that accompany TR-069 [1].        In this version of the test suite, most of 
-the tests are geared towards InternetGatewayDevices (devices that implement Broadband Forum TR-098 
-[3]). These tests are conditional on the support of particular profiles from these published data models.     If 
-the device does not support these profiles, these tests can be considered optional. 
-         These tests assume that the underlying functionality in Group One has been exercised enough in 
-order to accomplish the tests in Group Two.     Problems may occur at the protocol level, and those errors 
-will be recorded in the failures of these tests. It is assumed that an underlying level of compliance (e.g., 
-XML that is valid according to the schemas provided in [1], [2], and [3]) exists for communication to 
-occur.  The success metrics of these tests DO NOT include these assumptions, and do not provide for 
-normative protocol compliance – they are meant to exercise the DUT’s ability to accomplish basic CWMP 
-tasks. Any issues that arise due to obvious non-compliance will be recorded as part of the test reporting 
-process. 
-
-TR-069 Consortium                                     2                              TR069 CPE Conformance 
-                                                                                          Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+Group 2 – CWMP Use Case Functionality 
+
+         The tests in Group Two are designed to test specific use cases of CWMP.        These use cases are 
+device specific; that is, the use cases will apply to a particular device type with a data model that is 
+specified in one or more documents that accompany TR-069 [1].        In this version of the test suite, most of 
+the tests are geared towards InternetGatewayDevices (devices that implement Broadband Forum TR-098 
+[3]). These tests are conditional on the support of particular profiles from these published data models.     If 
+the device does not support these profiles, these tests can be considered optional. 
+         These tests assume that the underlying functionality in Group One has been exercised enough in 
+order to accomplish the tests in Group Two.     Problems may occur at the protocol level, and those errors 
+will be recorded in the failures of these tests. It is assumed that an underlying level of compliance (e.g., 
+XML that is valid according to the schemas provided in [1], [2], and [3]) exists for communication to 
+occur.  The success metrics of these tests DO NOT include these assumptions, and do not provide for 
+normative protocol compliance – they are meant to exercise the DUT’s ability to accomplish basic CWMP 
+tasks. Any issues that arise due to obvious non-compliance will be recorded as part of the test reporting 
+process. 
+
+TR-069 Consortium                                     2                              TR069 CPE Conformance 
+                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 31-----------------------
 
-                                    The University of New Hampshire 
-                                        InterOperability Laboratory 
-
-Test TR69.2.1:     Initial Provisioning Test 
-
-Purpose:     This test is designed to verify that the DUT can successfully connect to the network, 
-communicate with the ACS for the first time, and undergo some baseline initial provisioning. 
-
-References: 
-          [1]        Broadband Forum TR-069 Amendment 2 
-          [3]        Broadband Forum TR-098 
-
-Resource Requirements: 
-          •    CPE (DUT) 
-          •    CWMP Generator/Analyzer 
-
-Test setup: 
-          1.    Test Setup 1 or 2 
-
-Discussion: 
-          One use case of the CPE WAN Management Protocol is to allow those deploying customer 
-premises equipment to remotely provision parameters on the CPE in order to set up a user’s home network 
-and internet access.   The parameters for provisioning of the home gateway (or IGD, Internet Gateway 
-Device) are specified in Broadband Forum TR-098 [2]. 
-          When a CPE first contacts the ACS, it must initiate a session containing the “0 BOOTSTRAP” 
-event code.   Unless the CPE has failed to contact the ACS for this purpose and has accumulated other 
-events, no other event codes can be included with the BOOTSTRAP event.              This initial Inform instructs the 
-ACS that the CPE has contacted it for the first time and should undergo initial provisioning. 
-          The particular objects and parameters altered during initial provisioning will vary from 
-deployment to deployment.      This test suggests a set of parameters that may or may not be available on the 
-CPE but are presumed to be supported by an Internet Gateway Device or are convenient for test setup 
-purposes.   For example, many deployments may utilize the WANPPPConnection object, while for test 
-setup purposes WANIPConnection may be more appropriate, and a static WANIPConnection can be better 
-exercised than one whose address is automatically configured. 
-          This test attempts the following functions: 
-
-                    1.    Set the Connection Request username and password. 
-                    2.    Set the DUT to accept management of upgrades only from the ACS. 
-                    3.    Set the network time parameters of the DUT. 
-                    4.    Read the current WANConnectionDevice table to see what the main 
-                         WANConnectionDevice (the one that is communicating with the ACS) has been set 
-                         to. 
-                    5.    Create a new WANConnectionDevice, with its own LinkConfig and 
-                         WANIPConnection. 
-                    6.    Set the WANIPConnection’s parameters. 
-
-          Steps 5 and 6 are dependent on the type of physical interface used for the WAN port of the DUT. 
-For DSL, this would include the WANDSLLinkConfig or WANPTMLinkConfig.                      Other 
-WANConnectionDevice configuration objects can be used for this test as well. 
-           At minimum, this test configures the following generic parameters based on Broadband Forum 
-TR-098 [3]: 
-
-Parameter (prefixed with)                                   Value 
-InternetGatewayDevice. 
-ManagementServer.ConnectionRequestUsername                   Cwmpuser 
-ManagementServer.ConnectionRequestPassword                   Password 
-ManagementServer.UpgradesManaged                             True 
-Time.Enable                                                  True 
-
-TR-069 Consortium                                        2                               TR069 CPE Conformance 
-                                                                                             Test Suite (TR69) v1.0 
+                                    The University of New Hampshire 
+                                        InterOperability Laboratory 
+
+Test TR69.2.1:     Initial Provisioning Test 
+
+Purpose:     This test is designed to verify that the DUT can successfully connect to the network, 
+communicate with the ACS for the first time, and undergo some baseline initial provisioning. 
+
+References: 
+          [1]        Broadband Forum TR-069 Amendment 2 
+          [3]        Broadband Forum TR-098 
+
+Resource Requirements: 
+          •    CPE (DUT) 
+          •    CWMP Generator/Analyzer 
+
+Test setup: 
+          1.    Test Setup 1 or 2 
+
+Discussion: 
+          One use case of the CPE WAN Management Protocol is to allow those deploying customer 
+premises equipment to remotely provision parameters on the CPE in order to set up a user’s home network 
+and internet access.   The parameters for provisioning of the home gateway (or IGD, Internet Gateway 
+Device) are specified in Broadband Forum TR-098 [2]. 
+          When a CPE first contacts the ACS, it must initiate a session containing the “0 BOOTSTRAP” 
+event code.   Unless the CPE has failed to contact the ACS for this purpose and has accumulated other 
+events, no other event codes can be included with the BOOTSTRAP event.              This initial Inform instructs the 
+ACS that the CPE has contacted it for the first time and should undergo initial provisioning. 
+          The particular objects and parameters altered during initial provisioning will vary from 
+deployment to deployment.      This test suggests a set of parameters that may or may not be available on the 
+CPE but are presumed to be supported by an Internet Gateway Device or are convenient for test setup 
+purposes.   For example, many deployments may utilize the WANPPPConnection object, while for test 
+setup purposes WANIPConnection may be more appropriate, and a static WANIPConnection can be better 
+exercised than one whose address is automatically configured. 
+          This test attempts the following functions: 
+
+                    1.    Set the Connection Request username and password. 
+                    2.    Set the DUT to accept management of upgrades only from the ACS. 
+                    3.    Set the network time parameters of the DUT. 
+                    4.    Read the current WANConnectionDevice table to see what the main 
+                         WANConnectionDevice (the one that is communicating with the ACS) has been set 
+                         to. 
+                    5.    Create a new WANConnectionDevice, with its own LinkConfig and 
+                         WANIPConnection. 
+                    6.    Set the WANIPConnection’s parameters. 
+
+          Steps 5 and 6 are dependent on the type of physical interface used for the WAN port of the DUT. 
+For DSL, this would include the WANDSLLinkConfig or WANPTMLinkConfig.                      Other 
+WANConnectionDevice configuration objects can be used for this test as well. 
+           At minimum, this test configures the following generic parameters based on Broadband Forum 
+TR-098 [3]: 
+
+Parameter (prefixed with)                                   Value 
+InternetGatewayDevice. 
+ManagementServer.ConnectionRequestUsername                   Cwmpuser 
+ManagementServer.ConnectionRequestPassword                   Password 
+ManagementServer.UpgradesManaged                             True 
+Time.Enable                                                  True 
+
+TR-069 Consortium                                        2                               TR069 CPE Conformance 
+                                                                                             Test Suite (TR69) v1.0 
 
 ----------------------- Page 32-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-Time.NTPServer1                                            <public NTP URL> 
-Time.LocalTimeZoneName                                     POSIX Encoded Time Zone of the DUTs location 
-                          Table 2.1.1 – Base parameters for Initial Provisioning Test 
-
-For an ATM DSL based gateway: 
-
-Parameter (prefixed with)                                                      Value 
-InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{i}. 
-WANDSLLinkConfig.Enable                                                         True 
-WANDSLLinkConfig.LinkType                                                       “EoA” 
-WANDSLLinkConfig.DestinationAddress                                             “PVC:0/38” 
-WANDSLLinkConfig.ATMEncapsulation                                               “LLC” 
-WANDSLLinkConfig.ATMQoS                                                         “UBR” 
-               Table 2.1.2 – ATM DSL based gateway parameters for Initial Provisioning Test 
-
-For a PTM DSL based gateway or Ethernet WAN based gateways, the associated WANPTMLinkConfig or 
-WANEthernetLinkConfig simply needs to be enabled, while the associated other LinkConfig objects are 
-disabled. 
-
-Once this WANConnecitonDevice is created and configured, an associated WANIPConnection can be 
-created with the following parameters: 
-
-Parameter (prefixed with)                                                      Value 
-InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{i}. 
-WANIPConnection. 
-Enable                                                                           True 
-ConnectionType                                                                   “IP_Routed” 
-Name                                                                            “Test_Interface” 
-AutoDisconnectTime                                                              0 
-IdleDisconnectTime                                                               0 
-NATEnabled                                                                      True 
-AddressingType                                                                  Static 
-ExternalIPAddress                                                                <IP Address appropriate to test 
-                                                                               network> 
-SubnetMask                                                                       <Subnet mask appropriate to test 
-                                                                               network> 
-DefaultGateway                                                                  <Default gateway appropriate to test 
-                                                                               network> 
-DNSEnabled                                                                       False* 
-ConnectionTrigger                                                                “AlwaysOn” 
-                  Table 2.1.3 – WANIPConnection parameters for Initial Provisioning Test 
-
-*It is assumed that the WANIPConnection used for CWMP will be the interface that DNS queries are sent 
-through. 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
-     3.    Allow the DUT to make an Inform RPC including the “0 BOOTSTRAP” event. 
-     4.    Schedule a SetParameterValues RPC on the DUT with the parameters and values contained in 
-          Table 2.1.1. 
-     5.    Allow the DUT to send a SetParameterValuesResponse. 
-     6.    Allow the session to terminate successfully. 
-     7.    Schedule a GetParameterValues RPC on the .ManagementServer., .Time., and .WANDevice. 
-          partial paths. 
-
-TR-069 Consortium                                      2                              TR069 CPE Conformance 
-                                                                                          Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+Time.NTPServer1                                            <public NTP URL> 
+Time.LocalTimeZoneName                                     POSIX Encoded Time Zone of the DUTs location 
+                          Table 2.1.1 – Base parameters for Initial Provisioning Test 
+
+For an ATM DSL based gateway: 
+
+Parameter (prefixed with)                                                      Value 
+InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{i}. 
+WANDSLLinkConfig.Enable                                                         True 
+WANDSLLinkConfig.LinkType                                                       “EoA” 
+WANDSLLinkConfig.DestinationAddress                                             “PVC:0/38” 
+WANDSLLinkConfig.ATMEncapsulation                                               “LLC” 
+WANDSLLinkConfig.ATMQoS                                                         “UBR” 
+               Table 2.1.2 – ATM DSL based gateway parameters for Initial Provisioning Test 
+
+For a PTM DSL based gateway or Ethernet WAN based gateways, the associated WANPTMLinkConfig or 
+WANEthernetLinkConfig simply needs to be enabled, while the associated other LinkConfig objects are 
+disabled. 
+
+Once this WANConnecitonDevice is created and configured, an associated WANIPConnection can be 
+created with the following parameters: 
+
+Parameter (prefixed with)                                                      Value 
+InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{i}. 
+WANIPConnection. 
+Enable                                                                           True 
+ConnectionType                                                                   “IP_Routed” 
+Name                                                                            “Test_Interface” 
+AutoDisconnectTime                                                              0 
+IdleDisconnectTime                                                               0 
+NATEnabled                                                                      True 
+AddressingType                                                                  Static 
+ExternalIPAddress                                                                <IP Address appropriate to test 
+                                                                               network> 
+SubnetMask                                                                       <Subnet mask appropriate to test 
+                                                                               network> 
+DefaultGateway                                                                  <Default gateway appropriate to test 
+                                                                               network> 
+DNSEnabled                                                                       False* 
+ConnectionTrigger                                                                “AlwaysOn” 
+                  Table 2.1.3 – WANIPConnection parameters for Initial Provisioning Test 
+
+*It is assumed that the WANIPConnection used for CWMP will be the interface that DNS queries are sent 
+through. 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+     3.    Allow the DUT to make an Inform RPC including the “0 BOOTSTRAP” event. 
+     4.    Schedule a SetParameterValues RPC on the DUT with the parameters and values contained in 
+          Table 2.1.1. 
+     5.    Allow the DUT to send a SetParameterValuesResponse. 
+     6.    Allow the session to terminate successfully. 
+     7.    Schedule a GetParameterValues RPC on the .ManagementServer., .Time., and .WANDevice. 
+          partial paths. 
+
+TR-069 Consortium                                      2                              TR069 CPE Conformance 
+                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 33-----------------------
 
-                                  The University of New Hampshire 
-                                      InterOperability Laboratory 
-
-     8.   Allow the DUT to send a GetParameterValuesResponse. 
-     9.   Verify that the parameters set in step 4 have been changed. 
-     10.   Record the existing WANConnectionDevice objects. 
-     11.   Make a Connection Request on the DUT using the new values for username and password. 
-     12.   Allow the DUT to initiate a CMWP session with the CWMP Generator/Analyzer and make an 
-         Inform RPC with the “6 CONNECTION REQUEST” event. 
-     13.   Schedule an AddObject RPC on the 
-         InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice object, where {i} is the existing 
-         WANDevice object instance discovered in step 10. 
-     14.   All the DUT to send an AddObjectResponse and reboot if necessary. 
-     15.   Schedule a SetParameterValues RPC on the DUT with the parameters and values specified in the 
-         appropriate LinkConfig object in Table 2.1.2. 
-     16.   Repeat step 5. 
-     17.   Schedule an AddObject RPC on the 
-         InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{j}.WANIPConnection. object, 
-         where {i} is the existing WANDevice object instance discovered in step 10, and {j} is the 
-         WANConnectionDevice object instance discovered in step 14. 
-     18.   Repeat step14. 
-     19.   Schedule a SetParameterValues RPC on the DUT with the parameters and values specified in the 
-         appropriate LinkConfig object in Table 2.1.3. 
-     20.  Repeat step 5. 
-     21.  Schedule a GetParameterValues RPC on the .WANDevice.{i}.WANConnectionDevice.{j}. partial 
-         path. 
-     22.  Repeat step 8. 
-
-Test Metrics: 
-     1.    The DUT is able to provision the parameters in Table x. 
-     2.   The DUT accepts a Connection Request with the new username and password. 
-     3.   The DUT is able to create a new WANConnectionDevice object. 
-     4.   The DUT is able to provision the parameters in Table y. 
-     5.   The DUT is able to create a new WANIPConnection. 
-     6.   The DUT is able to provision the parameters in Table z. 
-
-Possible Problems: 
-     1.    The DUT may not support the use of the WANIPConnection object.         If this is the case, treat these 
-         metrics as optional. 
-     2.   The DUT may not correctly route CWMP traffic upon the creation of a new WANIPConnection. 
-
-TR-069 Consortium                                     2                              TR069 CPE Conformance 
-                                                                                         Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                      InterOperability Laboratory 
+
+     8.   Allow the DUT to send a GetParameterValuesResponse. 
+     9.   Verify that the parameters set in step 4 have been changed. 
+     10.   Record the existing WANConnectionDevice objects. 
+     11.   Make a Connection Request on the DUT using the new values for username and password. 
+     12.   Allow the DUT to initiate a CMWP session with the CWMP Generator/Analyzer and make an 
+         Inform RPC with the “6 CONNECTION REQUEST” event. 
+     13.   Schedule an AddObject RPC on the 
+         InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice object, where {i} is the existing 
+         WANDevice object instance discovered in step 10. 
+     14.   All the DUT to send an AddObjectResponse and reboot if necessary. 
+     15.   Schedule a SetParameterValues RPC on the DUT with the parameters and values specified in the 
+         appropriate LinkConfig object in Table 2.1.2. 
+     16.   Repeat step 5. 
+     17.   Schedule an AddObject RPC on the 
+         InternetGatewayDevice.WANDevice.{i}.WANConnectionDevice.{j}.WANIPConnection. object, 
+         where {i} is the existing WANDevice object instance discovered in step 10, and {j} is the 
+         WANConnectionDevice object instance discovered in step 14. 
+     18.   Repeat step14. 
+     19.   Schedule a SetParameterValues RPC on the DUT with the parameters and values specified in the 
+         appropriate LinkConfig object in Table 2.1.3. 
+     20.  Repeat step 5. 
+     21.  Schedule a GetParameterValues RPC on the .WANDevice.{i}.WANConnectionDevice.{j}. partial 
+         path. 
+     22.  Repeat step 8. 
+
+Test Metrics: 
+     1.    The DUT is able to provision the parameters in Table x. 
+     2.   The DUT accepts a Connection Request with the new username and password. 
+     3.   The DUT is able to create a new WANConnectionDevice object. 
+     4.   The DUT is able to provision the parameters in Table y. 
+     5.   The DUT is able to create a new WANIPConnection. 
+     6.   The DUT is able to provision the parameters in Table z. 
+
+Possible Problems: 
+     1.    The DUT may not support the use of the WANIPConnection object.         If this is the case, treat these 
+         metrics as optional. 
+     2.   The DUT may not correctly route CWMP traffic upon the creation of a new WANIPConnection. 
+
+TR-069 Consortium                                     2                              TR069 CPE Conformance 
+                                                                                         Test Suite (TR69) v1.0 
 
 ----------------------- Page 34-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-Test TR69.2.2:    IP Ping Diagnostics Test 
-
-Purpose:    This test is designed to verify that the DUT can successfully perform an IP Ping Diagnostics 
-Test as defined in Broadband Forum TR-098 [3]. 
-
-References: 
-          [1]       Broadband Forum TR-069 Amendment 2 
-          [3]       Broadband Forum TR-098 
-          [4]       IETF RFC 792 
-
-Resource Requirements: 
-          •   CPE (DUT) 
-          •   CWMP Generator/Analyzer 
-
-Test setup: 
-          1.    Test Setup 1 or 2 
-
-Discussion: 
-          Broadband Forum TR-098 [3] defines an object and set of parameters for performing a simple 
-diagnostics test utilizing the ICMP [4] based “ping” application.     The test is initiated by the ACS using a 
-SetParameterValues remote procedure call that changes the value of the DiagnosticsState parameter in the 
-IPPingDiagnostics object to a value of “Requested”.      The CPE then performs the diagnostic test; generally 
-after the CWMP session terminates successfully. 
-          This test uses the following values for the write-enabled parameters in the IPPingDiagnostics 
-object: 
-          1.    Host: set to the IP address of the CWMP Analyzer 
-          2.   NumberofRepetitions: 10 
-          3.   Timeout: 1000 
-          4.   DataBlockSize: 64 
-          5.   DSCP: 0 
-
-          Upon conclusion of the test, the CPE initiates a CWMP session with an event code of “8 
-DIAGNOSTICS COMPLETE” in the Inform arguments. 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
-     3.    Schedule a SetParameterValues call to be made on the 
-          “InternetGatewayDevice.IPPingDiagnostics.” object on the DUT, changing the value of the 
-          “DiagnosticsState” parameter to “Requested”. 
-     4.    Allow the DUT to send a SetParameterValuesResponse. 
-     5.    Allow the session to terminate successfully. 
-     6.    Allow the DUT to perform the IP Ping Diagnostics Test. 
-     7.    Allow the DUT to initiate a CWMP connection with the CWMP Analyzer to report the completion 
-          of the diagnostics test. 
-     8.    Schedule a GetParameterValues call to be made on the 
-          “InternetGatewayDevice.IPPingDiagnostics.” object on the DUT. 
-     9.    Allow the CPE to send a GetParameterValuesResponse. 
-     10.   Record the parameter values of the IPPingDiagnostics object. 
-
-Test Metrics: 
-     1.    The DUT is able to initiate an IP Ping Diagnostics test. 
-     2.    The DUT updates the results of the IP Ping Diagnostics test. 
-
-Possible Problems: 
-
-TR-069 Consortium                                      2                               TR069 CPE Conformance 
-                                                                                           Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+Test TR69.2.2:    IP Ping Diagnostics Test 
+
+Purpose:    This test is designed to verify that the DUT can successfully perform an IP Ping Diagnostics 
+Test as defined in Broadband Forum TR-098 [3]. 
+
+References: 
+          [1]       Broadband Forum TR-069 Amendment 2 
+          [3]       Broadband Forum TR-098 
+          [4]       IETF RFC 792 
+
+Resource Requirements: 
+          •   CPE (DUT) 
+          •   CWMP Generator/Analyzer 
+
+Test setup: 
+          1.    Test Setup 1 or 2 
+
+Discussion: 
+          Broadband Forum TR-098 [3] defines an object and set of parameters for performing a simple 
+diagnostics test utilizing the ICMP [4] based “ping” application.     The test is initiated by the ACS using a 
+SetParameterValues remote procedure call that changes the value of the DiagnosticsState parameter in the 
+IPPingDiagnostics object to a value of “Requested”.      The CPE then performs the diagnostic test; generally 
+after the CWMP session terminates successfully. 
+          This test uses the following values for the write-enabled parameters in the IPPingDiagnostics 
+object: 
+          1.    Host: set to the IP address of the CWMP Analyzer 
+          2.   NumberofRepetitions: 10 
+          3.   Timeout: 1000 
+          4.   DataBlockSize: 64 
+          5.   DSCP: 0 
+
+          Upon conclusion of the test, the CPE initiates a CWMP session with an event code of “8 
+DIAGNOSTICS COMPLETE” in the Inform arguments. 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+     3.    Schedule a SetParameterValues call to be made on the 
+          “InternetGatewayDevice.IPPingDiagnostics.” object on the DUT, changing the value of the 
+          “DiagnosticsState” parameter to “Requested”. 
+     4.    Allow the DUT to send a SetParameterValuesResponse. 
+     5.    Allow the session to terminate successfully. 
+     6.    Allow the DUT to perform the IP Ping Diagnostics Test. 
+     7.    Allow the DUT to initiate a CWMP connection with the CWMP Analyzer to report the completion 
+          of the diagnostics test. 
+     8.    Schedule a GetParameterValues call to be made on the 
+          “InternetGatewayDevice.IPPingDiagnostics.” object on the DUT. 
+     9.    Allow the CPE to send a GetParameterValuesResponse. 
+     10.   Record the parameter values of the IPPingDiagnostics object. 
+
+Test Metrics: 
+     1.    The DUT is able to initiate an IP Ping Diagnostics test. 
+     2.    The DUT updates the results of the IP Ping Diagnostics test. 
+
+Possible Problems: 
+
+TR-069 Consortium                                      2                               TR069 CPE Conformance 
+                                                                                           Test Suite (TR69) v1.0 
 
 ----------------------- Page 35-----------------------
 
-                                 The University of New Hampshire 
-                                    InterOperability Laboratory 
-
-    1.    The CPE and ACS cannot establish a transport layer connection. 
-    2.    The CPE and ACS cannot initiate a CWMP session. 
-    3.    The CPE or ACS has an invalid CWMP message structure. 
-    4.    The CPE cannot perform the ping test correctly. 
-
-TR-069 Consortium                                  2                             TR069 CPE Conformance 
-                                                                                     Test Suite (TR69) v1.0 
+                                 The University of New Hampshire 
+                                    InterOperability Laboratory 
+
+    1.    The CPE and ACS cannot establish a transport layer connection. 
+    2.    The CPE and ACS cannot initiate a CWMP session. 
+    3.    The CPE or ACS has an invalid CWMP message structure. 
+    4.    The CPE cannot perform the ping test correctly. 
+
+TR-069 Consortium                                  2                             TR069 CPE Conformance 
+                                                                                     Test Suite (TR69) v1.0 
 
 ----------------------- Page 36-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-Test TR69.2.3:    DSL Diagnostics Test 
-
-Purpose:    This test is designed to verify that the DUT can successfully perform an IP Ping Diagnostics 
-Test as defined in Broadband Forum TR-098 [3]. 
-
-References: 
-          [1]       Broadband Forum TR-069 Amendment 2 
-          [3]       Broadband Forum TR-098 
-          [4]       IETF RFC 792 
-
-Resource Requirements: 
-          •   CPE (DUT) 
-          •   CWMP Generator/Analyzer 
-          •   Wireless LAN station 
-
-Test setup: 
-          2.   Test Setup 1 or 2 
-
-Discussion: 
-          Broadband Forum TR-098 [3] defines an object and set of parameters for performing a simple 
-DSL Diagnostics test.    The test is initiated by the ACS using a SetParameterValues remote procedure call 
-that changes the value of the LoopDiagnosticsState parameter in the WANDSLDiagnostics object to a 
-value of “Requested”.    The CPE then performs the diagnostic test; generally after the CWMP session 
-terminates successfully. 
-          Upon conclusion of the test, the CPE initiates a CWMP session with an event code of “8 
-DIAGNOSTICS COMPLETE” in the Inform arguments. 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
-     3.    Schedule a SetParameterValues call to be made on the 
-          “InternetGatewayDevice.WANDevice.{i}.WANDSLDiagnostics.LoopDiagnosticsState” object 
-          on the DUT, changing the value of the “LoopDiagnosticsState” parameter to “Requested”. 
-     4.    Allow the DUT to send a SetParameterValuesResponse. 
-     5.    Allow the session to terminate successfully. 
-     6.    Allow the DUT to perform the DSL Diagnostics Test. 
-     7.    Allow the DUT to initiate a CWMP connection with the CWMP Analyzer to report the completion 
-          of the diagnostics test. 
-     8.    Schedule a GetParameterValues call to be made on the 
-          “InternetGatewayDevice.WANDevice.{i}.WANDSLDiagnostics.LoopDiagnosticsState.” object 
-          on the DUT. 
-     9.    Allow the CPE to send a GetParameterValuesResponse. 
-     10.   Record the parameter values of the LoopDiagnosticsState object. 
-
-Test Metrics: 
-     1.    The DUT is able to initiate an IP Ping Diagnostics test. 
-     2.    The DUT updates the results of the IP Ping Diagnostics test. 
-
-Possible Problems: 
-     5.    The CPE and ACS cannot establish a transport layer connection. 
-     6.    The CPE and ACS cannot initiate a CWMP session. 
-     7.    The CPE or ACS has an invalid CWMP message structure. 
-     8.    The CPE cannot perform the ping test correctly. 
-
-TR-069 Consortium                                      2                               TR069 CPE Conformance 
-                                                                                           Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+Test TR69.2.3:    DSL Diagnostics Test 
+
+Purpose:    This test is designed to verify that the DUT can successfully perform an IP Ping Diagnostics 
+Test as defined in Broadband Forum TR-098 [3]. 
+
+References: 
+          [1]       Broadband Forum TR-069 Amendment 2 
+          [3]       Broadband Forum TR-098 
+          [4]       IETF RFC 792 
+
+Resource Requirements: 
+          •   CPE (DUT) 
+          •   CWMP Generator/Analyzer 
+          •   Wireless LAN station 
+
+Test setup: 
+          2.   Test Setup 1 or 2 
+
+Discussion: 
+          Broadband Forum TR-098 [3] defines an object and set of parameters for performing a simple 
+DSL Diagnostics test.    The test is initiated by the ACS using a SetParameterValues remote procedure call 
+that changes the value of the LoopDiagnosticsState parameter in the WANDSLDiagnostics object to a 
+value of “Requested”.    The CPE then performs the diagnostic test; generally after the CWMP session 
+terminates successfully. 
+          Upon conclusion of the test, the CPE initiates a CWMP session with an event code of “8 
+DIAGNOSTICS COMPLETE” in the Inform arguments. 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+     3.    Schedule a SetParameterValues call to be made on the 
+          “InternetGatewayDevice.WANDevice.{i}.WANDSLDiagnostics.LoopDiagnosticsState” object 
+          on the DUT, changing the value of the “LoopDiagnosticsState” parameter to “Requested”. 
+     4.    Allow the DUT to send a SetParameterValuesResponse. 
+     5.    Allow the session to terminate successfully. 
+     6.    Allow the DUT to perform the DSL Diagnostics Test. 
+     7.    Allow the DUT to initiate a CWMP connection with the CWMP Analyzer to report the completion 
+          of the diagnostics test. 
+     8.    Schedule a GetParameterValues call to be made on the 
+          “InternetGatewayDevice.WANDevice.{i}.WANDSLDiagnostics.LoopDiagnosticsState.” object 
+          on the DUT. 
+     9.    Allow the CPE to send a GetParameterValuesResponse. 
+     10.   Record the parameter values of the LoopDiagnosticsState object. 
+
+Test Metrics: 
+     1.    The DUT is able to initiate an IP Ping Diagnostics test. 
+     2.    The DUT updates the results of the IP Ping Diagnostics test. 
+
+Possible Problems: 
+     5.    The CPE and ACS cannot establish a transport layer connection. 
+     6.    The CPE and ACS cannot initiate a CWMP session. 
+     7.    The CPE or ACS has an invalid CWMP message structure. 
+     8.    The CPE cannot perform the ping test correctly. 
+
+TR-069 Consortium                                      2                               TR069 CPE Conformance 
+                                                                                           Test Suite (TR69) v1.0 
 
 ----------------------- Page 37-----------------------
 
-                                   The University of New Hampshire 
-                                       InterOperability Laboratory 
-
-Test TR69.2.4: Wireless LAN Activation and Provisioning Test 
-
-Purpose:    This test is designed to verify that the DUT’s Wireless LAN can be activated and configured 
-using CWMP. 
-
-References: 
-          [1]       Broadband Forum TR-069 Amendment 2 
-          [3]       Broadband Forum TR-098 
-
-Resource Requirements: 
-          •   CPE (DUT) 
-          •   CWMP Generator/Analyzer 
-
-Test setup: 
-          1.    Test Setup 1 or 2 
-
-Discussion: 
-          One use case of the CPE WAN Management Protocol is to allow those deploying customer 
-premises equipment to remotely provision parameters on the CPE in order to set up a user’s home network 
-and internet access.  The parameters for provisioning of the home gateway (or IGD, Internet Gateway 
-Device) are specified in Broadband Forum TR-098 [2].        Due to the ubiquity of wireless LAN technology 
-on customer premises equipment, this test was designed to exercise that functionality.  This test covers CPE 
-that are designed to act as a wireless LAN access point (AP). 
-           A wireless LAN enabled device may support authentication and/or encryption.        The parameters in 
-[2] that this test exercises upon initial setup, and their associated values include: 
-
-Parameter (prefixed with)                                 Value 
-InternetGatewayDevice or Device 
-.LANDevice.{i}. WLANConfiguration.{i} 
-WLANConfiguration.                                         Object to be created if necessary 
-.Enable                                                     True 
-.MaxBitRate                                                 Auto 
-.AutoChannelEnable                                          True 
-.SSID                                                       “Test_Interface” 
-.BeaconAdvertisementEnabled                                 True 
-.SSIDAdvertisementEnabled                                   True 
-.RadioEnabled                                               True 
-                        Table 2.4.1: WLANConifguration Parameters for Initial Setup 
-
-Parameter (prefixed with)                                 Value 
-InternetGatewayDevice or Device 
-.LANDevice.{i}. WLANConfiguration.{i} 
-.BeaconType                                                 WPA 
-.WPAEncryptionModes                                         TKIPEncryption 
-.WPAAuthenticationMode                                      PSKAuthentication 
-.PreSharedKey.{i}.KeyPassphrase                             “password” 
-                            Table 2.4.2: WLANConifguration Parameters for WPA 
-
-TR-069 Consortium                                      2                              TR069 CPE Conformance 
-                                                                                          Test Suite (TR69) v1.0 
+                                   The University of New Hampshire 
+                                       InterOperability Laboratory 
+
+Test TR69.2.4: Wireless LAN Activation and Provisioning Test 
+
+Purpose:    This test is designed to verify that the DUT’s Wireless LAN can be activated and configured 
+using CWMP. 
+
+References: 
+          [1]       Broadband Forum TR-069 Amendment 2 
+          [3]       Broadband Forum TR-098 
+
+Resource Requirements: 
+          •   CPE (DUT) 
+          •   CWMP Generator/Analyzer 
+
+Test setup: 
+          1.    Test Setup 1 or 2 
+
+Discussion: 
+          One use case of the CPE WAN Management Protocol is to allow those deploying customer 
+premises equipment to remotely provision parameters on the CPE in order to set up a user’s home network 
+and internet access.  The parameters for provisioning of the home gateway (or IGD, Internet Gateway 
+Device) are specified in Broadband Forum TR-098 [2].        Due to the ubiquity of wireless LAN technology 
+on customer premises equipment, this test was designed to exercise that functionality.  This test covers CPE 
+that are designed to act as a wireless LAN access point (AP). 
+           A wireless LAN enabled device may support authentication and/or encryption.        The parameters in 
+[2] that this test exercises upon initial setup, and their associated values include: 
+
+Parameter (prefixed with)                                 Value 
+InternetGatewayDevice or Device 
+.LANDevice.{i}. WLANConfiguration.{i} 
+WLANConfiguration.                                         Object to be created if necessary 
+.Enable                                                     True 
+.MaxBitRate                                                 Auto 
+.AutoChannelEnable                                          True 
+.SSID                                                       “Test_Interface” 
+.BeaconAdvertisementEnabled                                 True 
+.SSIDAdvertisementEnabled                                   True 
+.RadioEnabled                                               True 
+                        Table 2.4.1: WLANConifguration Parameters for Initial Setup 
+
+Parameter (prefixed with)                                 Value 
+InternetGatewayDevice or Device 
+.LANDevice.{i}. WLANConfiguration.{i} 
+.BeaconType                                                 WPA 
+.WPAEncryptionModes                                         TKIPEncryption 
+.WPAAuthenticationMode                                      PSKAuthentication 
+.PreSharedKey.{i}.KeyPassphrase                             “password” 
+                            Table 2.4.2: WLANConifguration Parameters for WPA 
+
+TR-069 Consortium                                      2                              TR069 CPE Conformance 
+                                                                                          Test Suite (TR69) v1.0 
 
 ----------------------- Page 38-----------------------
 
-                                  The University of New Hampshire 
-                                     InterOperability Laboratory 
-
-Parameter (prefixed with)                               Value 
-InternetGatewayDevice or Device 
-.LANDevice.{i}. WLANConfiguration.{i} 
-.WEPKeyIndex                                             1 
-.WEPKey                                                  1234567890 
-                           Table 2.4.3: WLANConifguration Parameters for WEP 
-
-Procedure: 
-     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
-     2.   Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
-     3.   Schedule a GetParameterNames RPC on the .WLANConfiguration partial path to ensure the 
-         presence of the parameters in tables 2.4.1 through 2.4.3. 
-     4.   Record the existing WLANConfiguration objects. 
-     5.   Schedule a SetParameterValues RPC on the DUT with the parameters and values contained in 
-         tables 2.4.1 through 2.4.3, depending on the parameters supported. 
-     6.   Allow the DUT to send a SetParameterValuesResponse. 
-     7.   Allow the session to terminate successfully. 
-     8.   Schedule a GetParameterValues RPC on the .WLANConfiguration. partial path. 
-     9.   Allow the DUT to send a GetParameterValuesResponse. 
-     10.   Verify that the parameters set in step 4 have been changed. 
-     11.   Externally verify that a wireless LAN station can connect to the CPE’s AP using the 
-         authentication and/or encryption methods specified. 
-
-Test Metrics: 
-     1.    The DUT is able to provision the parameters in Tables 2.4.1 through 2.4.3, where supported. 
-     2.   The wireless LAN station is able to connect to the CPE’s AP using the newly specified 
-         configuration. 
-
-Possible Problems: 
-     1.    The DUT may not support the use of the WLANConfiguration object.       If this is the case, treat 
-         these metrics as optional. 
-     2.   Interoperability issues may exist with the WLAN station used. 
-
-TR-069 Consortium                                    2                             TR069 CPE Conformance 
-                                                                                       Test Suite (TR69) v1.0 
+                                  The University of New Hampshire 
+                                     InterOperability Laboratory 
+
+Parameter (prefixed with)                               Value 
+InternetGatewayDevice or Device 
+.LANDevice.{i}. WLANConfiguration.{i} 
+.WEPKeyIndex                                             1 
+.WEPKey                                                  1234567890 
+                           Table 2.4.3: WLANConifguration Parameters for WEP 
+
+Procedure: 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.   Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+     3.   Schedule a GetParameterNames RPC on the .WLANConfiguration partial path to ensure the 
+         presence of the parameters in tables 2.4.1 through 2.4.3. 
+     4.   Record the existing WLANConfiguration objects. 
+     5.   Schedule a SetParameterValues RPC on the DUT with the parameters and values contained in 
+         tables 2.4.1 through 2.4.3, depending on the parameters supported. 
+     6.   Allow the DUT to send a SetParameterValuesResponse. 
+     7.   Allow the session to terminate successfully. 
+     8.   Schedule a GetParameterValues RPC on the .WLANConfiguration. partial path. 
+     9.   Allow the DUT to send a GetParameterValuesResponse. 
+     10.   Verify that the parameters set in step 4 have been changed. 
+     11.   Externally verify that a wireless LAN station can connect to the CPE’s AP using the 
+         authentication and/or encryption methods specified. 
+
+Test Metrics: 
+     1.    The DUT is able to provision the parameters in Tables 2.4.1 through 2.4.3, where supported. 
+     2.   The wireless LAN station is able to connect to the CPE’s AP using the newly specified 
+         configuration. 
+
+Possible Problems: 
+     1.    The DUT may not support the use of the WLANConfiguration object.       If this is the case, treat 
+         these metrics as optional. 
+     2.   Interoperability issues may exist with the WLAN station used. 
+
+TR-069 Consortium                                    2                             TR069 CPE Conformance 
+                                                                                       Test Suite (TR69) v1.0 

@@ -1,0 +1,57 @@
+ Test TR69F.1.1:    TCP Connection Request 
+
+!4 Purpose:
+    This test is designed to demonstrate that the DUT can receive a Connection Request over a TCP 
+connection and that it initiates a session based on it. 
+
+!4 References:
+ 
+          [1]       Broadband Forum TR-069 
+
+!4 Resource Requirements:
+ 
+          -   CPE (DUT) 
+          -   CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+          -   Test Setup 1 
+
+!4 Discussion:
+ 
+          According to Broadband Forum TR-069 [1], the ACS may stimulate the CPE to initiate a CWMP 
+session by sending a Connection Request message.       This message is an HTTP 1.1 GET to a URL that is 
+specified by the CPE.   As such, it is dependent upon prior communication with the CPE. 
+          The CPE responds to the HTTP GET with either an HTTP "200 (OK)" or "204 (No Content)" 
+status message of zero length.   If the ability to service the Connection Request is not available (due to 
+resource constraints or denial of service protection), the CPE responds with an error "503 (Service 
+Unavailable)" message.    Within 30 seconds of completion of this transaction, the CPE then initiates a 
+CWMP session with the ACS.        If the session is not initiated within 30 seconds, the ACS may attempt to 
+retry the Connection Request. 
+          According to [1], all CWMP sessions begin with the CPE making an Inform RPC on the ACS. 
+The Inform RPC contains a list of event codes as one of its arguments that specifies the reason that the CPE 
+initiated the session. For connection request sessions, the event code list MUST contain the event code "6 
+CONNECTION REQUEST". 
+          TR-069 demands that the CPE must authenticate the ACS before initiating the session (using 
+digest authentication) to prevent denial of service attacks, using pre-set usernames and passwords.  This test 
+acts as verification that the DUT can successfully authenticate and receive the Connection Request, and 
+that a subsequent CWMP session is initiated. 
+
+!4 Procedure:
+ 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator. 
+     2.    Configure a predetermined username and password to be used for authentication on the CPE. 
+     3.    Send a Connection Request to the CPE. 
+     4.    Allow the CPE to authenticate the Connection Request and initiate a CWMP Session. 
+     5.    Allow the session to terminate successfully. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT successfully utilizes Connection Request to stimulate the CPE. 
+     2.    The CPE initiates a CWMP session. 
+
+!4 Possible Problems:
+ 
+     1.    The CPE firewall is not configured to allow the Connection Request to be received. 
+     2.    The CPE does not follow the steps necessary to initiate a CWMP connection, such as making a 
+          CMWP Inform RPC on the ACS. 

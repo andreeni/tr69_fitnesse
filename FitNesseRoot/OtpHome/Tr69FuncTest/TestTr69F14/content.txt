@@ -1,0 +1,46 @@
+Test TR69F.1.4:    GetRPCMethods 
+
+!4 Purpose:
+    This test is designed to verify that the DUT can perform the GetRPCMethods operation. 
+
+!4 References:
+ 
+         [1]        Broadband Forum TR-069 
+
+!4 Resource Requirements:
+ 
+         -    CPE (DUT) 
+         -    CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+         -    Test Setup 1 
+
+!4 Discussion:
+ 
+         According to [1], the GetRPCMethods method is a required function on both ACS and CPE.          This 
+method allows the ACS to learn the CWMP methods that are supported by the CPE, or for the CPE to learn 
+the CWMP methods that are supported by the ACS. 
+         The first link partner, with a simple remote procedure call with no arguments, initiates the 
+GetRPCMethods method.       The GetRPCMethods response contains an argument called "MethodList", 
+which is an array of strings containing the names of each RPC method the link partner supports.     Once this 
+operation is performed, the ACS or CPE presumably stores this information for future use.     This test 
+focuses on the CPE's ability to respond to a GetRPCMethods call made by the ACS. 
+
+!4 Procedure:
+ 
+     1.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.   Schedule a GetRPCMethods call on the DUT. 
+     4.   Allow the DUT to send a GetRPCMethodsResponse. 
+     5.   Allow the session to terminate successfully. 
+     6.   Record the list reported by the DUT's GetRPCMethodsResponse. 
+
+!4 Test Metrics:
+ 
+     1.   The DUT reports its supported Methods in the GetRPCMethodsResponse. 
+
+!4 Possible Problems:
+ 
+     1.   It is possible that the DUT does not report all of its supported Methods, or does not support 
+         Methods that are required by [1].  This case is beyond the scope of this test. 

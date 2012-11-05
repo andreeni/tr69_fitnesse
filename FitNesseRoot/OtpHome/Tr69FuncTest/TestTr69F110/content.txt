@@ -1,0 +1,107 @@
+Test TR69F.1.10:    Parameter Notifications 
+
+!4 Purpose:
+    This test is designed to verify that the DUT can perform the functions and behavior necessary 
+for the operation of CWMP parameter notification. 
+
+!4 References:
+ 
+         [1]       Broadband Forum TR-069 
+         [2]      Broadband Forum Technical Report 106 (TR-106) Amendment 2, "Data Model Template 
+                  for TR-069-Enabled Devices " 
+         [3]       Broadband Forum Technical Report 098 (TR-098) Amendment 1, "Internet Gateway 
+                  Device Data Model for TR-069" 
+
+!4 Resource Requirements:
+ 
+         -    CPE (DUT) 
+         -    CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+         -    Test Setup 1 
+
+!4 Discussion:
+ 
+         According to [2], parameters in any give CWMP data model contain two attributes.     These 
+attributes include the "Notification" attribute and the "Subscriber" attribute. This test is focused on 
+examining the functions of the Notification attribute. 
+         Attributes are manipulated via the SetParameterAttributes RPC and corresponding 
+SetParameterAttributesResponse ([1]).   The SetParameterAttributesResponse contains no arguments.      The 
+ACS makes the SetParameterAttributes procedure call with one argument.      The argument is the 
+ParameterList, which is an array of structures specific to the SetParameterAttributes RPC 
+(SetParameterAttributesStruct).  This structure contains five variables, three of which apply to 
+Notifications. The first is Name, which is the path name of the parameter to apply the new attributes. This 
+path may be "complete", in which a specific parameter is named, or "partial", in which all of an object's 
+lower level parameters are intended to be changed.  Second is NotificationChange, which is a Boolean 
+value indicating that the value of the Notification variable (following) should replace the current value in 
+the CPE's data model.   Third is Notification, an enumeration of three values from 0 to 2. From [1]: 
+          (Notification) Indicates whether the CPE will include changed 
+         values of the specified parameter(s) in the Inform message, and 
+         whether the CPE will initiate a session to the ACS when the 
+         specified parameter(s) change in value. The following values are 
+         defined: 
+         0 = Notification off. The CPE need not inform the ACS of a change 
+         to the specified parameter(s). 
+         1 = Passive notification. Whenever the specified parameter value 
+         changes, the CPE MUST include the new value in the ParameterList 
+         in the Inform message that is sent the next time a session is 
+         established to the ACS.  If the CPE has rebooted, or the URL of 
+         the ACS has changed since the last session, the CPE MAY choose 
+         not to include the list of changed parameters in the first 
+         session established with the new ACS. 
+         2 = Active notification. Whenever the specified parameter value 
+         changes, the CPE MUST initiate  a session to the ACS, and include 
+         the new value in the ParameterList in the associated Inform 
+         message. 
+          Whatever notification means are assigned to the parameter, the session in which the change is later 
+conveyed must contain the event code "4 VALUE CHANGE" in the event list of the Inform RPC. 
+          The CPE may deny the application of Active notification to any parameter (other than those that 
+are Forced Active, [2]) that it decides may be disruptive if active notification were present.    The CPE may 
+not deny the application of passive notification to any parameter ([1]). 
+         Unless a set of parameters can be found that the CPE does not consider disruptive and will update 
+without human interaction (such as statistics or time counters), this test requires manual stimulation of the 
+CPE at some point during the test, particularly for Active notification. 
+
+!4 Procedure:
+ 
+     1.    Analyzing the DUT's supported data model, choose a set of parameter paths (one for Active 
+         notification, one for Passive notification) that will automatically update or that can be changed 
+          locally on the CPE.  It is recommended to use a partial path for Passive notifications.    Record 
+          these parameters. 
+     2.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     3.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     4.    Schedule a SetParameterAttributes remote procedure call on the DUT with the parameter selected 
+          for Active notification in step 1. 
+     5.    Allow the DUT to send a SetParameterAttributesResponse. 
+     6.    Stimulate the DUT to alter the parameter(s) selected in step 1. 
+     7.    Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer, and analyze the 
+          Inform RPC. 
+     8.    Allow the session to terminate successfully. 
+     9.    Repeat step 3. 
+     10.   Schedule a SetParameterAttributes remote procedure call on the DUT with the parameter selected 
+          for Passive notification in step 1. 
+     11.   Repeat steps 5-6. 
+     12.   Make a ConnectionRequest to the DUT as described in test TR69F.1.1, above. 
+     13.   Allow the DUT to initiate a CWMP session with the CWMP Generator/Analyzer, and analyze the 
+          Inform RPC. 
+     14.   Allow the session to terminate successfully. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT successfully completes the SetParameterAttributes RPC. 
+     2.    The DUT performs Active notification by immediately initiating a session with the CWMP 
+          Generator/Analyzer. 
+     3.    The Inform RPC made during the Active notification session contains the event code "4 VALUE 
+          CHANGE".      The parameter changed and their new values are listed in the list of parameters in the 
+          Inform RPC. 
+     4.    The DUT performs Passive notification in its next session with the CWMP Generator Analyzer. 
+          The Inform RPC during this session contains the event code "4 VALUE CHANGE".               The 
+         parameter changed and their new values are listed in the list of parameters in the Inform RPC. 
+
+!4 Possible Problems:
+ 
+     1.    According to [1], the CPE may choose not to include the list of changed parameters if the first 
+          session established for passive notification is due to a "1 BOOT" or "0 BOOTSTRAP" event. 
+          This is problematic in the event that the CPE requires a reboot in order to apply the parameter 
+          change, and will cause the result of this test to be inconclusive. 

@@ -1,0 +1,106 @@
+Test TR69.1.11:     Firmware Download 
+
+!4 Purpose:
+    This test is designed to verify that the DUT can perform a Download, in particular a firmware 
+download, when the ACS specifies a delay before which it should occur and in the event the device is 
+rebooted during this time. 
+
+!4 References:
+ 
+          [1]        Broadband Forum TR-069 
+
+!4 Resource Requirements:
+ 
+          -    CPE (DUT) 
+          -    CWMP Generator/Analyzer 
+          -    File Server 
+
+!4 Test setup:
+ 
+          1.  Test Setup 1 or 2 
+
+!4 Discussion:
+ 
+          According to [1], the CWMP system can use the Download RPC to upgrade firmware on the CPE. 
+The firmware image can be downloaded through any common means (such as FTP or HTTP). 
+          The CPE can respond to the Download RPC in one of three ways, as defined in [1]: 
+     1.    It may issue a DownloadResponse with the Status argument set to 0, indicating that the download 
+          was a success, or 1 if it was a failure. These test metrics are designed to test for a successful 
+          firmware download. 
+     2.    It may call the TransferComplete RPC on the ACS later in the same session.        The 
+          DownloadResponse in this case has a Status argument of 1. 
+     3.    It may call the TransferComplete RPC on the ACS later in the next session.       The 
+          DownloadResponse in this case has a Status argument of 1. 
+In firmware/software upgrade situations, the Download RPC is only considered successful if the new image 
+is successfully installed and applied.   Since this is the most vigorous use of the Download RPC, it is 
+sufficient to test the DUT's ability to use the RPC. 
+When the Download is complete, the CPE makes a TransferComplete call on the ACS.               If it is doing so in a 
+new session (3, above), it indicates its intent to call TransferComplete in its Inform with the event code "7 
+TRANSFER COMPLETE".             Since in this case the TransferComplete is being called because of the use of 
+the Download RPC, it also includes the "M Download" event. 
+The ACS can specify the DelaySeconds argument to instruct the CPE to perform the download after a 
+certain period of time.  This is usually used to perform the download a specific time specified by the user of 
+the ACS.   When this delay is specified, the Download must occur after the delay has elapsed.         If the CPE 
+cannot perform the download, it must do so within an hour of the delay time. 
+This test is designed to test the scenario in which the device is rebooted after the Download RPC is called, 
+but before DelaySeconds is reached, to ensure that the DUT still performs the download.          To accomplish 
+this, additional firmware is required for the DUT, one in which no changes to the CWMP stack are 
+implemented but the version number or name has changed in some way that can be indicated to the CWMP 
+Analyzer.   The firmware upgrade is performed twice, once as a baseline to ensure that the upgrade can be 
+performed, and secondly after a reboot is applied during the delay. 
+For the purpose of this test, it is assumed that an external server is part of the test setup that allows access to 
+the firmware image.    In real world scenarios, the ACS may also act as the firmware repository and hence 
+make the file available through FTP or HTTP. 
+
+!4 Procedure:
+ 
+     1.    Record the current firmware version of the DUT. 
+     2.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     3.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     4.   Schedule a Download remote procedure call on the DUT, specifying the filename to be used and 
+         the server URL, with DelaySeconds set to 0. 
+     5.   Allow the DUT to send a DownloadResponse. 
+     6.   Allow the DUT to perform the firmware download. 
+     7.   If the DUT must reboot to apply the image (and therefore issue a TransferComplete call), wait for 
+         the following: 
+              a.    The DUT to Reboot 
+              b.    The DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+              c.    The DUT to make an Inform remote procedure call, with the "7 Transfer Complete" and 
+                   "M Download" event codes. 
+              d.    The DUT to initiate the TransferComplete RPC. 
+     8.   Allow the session to terminate successfully. 
+     9.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     10.   Analyze the DUT's Inform message to ensure that it reports the new firmware version. 
+     11.   Allow the session to terminate successfully. 
+     12.   Repeat steps 3-5 with DelaySeconds set to a large value, default 300 seconds. 
+     13.   Schedule a Reboot RPC on the DUT or physically restart the device. 
+     14.   Allow the DUT to perform the firmware download when the value selected in step 11 has expired. 
+     15.   Repeat steps 7-11. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT successfully performs the initial firmware upgrade. 
+     2.   The DUTs Inform messages contain the correct event codes. 
+     3.   The DUT successfully performs the firmware upgrade across reboot. 
+
+!4 Possible Problems:
+ 
+     1.    It may not be possible to obtain firmware upgrade files that change the version number on the 
+         DUT while maintaining the actual CWMP stack version. 
+     2.   The firmware upgrade may cause the device to become unstable.  This will cause the results of this 
+         test to be inconclusive. 
+Group 2 - CWMP Use Case Functionality 
+         The tests in Group Two are designed to test specific use cases of CWMP.        These use cases are 
+device specific; that is, the use cases will apply to a particular device type with a data model that is 
+specified in one or more documents that accompany TR-069 [1].        In this version of the test suite, most of 
+the tests are geared towards InternetGatewayDevices (devices that implement Broadband Forum TR-098 
+[3]). These tests are conditional on the support of particular profiles from these published data models.     If 
+the device does not support these profiles, these tests can be considered optional. 
+         These tests assume that the underlying functionality in Group One has been exercised enough in 
+order to accomplish the tests in Group Two.     Problems may occur at the protocol level, and those errors 
+will be recorded in the failures of these tests. It is assumed that an underlying level of compliance (e.g., 
+XML that is valid according to the schemas provided in [1], [2], and [3]) exists for communication to 
+occur.  The success metrics of these tests DO NOT include these assumptions, and do not provide for 
+normative protocol compliance - they are meant to exercise the DUT's ability to accomplish basic CWMP 
+tasks. Any issues that arise due to obvious non-compliance will be recorded as part of the test reporting 
+process. 

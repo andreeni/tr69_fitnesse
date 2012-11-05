@@ -1,1 +1,57 @@
-!contents
+!3 Organization of Tests:
+Each test contains an identification section that describes the test and provides cross-reference information.
+The discussion section covers background information and specifies why the test is to be performed. Tests
+are grouped in order to reduce setup time in the lab environment. Each test contains the following
+information:
+!4 Test number
+The Test Number associated with each test follows a simple grouping structure. Listed first is the Test
+Group Number followed by the test's number within the group. This allows for the addition of future
+tests to the appropriate groups of the test suite without requiring the renumbering of the subsequent
+tests.
+!4 Purpose
+The purpose is a brief statement outlining what the test attempts to achieve. This also includes
+background information on why one needs to perform such a test to show that the device complies
+with the standard.
+!4 References
+The references section lists standards and other documentation that might be helpful in understanding
+and evaluating the test and results.
+!4 Resource requirements
+The requirements section specifies the hardware, and test equipment that will be needed to perform the
+test. The items contained in this section are special test devices or other facilities, which may not be
+available on all devices.
+!4 Test setup
+The setup section describes the configuration of the test environment. Small changes in the
+configuration should be included in the test procedure.
+!4 Discussion
+The discussion section is optional. It is a general discussion of the test and relevant section of the
+specification, including any assumptions made in the design or implementation of the test as well as
+known limitations.
+!4 Procedure
+The procedure section of the test description contains the step-by-step instructions for carrying out the
+test. It provides a cookbook approach to testing, and may be interspersed with test metrics.
+!4 Test Metrics
+The test metrics section lists the necessary parameters for success in a given test. When multiple values
+are possible for a specific event, this section provides a short discussion on how to interpret them. The
+tests are structured so that failure of one test metric will result in a failure for the entire test, or a
+request to refer to comments.
+!4 Possible problems
+This section contains a description of known issues with the test procedure, which may affect test
+results in certain situations.
+
+!4 Group 1 – Basic Protocol Functionality
+1. [["TCP Connection Request"][Tr69FuncTest.TestTr69F11]]
+2. [["Periodic Inform"][Tr69FuncTest.TestTr69F12]]
+3. [["Session Retry"][Tr69FuncTest.TestTr6913]]
+4. [["GetRPCMethods"][Tr69FuncTest.TestTr69F14]]
+5. [["GetParameterNames"][Tr69FuncTest.TestTr69F15]]
+6. [["GetParameterValues"][Tr69FuncTest.TestTr69F16]]
+7. [["Reboot"][Tr69FuncTest.TestTr6917]]
+8. [["SetParameterValues"][Tr69FuncTest.TestTr69F18]]
+9. [["Object Handling RPCs"][Tr69FuncTest.TestTr69F19]]
+10. [["Parameter Notifications"][Tr69FuncTest.TestTr69F110]]
+11. [["Firmware Download"][Tr69FuncTest.TestTr69111]]
+!4 Group 2 – CWMP Use Case Functionality
+12. [["Initial Provisioning Test"][Tr69FuncTest.TestTr6921]]
+13. [["IP Ping Diagnostics Test"][Tr69FuncTest.TestTr6922]]
+14. [["DSL Diagnostics Test"][Tr69FuncTest.TestTr6923]]
+15. [["Wireless LAN Activation and Provisioning Test"][Tr69FuncTest.TestTr6924]]

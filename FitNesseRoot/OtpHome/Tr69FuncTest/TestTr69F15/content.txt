@@ -1,0 +1,78 @@
+Test TR69F.1.5:    GetParameterNames 
+
+!4 Purpose:
+    This test is designed to verify that the DUT can perform a GetParameterNames function when 
+the entire device object model is requested. 
+
+!4 References:
+ 
+         [1]        Broadband Forum TR-069 
+         [2]       Broadband Forum Technical Report 106 (TR-106) Amendment 2, "Data Model Template 
+                  for TR-069-Enabled Devices " 
+         [3]        Broadband Forum Technical Report 098 (TR-098) Amendment 1, "Internet Gateway 
+                  Device Data Model for TR-069" 
+
+!4 Resource Requirements:
+ 
+         -    CPE (DUT) 
+         -    CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+         -    Test Setup 1 
+
+!4 Discussion:
+ 
+         According to [1], the GetParameterNames method is a required function on the CPE.        The ACS 
+may use this method to learn the particular parameters (and their read/write attributes) that it can access on 
+the CPE. 
+         The ACS makes this procedure call with two arguments.       The first is the ParameterPath, which 
+indicates the path in the object hierarchy under which the ACS wishes to learn the names of supported 
+parameters.  This path may be "complete", in which the specific parameter is named to determine if it is 
+available, or "partial", in which all of an objects lower level parameters are returned (as determined by the 
+value of NextLevel, below). 
+         The second parameter is NextLevel, which is a Boolean value that determines whether or not to 
+return all objects and parameters beneath the specified partial path (NextLevel = False), or to only return 
+those that are "Next Level" children of the partial path (NextLevel = True).   Once this operation is 
+performed, the ACS presumably stores this information for future use. 
+         When the ACS sends a GetParameterNames procedure call containing a ParameterPath argument 
+that points to the root device object (for example, InternetGatewayDevice. or Device. depending on the 
+device type and data model used) and when NextLevel is set to false, the CPE responds with its entire 
+object model.  A CPE may not respond with a resources exceeded fault (Fault 9004) in this circumstance. 
+         The GetParameterNamesResponse from the CPE contains one argument.            This is ParameterList, 
+which is an array of ParameterInfoStruct structures, each containing the name of the parameter (Name) and 
+a Boolean value (Writable) which indicates the read/write capability of the parameter. 
+         This test is designed to verify that the DUT can perform this operation without error, and that it 
+uses correct error handling when a parameter does not exist.   An additional step is added to validate the 
+XML sent by the DUT to ensure that an ACS that correctly interprets CWMP messages will understand the 
+message sent by the DUT. 
+
+!4 Procedure:
+ 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.   Schedule a GetParameterNames call on the DUT with the following arguments: 
+                   ParameterPath = InternetGatewayDevice. or Device. 
+                  NextLevel = false 
+     4.   Allow the DUT to send a GetParameterNamesResponse. 
+     5.   Allow the session to terminate successfully. 
+     6.   Validate the GetParameterNamesResponse. 
+     7.   Repeat steps 2 and 3 with the following arguments: 
+              a.    ParameterPath=InternetGatewayDevice.DeviceInfo.Invalid or Device.DeviceInfo.Invalid 
+              b.    NextLevel = false 
+     8.    Allow the DUT to respond with a Fault, code 9005 (invalid parameter name). 
+     9.    Repeat steps 5-6, validating the error. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT returns the parameter names and write status of all objects and parameters in its data 
+         hierarchy through the GetParameterNamesResponse. 
+     2.   The GetParameterNamesResponse XML is valid. 
+     3.    The GetParameterNames fault returned is code 9005, and is valid. 
+
+!4 Possible Problems:
+ 
+     1.    The GetParameterNamesResponse is often used by the ACS to learn the parameters supported by 
+         the CPE.   However, if certain objects do not have active instances in the CPE, the underlying 
+         parameters may not be reported.     This test is designed to verify the basic functionality of the 
+          GetParameterNames RPC and not its use by an ACS in discovering device capabilities. 

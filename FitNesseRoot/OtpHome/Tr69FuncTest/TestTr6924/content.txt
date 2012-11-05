@@ -1,0 +1,85 @@
+Test TR69.2.4: Wireless LAN Activation and Provisioning Test 
+
+!4 Purpose:
+    This test is designed to verify that the DUT's Wireless LAN can be activated and configured 
+using CWMP. 
+
+!4 References:
+ 
+          [1]       Broadband Forum TR-069 Amendment 2 
+          [3]       Broadband Forum TR-098 
+
+!4 Resource Requirements:
+ 
+          -   CPE (DUT) 
+          -   CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+          1.    Test Setup 1 or 2 
+
+!4 Discussion:
+ 
+          One use case of the CPE WAN Management Protocol is to allow those deploying customer 
+premises equipment to remotely provision parameters on the CPE in order to set up a user's home network 
+and internet access.  The parameters for provisioning of the home gateway (or IGD, Internet Gateway 
+Device) are specified in Broadband Forum TR-098 [2].        Due to the ubiquity of wireless LAN technology 
+on customer premises equipment, this test was designed to exercise that functionality.  This test covers CPE 
+that are designed to act as a wireless LAN access point (AP). 
+           A wireless LAN enabled device may support authentication and/or encryption.        The parameters in 
+[2] that this test exercises upon initial setup, and their associated values include: 
+Parameter (prefixed with)                                 Value 
+InternetGatewayDevice or Device 
+.LANDevice.{i}. WLANConfiguration.{i} 
+WLANConfiguration.                                         Object to be created if necessary 
+.Enable                                                     True 
+.MaxBitRate                                                 Auto 
+.AutoChannelEnable                                          True 
+.SSID                                                       "Test_Interface" 
+.BeaconAdvertisementEnabled                                 True 
+.SSIDAdvertisementEnabled                                   True 
+.RadioEnabled                                               True 
+                        Table 2.4.1: WLANConifguration Parameters for Initial Setup 
+Parameter (prefixed with)                                 Value 
+InternetGatewayDevice or Device 
+.LANDevice.{i}. WLANConfiguration.{i} 
+.BeaconType                                                 WPA 
+.WPAEncryptionModes                                         TKIPEncryption 
+.WPAAuthenticationMode                                      PSKAuthentication 
+.PreSharedKey.{i}.KeyPassphrase                             "password" 
+                            Table 2.4.2: WLANConifguration Parameters for WPA 
+Parameter (prefixed with)                               Value 
+InternetGatewayDevice or Device 
+.LANDevice.{i}. WLANConfiguration.{i} 
+.WEPKeyIndex                                             1 
+.WEPKey                                                  1234567890 
+                           Table 2.4.3: WLANConifguration Parameters for WEP 
+
+!4 Procedure:
+ 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.   Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+     3.   Schedule a GetParameterNames RPC on the .WLANConfiguration partial path to ensure the 
+         presence of the parameters in tables 2.4.1 through 2.4.3. 
+     4.   Record the existing WLANConfiguration objects. 
+     5.   Schedule a SetParameterValues RPC on the DUT with the parameters and values contained in 
+         tables 2.4.1 through 2.4.3, depending on the parameters supported. 
+     6.   Allow the DUT to send a SetParameterValuesResponse. 
+     7.   Allow the session to terminate successfully. 
+     8.   Schedule a GetParameterValues RPC on the .WLANConfiguration. partial path. 
+     9.   Allow the DUT to send a GetParameterValuesResponse. 
+     10.   Verify that the parameters set in step 4 have been changed. 
+     11.   Externally verify that a wireless LAN station can connect to the CPE's AP using the 
+         authentication and/or encryption methods specified. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT is able to provision the parameters in Tables 2.4.1 through 2.4.3, where supported. 
+     2.   The wireless LAN station is able to connect to the CPE's AP using the newly specified 
+         configuration. 
+
+!4 Possible Problems:
+ 
+     1.    The DUT may not support the use of the WLANConfiguration object.       If this is the case, treat 
+         these metrics as optional. 
+     2.   Interoperability issues may exist with the WLAN station used. 

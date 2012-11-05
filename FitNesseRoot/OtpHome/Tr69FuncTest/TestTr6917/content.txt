@@ -1,0 +1,54 @@
+Test TR69.1.7:    Reboot 
+
+!4 Purpose:
+    This test is designed to verify that the CPE can perform the Reboot function. 
+
+!4 References:
+ 
+          [1]       Broadband Forum TR-069 
+
+!4 Resource Requirements:
+ 
+          -  CPE (DUT) 
+          -  CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+          1.  Test Setup 1 or 2 
+
+!4 Discussion:
+ 
+          According to [1], the ACS may trigger a reboot in the CPE through use of the Reboot remote 
+procedure call, primarily for troubleshooting purposes.     It is intended that the CPE sends the message 
+response and completes the current CWMP session before doing so. 
+          At the conclusion of the reboot, the CPE issues the standard Inform RPC on the ACS with the "1 
+BOOT" and "M Reboot" event codes. 
+
+!4 Procedure:
+ 
+     1.    Establish a network layer connection between the DUT and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     3.    Schedule a Reboot RPC on the DUT. 
+     4.    Allow the DUT to respond to the Reboot remote procedure call. 
+     5.    Allow the CWMP session to terminate successfully. 
+     6.    Wait for the DUT to reboot. 
+     7.    Allow the DUT to communicate its boot inform to the ACS. 
+     8.    Allow the new session to terminate successfully. 
+     9.    If any of the test metrics below fail, record and report the entire transaction. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT successfully initiates a CWMP session. 
+     2.    The RebootResponse is received. 
+     3.    The DUT Reboots. 
+     4.    The DUT successfully completes an Inform RPC upon reboot containing the event codes "1 
+          BOOT" and "M Reboot". 
+
+!4 Possible Problems:
+ 
+     1.    The DUT may take an abnormal amount of time to reboot.         If this is the case, the DUT should be 
+          observed physically if possible to ensure this is the case and the test retried. 
+     2.    The DUT may have other events that had remained undelivered at the time of the Reboot.          While 
+          this test does not check to ensure that the events were delivered, these events should be recorded 
+          and it should be ensured that the events do not interfere with the "1 BOOT" and "M Reboot" 
+          events. 

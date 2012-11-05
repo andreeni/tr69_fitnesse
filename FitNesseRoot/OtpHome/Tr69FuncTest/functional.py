@@ -9,7 +9,7 @@ FOOTER2 = "Test Suite (TR69) v1.0 \n"
 PAGE = "----------------------- Page "
 
 def add_markup(text):
-	replace = ["Purpose:", "References:", "Test setup:", "Discussion",  "Procedure:", "Test Metrics:", "Possible Problems:"]
+	replace = ["Purpose:", "References:", "Test setup:", "Discussion:",  "Procedure:", "Test Metrics:", "Possible Problems:", "Resource Requirements:"]
 	for re in replace:
 		text = text.replace(re, "\n!4 " + re + "\n")
 	
@@ -73,17 +73,35 @@ def getTXTContent(path):
 			    return content.index(line)
 	    return -1
 
-    tc = 0
-    for name in tc_names[1:]:
-	    next_tc = find_next_tc(name)
-	    if next_tc != -1:
-		    this_tc = tc_names[tc_names.index(name) - 1]
-		    file_name = camel_case(this_tc)		    
-		    write_to_file(file_name, content[tc:next_tc])
-		    tc = next_tc
+    assoc = True
 
-    file_name = camel_case(tc_names[-1])
-    write_to_file(file_name, content[tc:])    
+    if assoc == True:
+	    tc = 0
+	    number = 1
+	    for name in tc_names[1:]:
+		    next_tc = find_next_tc(name)
+		    if next_tc != -1:
+			    this_tc = tc_names[tc_names.index(name) - 1]
+			    file_name = camel_case(this_tc)
+			    print str(number) + ". [[\"" + content[tc].split(':')[1].strip() + "\"][Tr69FuncTest." + file_name +"]]"
+			    tc = next_tc
+			    number += 1
+	    
+	    file_name = camel_case(tc_names[-1])
+	    print str(number) + ". [[\"" + content[tc].split(':')[1].strip() + "\"][Tr69FuncTest." + file_name +"]]"
+	    
+    else:
+	    tc = 0
+	    for name in tc_names[1:]:
+		    next_tc = find_next_tc(name)
+		    if next_tc != -1:
+			    this_tc = tc_names[tc_names.index(name) - 1]
+			    file_name = camel_case(this_tc)		    
+			    write_to_file(file_name, content[tc:next_tc])
+			    tc = next_tc
+
+	    file_name = camel_case(tc_names[-1])
+	    write_to_file(file_name, content[tc:])    
 		    		    
     return
 

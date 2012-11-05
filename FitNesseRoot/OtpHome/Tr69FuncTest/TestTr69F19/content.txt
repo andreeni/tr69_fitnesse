@@ -1,0 +1,89 @@
+Test TR69F.1.9:    Object Handling RPCs 
+
+!4 Purpose:
+    This test is designed to verify that the DUT can perform the functions and behavior necessary 
+for object creation and deletion. 
+
+!4 References:
+ 
+         [1]        Broadband Forum TR-069 
+         [2]       Broadband Forum Technical Report 106 (TR-106) Amendment 2, "Data Model Template 
+                  for TR-069-Enabled Devices " 
+         [3]        Broadband Forum Technical Report 098 (TR-098) Amendment 1, "Internet Gateway 
+                  Device Data Model for TR-069" 
+
+!4 Resource Requirements:
+ 
+         -    CPE (DUT) 
+         -    CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+         -    Test Setup 1 
+
+!4 Discussion:
+ 
+         According to [1], the AddObject and DeleteObject methods are required functions on the CPE. 
+The ACS may use these methods for a variety of purposes depending on the functionality described in the 
+corresponding CPE data model, most often the creation of new instances of interface or service objects. 
+         The ACS makes the AddObject procedure call with two arguments.         The first is the ObjectName, 
+which is a string containing the path name of the object to be created.  According to [1], the path name 
+MUST end with a "." after the last node in the hierarchical name.    The second is the ParameterKey value 
+which the CPE must set if and only if AddObject completes successfully and no fault response is generated. 
+This parameter provides the ACS a means to track changes it has made, the value is left to the discretion of 
+the ACS and may be left empty. 
+         The AddObjectResponse must be returned by the CPE after any successful AddObject call. It 
+contains two arguments.   The first is InstanceNumber, which contains the numerical reference that the ACS 
+will use to address the object. This instance number must be unique to the object created, and can never be 
+reused or changed.   The second is a status argument which is set to either "0" or "1." A "0" indicates that 
+all parameter changes have been validated and applied. A "1" indicates that all parameter changes have 
+been validated and committed, but some or all are not yet applied. The changes are required to be applied 
+by the next session. 
+         The ACS makes the DeleteObject call with two arguments.        The first is the ObjectName, which is 
+a string containing the full path name (including the instance number) of the object to be deleted. 
+According to [1], the path name MUST end with a "." after the instance number.      The second is the 
+ParameterKey value which the CPE must set if and only if AddObject completes successfully and no fault 
+response is generated. This parameter provides the ACS a means to track changes it has made, the value is 
+left to the discretion of the ACS and may be left empty. 
+         The DeleteObjectResponse contains a status argument which is set to either "0" or "1." A "0" 
+indicates that all parameter changes have been validated and applied. A "1" indicates that all parameter 
+changes have been validated and committed, but some or all are not yet applied. The changes are required 
+to be applied by the next session. 
+
+!4 Procedure:
+ 
+     1.    Analyzing the DUT's supported data model, choose a     non-service affecting writable object to be 
+         created on the DUT.    Record the selected object. 
+     2.   Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     3.   Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     4.   Schedule an AddObject call on the DUT with the object selected in step 1. 
+     5.   Allow the DUT to send an AddObjectResponse.       Record the instance number created by the DUT. 
+     6.   Repeat steps 4-5. 
+     7.   Schedule a GetParameterValues partial path call on the object path that was selected in step 1. 
+     8.    Verify that the <object>NumberOfEntries parameter has been incremented. 
+     9.   Verify that the created objects are listed with appropriately contained parameters. 
+     10.   Allow the session to terminate successfully. 
+     11.   Repeat step 3. 
+     12.   Schedule a DeleteObject call on the DUT with the first object created in step 5. 
+     13.   Allow the DUT to send a DeleteObjectResponse. 
+     14.   Repeat step 7. 
+     15.   Verify that the <object>NumberOfEntries parameter has been decremented. 
+     16.   Verify that the existing objects have not changed instance numbers. 
+     17.   Repeat step 3. 
+     18.   Schedule a Reboot call on the DUT. 
+     19.   Wait for the DUT to reboot. 
+     20.  Repeat step 7. 
+     21.  Repeat step 16. 
+     22.  Repeat step 10. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT responds with a 0 or 1 status in the AddObject and DeleteObject Reponses. 
+     2.   The created objects are present when created and absent when deleted. 
+     3.   <object>NumberOfEntries parameter is set to the correct value. 
+     4.   The instance numbers of the created objects are retained after deletion. 
+
+!4 Possible Problems:
+ 
+     1.    Depending on the type of DUT and its supported object model, it may be impossible to find an 
+         object that supports creation or deletion. 

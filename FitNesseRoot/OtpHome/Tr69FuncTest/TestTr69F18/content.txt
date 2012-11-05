@@ -1,0 +1,86 @@
+Test TR69F.1.8:     SetParameterValues 
+
+!4 Purpose:
+    This test is designed to verify that the DUT can perform the SetParameterValues function. 
+
+!4 References:
+ 
+          [1]       Broadband Forum TR-069 
+          [2]      Broadband Forum Technical Report 106 (TR-106) Amendment 2, "Data Model Template 
+                   for TR-069-Enabled Devices " 
+          [3]       Broadband Forum Technical Report 098 (TR-098) Amendment 1, "Internet Gateway 
+                   Device Data Model for TR-069" 
+
+!4 Resource Requirements:
+ 
+          -   CPE (DUT) 
+          -   CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+          -   Test Setup 1 
+
+!4 Discussion:
+ 
+          According to [1], the SetParameterValues method is a required function on the CPE. The ACS 
+may use this method to modify the value of one or more CPE parameters. 
+          The ACS makes this procedure call with two arguments.        The first is the ParameterList, which is 
+an array of name-value pairs specifying which parameters to change and what to change them to. If this 
+array contains more than one entry with the same parameter name, the CPE must respond with fault 9003 
+(Invalid Arguments). The second is the ParameterKey value which the CPE must set if and only if 
+SetParameterValues completes successfully and no fault response is generated. This parameter provides the 
+ACS a means to track changes it has made, the value is left to the discretion of the ACS and may be left 
+empty. 
+          The SetParameterValuesResponse must be returned by the CPE after any successful 
+SetParameterValues call. It contains a status argument which is set to either "0" or "1." A "0" indicates that 
+all parameter changes have been validated and applied. A "1" indicates that all parameter changes have 
+been validated and committed, but some or all are not yet applied. The changes are required to be applied 
+by the next session. 
+          This test verifies the ability of the DUT to use the SetParameterValues RPC and to respond 
+correctly when presented with bad arguments.      These bad arguments include invalid parameters, invalid 
+values, invalid data types, and parameters that are not meant to be writable.    Each of these has a different 
+SOAP fault code associated with them. 
+
+!4 Procedure:
+ 
+     1.    Analyzing the DUT's supported data model, choose two non-service affecting writable parameters 
+          to be changed on the DUT.     Record these parameters, their values, and the change values chosen. 
+     2.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     3.    Stimulate the DUT to initiate a CWMP session with the CWMP Generator/Analyzer. 
+     4.    Schedule a SetParameterValues call on the DUT with the parameters selected in step 1. 
+     5.    Allow the DUT to send a SetParameterValuesResponse. 
+     6.    Validate the SetParameterValuesResponse. 
+     7.    Schedule a GetParameterValues call on the parameters that were selected in step 1. 
+     8.    Verify that the retrieved values match what was set in the SetParameterValues call. 
+     9.    Repeat step 3. 
+     10.   Schedule a Reboot call on the DUT. 
+     11.   Repeat steps 6-7. 
+     12.   Repeat steps 3-4. Instead of the value selected above choose a value that is of the wrong data type 
+          or other invalid value for the parameter. 
+     13.   Allow the DUT to send a Fault code of either 9006 (Invalid Parameter Type) or 9007 (Invalid 
+          Parameter Value). 
+     14.   Validate the Fault code. 
+     15.  Repeat steps 3-4. Instead of the parameters selected above choose a parameter that does not exist 
+         in the DUT's data model. 
+     16.  Allow the DUT to send a Fault code of either 9005 (Invalid Parameter Name). 
+     17.  Repeat step 14. 
+     18.  Repeat steps 3-4. Instead of the parameters selected above choose a parameter that is meant to be 
+         read-only according to [2] or any other CWMP data model that the DUT supports. 
+     19.  Allow the DUT to send a Fault code of either 9008 (Attempt to Set Non-writeable Parameter). 
+     20.  Repeat step 14. 
+     21.  Allow the session to terminate successfully. 
+
+!4 Test Metrics:
+ 
+     1.   The DUT responds with a 0 or 1 status in SetParameterValuesResponse 
+     2.   The SetParameterValuesResponse is valid. 
+     3.   Subsequent GetParameterValues calls using the test parameters return the correct values 
+     4.   The device retains the parameter changes across reboot. 
+     5.   The DUT responds to the invalid values with the correct, valid fault code. 
+     6.   The DUT responds to the invalid parameters with the correct, valid fault codes. 
+
+!4 Possible Problems:
+ 
+     1.   In some cases, parameters that are defined as write capable in the appropriate data models may be 
+         rejected by the DUT.   This case is beyond the scope of this test. If the DUT returns an error, 
+         "Attempt to Set Non-Writable Parameter", new parameters should be attempted for step 1. 

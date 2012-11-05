@@ -1,0 +1,66 @@
+Test TR69.2.2:    IP Ping Diagnostics Test 
+
+!4 Purpose:
+    This test is designed to verify that the DUT can successfully perform an IP Ping Diagnostics 
+Test as defined in Broadband Forum TR-098 [3]. 
+
+!4 References:
+ 
+          [1]       Broadband Forum TR-069 Amendment 2 
+          [3]       Broadband Forum TR-098 
+          [4]       IETF RFC 792 
+
+!4 Resource Requirements:
+ 
+          -   CPE (DUT) 
+          -   CWMP Generator/Analyzer 
+
+!4 Test setup:
+ 
+          1.    Test Setup 1 or 2 
+
+!4 Discussion:
+ 
+          Broadband Forum TR-098 [3] defines an object and set of parameters for performing a simple 
+diagnostics test utilizing the ICMP [4] based "ping" application.     The test is initiated by the ACS using a 
+SetParameterValues remote procedure call that changes the value of the DiagnosticsState parameter in the 
+IPPingDiagnostics object to a value of "Requested".      The CPE then performs the diagnostic test; generally 
+after the CWMP session terminates successfully. 
+          This test uses the following values for the write-enabled parameters in the IPPingDiagnostics 
+object: 
+          1.    Host: set to the IP address of the CWMP Analyzer 
+          2.   NumberofRepetitions: 10 
+          3.   Timeout: 1000 
+          4.   DataBlockSize: 64 
+          5.   DSCP: 0 
+          Upon conclusion of the test, the CPE initiates a CWMP session with an event code of "8 
+DIAGNOSTICS COMPLETE" in the Inform arguments. 
+
+!4 Procedure:
+ 
+     1.    Establish a network layer connection between the CPE and the CWMP Generator/Analyzer. 
+     2.    Stimulate the DUT to initiate a CWMP connection with the CWMP Generator/Analyzer. 
+     3.    Schedule a SetParameterValues call to be made on the 
+          "InternetGatewayDevice.IPPingDiagnostics." object on the DUT, changing the value of the 
+          "DiagnosticsState" parameter to "Requested". 
+     4.    Allow the DUT to send a SetParameterValuesResponse. 
+     5.    Allow the session to terminate successfully. 
+     6.    Allow the DUT to perform the IP Ping Diagnostics Test. 
+     7.    Allow the DUT to initiate a CWMP connection with the CWMP Analyzer to report the completion 
+          of the diagnostics test. 
+     8.    Schedule a GetParameterValues call to be made on the 
+          "InternetGatewayDevice.IPPingDiagnostics." object on the DUT. 
+     9.    Allow the CPE to send a GetParameterValuesResponse. 
+     10.   Record the parameter values of the IPPingDiagnostics object. 
+
+!4 Test Metrics:
+ 
+     1.    The DUT is able to initiate an IP Ping Diagnostics test. 
+     2.    The DUT updates the results of the IP Ping Diagnostics test. 
+
+!4 Possible Problems:
+ 
+    1.    The CPE and ACS cannot establish a transport layer connection. 
+    2.    The CPE and ACS cannot initiate a CWMP session. 
+    3.    The CPE or ACS has an invalid CWMP message structure. 
+    4.    The CPE cannot perform the ping test correctly. 
