@@ -1,0 +1,10 @@
+<Start: SRS-162298-HeNBStrtUp-220, Requirement>
+The following information shall be hardcoded in HeNB software,
+?	Initial HDM default username="henb" - TBC 
+?	Initial HDM default password="henbpass" - TBC
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-220>
+

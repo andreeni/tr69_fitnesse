@@ -1,0 +1,18 @@
+<Start: SRS-HeNB-OAM-DeviceMgmt-300, Requirement>
+The HeNB shall support the following TR-106 parameters as Forced Inform parameters, 
+Parameter
+Device.DeviceSummary
+Device.DeviceInfo.HardwareVersion
+Device.DeviceInfo.SoftwareVersion
+Device.DeviceInfo.AdditionalHardwareVersion
+Device.DeviceInfo.AdditionalSoftwareVersion
+Device.ManagementServer.ParameterKey 
+Device.ManagementServer.ConnectionRequestURL
+Device.LAN.IPAddress
+
+FRS Requirement: FRS-162818-Req-7
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-DeviceMgmt-300>
+

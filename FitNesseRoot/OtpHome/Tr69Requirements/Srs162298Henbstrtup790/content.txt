@@ -1,0 +1,9 @@
+<Start: SRS-162298-HeNBStrtUp-790, Requirement>
+When the Assigned HDM receives a BOOTSTRAP inform from an HeNB containing a null value for the mimVersion, it shall trigger the HeNB to download the latest SW image, by using a TR-069 SetParametersValue RPC Method to set notRunningSwDescrFileName.
+Note: Refer to section Error! Reference source not found. for more details.
+FRS Requirement: FRS-162298-Req-R7          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-790>
+

@@ -1,0 +1,15 @@
+<Start: SRS-163769-HeNBFM-1200, Requirement>
+	The mapping of BCN notification as informs shall be mapped.
+All BCNs in the Node shall be forwarded over TR069 as informs and will contain the following:
+TR069NotifVC.1.objectChangeType and TR069NotifVC.1.objectChangeFdn populated accordingly.
+<EventStruct><EventCode>4 VALUE CHANGE</EventCode><CommandKey></CommandKey></EventStruct>
+</Event><MaxEnvelopes>1</MaxEnvelopes><CurrentTime>0001-01-01T00:00:00Z</CurrentTime><RetryCount>0</RetryCount><ParameterList xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="cwmp:ParameterValueStruct[11]"><ParameterValueStruct><Name>Device.DeviceSummary</Name><Value xsi:type="xsd:string">Device:1.0[](Baseline:1),profile:1.0[](baseline:1)</Value>
+</ParameterValueStruct
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeType</Name><Value xsi:type="xsd:integer">4 </Value>
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeFdn</Name><Value xsi:type="xsd:string"> >/ENB:ENBEquipment[uniqueName=”140”]/Enb[rdnId=”0”]/LteCell[uniqueName=”Cell5</Value>
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1200>
+

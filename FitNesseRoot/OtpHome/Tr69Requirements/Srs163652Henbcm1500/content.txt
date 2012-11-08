@@ -1,0 +1,9 @@
+<Start: SRS-163652-HeNBCM-1500, Requirement>
+The HeNB shall automatically reset itself and come up on the newly configured data.
+Note: for the first release there will be no partial configuration sent in the bulk CM file. The bulk CM file will contain the entire data set needed to configure the HeNB. In subsequent release we will support the capability to send partial data and depending on the content of the data the HeNB will determine if a reboot is needed. Any partial configuration setup shall be done via TR069.
+FRS Requirement: FRS-163652-R5        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1500>
+

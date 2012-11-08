@@ -1,0 +1,8 @@
+<Start: SRS-162298-HeNBStrtUp-500, Requirement>
+During IPsec tunnel establishment to the Default SeGW, the HeNB shall be provided with an Inner IP Address & the IP Address of the Internal DNS Server.
+FRS Requirement: FRS-162298-Req-R4          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-500>
+

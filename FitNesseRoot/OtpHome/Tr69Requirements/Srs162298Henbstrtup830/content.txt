@@ -1,0 +1,9 @@
+<Start: SRS-162298-HeNBStrtUp-830, Requirement>
+After successfully validating an HeNB’s location, HDM shall initiate a TR-069 Download RPC method to the HeNB to trigger the HeNB to download a bulk CM file. The Download RPC message shall include the file server path name of the bulk CM file.
+Note: Refer to section Error! Reference source not found. for more details.
+FRS Requirement: FRS-162298-Req-R10         
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-830>
+

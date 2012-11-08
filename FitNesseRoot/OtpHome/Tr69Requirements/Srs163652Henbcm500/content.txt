@@ -1,0 +1,9 @@
+<Start: SRS-163652-HeNBCM-500, Requirement>
+HeNB shall send a SetParameterValues response to indicate whether the configuration was applied successfully or not.
+The fault codes returned are defined in Section A.3.2.1 [S 9]
+FRS Requirement: FRS-163652-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-500>
+

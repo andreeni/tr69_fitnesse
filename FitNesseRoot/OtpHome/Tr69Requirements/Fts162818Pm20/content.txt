@@ -1,0 +1,9 @@
+<Start: FTS-162818-PM-20, Requirement>
+Every pmGranularity period, HeNB shall collect the PM counters on the HeNB and store them in a PM file.  PM file name and format shall comply with requirements specified in SID eNodeB Performance Management.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test
+Note:  In general, the PM file naming and format follow TS 32.432 standards.          
+<End: FTS-162818-PM-20>
+

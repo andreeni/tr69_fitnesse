@@ -1,0 +1,8 @@
+<Start: FTS-162818-ACT-20, Requirement>
+During software download, HeNB shall first download and read the SDF to determine which Configuration Parameter File (CPF) and Software Executable File (SEF) to download.  Then HeNB shall download the CPF and SEF listed in the SDF.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACT-20>
+

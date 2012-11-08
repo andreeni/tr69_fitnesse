@@ -1,0 +1,9 @@
+<Start: SRS-162818-HeNBProt-300, Requirement>
+TR-069 Inform Requests shall be implemented for notifications. Event notifications include State Change Notifications (SCN) of the Managed Objects (MOs), Attribute Value Change Notifications (AVCN), Object Creation Notifications (OCN), Object Deletion Notifications (ODN) and Bulk Change Notifications (BCN). 
+Note: The notifications will be sent in real-time, or periodically, e.g. once per day, or during startup and SCMS initiated connection request. The different options will be configurable.
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-300>
+

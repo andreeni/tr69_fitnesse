@@ -1,0 +1,9 @@
+<Start: SRS-163652-HeNBCM-1200, Requirement>
+HeNB shall apply the configuration changes in the bulk CM file to the HeNB working configuration after successful validation of the configuration data. 
+Note: Tips for replacing the configuration is specified in the Netconf guide and a small snippet provided in the appendix [Reference 6.1.1].
+FRS Requirement: FRS-163652-Req-4        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1200>
+

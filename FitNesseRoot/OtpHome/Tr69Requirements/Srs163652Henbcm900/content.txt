@@ -1,0 +1,23 @@
+<Start: SRS-163652-HeNBCM-900, Requirement>
+Upon invocation of the TR-069 Download RPC method, the HeNB shall retrieve the bulk CM XML file from the specified location. 
+The FileType argument for the TR-069 Download RPC shall be set to "3 Vendor Configuration File"
+The only field that is populated in the Download RPC is the URL for the bulk CM file.
+Example:
+<cwmp:Download>
+            <CommandKey>285271</CommandKey>
+<FileType>3 Vendor Configuration File</FileType>    <URL>sftp://ftpuser@172.61.111.9/opt/alcatel-lucent/data/LTE/ HeNB/20120803/bulkcm_filename.xml</URL>
+            <Username></Username>
+            <Password></Password>
+            <FileSize>0</FileSize>
+            <TargetFileName></TargetFileName>
+            <DelaySeconds>1</DelaySeconds>
+            <SuccessURL></SuccessURL>
+            <FailureURL></FailureURL>
+        </cwmp:Download>
+
+FRS Requirement: FRS-163652-R2         
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-900>
+

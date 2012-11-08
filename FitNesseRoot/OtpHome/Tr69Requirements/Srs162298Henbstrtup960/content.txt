@@ -1,0 +1,8 @@
+<Start: SRS-162298-HeNBStrtUp-960, Requirement>
+After the HeNB has downloaded and activated the latest software image and Bulk CM file it shall establish an IPsec tunnel to the serving SeGW for the Telecom domain and setup an S1 connection with the HeNB-GW.
+FRS Requirement: FRS-162298-Req-R12          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-960>
+

@@ -1,0 +1,10 @@
+<Start: SRS-162298-HeNBStrtUp-520, Requirement>
+During startup, after an IPsec tunnel is established with the Default SeGW if the HeNB has not previously registered with HDM it shall register with the Initial HDM as specified in section 4.3.5. 
+If the HeNB has previously registered with HDM is shall register with the assigned HDM as specified in section 4.3.5.
+Note: Section 4.3.5  will also cover subsequent steps after the HeNB registers with HDM
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-520>
+

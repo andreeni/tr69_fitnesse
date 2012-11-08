@@ -1,0 +1,15 @@
+<Start: SRS-162818-HeNBProt-400, Requirement>
+A TR-069 session shall always be initiated by the HeNB, based on the following conditions:
+-	At factory start-up, On power-up or Reset
+-	Once every Periodic Inform
+-	Whenever a Parameter is modified that is required to initiate an Inform on change 
+-	Whenever a download or upload completes 
+-	When receiving the TR-069 Connection Request on a specific URL
+-	HeNB shall support the TR-069 connection request mechanism to allow the management system to demand an immediate TR-069 session
+-	Location Update
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+
+<End: SRS-162818-HeNBProt-400>
+

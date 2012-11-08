@@ -1,0 +1,9 @@
+<Start: SRS-162818-HeNBSFTP-200, Requirement>
+SFTP shall be used to transfer Historical Alarm List and Active Alarm list from HeNB. The HeNB shall push the files to the URL specified from SCMS.  
+Note: With L108273 in LR13.1 HeNB maintains a Historical alarm list. 
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSFTP-200>
+

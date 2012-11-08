@@ -1,0 +1,16 @@
+<Start: SRS-162298-HeNBStrtUp-860, Requirement>
+The registration timer for HeNB registration with HDM shall backoff in order to spread the load on the HDM in the case a large number of HeNBs are registering at the same time. The HeNB shall take the following approach when setting the registration timer,  
+- for the first N attempts after reset the timer shall be set to X minutes, 
+- then for each subsequent attempt the timer shall be increased by Y minutes until it reaches 1 hour,
+- for all the following attempts after the above tries the timer shall be set to 1 hour. 
+
+X is set to 7.5 minutes if the timer is started by the update in ManagementServer.URL or 2.5 minutes otherwise. Y is set to 5 minutes and N is 1. 
+ 
+Note: The initial value is set  to 7.5 minutes to allow at least one PERIODIC inform after the BOOTSTRAP to the assigned HDM (assuming 5 minutes interval). 
+  
+FRS Requirement: FRS-162298-Req-R6, R7          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-860>
+

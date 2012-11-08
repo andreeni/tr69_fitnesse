@@ -1,0 +1,10 @@
+<Start: SRS-163769-HeNBFM-700, Requirement>
+HeNB shall support the following counter:
+?	Active Critical Alarm Counter: number of critical alarms currently active on the HeNB. The MIM parameter is eNB::FMProfile::activeCriticalAlarmCounter.
+and the counter shall be available on demand and synchronized with SCMS through AVCNs included in periodic inform messages. 
+FRS Requirement: FRS-163769-R1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-700>
+

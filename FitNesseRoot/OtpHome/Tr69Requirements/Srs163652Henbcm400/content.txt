@@ -1,0 +1,11 @@
+<Start: SRS-163652-HeNBCM-400, Requirement>
+On successful receipt of a SetParameterValues RPC, the HeNB shall apply the changes to all of the specified Parameters atomically. That is, either all of the value changes are applied together, or none of the changes are applied at all. The application of value changes to the HeNB shall be independent of the order in which they are listed.
+All modifications to a HeNB‘s configuration resulting from use of the SetParameterValues method shall be retained across reboots of the HeNB.
+Note: The order of Parameters listed in the ParameterList has no significance. 
+Reference: Section A.3.2.1 [S 9]
+FRS Requirement: FRS-163652-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-400>
+

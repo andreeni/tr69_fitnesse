@@ -1,0 +1,11 @@
+<Start: SRS-163652-HeNBCM-1600, Requirement>
+The HeNB shall have the capability to fallback to the previous configuration if the new configuration fails for at least the following reasons:
+•	If, the configuration fails to validate on the HeNB
+•	If, after a bulk CM update and reset the HeNB fails to connect to the OAM system then the HeNB shall automatically fallback to the previous configuration. 
+•	If, during a SW upgrade there is a request from the SCMS to fallback, or if the SW fails during ugrade.
+FRS Requirement: FRS-163652-Req-6        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1600>
+

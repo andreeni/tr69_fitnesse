@@ -1,0 +1,1566 @@
+<Start: SRS-162818-HeNBProt-100, Requirement>
+The HeNB and SCMS shall support the option of using IPv4 or IPv6 communications for OAM traffic.
+Note: Verizon is/has moved to IPv6 for all telecom traffic and are on IPv4 for OAM (May move to IPv6 as well in the future).	
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-100>
+
+<Start: SRS-162818-HeNBProt-200, Requirement>
+The HeNB and SCMS shall implement TR-069 over TCP for the management interface between SCMS and HeNB. 
+The HeNB shall implement a TR-069 agent that conforms to DSL Forum TR-069 Amendment 4 CPE WAN Management Protocol - July 2011 Protocol Version 1.3. [S 9]
+Note: Only relevant capabilities defined with TR-069 will be implemented in the first release.
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-200>
+
+<Start: SRS-162818-HeNBProt-300, Requirement>
+TR-069 Inform Requests shall be implemented for notifications. Event notifications include State Change Notifications (SCN) of the Managed Objects (MOs), Attribute Value Change Notifications (AVCN), Object Creation Notifications (OCN), Object Deletion Notifications (ODN) and Bulk Change Notifications (BCN). 
+Note: The notifications will be sent in real-time, or periodically, e.g. once per day, or during startup and SCMS initiated connection request. The different options will be configurable.
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-300>
+
+<Start: SRS-162818-HeNBProt-400, Requirement>
+A TR-069 session shall always be initiated by the HeNB, based on the following conditions:
+-	At factory start-up, On power-up or Reset
+-	Once every Periodic Inform
+-	Whenever a Parameter is modified that is required to initiate an Inform on change 
+-	Whenever a download or upload completes 
+-	When receiving the TR-069 Connection Request on a specific URL
+-	HeNB shall support the TR-069 connection request mechanism to allow the management system to demand an immediate TR-069 session
+-	Location Update
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+
+<End: SRS-162818-HeNBProt-400>
+
+<Start: SRS-162818-HeNBProt-450, Requirement>
+HeNB and SCMS shall provide a configurable timer of Periodic Informs. The timer range shall include 0 (turn off periodic informs), 5 mins to 24 hours with increments in mins. Default: 8 hours.
+Note: typical deployments shall be set to 8 hours, however for certain specific debugging or certain customers there may be a need for more proactive management.  The dimensioning guidelines need to clearly outline the consequences of reducing the intervals.
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-450>
+
+<Start: SRS-162818-HeNBProt-460, Requirement>
+Upon receipt of initial Inform request from the HeNB, if the SCMS wishes to allow the initiation of the session, it MUST respond with an Inform response. 
+Notes: 
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-460>
+
+<Start: SRS-162818-HeNBProt-470, Requirement>
+The HeNB Serial Number shall be included in the DeviceId.SerialNumber parameter of the Inform message sent by the HeNB to the SCMS. In addition the uniqueName of the HeNB shall also be sent in the 
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-470>
+
+<Start: SRS-162818-HeNBProt-500, Requirement>
+The HeNB and SCMS shall implement Simple Object Access Protocol (SOAP) 1.1 as defined by TR-069 for the management interface between the SCMS and the HeNB. Error! Reference source not found.
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-500>
+
+<Start: SRS-162818-HeNBProt-600, Requirement>
+The HeNB and SCMS shall support the following TR-069 CPE methods, 
+-	AddObject
+-	DeleteObject
+-	SetParameterValues
+-	GetParameterValues 
+-	GetRPCMethods
+-	GetParamterNames
+-	Reboot
+-	FactoryReset
+-	Download
+The HeNB and SCMS shall support the following TR-069 ACS methods, 
+- Inform
+- TransferComplete
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBProt-600>
+
+<Start: SRS-162818-HeNBSSH-100, Requirement>
+HeNB shall support SSHv2 with name and password authentication. SSH shall support SHA-1 for integrity protection and AES-128-cbc for encryption.  
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSSH-100>
+
+<Start: SRS-162818-HeNBSFTP-100, Requirement>
+HeNB shall support SFTP for secure download of files for push or pull as defined in the table above.  HeNB shall support a SFTP client.  The SCMS shall support secure file transfer protocol (SFTP) server.  The HeNB shall support SHA-1 for integrity protection and AES-128-cbc for encryption. 
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSFTP-100>
+
+<Start: SRS-162818-HeNBSFTP-110, Requirement>
+In order to provide a secure mechanism for SFTP, Key based authentication shall be used (username and password will not be used). The details of the key based authentication is addressed in https://wcdma-ll.app.alcatel-lucent.com/livelink/livelink.exe?func=ll&objId=66282897&objAction=browse&sort=name - SRS-eNB-MCI-NTK-SEC-1550
+
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSFTP-110>
+Start: SRS-162818-HeNBSFTP-120, Requirement>
+SFTP shall be used by the HeNB to pull SW images/bulk CM files from the URL/ServerPath provided by SCMS.
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSFTP-120>
+
+<Start: SRS-162818-HeNBSFTP-150, Requirement>
+SFTP shall be used to transfer PM result files to the SCMS.  The HeNB shall push the files to SCMS.
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSFTP-150>
+
+<Start: SRS-162818-HeNBSFTP-200, Requirement>
+SFTP shall be used to transfer Historical Alarm List and Active Alarm list from HeNB. The HeNB shall push the files to the URL specified from SCMS.  
+Note: With L108273 in LR13.1 HeNB maintains a Historical alarm list. 
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSFTP-200>
+
+<Start: SRS-162818-HeNBSFTP-300, Requirement>
+SFTP shall be used to transfer Bulk CM files.  The HeNB shall pull the files from the SCMS upon invocation of the TR-069 Download RPC method.
+Note:  Bulk CM files are transferred for making bulk configuration changes or for executing bulk configuration checks.
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSFTP-300>
+
+<Start: SRS-162818-HeNBsNTP-100, Requirement>
+The HeNB uses Network Time Protocol for timing synchronization and shall implement a SNTP client that is compliant with RFC 1769 - Simple Network Time Protocol. 
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBsNTP-100>
+
+<Start: SRS-162818-HeNBIPSec-100, Requirement>
+IPSec shall be enabled between the HeNB and the SeGW for the secured IP data transmission.
+Note: This will then be used for all UDP/TCP traffic including TR-069, SNTP, SSH/SFTP etc.
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBIPSec-100>
+
+<Start: SRS-HeNB-OAM-DeviceMgmt-100, Requirement>
+The HeNB shall support only a partial data model defined in TR-106.  The Common Objects and their associated parameters shall be supported by the HeNB are:
+Objects: 
+ObjectName	Description
+Device	This is the top logic object for a TR-069 device
+DeviceInfo	This class contains general device information of HeNB
+ManagementServer	This object contains parameters relating to the HeNB’s association with an HDM.
+Services	This object contains all of the Service Objects supported by the device. Currently only HeNB object is contained within this object.
+LAN	This object contains parameters relating to IP based LAN connectivity of a device.
+
+Parameters: supported for each of the objects is defined at:
+https://wcdma-ll.app.alcatel-lucent.com/livelink/livelink.exe?func=ll&objId=66264725&objAction=Open&nexturl=%2Flivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objId%3D66263238%26objAction%3Dbrowse%26viewType%3D1
+FRS Requirement: FRS-162818-Req-7
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-DeviceMgmt-100>
+
+<Start: SRS-HeNB-OAM-DeviceMgmt-200, Requirement>
+The following TR-106 parameter shall be used to construct the DeviceID sent along each TR-069 Inform() message. The structure is used to uniquely identify the HeNB.
+
+DeviceIdStruct definition
+Name	Description	TR-106 Parameter 
+Manufacturer	Manufacturer of the device (for display only).	Device.DeviceInfo.Manufacturer
+OUI	Organizationally unique identifier of the device manufacturer. 	Device.DeviceInfo.ManufacturerOUI
+ProductClass	Identifier of the class of product for which the serial number applies. 	Device.DeviceInfo.ProductClass
+SerialNumber	Identifier of the particular device that is unique for the indicated class of product and manufacturer.	Device.DeviceInfo.SerialNumber 
+
+FRS Requirement: FRS-162818-Req-7
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-DeviceMgmt-200>
+
+<Start: SRS-HeNB-OAM-DeviceMgmt-300, Requirement>
+The HeNB shall support the following TR-106 parameters as Forced Inform parameters, 
+Parameter
+Device.DeviceSummary
+Device.DeviceInfo.HardwareVersion
+Device.DeviceInfo.SoftwareVersion
+Device.DeviceInfo.AdditionalHardwareVersion
+Device.DeviceInfo.AdditionalSoftwareVersion
+Device.ManagementServer.ParameterKey 
+Device.ManagementServer.ConnectionRequestURL
+Device.LAN.IPAddress
+
+FRS Requirement: FRS-162818-Req-7
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-DeviceMgmt-300>
+
+<Start: SRS-162298-HeNBStrtUp-20, Requirement>
+In order for the Full Plug and Play with TR-069 feature to be enabled the attribute RanBackhaul::ipConfigAutomatic shall be set to True.
+FRS Requirement: FRS-162298-Req-R2, R3          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-20>
+
+<Start: SRS-162298-HeNBStrtUp-30, Requirement>
+When feature 162298 is enabled all contact between the HeNB & HDM during startup shall be via the relevant TR-069 Methods.
+Note: See section Error! Reference source not found. for more details
+FRS Requirement: FRS-162298-Req-R11          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-30>
+
+<Start: SRS-162298-HeNBStrtUp-40, Requirement>
+When feature 162298 is enabled the HeNB & HDM shall follow the defined startup procedure when triggered by any of the following conditions:
+•	On first installation
+•	When a factory reset is performed by the user pressing and holding the Factory Reset button on the HeNB 
+•	When a factory reset is triggered by the HDM sending a TR-069 FactoryReset Method to the HDM.
+•	When the HeNB is power cycled, triggered by its own software, e.g. when installing a new Bulk CM file
+•	When HDM issues a TR-069 Reboot RPC Method to the HeNB
+FRS Requirement: FRS-162298-Req-R16          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-40>
+
+<Start: SRS-162298-HeNBStrtUp-50, Requirement>
+During the startup procedure the HeNB shall set the appropriate LEDs, including to indicate failure, as defined in the Verizon FTS [A 24 ] 
+FRS Requirement: FRS-162298-Req-R15          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-50>
+
+<Start: SRS-162298-HeNBStrtUp-60, Requirement>
+The plug & play with TR-069 startup procedure shall be completed within the timeframe specified by the relevant KPI in the FTS for 162515 Key Performance Indicators for SCLR1.0 [A 25 ]  
+FRS Requirement: FRS-162298-Req-R1 (perf)          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-60>
+
+<Start: SRS-162298-HeNBStrtUp-100, Requirement>
+At the factory the HeNB shall be provisioned with information before it is deployed. This shall  include the following information:
+•	EUI – as specified in 3GPP TS23.003
+•	OUI + serial number
+•	Operator Domain name – This will be used for two purposes:
+1. to resolve IP addresses during initial contact (before the HeNB has a MIB database). 
+2. as an expected identity to match the SeGW's certificate against.
+•	Own certificate chain
+•	Default SeGW FQDN 
+•	Trust Anchor CA certificates - used to authenticate the Default SeGW, Initial & Assigned HDMs
+•	Initial Generic SW – If a software image is not provisioned the HeNB shall execute its recovery software on startup.
+•	Recovery SW
+Note: Details on the format of the EUI, OUI & Serial Number can be found in the FRS for the 9762 Enterprise Cell 2x250mw Generic (feature #162839). Details on the use of the certificate chain & CA certificates can be found in SRS-eNB-MCI-NTK-SEC.
+FRS Requirement: FRS-162298-Req-R1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-100>
+
+<Start: SRS-162298-HeNBStrtUp-120, Requirement>
+On startup the HeNB shall populate the following information in the DeviceInfo object from inventory data,
+•	DeviceInfo:
+o	Manufacturer,
+o	ManufacturerOUI,
+o	ProductClass,
+o	ModelName
+o	SerialNumber,
+o	HardwareVersion,
+o	SoftwareVersion – If a initial generic has been provisioned in the factory.
+FRS Requirement: FRS-162298-Req-R1          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-120>
+
+<Start: SRS-162298-HeNBStrtUp-140, Requirement>
+On startup the HeNB shall read its EUI from data stored in memory and populate MCISecurity::hnbUniqueIdentity with the value.
+FRS Requirement: FRS-162298-Req-R1          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-140>
+
+<Start: SRS-162298-HeNBStrtUp-160, Requirement>
+On startup the HeNB shall read the Default SeGW FQDN from data stored in memory. The HeNB shall populate Enb::securityGWFqdn with the value. 
+FRS Requirement: FRS-162298-Req-R1          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-160>
+
+<Start: SRS-162298-HeNBStrtUp-180, Requirement>
+On startup the HeNB shall read the operator domain name from inventory data stored in memory and populate MCISecurity::mnoDomainName with the value.
+FRS Requirement: FRS-162298-Req-R1          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-180>
+
+<Start: SRS-162298-HeNBStrtUp-200, Requirement>
+If the HeNB is provisioned with an initial Software image it shall use this to establish an IPsec tunnel to the default SeGW and register with the Initial HDM for further provisioning, as defined by the requirements in sections 4.3.4 & 4.3.5.
+Otherwise the HeNB shall exercise its recovery software as defined in section 4.3.3.
+Note: The HeNB bootloader can check in NAND for the presence of a factory provisioned software image.
+FRS Requirement: FRS-162298-Req-R1,R5          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-200>
+
+<Start: SRS-162298-HeNBStrtUp-220, Requirement>
+The following information shall be hardcoded in HeNB software,
+?	Initial HDM default username="henb" - TBC 
+?	Initial HDM default password="henbpass" - TBC
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-220>
+
+<Start: SRS-162298-HeNBStrtUp-300, Requirement>
+On startup the HeNB shall check whether a software image has been provisioned on the HeNB. If no image is provisioned, the HeNB shall execute its recovery software.
+Note: In order to do this the HeNB bootloader will check whether an image is loaded in NAND.
+FRS Requirement: FRS-162298-Req-R5          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-300>
+
+<Start: SRS-162298-HeNBStrtUp-320, Requirement>
+If the HeNB is using recovery software it shall first retrieve its IP configuration and establish an IPsec tunnel to the default SeGW as defined in section 4.3.4.
+FRS Requirement: FRS-162298-Req-R4, R5          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-320>
+
+<Start: SRS-162298-HeNBStrtUp-340, Requirement>
+If the HeNB is using recovery software, after establishing an IPsec tunnel to the default SeGW it shall download an initial software image from the fileserver as defined in section 4.3.5. The address of the fileserver shall be determined using a DNS Query to the Internal DNS Server with the FQDN constructed as described in SRS-162298-HeNBStrtUp-360.
+FRS Requirement: FRS-162298-Req-R3, R5          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-340>
+
+<Start: SRS-162298-HeNBStrtUp-360, Requirement>
+The File Server FQDN shall be constructed by prefixing sftp-server to the operator domain name stored in MCISecurity::mnoDomainName
+For example sftp-server.efemto.verizonwireless.com
+FRS Requirement: FRS-162298-Req-R5          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-360>
+
+<Start: SRS-162298-HeNBStrtUp-380, Requirement>
+After downloading an initial software image from the fileserver, the HeNB shall store this in NAND and reboot.
+Note: When the HeNB reboots it shall then follow the same steps as if the image had been provisioned in the factory as defined in sections 4.3.4 & 4.3.5.
+FRS Requirement: FRS-162298-Req-R5          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-380>
+
+<Start: SRS-162298-HeNBStrtUp-390, Requirement>
+If download of the initial software image fails. e.g (File server not responding/overload etc) the HeNB shall retry indefinitely. The retry period shall be 10 minutes.
+Note: If the recovery software is unable to download an initial software image the startup procedure cannot continue, hence it is reasonable to retry the download periodically. A factory reset or reboot will initiate the startup procedure again.
+FRS Requirement: FRS-162298-Req-R5          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-390>
+
+<Start: SRS-162298-HeNBStrtUp-400, Requirement>
+On startup the HeNB shall trigger a DHCP Discovery procedure to determine its local DHCP Server. The DHCP Discovery message shall be sent using untagged Ethernet frames.
+FRS Requirement: FRS-162298-Req-R2          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-400>
+
+<Start: SRS-162298-HeNBStrtUp-420, Requirement>
+If the HeNB does not receive a DHCP Offer message in response to the DHCP Discovery it shall retry the DHCP Discovery. This procedure shall be retried until an Offer is received.
+Note: This means that the HeNB can end up in a permanent loop waiting for a response, however since it cannot continue with Startup until it has the Dynamic IP configuration this will be acceptable. The user would then have to power cycle the HeNB to initiate the Startup procedure again.
+FRS Requirement: FRS-162298-Req-R2          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-420>
+<Start: SRS-162298-HeNBStrtUp-440, Requirement>
+After the HeNB has discovered a DHCP Server it shall then send a DHCP Request to the Server to retrieve relevant IP configuration, including its Outer IP Address, the IP Address of the public DNS Server, Subnet Mask etc. The DHCP messages shall be sent using untagged Ethernet frames
+FRS Requirement: FRS-162298-Req-R2          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-440>
+
+<Start: SRS-162298-HeNBStrtUp-460, Requirement>
+After determining the IP Address of the public DNS Server the HeNB shall trigger a DNS Query to the public DNS server to retrieve the IP address corresponding to the Default SeGW FQDN. The DNS Query shall be sent using untagged Ethernet frames.
+Note: The Default SeGW FQDN is stored in Enb::securityGWFqdn
+FRS Requirement: FRS-162298-Req-R3          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-460>
+
+<Start: SRS-162298-HeNBStrtUp-480, Requirement>
+Once an IP Address has been resolved for the Default SeGW the HeNB shall then trigger the establishment of an IPsec tunnel to that SeGW as specified in the eNB-MCI Transport SRS [A 23 ] 
+FRS Requirement: FRS-162298-Req-R4          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-480>
+
+<Start: SRS-162298-HeNBStrtUp-500, Requirement>
+During IPsec tunnel establishment to the Default SeGW, the HeNB shall be provided with an Inner IP Address & the IP Address of the Internal DNS Server.
+FRS Requirement: FRS-162298-Req-R4          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-500>
+
+<Start: SRS-162298-HeNBStrtUp-520, Requirement>
+During startup, after an IPsec tunnel is established with the Default SeGW if the HeNB has not previously registered with HDM it shall register with the Initial HDM as specified in section 4.3.5. 
+If the HeNB has previously registered with HDM is shall register with the assigned HDM as specified in section 4.3.5.
+Note: Section 4.3.5  will also cover subsequent steps after the HeNB registers with HDM
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-520>
+
+<Start: SRS-162298-HeNBStrtUp-600, Requirement>
+The HeNB shall permanently maintain the status that it has been registered with HDM. This registration status shall be updated after sending a BOOTSTRAP Inform to the Assigned HDM, when the Inform response has been received.
+Note: A factory reset shall clear the registration status
+FRS Requirement: FRS-162298-Req-R7          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-600>
+
+<Start: SRS-162298-HeNBStrtUp-620, Requirement>
+When the HeNB is required to register with the initial HDM it shall first resolve the IPaddress of the initial HDM by triggering a DNS Query to the public DNS server using the initial HDM FQDN. The initial HDM FQDN shall be constructed as defined in requirement SRS-162298-HeNBStrtUp-640.
+The DNS Query shall be sent using untagged Ethernet frames.
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-620>
+
+<Start: SRS-162298-HeNBStrtUp-640, Requirement>
+The Initial HDM FQDN shall be constructed by prefixing HDM to the operator domain name stored in MCISecurity::mnoDomainName
+For example hdm.efemto.verizonwireless.com
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-640>
+
+<Start: SRS-162298-HeNBStrtUp-660, Requirement> 
+After the IPaddress of the Initial HDM has been resolved via the DNS Query, the HeNB shall use this to register with the HDM. 
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-660>
+
+<Start: SRS-162298-HeNBStrtUp-680, Requirement>
+Whenever the HeNB needs to initiate a TR-069 session towards HDM it shall first establish a TLS connection to HDM.
+FRS Requirement: FRS-162298-Req-R6, R7          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-680>
+
+<Start: SRS-162298-HeNBStrtUp-700, Requirement>
+When starting up, if the HeNB has not previously registered with HDM (registration status is not “true”), the HeNB shall initiate a TR-069 session to the Initial HDM with default username and password and send an Inform request containing the BOOTSTRAP event.  
+The format of the Inform message shall be as follows:
+?	Device id
+•	Manufacturer = DeviceInfo::Manufacturer
+•	OUI = DeviceInfo::ManufacturerOUI
+•	ProductClass = DeviceInfo::ProductClass
+•	Serial Number = A truncated form of DeviceInfo::SerialNumber, containing the 12 numerical characters as specified in FRS 162839.
+?	Event = Bootstrap 
+?	MaxEnvelopes = 1
+?	CurrentTime = The current date & time known by the HeNB
+?	ParameterList shall contain the following
+?	DeviceInfo::SoftwareVersion
+?	Enb::mimVersion
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-700>
+
+<Start: SRS-162298-HeNBStrtUp-710, Requirement>
+When the Initial HDM receives a BOOTSTRAP inform from an HeNB it shall provide the HeNB with the username and password that the HDM shall use for subsequent ConnectionRequest messages sent to the HeNB via a TR-069 SetParameterValue Method to set ManagementServer::ConnectionRequestUsername & ManagementServer::ConnectionRequestPassword respectively.
+The Initial HDM shall also provide the HeNB with a timer value that the HeNB should use for triggering subsequent Periodic Informs to the HDM.
+Note: This provides the HeNB with a Username & password that it can use to authenticate an  HDM making a Connection Request to the HeNB. 
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-710>
+
+<Start: SRS-162298-HeNBStrtUp-720, Requirement>
+When the Initial HDM receives a BOOTSTRAP inform from an HeNB with default username and password, it shall check whether the HeNB is pre-registered based on its serial number, and if so, shall then provide the HeNB with the address of the assigned HDM, by using a TR-069 SetParametersValue RPC Method to set ManagementServer::URL in the TR106 data model. The HDM shall also provide the username & password that the HeNB shall subsequently use when registering with the assigned HDM by setting ManagementServer::Username & ManagementServer::Password respectively.
+Note: If the HeNB is not pre-registered with the Initial HeNB, the HeNB will not be provisioned with the assigned HDM information and address. The HeNB will then subsequent re-register with the Initial HDM when its Periodic Inform timer expires. This allows the Initial HDM to control when unregistered HeNB will send Informs to it and will also allow the Initial HDM to periodically  check when an HeNB has been registered.
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-720>
+
+<Start: SRS-162298-HeNBStrtUp-740, Requirement>
+The HeNB shall start the registration timer after the HeNB’s ManagementServer::URL is updated by the Initial HDM. See SRS-162298-HeNBStrtUp-860 for details.
+If the timer expires the HeNB shall take the actions specified in SRS-162298-HeNBStrtUp-880.
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-740>
+
+<Start: SRS-162298-HeNBStrtUp-760, Requirement>
+When the HeNB is required to register with the assigned HDM it shall first resolve the IPaddress of the assigned HDM by triggering a DNS Query to the internal DNS server using the attribute ManagementServer::URL.
+The DNS Query shall be sent using untagged Ethernet frames.
+FRS Requirement: FRS-162298-Req-R7          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-760>
+
+<Start: SRS-162298-HeNBStrtUp-780, Requirement>
+When starting up, if the HeNB has not previously registered with HDM (registration status is not “true”), and it has been provided with the address of the assigned HDM it shall initiate a TR-069 session with that HDM using the username and password provisioned by the initial HDM and shall send an Inform Request containing the BOOTSTRAP event to the assigned HDM.
+The format of the Inform message shall be as follows:
+?	Device id
+•	Manufacturer = DeviceInfo::Manufacturer
+•	OUI = DeviceInfo::ManufacturerOUI
+•	ProductClass = DeviceInfo::ProductClass
+•	Serial Number = A truncated form of DeviceInfo::SerialNumber, containing the 12 numerical characters as specified in FRS 162839.
+?	Event = Bootstrap 
+?	MaxEnvelopes = 1
+?	CurrentTime = The current date & time known by the HeNB
+?	ParameterList shall contain the following
+?	DeviceInfo::SoftwareVersion
+?	Enb::mimVersion = “Null”
+Note: The username & password shall be obtained from ManagementServer::Username & ManagementServer::Username respectively.
+Note: By setting parameter Enb::mimVersion to “null”, the HeNB will trigger the HDM to initiate a a download of the current software image..
+FRS Requirement: FRS-162298-Req-R7          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-780>
+
+<Start: SRS-162298-HeNBStrtUp-790, Requirement>
+When the Assigned HDM receives a BOOTSTRAP inform from an HeNB containing a null value for the mimVersion, it shall trigger the HeNB to download the latest SW image, by using a TR-069 SetParametersValue RPC Method to set notRunningSwDescrFileName.
+Note: Refer to section Error! Reference source not found. for more details.
+FRS Requirement: FRS-162298-Req-R7          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-790>
+
+<Start: SRS-162298-HeNBStrtUp-920, Requirement>
+If after registering with HDM, the HDM triggers the download of a software image file, the HeNB shall support the requirements specified in section Error! Reference source not found. to download and activate the file.
+Note: The HDM will need to retrieve values of specific parameters on the HeNB to determine whether the software image has been successfully activiated or not. Refer to Error! Reference source not found. 
+FRS Requirement: FRS-162298-Req-R7          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-920>
+
+<Start: SRS-162298-HeNBStrtUp-800, Requirement>
+When starting up, if the HeNB has previously registered with HDM (registration status is “true”), the HeNB shall initiate a TR-069 session by sending a BOOT Inform request to the assigned HDM using the provisioned username and password, and shall start the registration timer (Note: See SRS-162298-HeNBStrtUp-880 for details).
+If the timer expires the HeNB shall take the actions specified in SRS-162298-HeNBStrtUp-880.
+The format of the Inform message shall be as follows:
+?	Device id
+•	Manufacturer = DeviceInfo::Manufacturer
+•	OUI = DeviceInfo::ManufacturerOUI
+•	ProductClass = DeviceInfo::ProductClass
+•	Serial Number = A truncated form of DeviceInfo::SerialNumber, containing the 12 numerical characters as specified in FRS 162839.
+?	Event = Boot 
+?	MaxEnvelopes = 1
+?	CurrentTime = The current date & time known by the HeNB
+?	ParameterList shall contain the following
+?	DeviceInfo::SoftwareVersion
+?	Enb::mimVersion
+Note: The username & password shall be obtained from ManagementServer::Username & ManagementServer::Username  respectively
+Note: If the HeNB does not have configuration data loaded, Enb::mimVersion will be set to “null”.
+FRS Requirement: FRS-162298-Req-R7          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-800>
+
+<Start: SRS-162298-HeNBStrtUp-860, Requirement>
+The registration timer for HeNB registration with HDM shall backoff in order to spread the load on the HDM in the case a large number of HeNBs are registering at the same time. The HeNB shall take the following approach when setting the registration timer,  
+- for the first N attempts after reset the timer shall be set to X minutes, 
+- then for each subsequent attempt the timer shall be increased by Y minutes until it reaches 1 hour,
+- for all the following attempts after the above tries the timer shall be set to 1 hour. 
+
+X is set to 7.5 minutes if the timer is started by the update in ManagementServer.URL or 2.5 minutes otherwise. Y is set to 5 minutes and N is 1. 
+ 
+Note: The initial value is set  to 7.5 minutes to allow at least one PERIODIC inform after the BOOTSTRAP to the assigned HDM (assuming 5 minutes interval). 
+  
+FRS Requirement: FRS-162298-Req-R6, R7          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-860>
+
+<Start: SRS-162298-HeNBStrtUp-880, Requirement>
+If the registration timer expires the HeNB shall take the following actions: 
+-  if no download is in progress, the HeNB shall restart the whole registration procedure (set registrationStatus=false and send Inform(BOOTSTRAP) to the Initial HDM).
+-  if a download is in progress, the registrationTimer shall be restarted.
+  
+FRS Requirement: FRS-162298-Req-R6, R7          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-880>
+
+<Start: SRS-162298-HeNBStrtUp-810, Requirement>
+When the Assigned HDM receives a BOOT inform from an HeNB and the operator requires that that the location of the HeNB is verified, the HDM shall trigger the HeNB to perform a location check as specified in [A 22 ] 
+FRS Requirement: FRS-162298-Req-R8          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-810>
+
+<Start: SRS-162298-HeNBStrtUp-815, Requirement>
+During startup if the HDM triggers a location check procedure on the HeNB, the HeNB shall perform the procedures specified in  [A 22 ] to provide its location to HDM.
+FRS Requirement: FRS-162298-Req-R8          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-815>
+
+<Start: SRS-162298-HeNBStrtUp-820, Requirement>
+When HDM has been provided with a location by the HeNB it shall verify it as described in  [A 22 ] If the HeNB’s location is invalid or undetermined, the HDM shall set the relevant attribute on the HeNB via a TR-069 SetParameterValue to indicate to the HeNB that the location check has failed. The HeNB shall then cease the startup procedure and indicate failure by setting the appropriate LEDs, see [A 22 ] 
+Note: The HeNB will need to be rebooted, or factory resetted in order to initiate the startup procedure again.
+FRS Requirement: FRS-162298-Req-R9          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-820>
+
+<Start: SRS-162298-HeNBStrtUp-830, Requirement>
+After successfully validating an HeNB’s location, HDM shall initiate a TR-069 Download RPC method to the HeNB to trigger the HeNB to download a bulk CM file. The Download RPC message shall include the file server path name of the bulk CM file.
+Note: Refer to section Error! Reference source not found. for more details.
+FRS Requirement: FRS-162298-Req-R10         
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-830>
+
+<Start: SRS-162298-HeNBStrtUp-900, Requirement>
+If after registering with HDM, the HDM triggers the download of a bulk CM file, the HeNB shall follow the requirements specified in section Error! Reference source not found. to download and activate the file.
+Note: After the HeNB indicates to the HDM that it has successfully downloaded and activate the Bulk CM file, the HDM may well trigger a GetParametersValue method to synchronise any changed parameters.  
+FRS Requirement: FRS-162298-Req-R10, R11          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-900>
+
+<Start: SRS-162298-HeNBStrtUp-940, Requirement>
+After the HeNB has downloaded and activated the latest software image and Bulk CM file it shall establish an IPsec tunnel to the serving SeGW for the OAM domain and register with the assigned HDM.
+FRS Requirement: FRS-162298-Req-R10          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-940>
+
+<Start: SRS-162298-HeNBStrtUp-960, Requirement>
+After the HeNB has downloaded and activated the latest software image and Bulk CM file it shall establish an IPsec tunnel to the serving SeGW for the Telecom domain and setup an S1 connection with the HeNB-GW.
+FRS Requirement: FRS-162298-Req-R12          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-960>
+
+<Start: SRS-162298-HeNBStrtUp-970, Requirement>
+After the HeNB has downloaded and activated the latest software image and Bulk CM file it shall perform network listening to determine its PCI, TX Power & to perform RF Fingerprinting.
+Note: Refer to the Network listening feature [A 26 ] for more details.
+FRS Requirement: FRS-162298-Req-R13          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-970>
+
+<Start: SRS-162298-HeNBStrtUp-980, Requirement>
+After successfully registering with the assigned HDM and establishing an S1 connection the HeNB shall set the relevant LEDs to indicate it is in service, as defined in the Verizon FTS [A 24 ]  
+FRS Requirement: FRS-162298-Req-R15          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-980>
+
+<Start: SRS-162298-HeNBStrtUp-1000, Requirement>
+Once an HeNB has been successfully configured and in service, it shall perform a movement check on a subsequent reboot as specified in [A 22 ]    
+FRS Requirement: FRS-162298-Req-R14          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-1000>
+
+<Start: SRS-162818-HeNBGwDisc-100, Requirement>
+HeNBGW shall be automatically assigned to the HeNB.
+The assignment shall be based on operator deployment, HeNB location and dimensioning.
+The assignment of HeNBGW will be reevaluated at every location movement of the HeNB. 
+Note: The exact algorithm use for the assignment will be defined. However there may be some customer specific needs that have to be taken into account.  
+FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBGwDisc-100>
+
+<Start: SRS-163769-HeNBFM-50, Requirement>
+HeNB shall support all applicable notifications to the SCMS as supported in LR13.1. 
+Note: New notifications (alarms, events, AVCN, OCN, BCN, ODN) shall be supported as needed and will be defined as part of the feature FTS/SRS.
+FRS Requirement: FRS-163769-R1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-50>
+
+<Start: SRS-163769-HeNBFM-100, Requirement>
+HeNB shall support sending of all alarms (including clears) and events over the TR069 interface as informs.
+The alarms will be translated into informs and will contain all the following fields.
+Alarm notification as raised in eNB via SNMP	Description	Mapping for alarm informs over TR069
+alarmLastChangeCounter,	Counter incremented with each alarm change.
+introduced for NB for alarm mgt and synchronization, not an alarm field itself	alarmLastChangeCounter
+ managedObjectInstance,	MO Identity	managedObjectInstance
+alarmTime,	The time at which the fault occurred (mandatory). It should be in the format of  Local Time + UTC Offset [Can be Positive or Negative], i.e. YYYYMMDDThhmmss+/-hhmm, for example: 20080827T142403-0100.	alarmTime
+alarmType,	The type of the alarm: Communication, quality of service, processing error, equipment, or environment-related.
+The alarm types are defined in the CCITT recommendation X.733, therefore only 'communicationsAlarm', 'objectDeletion', 'qualityofServiceAlarm', 'processingErrorAlarm', 'equipmentAlarm',  'environmentalAlarm', 'miscellaneous', and 'unknown' from ExtendedX721EventType are used.	alarmType
+alarmSeverity,	None, warning, minor major, critical, cleared, unknown
+	alarmSeverity
+alarmId,	Identification of the alarm - alarm ID in range 400 0001 to 500 0000	alarmId
+alarmAdditionalInformation,	text string providing additional information	alarmAdditionalInformation
+alarmMonitoredAttribute,	text string describing MO 	alarmMonitoredAttribute
+alarmOperationalState,	Operational state of the managed object induced by this alarm (not necessarily its current operational state).	
+alarmAvailabilityStatus,	Availability status of the managed object 	alarmAvailabilityStatus
+         numberOfFilteredAlarmsSinceLastReporting,		numberOfFilteredAlarmsSinceLastReporting,
+lastFilteringTime,	UTC time of last filtered alarm	lastFilteringTime
+lastFilteringType,	type of last filtered alarm (none/begin/end/pingpong)	lastFilteringType
+alarmSpecificProblem,	text string with further detail to X-733 Probable Cause value, e.g., used for external alarms	alarmSpecificProblem
+alarmFdn,	Fully Distinguished Name of the managed object where this alarm occurred. The syntax is defined in SID eNodeB Configuration Management. If the object does not have an FDN, the eNB's FDN is shown. The value must not be the empty string	alarmFdn
+alarmNature	ADAC or ADMC	alarmNature
+
+FRS Requirement: FRS-163769-R1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-100>
+
+<Start: SRS-163769-HeNBFM-200, Requirement>
+HeNB shall support sending alarms and events based on the Alarm Reporting Mechanism configurable by the operator. (MIM Parameter is eNB::FMProfile::alarmReportingMechanism)
+The three options supported are:
+•	Real Time: All alarms are sent in real time.
+•	Subset Real Time: A subset of alarms are sent in real time
+•	Logged: Alarms are stored in the active alarm table and historical alarm list and pulled only on request.
+FRS Requirement: FRS-163769-R4          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM
+<End: SRS-163769-HeNBFM-200>
+
+<Start: SRS-163769-HeNBFM-300, Requirement>
+When the alarmReportingMechanism is set to EnableSubsetRT, the HeNB shall provide the capability for the operator to select the up to 50 alarms to be sent in real time using eNB:FMProfile: realTimeAlarmsList. All other alarms will be logged in the HeNB. 
+FRS Requirement: FRS-163769-R4          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-300>
+
+<Start: SRS-163769-HeNBFM-400, Requirement>
+HeNB shall support buffering and sending all “unsent” notifications with the next periodic inform.
+The option shall be configurable by the operator. (MIM Parameter is eNB:FMProfile::enablePassiveReporting)
+NOTE: This shall not be supported in SCLR1.1 and shall be considered for SCLR1.1.0.
+FRS Requirement: future
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-400>
+
+<Start: SRS-163769-HeNBFM-500, Requirement>
+When the alarmReportingMechanism is set to Logged, the HeNB shall log all alarms in the HeNB.
+FRS Requirement: FRS-163769-R1
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-500>
+
+<Start: SRS-163769-HeNBFM-600, Requirement>
+HeNB shall maintain the active alarms in the active alarm list. SCMS shall use the activeAlarmList to synchronize alarms.
+Note: The mechanism to save active alarms in an active alarm list is already supported in the eNB. The functionality to support all alarms raised (within 48 hours or within a predetermined storage) shall be stored in a historical alarm list with L108273 in LR13.1.
+The activeAlarmList will contain the following:
+alarmLastChangeCounter	This parameter is a counter incremented with each new alarm introduced in the node.
+managedObjectInstance	 This parameter is the MO Identity.
+alarmTime	This parameter is the time at which the fault occurred (mandatory). It should be in the format of  Local Time + UTC Offset [Can be Positive or Negative]. 
+alarmType	This parameter defines the type of the alarm: Communication, quality of service, processing error, equipment, or environment-related.
+The alarm types are defined in the CCITT recommendation X.733, therefore only 'communicationsAlarm', 'objectDeletion', 'qualityofServiceAlarm', 'processingErrorAlarm', 'equipmentAlarm',  'environmentalAlarm', 'miscellaneous', and 'unknown' from ExtendedX721EventType are used.
+alarmSeverity	This paramater defines rhe severity of the alarm - None, warning, minor major, critical, cleared, unknown.
+alarmId	This parameter is the Identification of the alarm - alarm ID in range 400 0001 to 500 0000.
+alarmAdditionalInformation	This parameter is the text string providing additional information.
+alarmMonitoredAttribute	This parameter is the text string describing alarm. This parameter can be empty.
+alarmOperationalState	This parameter is the Operational state of the managed object induced by this alarm (not necessarily its current operational state).
+alarmAvailabilityStatus	This parameter is the Availability status of the managed object.
+lastFilteringTime	This parameters has the UTC time of last filtered alarm.
+lastFilteringType	This parameter defines the type of last filtered alarm . 
+alarmSpecificProblem	This parameter is a text string with further detail to X-733 Probable Cause value.
+alarmFdn	This parameter is a Fully Distinguished Name of the managed object where this alarm occurred. The syntax is defined in SID eNodeB Configuration Management. If the object does not have an FDN, the eNB's FDN is shown. The value must not be the empty string.
+alarmNature	This parameter defines the nature of the alarm - ADAC or ADMC.
+numberOfFilteredAlarmsSinceLastReporting	This parameter is the number of begin-alarm events filtered since the last begin-of-alarm message (or respectively the number of end-of-alarm events filtered since the last end-of-alarm message or respectively the number of ping-pong alarm events filtered since the last ping-pong-of-alarm message). 
+
+FRS Requirement: FRS-163769-R5        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-600>
+
+<Start: SRS-163769-HeNBFM-700, Requirement>
+HeNB shall support the following counter:
+?	Active Critical Alarm Counter: number of critical alarms currently active on the HeNB. The MIM parameter is eNB::FMProfile::activeCriticalAlarmCounter.
+and the counter shall be available on demand and synchronized with SCMS through AVCNs included in periodic inform messages. 
+FRS Requirement: FRS-163769-R1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-700>
+
+<Start: SRS-163769-HeNBFM-800, Requirement>
+HeNB shall support sending state change notifications (SCN) based on the eNB:: FMProfile::enableRealTimeSCN  settings configurable by the operator.
+If enableRealTimeSCN is true:
+•	Real Time: All SCNs are sent in real time.
+•	Logged: SCNs are stored in the HENB and pulled only on request.
+FRS Requirement: FRS-163769-R3          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-800>
+
+<Start: SRS-163769-HeNBFM-900, Requirement>
+HeNB shall support sending attribute value change notifications (AVCN), Bulk change notification (BCN), Object Creation Notification and Object Delete Notification based on the eNB::FMProfile::enableRealTimeAVCN  settings configurable by the operator. (115149 LA5.0)
+If enableRealTimeAVCN is true:
+•	Real Time: All notifications are sent in real time.
+•	Logged: Notifications are stored in the HENB and pulled only on request.
+FRS Requirement: FRS-163769-R3          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-900>
+
+<Start: SRS-163769-HeNBFM-1000, Requirement>
+The HeNB shall send AVCN as informs and the informs shall contain the following parameters:
+Name (full FDN) – Value pair and additional Text. 
+All AVNCs in the Node shall be forwarded over TR069 as informs and will contain the following:
+Name value pair and additional Text.
+The additional text will be populated within the attribute TR069NotifVC. objectChangeCauseAdditionalText.
+Possible values for Additional Text (without the single quotes):
+                1. 'SON-ANR';
+                2. 'SON-PCI';
+                3. 'Antenna Mapping';
+                4. 'Automatic Neighbour Relations';
+                5. 'Cell Mgmt - Position';
+                6. 'Clock-Synch';
+                7. 'CPRI Mapping';
+                8. 'Equipment Mapping';
+                9. 'Inventory Mgmt';
+                10. 'Position Mgmt';
+                11. A concatenated value: In a notification
+                    related to parameters with more than one of the
+                    individual values above, a concatenated value
+                    is constructed from the individual values with ' and '
+                    between them as follows:
+                        '<individual value 1> and <individual value 2> and ...'.
+                    Example:
+                        'SON-ANR and SON-PCI'
+                12. 'not applicable' (when sourceIndicator = 'nem' or 'unknown'.")
+
+Example:
+<EventStruct><EventCode>4 VALUE CHANGE</EventCode><CommandKey></CommandKey></EventStruct></Event><MaxEnvelopes>1</MaxEnvelopes><CurrentTime>0001-01-01T00:00:00Z</CurrentTime><RetryCount>0</RetryCount><ParameterList xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="cwmp:ParameterValueStruct[11]"><ParameterValueStruct><Name>Device.DeviceSummary</Name><Value xsi:type="xsd:string">Device:1.0[](Baseline:1),profile:1.0[](baseline:1)</Value>
+</ParameterValueStruct<Name>Device.Services.EnbEquipmemt.1.aliasName </Name><Value xsi:type="xsd:string">MyHeNB </Value>
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeCauseAdditionalText</Name><Value xsi:type="xsd:string">'Automatic Neighbour Relations'</Value>
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1000>
+
+<Start: SRS-163769-HeNBFM-1100, Requirement>
+The HeNB shall send SCN as informs and the informs shall contain the following parameters:
+Name (full FDN) – Value pair 
+HeNB will map the state change into and inform with a name value pair as in the example:
+<EventStruct><EventCode>4 VALUE CHANGE</EventCode><CommandKey></CommandKey></EventStruct></Event><MaxEnvelopes>1</MaxEnvelopes><CurrentTime>0001-01-01T00:00:00Z</CurrentTime><RetryCount>0</RetryCount><ParameterList xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="cwmp:ParameterValueStruct[11]"><ParameterValueStruct><Name>Device.DeviceSummary</Name><Value xsi:type="xsd:string">Device:1.0[](Baseline:1),profile:1.0[](baseline:1)</Value></ParameterValueStruct<Name>Device.Services.EnbEquipment.1.operationalState</Name><Value xsi:type="xsd:string">disabled</Value>
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1100>
+
+<Start: SRS-163769-HeNBFM-1200, Requirement>
+	The mapping of BCN notification as informs shall be mapped.
+All BCNs in the Node shall be forwarded over TR069 as informs and will contain the following:
+TR069NotifVC.1.objectChangeType and TR069NotifVC.1.objectChangeFdn populated accordingly.
+<EventStruct><EventCode>4 VALUE CHANGE</EventCode><CommandKey></CommandKey></EventStruct>
+</Event><MaxEnvelopes>1</MaxEnvelopes><CurrentTime>0001-01-01T00:00:00Z</CurrentTime><RetryCount>0</RetryCount><ParameterList xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="cwmp:ParameterValueStruct[11]"><ParameterValueStruct><Name>Device.DeviceSummary</Name><Value xsi:type="xsd:string">Device:1.0[](Baseline:1),profile:1.0[](baseline:1)</Value>
+</ParameterValueStruct
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeType</Name><Value xsi:type="xsd:integer">4 </Value>
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeFdn</Name><Value xsi:type="xsd:string"> >/ENB:ENBEquipment[uniqueName=”140”]/Enb[rdnId=”0”]/LteCell[uniqueName=”Cell5</Value>
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1200>
+
+<Start: SRS-163769-HeNBFM-1300, Requirement>
+The mapping of OCN notification as informs shall be mapped.
+	All ODNs in the Node shall be forwarded over TR069 as informs and will contain the following:
+TR069NotifVC.1.objectChangeType and TR069NotifVC.1.objectChangeFdn populated accordingly.
+<EventStruct><EventCode>4 VALUE CHANGE</EventCode><CommandKey></CommandKey></EventStruct>
+</Event><MaxEnvelopes>1</MaxEnvelopes><CurrentTime>0001-01-01T00:00:00Z</CurrentTime><RetryCount>0</RetryCount><ParameterList xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="cwmp:ParameterValueStruct[11]"><ParameterValueStruct><Name>Device.DeviceSummary</Name><Value xsi:type="xsd:string">Device:1.0[](Baseline:1),profile:1.0[](baseline:1)</Value>
+</ParameterValueStruct
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeType</Name><Value xsi:type="xsd:integer">1 </Value>
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeFdn</Name><Value xsi:type="xsd:string"> >/ENB:ENBEquipment[uniqueName=”140”]/Enb[rdnId=”0”]/LteCell[uniqueName=”Cell5</Value>
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1300>
+
+<Start: SRS-163769-HeNBFM-1400, Requirement>
+The mapping of ODN  notification as informs shall be mapped.
+All OCNs in the Node shall be forwarded over TR069 as informs and will contain the following:
+TR069NotifVC.1.objectChangeType and TR069NotifVC.1.objectChangeFdn populated accordingly.
+<EventStruct><EventCode>4 VALUE CHANGE</EventCode><CommandKey></CommandKey></EventStruct>
+</Event><MaxEnvelopes>1</MaxEnvelopes><CurrentTime>0001-01-01T00:00:00Z</CurrentTime><RetryCount>0</RetryCount><ParameterList xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="cwmp:ParameterValueStruct[11]"><ParameterValueStruct><Name>Device.DeviceSummary</Name><Value xsi:type="xsd:string">Device:1.0[](Baseline:1),profile:1.0[](baseline:1)</Value>
+</ParameterValueStruct
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeType</Name><Value xsi:type="xsd:integer">3 </Value>
+<Name>Device.Services.EnbEquipmemt.1.TR069NotifVC.1.objectChangeFdn</Name><Value xsi:type="xsd:string"> >/ENB:ENBEquipment[uniqueName=”140”]/Enb[rdnId=”0”]/LteCell[uniqueName=”Cell5</Value>
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1400>
+
+<Start: SRS-163769-HeNBFM-1500, Requirement>
+SCMS shall provide a mechanism to display an aggregated real time status of all the HeNB. This status can be on-demand.
+Note: The request from customers is to show real-time how many HeNBs are in service, how many are out of service etc.
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1500>
+
+<Start: SRS-163769-HeNBFM-1600, Requirement>
+SCMS shall provide a mechanism to show status on the HeNBs during upgrades. The status shall indicate how many are in progress, how many have been successfully upgraded, how many have failed, how many are waiting for GPS or RF fingerprinting to complete etc. This status can be on-demand.
+Note: SCMS team will create appropriate user stories to support this.
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1600>
+
+<Start: SRS-163652-HeNBCM-100, Requirement>
+HeNB shall support 2 different mechanisms to perform configuration updates:
+•	TR069 interface.
+•	CM bulk file
+Note: Existing CLIs mechanism on the eNB shall continue to be supported via SSH. 
+FRS Requirement: FRS-163652-R1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-100>
+
+<Start: SRS-163652-HeNBCM-200, Requirement>
+HeNB shall support setParameterValues request from SCMS. The setParameterValues request shall contain Parameter List (name value pair) and the Parameter Key. 
+Reference: Section A.3.2.1 [S 9]
+FRS Requirement: FRS-163652-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-200>
+
+<Start: SRS-163652-HeNBCM-300, Requirement>
+On successful receipt of a SetParameterValues RPC, the HeNB shall apply the changes to all of the specified Parameters atomically. That is, either all of the value changes are applied together, or none of the changes are applied at all. 
+Reference: Section A.3.2.1 Error! Reference source not found.
+Note: The handling of setParameterValues should be similar to setConfig with Netconf.
+FRS Requirement: FRS-163652-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-300>
+
+<Start: SRS-163652-HeNBCM-400, Requirement>
+On successful receipt of a SetParameterValues RPC, the HeNB shall apply the changes to all of the specified Parameters atomically. That is, either all of the value changes are applied together, or none of the changes are applied at all. The application of value changes to the HeNB shall be independent of the order in which they are listed.
+All modifications to a HeNB‘s configuration resulting from use of the SetParameterValues method shall be retained across reboots of the HeNB.
+Note: The order of Parameters listed in the ParameterList has no significance. 
+Reference: Section A.3.2.1 [S 9]
+FRS Requirement: FRS-163652-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-400>
+
+<Start: SRS-163652-HeNBCM-500, Requirement>
+HeNB shall send a SetParameterValues response to indicate whether the configuration was applied successfully or not.
+The fault codes returned are defined in Section A.3.2.1 [S 9]
+FRS Requirement: FRS-163652-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-500>
+
+<Start: SRS-163652-HeNBCM-600, Requirement>
+HeNB shall support a request for getParameterValues to fetch the configuration of the HeNB. The request shall contain the ParameterNames (array of strings with full DN of the parameters).
+The fault codes returned are defined in Section A.3.2.2 [S 9]
+FRS Requirement: FRS-163652-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-600>
+
+<Start: SRS-163652-HeNBCM-700, Requirement>
+HeNB shall support a GetParameterValuesResponse to a request for getParameterValues to return the configuration of the HeNB. The request shall contain the ParameterList (array of name-value pairs).
+The fault codes returned are defined in Section A.3.2.2 [S 9]
+FRS Requirement: FRS-163652-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-700>
+
+<Start: SRS-163652-HeNBCM-800, Requirement>
+The SCMS shall use the TR069 download RPC to configure the Server IP address/FQDN (both IPv4 and IPv6 shall be supported), Port, full Path and file name of where the bulk CM file will be available. The bulk CM file name will be unique for this HeNB and the entire path and full name of the file shall be sent down by the SCMS.
+TR069 download RPC shall comply with the TR069 standards.
+Key based authentication shall be supported for SFTP. This enhancement shall be covered in 159296/156781.
+FRS Requirement: FRS-163652-R1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-800>
+<Start: SRS-163652-HeNBCM-900, Requirement>
+Upon invocation of the TR-069 Download RPC method, the HeNB shall retrieve the bulk CM XML file from the specified location. 
+The FileType argument for the TR-069 Download RPC shall be set to "3 Vendor Configuration File"
+The only field that is populated in the Download RPC is the URL for the bulk CM file.
+Example:
+<cwmp:Download>
+            <CommandKey>285271</CommandKey>
+<FileType>3 Vendor Configuration File</FileType>    <URL>sftp://ftpuser@172.61.111.9/opt/alcatel-lucent/data/LTE/ HeNB/20120803/bulkcm_filename.xml</URL>
+            <Username></Username>
+            <Password></Password>
+            <FileSize>0</FileSize>
+            <TargetFileName></TargetFileName>
+            <DelaySeconds>1</DelaySeconds>
+            <SuccessURL></SuccessURL>
+            <FailureURL></FailureURL>
+        </cwmp:Download>
+
+FRS Requirement: FRS-163652-R2         
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-900>
+
+<Start: SRS-163652-HeNBCM-1000, Requirement>
+HeNB shall support the capability to pull the bulk CM file from the location provided by the SCMS in a secure manner (sftp). 
+Appropriate number (recommended 3) of sftp retries shall be attempted before a sftp is declared failed.
+FRS Requirement: FRS-163652-R2          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1000>
+
+<Start: SRS-163652-HeNBCM-1100, Requirement>
+The bulk CM file shall contain the complete set of parameters available in the MIM that can be configurable in the HeNB.
+Note: There are TR-106 parameters that are available and defined only for the TR-069 interface between the HeNB and HDM. Those will not be available in the bulk CM file.
+FRS Requirement: FRS-163652-Req-3        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1100>
+
+<Start: SRS-163652-HeNBCM-1200, Requirement>
+HeNB shall apply the configuration changes in the bulk CM file to the HeNB working configuration after successful validation of the configuration data. 
+Note: Tips for replacing the configuration is specified in the Netconf guide and a small snippet provided in the appendix [Reference 6.1.1].
+FRS Requirement: FRS-163652-Req-4        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1200>
+
+<Start: SRS-163652-HeNBCM-1300, Requirement>
+The format of the data in the bulk CM file shall be compatible with the file format supported by the macro eNB – Yang XML format (RFC 6241).
+FRS Requirement: FRS-163652-Req-4        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1300>
+
+<Start: SRS-163652-HeNBCM-1400, Requirement>
+The bulk CM file name shall uniquely identify the file to be pulled from the ftp location and shall have the following format:
+Bcm_<HeNBID>_<MIM rel>_<version>.xml
+FRS Requirement: FRS-163652-Req-4        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1400>
+
+<Start: SRS-163652-HeNBCM-1500, Requirement>
+The HeNB shall automatically reset itself and come up on the newly configured data.
+Note: for the first release there will be no partial configuration sent in the bulk CM file. The bulk CM file will contain the entire data set needed to configure the HeNB. In subsequent release we will support the capability to send partial data and depending on the content of the data the HeNB will determine if a reboot is needed. Any partial configuration setup shall be done via TR069.
+FRS Requirement: FRS-163652-R5        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1500>
+
+<Start: SRS-163652-HeNBCM-1600, Requirement>
+The HeNB shall have the capability to fallback to the previous configuration if the new configuration fails for at least the following reasons:
+•	If, the configuration fails to validate on the HeNB
+•	If, after a bulk CM update and reset the HeNB fails to connect to the OAM system then the HeNB shall automatically fallback to the previous configuration. 
+•	If, during a SW upgrade there is a request from the SCMS to fallback, or if the SW fails during ugrade.
+FRS Requirement: FRS-163652-Req-6        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1600>
+
+<Start: SRS-163652-HeNBCM-1700, Requirement>
+The HeNB will report a success or failure of the download and configuration update. The Download status shall be reported using the TransferComplete RPC method.
+A failure shall be reported with an appropriate fault code as specified in section A.5.1 [S 9]
+FRS Requirement: FRS-163652-Req-7        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1700>
+
+<Start: SRS-163652-HeNBCM-1730, Requirement>
+SCMS shall automatically schedule download to the HeNB for any HeNB that did not accept the download RPC request on the first attempt. If there are multiple download requests during the interval when the HeNB could not be contacted then the latest download request will supersede the previous requests.
+FRS Requirement: FRS-163652-Req-7        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1730>
+
+<Start: SRS-163652-HeNBCM-1800, Requirement>
+Mechanism shall be provided to ensure that the bulk CM mechanism and the setting of the parameters via TR069 in a way that there are no inconsistencies introduced in the HeNB database.
+Note: there are parameters that are settable via bulk CM that are also settable via TR069.
+FRS Requirement: FRS-163652-Req-8          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1800>
+
+<Start: SRS-163652-HeNBCM-1900, Requirement>
+HeNB shall provide support for TR-106 device parameters for device registration between HeNB and HDM.
+FRS Requirement: FRS-163652-Req-11        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1900>
+
+<Start: SRS-163652-HeNBCM-2000, Requirement>
+For the same software release and MIM model HeNB shall always store the current (running) and previous (backup) version of the configuration file.
+FRS Requirement: FRS-163652-Req-13        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-2000>
+
+<Start: SRS-163652-HeNBCM-2100, Requirement>
+For any configuration changes made on the HeNB (autonomously/via CLI) that is not originated from the northbound interface of the HeNB (i.e. via HDM or SCMS) shall generate a AVCN, ODN, OCN or BCN as appropriate. The notifications shall be sent as informs to the SCMS. 
+Note: The behaviour of what kind of notification is generated will align with the behaviour defined in the eNB (macro) with feature 115149.
+Detailed requirements on the format of the notification are defined in section 4.5 and feature 163769 requirements.
+FRS Requirement: FRS-163652-Req-13        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-2100>
+
+<Start: SRS-163652-HeNBCM-2200, Requirement>
+SCMS shall provide the capability to set PerHeNBProfile Parameters that override the same parameters in any of the other Profiles. This allows the operator to set a per HENb parameter without having to create a new Profile.
+Note: When pushing a bulk CM file to the HeNB SCMS includes all parameters in LocationProfile, OAMProfile, TransportProfile, MobilityProfile including parameters that are auto configured and any parameter that is in the PerHeNBProfile by overriding the parameters in the other Profiles such that the correct configuration is sent to the HeNB. 
+FRS Requirement: FRS-163652-Req-13        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-2200>
+
+<Start: SRS-163652-HeNBCM-2300, Requirement>
+If the Bulk CM file is triggered from SCMS while the HeNB is offline, the SCMS shall provide a mechanism to buffer the request and resend the request. 
+Note: This can be accomplished by setting a policy on the HDM.
+FRS Requirement: FRS-163652-Req-13        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-2300>
+
+<Start: SRS-163652-HeNBCM-2400, Requirement>
+Customer documentation shall provide the capabilities available to configure the HeNB via bulk CM and via TR069. The customer document will provide details of which parameters can be configured via TR069. Note all parameters shall be provisionable via bulk CM.
+FRS Requirement: FRS-163652-Req-13        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-2400>
+
+<Start: FTS-162818-PM-10, Requirement>
+SCMS shall set pmServerPath on the HeNB to specify the protocol, userid, IP address, port and path on the PM File Server where the HeNB PM files should be transferred.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-PM-10>
+
+<Start: FTS-162818-PM-20, Requirement>
+Every pmGranularity period, HeNB shall collect the PM counters on the HeNB and store them in a PM file.  PM file name and format shall comply with requirements specified in SID eNodeB Performance Management.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test
+Note:  In general, the PM file naming and format follow TS 32.432 standards.          
+<End: FTS-162818-PM-20>
+
+<Start: FTS-162818-PM-30, Requirement>
+HeNB shall calculate a pmSftpRandomDelay of between 0 and 60 minutes. 
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-PM-30>
+<Start: FTS-162818-PM-40, Requirement>
+Every pmFileTransferInterval, HeNB shall wait pmSftpRandomDelay minutes and then initiate a SFTP session to the location specified by pmServerPath and transfer the available PM files.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-PM-40>
+
+<Start: FTS-162818-PM-50, Requirement>
+If pmFileTransferInterval is Daily, HeNB shall transfer the PM files during the hour of the day specified by pmTransferTime.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-PM-50>
+
+<Start: FTS-162818-CSP-10, Requirement>
+SCMS shall set the Code Server Path on the HeNB before initiating a request for software download.
+	FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-CSP-10>
+
+<Start: FTS-162818-CSP-20, Requirement>
+All files for a software version shall reside in a single directory identified by “path” in the Code Server Path.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-CSP-20>
+
+<Start: FTS-162818-ACT-10, Requirement>
+When SCMS sets the notRunningSwDescrFileName on the HeNB, HeNB shall initiate a SFTP session to the location specified in the codeServerPath and download the SDF specified in notRunningSwDescrFileName.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACT-10>
+
+<Start: FTS-162818-ACT-20, Requirement>
+During software download, HeNB shall first download and read the SDF to determine which Configuration Parameter File (CPF) and Software Executable File (SEF) to download.  Then HeNB shall download the CPF and SEF listed in the SDF.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACT-20>
+
+<Start: FTS-162818-ACT-30, Requirement>
+If the software download succeeds, HeNB shall:
+•	set the notRunningSwLifeCycleState to “delivered” 
+•	activate the notRunningSwDescrFileName software
+•	perform data migration if the MIM version has changed and this is a supported upgrade path.
+Note:  SCMS can read the running and not running attributes to determine the success or failure of the software download.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACT-30>
+
+<Start: FTS-162818-ACT-40, Requirement>
+If the software download fails, HeNB shall 
+•	set the notRunningSwLifeCycleState to “unknown”
+•	set the notRunningSwDescrFileName to empty string.
+Note:  SCMS can read the running and not running attributes to determine the success or failure of the software download.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACT-40>
+
+<Start: FTS-162818-ACT-50, Requirement>
+If the software activation succeeds, HeNB shall 
+•	swap the running and not running attribute values
+•	set the runningSwLifeCycleState to “activated”
+•	set the notRunningSwLifeCycleState to “delivered”.
+Note:  SCMS can read the running and not running attributes to determine the success or failure of the software activation.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACT-50>
+
+<Start: FTS-162818-ACT-60, Requirement>
+If the software activation fails, HeNB shall 
+•	set the notRunningSwDescrFileName to empty string
+•	set the notRunningSwLifeCycleState to “unknown”
+•	fall back to the previous software version.
+Note:  SCMS can read the running and not running attributes to determine the success or failure of the software activation.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACT-60>
+
+<Start: FTS-162818-ACC-10, Requirement>
+When SCMS sets the runningSwLifeCycleState to installed on the HeNB, the HeNB shall accept the software version specified in runningSwDescrFileName.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACC-10>
+
+<Start: FTS-162818-ACC-20, Requirement>
+Once the running software version is accepted, HeNB shall not accept a Software Reject request.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACC-20>
+
+<Start: FTS-162818-ACC-30, Requirement>
+If the software accept succeeds, HeNB shall:
+•	set the runningSwLifeCycleState to “installed” 
+•	set the notRunningSwLifeCycleState to “unknown”.
+Note:  SCMS can read the running and not running attributes to determine the success or failure of the software accept.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ACC-30>
+
+<Start: FTS-162818-REJ-10, Requirement>
+When SCMS sets the notRunningSwDescrFileName to the runningSwDescrFileName on the HeNB, the HeNB shall reject the currently running software version and activate the previous software version.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-REJ-10>
+
+<Start: FTS-162818-REJ-20, Requirement>
+If the software reject succeeds, HeNB shall:
+•	set the runningSwLifeCycleState to “installed” 
+•	set the notRunningSwLifeCycleState to “unknown”.
+Note:  SCMS can read the running and not running attributes to determine the success or failure of the software reject.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-REJ-20>
+
+<Start: FTS-162818-REJ-30, Requirement>
+If the software reject fails, HeNB shall:
+•	swap the running and not running atttributes
+•	set the runningSwLifeCycleState to “installed” 
+•	set the notRunningSwLifeCycleState to “unknown”.
+Note:  SCMS can read the running and not running attributes to determine the success or failure of the software reject.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-REJ-30>
+
+<Start: FTS-162818-ABT-10, Requirement>
+When SCMS sets the notRunningSwDescrFileName to the empty string on the HeNB, the HeNB shall stop any software downloads that are in progress and delete the not running software version from HeNB persistent memory.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ABT-10>
+
+<Start: FTS-162818-ABT-20, Requirement>
+If the software abort succeeds, HeNB shall:
+•	set the notRunningSwDescrFileName to empty string 
+•	set the notRunningSwLifeCycleState to “unknown”.
+Note:  SCMS can read the running and not running attributes to determine the success or failure of the software abort.
+FRS Requirement: FR-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR2          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: FTS-162818-ABT-20>
+
+<Start: SRS-HeNB-OAM-EquipmentMgmt-100, Requirement>
+The HeNB shall manage the HeNB equipment via the following hardware MOs, 
+ObjectName	Description
+AntennaPort	One antenna port on the RFM object that is used by the eNodeB for transmitting or receiving or receiving only.
+CellAntennaPort	Child of LteCell.  Explicitly maps the cell transmit and receive paths/branches to RFM antenna ports.
+CpriRadioEquipment	Represents a radio frequency module of the eNodeB, either remote radio head or in-cabinet unit, connected via one of the CPRI ports.
+FRU	Represents a field replaceable unit of the eNodeB: control board, modem, RRH, power supply.
+PositioningSystem	The positioning system of the eNodeB (typically GPS), if installed.
+Ret	Child of ENBEquipment.  Describes AISG antenna tilt physical unit.
+RetSubunit	Child of Ret.  Describes one antenna tilt actuator (motor) within the RET physical unit.
+Sector	Represents a geographical area and bandclass.
+Tma	Child of ENBEquipment.  Describes tower mounted receive amplifier.
+TmaSubunit	Child of Tma.  Describes one RF gain path within the TMA physical unit.
+
+The details of the above hardware MO definitions and associated parameters are defined in LTE/HeNB CM MIM spreadsheets. 
+FRS Requirement: FRS-162818-Req-??
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-DeviceMgmt-100>
+
+<Start: SRS-HeNB-OAM-EquipmentMgmt-200, Requirement>
+The HeNB shall raise equipment alarms if hardware faults are detected. The definition of the alarms associated with the hardware MOs can be found in “alarmsAndEventMaster.xls” spreadsheet.  
+FRS Requirement: FRS-162818-Req-??
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-DeviceMgmt-100>
+
+<Start: SRS-HeNB-OAM-InventoryMgmt-100, Requirement>
+The inventory information shall be populated via the TR-106 parameters defined under DeviceInfo MO. They are, 
+•	DeviceInfo::Manufacturer
+•	DeviceInfo::ManufacturerOUI 
+•	DeviceInfo::ProductClass
+•	DeviceInfo::ModelName
+•	DeviceInfo::SerialNumber 
+•	DeviceInfo::HardwareVersion
+•	DeviceInfo::SoftwareVersion
+•	DeviceInfo::AdditionalSoftwareVersion
+•	DeviceInfo::AdditionalHardwareVersion
+	
+The LMS shall be able to use TR-069 Get to retrieve these parameters. The inventory information is not available via bulkcm interface.  
+
+FRS Requirement: FRS-162818-Req-1, FRS-162818-Req-7
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-InventoryMgmt-100>
+
+<Start: SRS-HeNB-OAM-InventoryMgmt-200, Requirement>
+The HeNB shall retrieve the inventory information provisioned in the factory data or from software application and populated them in the TR-106 DeviceInfo parameters. The default values of these parameters or format convention are defined as following,  
+•	By default, Manufacturer shall be set to “Alcatel-Lucent”, and Manufacturer OUI shall be set to “001D4C”. They will be provisioned in the factory data.
+•	The serial number shall be compliant with Alcatel-Lucent standard KS-24811.
+
+Serial number format (18 chars):   LB ALLU LLL YY WW xxxxx
+where LB - Issuing Agency Code, ALLU - Enterprise Identifier, LLL - Manufacturing Location Code, YY - Year,  WW - week,  xxxxx - running number
+
+The 18 chars LB ALLU LLL YY WW xxxxx shall be stored in the flash memory of the product.
+The 18 chars LB ALLU LLL YY WW xxxxx shall be printed on labels.
+For compatibility reason with the existing network elements, it is allowed that only the 12 chars LLL YY WW xxxxx are sent to the network. In such a case, migration to a full 18-char serial number is for future release.
+
+•	The Software Version and Additional Software Version shall be retrieved from the software application installed in the HeNB. 
+The versioning format is “HeNB-<RR.RR.MM.mm>”, where
+RR.RR= network release (00.00..99.99)
+MM= major Version (00..99)
+mm= minor Version (00..99)
+[The above information need to be confirmed by the HeNB development]
+•	The Product Calss and Model Name will be configured in the factory data during factory configuration. They are decided by the product and market teams. 
+?	Product Class: pre-defined text, e.g.  “Alcatel-Lucent 9360 Small Cell Solution” 
+?	Model Name: pre-defined text,  e.g. “9762 Enterprise Cell V1.0 2x250mW B25”
+•	The Hardware Version will be configured in the factory data during factory configuration with the following format conventions.
+<PU prefix>-<output power of the antenna>-<number of users>-<frequency bands>-<Remaining Fields>
+?	The PU prefix field includes category code, version code and version number.  
+?	The remaining fields could include GPS option, specific sniffing band, integrated backhaul option, or manufacturer index etc.  
+
+
+Category Code	Category Description
+H	9361 Home Cell
+E	9362 Enterprise Cell
+MI	9363 Metro Indoor
+MO	9364 Metro Outdoor
+LRMO	9764 LightRadio MCO
+H	9761 Home Cell
+E	9762 Enterprise Cell
+MI	9763 Metro Cell Indoor
+MO	9764 Metro Cell Outdoor
+
+The version code has two parts: 1-the form factor of the AP, 2-the technology
+Version code 
+1	Form Factor description	+	Version code 
+2	Techno description
+v 	Standalone Ethernet 		 	WCDMA
+p	plug		m	Multistandard: WCDMA + LTE
+x	USB		L	LTE
+
+So far the versions we have: v1.0   v1.2   v1.5   v2.0   v2.1   v2.2   v2.5   v3.0   vm1.0   vL1.0.
+
+Power, user and frequency values,  
+Output Power	Maximum number of users	Frequency
+WCDMA	LTE	Wifi	WCDMA	LTE	Wifi	WCDMA	LTE	Wifi
+20mW	2x250mW	2x100mW	4	16	50	DB	B4	2.4GHz
+100mW	2x1W	2x200mW	8	 32	 	B1	B7	5GHz
+200mW	2x5W	2x250mWLG	16	 64	 	B2	B12	DR
+250mW	 	2x250mWHG	32	 	 	B4	B12B4	 
+1W	 	 	 	 	 	B5	B13	 
+ 	 	 	 	 	 	 	B13B4	 
+ 	 	 	 	 	 	 	B25	 
+
+The remaining fields,  
+GPS option	Specific Sniffing Band Option	Integrated Backhaul Option	Manufacturer
+GPS for GPS, S08 for 850MHz sniffing band,	a for ADSL,  	U for Unknown
+nothing for no GPS,	S09 for 900MHz sniffing band,	w for Wi-Fi, 	5 Askey
+nothing for no Specific Sniffing Band,	c for cable,  	4 for Flextronics
+ 	 	g for GPON  	3 for ALU 
+ 	 	s for Satellite  	2 for Zyxel  
+ 	 	nothing for no Integrated Backhaul, 1 for DNI, 0 for Sagem 
+Here is an example of the HW version: EvL1.0-2x250mW-64-B25-4. 
+The Additional Hardware Version will not be used for the HeNB per current agreement on inventory data. (Note: for HeNB, the format is “MaxPower - Frequency - MaxUser”.)  
+
+FRS Requirement: FRS-162818-Req-7
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-InventoryMgmt-200>
+
+<Start: SRS-HeNB-OAM-InventoryMgmt-300, Requirement>
+The HeNB shall support retrieval of the inventory data from Metro Dock and SFTPs if the HeNB is connected to the backhaul via Metro Dock.  The inventory data shall be populated in the RemoteInventory MO of SNMP MIB.   
+The HeNB shall also support reporting of the inventory data of the Metro Dock to SCMS. 
+FRS Requirement: FRS-???-Req-?
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-InventoryMgmt-300>
+
+

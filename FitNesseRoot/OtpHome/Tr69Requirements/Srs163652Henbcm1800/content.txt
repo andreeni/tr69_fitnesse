@@ -1,0 +1,9 @@
+<Start: SRS-163652-HeNBCM-1800, Requirement>
+Mechanism shall be provided to ensure that the bulk CM mechanism and the setting of the parameters via TR069 in a way that there are no inconsistencies introduced in the HeNB database.
+Note: there are parameters that are settable via bulk CM that are also settable via TR069.
+FRS Requirement: FRS-163652-Req-8          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163652-HeNBCM-1800>
+

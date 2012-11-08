@@ -1,0 +1,8 @@
+<Start: SRS-162298-HeNBStrtUp-20, Requirement>
+In order for the Full Plug and Play with TR-069 feature to be enabled the attribute RanBackhaul::ipConfigAutomatic shall be set to True.
+FRS Requirement: FRS-162298-Req-R2, R3          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-20>
+

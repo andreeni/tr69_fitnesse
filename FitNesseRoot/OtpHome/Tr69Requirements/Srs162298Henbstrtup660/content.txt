@@ -1,0 +1,8 @@
+<Start: SRS-162298-HeNBStrtUp-660, Requirement> 
+After the IPaddress of the Initial HDM has been resolved via the DNS Query, the HeNB shall use this to register with the HDM. 
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-660>
+

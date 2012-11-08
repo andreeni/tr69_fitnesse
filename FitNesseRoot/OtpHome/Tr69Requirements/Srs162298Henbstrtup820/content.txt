@@ -1,0 +1,9 @@
+<Start: SRS-162298-HeNBStrtUp-820, Requirement>
+When HDM has been provided with a location by the HeNB it shall verify it as described in  [A 22 ] If the HeNB’s location is invalid or undetermined, the HDM shall set the relevant attribute on the HeNB via a TR-069 SetParameterValue to indicate to the HeNB that the location check has failed. The HeNB shall then cease the startup procedure and indicate failure by setting the appropriate LEDs, see [A 22 ] 
+Note: The HeNB will need to be rebooted, or factory resetted in order to initiate the startup procedure again.
+FRS Requirement: FRS-162298-Req-R9          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-820>
+

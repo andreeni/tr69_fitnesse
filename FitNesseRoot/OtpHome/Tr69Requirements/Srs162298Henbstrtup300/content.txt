@@ -1,0 +1,9 @@
+<Start: SRS-162298-HeNBStrtUp-300, Requirement>
+On startup the HeNB shall check whether a software image has been provisioned on the HeNB. If no image is provisioned, the HeNB shall execute its recovery software.
+Note: In order to do this the HeNB bootloader will check whether an image is loaded in NAND.
+FRS Requirement: FRS-162298-Req-R5          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-300>
+

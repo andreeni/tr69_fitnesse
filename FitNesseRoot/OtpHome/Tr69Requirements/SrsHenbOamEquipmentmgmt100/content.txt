@@ -1,0 +1,21 @@
+<Start: SRS-HeNB-OAM-EquipmentMgmt-100, Requirement>
+The HeNB shall manage the HeNB equipment via the following hardware MOs, 
+ObjectName	Description
+AntennaPort	One antenna port on the RFM object that is used by the eNodeB for transmitting or receiving or receiving only.
+CellAntennaPort	Child of LteCell.  Explicitly maps the cell transmit and receive paths/branches to RFM antenna ports.
+CpriRadioEquipment	Represents a radio frequency module of the eNodeB, either remote radio head or in-cabinet unit, connected via one of the CPRI ports.
+FRU	Represents a field replaceable unit of the eNodeB: control board, modem, RRH, power supply.
+PositioningSystem	The positioning system of the eNodeB (typically GPS), if installed.
+Ret	Child of ENBEquipment.  Describes AISG antenna tilt physical unit.
+RetSubunit	Child of Ret.  Describes one antenna tilt actuator (motor) within the RET physical unit.
+Sector	Represents a geographical area and bandclass.
+Tma	Child of ENBEquipment.  Describes tower mounted receive amplifier.
+TmaSubunit	Child of Tma.  Describes one RF gain path within the TMA physical unit.
+
+The details of the above hardware MO definitions and associated parameters are defined in LTE/HeNB CM MIM spreadsheets. 
+FRS Requirement: FRS-162818-Req-??
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-DeviceMgmt-100>
+

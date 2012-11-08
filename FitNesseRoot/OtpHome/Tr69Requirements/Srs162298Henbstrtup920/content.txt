@@ -1,0 +1,9 @@
+<Start: SRS-162298-HeNBStrtUp-920, Requirement>
+If after registering with HDM, the HDM triggers the download of a software image file, the HeNB shall support the requirements specified in section Error! Reference source not found. to download and activate the file.
+Note: The HDM will need to retrieve values of specific parameters on the HeNB to determine whether the software image has been successfully activiated or not. Refer to Error! Reference source not found. 
+FRS Requirement: FRS-162298-Req-R7          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-920>
+

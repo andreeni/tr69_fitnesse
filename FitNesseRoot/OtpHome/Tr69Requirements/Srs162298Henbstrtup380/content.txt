@@ -1,0 +1,9 @@
+<Start: SRS-162298-HeNBStrtUp-380, Requirement>
+After downloading an initial software image from the fileserver, the HeNB shall store this in NAND and reboot.
+Note: When the HeNB reboots it shall then follow the same steps as if the image had been provisioned in the factory as defined in sections 4.3.4 & 4.3.5.
+FRS Requirement: FRS-162298-Req-R5          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-380>
+

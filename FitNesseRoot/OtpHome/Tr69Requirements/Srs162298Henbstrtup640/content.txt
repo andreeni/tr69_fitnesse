@@ -1,0 +1,9 @@
+<Start: SRS-162298-HeNBStrtUp-640, Requirement>
+The Initial HDM FQDN shall be constructed by prefixing HDM to the operator domain name stored in MCISecurity::mnoDomainName
+For example hdm.efemto.verizonwireless.com
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-640>
+

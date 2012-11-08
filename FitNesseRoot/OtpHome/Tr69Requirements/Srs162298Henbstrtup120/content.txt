@@ -1,0 +1,16 @@
+<Start: SRS-162298-HeNBStrtUp-120, Requirement>
+On startup the HeNB shall populate the following information in the DeviceInfo object from inventory data,
+•	DeviceInfo:
+o	Manufacturer,
+o	ManufacturerOUI,
+o	ProductClass,
+o	ModelName
+o	SerialNumber,
+o	HardwareVersion,
+o	SoftwareVersion – If a initial generic has been provisioned in the factory.
+FRS Requirement: FRS-162298-Req-R1          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-120>
+

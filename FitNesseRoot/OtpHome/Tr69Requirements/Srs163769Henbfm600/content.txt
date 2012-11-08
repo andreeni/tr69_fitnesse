@@ -1,0 +1,28 @@
+<Start: SRS-163769-HeNBFM-600, Requirement>
+HeNB shall maintain the active alarms in the active alarm list. SCMS shall use the activeAlarmList to synchronize alarms.
+Note: The mechanism to save active alarms in an active alarm list is already supported in the eNB. The functionality to support all alarms raised (within 48 hours or within a predetermined storage) shall be stored in a historical alarm list with L108273 in LR13.1.
+The activeAlarmList will contain the following:
+alarmLastChangeCounter	This parameter is a counter incremented with each new alarm introduced in the node.
+managedObjectInstance	 This parameter is the MO Identity.
+alarmTime	This parameter is the time at which the fault occurred (mandatory). It should be in the format of  Local Time + UTC Offset [Can be Positive or Negative]. 
+alarmType	This parameter defines the type of the alarm: Communication, quality of service, processing error, equipment, or environment-related.
+The alarm types are defined in the CCITT recommendation X.733, therefore only 'communicationsAlarm', 'objectDeletion', 'qualityofServiceAlarm', 'processingErrorAlarm', 'equipmentAlarm',  'environmentalAlarm', 'miscellaneous', and 'unknown' from ExtendedX721EventType are used.
+alarmSeverity	This paramater defines rhe severity of the alarm - None, warning, minor major, critical, cleared, unknown.
+alarmId	This parameter is the Identification of the alarm - alarm ID in range 400 0001 to 500 0000.
+alarmAdditionalInformation	This parameter is the text string providing additional information.
+alarmMonitoredAttribute	This parameter is the text string describing alarm. This parameter can be empty.
+alarmOperationalState	This parameter is the Operational state of the managed object induced by this alarm (not necessarily its current operational state).
+alarmAvailabilityStatus	This parameter is the Availability status of the managed object.
+lastFilteringTime	This parameters has the UTC time of last filtered alarm.
+lastFilteringType	This parameter defines the type of last filtered alarm . 
+alarmSpecificProblem	This parameter is a text string with further detail to X-733 Probable Cause value.
+alarmFdn	This parameter is a Fully Distinguished Name of the managed object where this alarm occurred. The syntax is defined in SID eNodeB Configuration Management. If the object does not have an FDN, the eNB's FDN is shown. The value must not be the empty string.
+alarmNature	This parameter defines the nature of the alarm - ADAC or ADMC.
+numberOfFilteredAlarmsSinceLastReporting	This parameter is the number of begin-alarm events filtered since the last begin-of-alarm message (or respectively the number of end-of-alarm events filtered since the last end-of-alarm message or respectively the number of ping-pong alarm events filtered since the last ping-pong-of-alarm message). 
+
+FRS Requirement: FRS-163769-R5        
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-600>
+

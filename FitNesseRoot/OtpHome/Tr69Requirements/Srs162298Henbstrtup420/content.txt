@@ -1,0 +1,8 @@
+<Start: SRS-162298-HeNBStrtUp-420, Requirement>
+If the HeNB does not receive a DHCP Offer message in response to the DHCP Discovery it shall retry the DHCP Discovery. This procedure shall be retried until an Offer is received.
+Note: This means that the HeNB can end up in a permanent loop waiting for a response, however since it cannot continue with Startup until it has the Dynamic IP configuration this will be acceptable. The user would then have to power cycle the HeNB to initiate the Startup procedure again.
+FRS Requirement: FRS-162298-Req-R2          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-420>

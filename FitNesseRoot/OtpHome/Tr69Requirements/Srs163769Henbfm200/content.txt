@@ -1,0 +1,12 @@
+<Start: SRS-163769-HeNBFM-200, Requirement>
+HeNB shall support sending alarms and events based on the Alarm Reporting Mechanism configurable by the operator. (MIM Parameter is eNB::FMProfile::alarmReportingMechanism)
+The three options supported are:
+•	Real Time: All alarms are sent in real time.
+•	Subset Real Time: A subset of alarms are sent in real time
+•	Logged: Alarms are stored in the active alarm table and historical alarm list and pulled only on request.
+FRS Requirement: FRS-163769-R4          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM
+<End: SRS-163769-HeNBFM-200>
+

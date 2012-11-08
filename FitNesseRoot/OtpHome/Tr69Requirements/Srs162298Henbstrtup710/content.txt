@@ -1,0 +1,10 @@
+<Start: SRS-162298-HeNBStrtUp-710, Requirement>
+When the Initial HDM receives a BOOTSTRAP inform from an HeNB it shall provide the HeNB with the username and password that the HDM shall use for subsequent ConnectionRequest messages sent to the HeNB via a TR-069 SetParameterValue Method to set ManagementServer::ConnectionRequestUsername & ManagementServer::ConnectionRequestPassword respectively.
+The Initial HDM shall also provide the HeNB with a timer value that the HeNB should use for triggering subsequent Periodic Informs to the HDM.
+Note: This provides the HeNB with a Username & password that it can use to authenticate an  HDM making a Connection Request to the HeNB. 
+FRS Requirement: FRS-162298-Req-R6          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162298-HeNBStrtUp-710>
+

@@ -1,0 +1,9 @@
+<Start: SRS-162298-HeNBStrtUp-460, Requirement>
+After determining the IP Address of the public DNS Server the HeNB shall trigger a DNS Query to the public DNS server to retrieve the IP address corresponding to the Default SeGW FQDN. The DNS Query shall be sent using untagged Ethernet frames.
+Note: The Default SeGW FQDN is stored in Enb::securityGWFqdn
+FRS Requirement: FRS-162298-Req-R3          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-460>
+

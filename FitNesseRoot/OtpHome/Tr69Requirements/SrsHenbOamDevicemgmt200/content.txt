@@ -1,0 +1,16 @@
+<Start: SRS-HeNB-OAM-DeviceMgmt-200, Requirement>
+The following TR-106 parameter shall be used to construct the DeviceID sent along each TR-069 Inform() message. The structure is used to uniquely identify the HeNB.
+
+DeviceIdStruct definition
+Name	Description	TR-106 Parameter 
+Manufacturer	Manufacturer of the device (for display only).	Device.DeviceInfo.Manufacturer
+OUI	Organizationally unique identifier of the device manufacturer. 	Device.DeviceInfo.ManufacturerOUI
+ProductClass	Identifier of the class of product for which the serial number applies. 	Device.DeviceInfo.ProductClass
+SerialNumber	Identifier of the particular device that is unique for the indicated class of product and manufacturer.	Device.DeviceInfo.SerialNumber 
+
+FRS Requirement: FRS-162818-Req-7
+Affected DPM Area: eNB-OAM, SCMS, Test 
+Release: SCLR1.1          
+Network Element: eNB-OAM, SCMS, Test          
+<End: SRS-HeNB-OAM-DeviceMgmt-200>
+

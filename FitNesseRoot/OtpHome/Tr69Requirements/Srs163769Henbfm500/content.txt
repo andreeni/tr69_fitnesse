@@ -1,0 +1,8 @@
+<Start: SRS-163769-HeNBFM-500, Requirement>
+When the alarmReportingMechanism is set to Logged, the HeNB shall log all alarms in the HeNB.
+FRS Requirement: FRS-163769-R1
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-500>
+

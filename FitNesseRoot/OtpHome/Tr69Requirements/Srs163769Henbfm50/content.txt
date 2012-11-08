@@ -1,0 +1,9 @@
+<Start: SRS-163769-HeNBFM-50, Requirement>
+HeNB shall support all applicable notifications to the SCMS as supported in LR13.1. 
+Note: New notifications (alarms, events, AVCN, OCN, BCN, ODN) shall be supported as needed and will be defined as part of the feature FTS/SRS.
+FRS Requirement: FRS-163769-R1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-50>
+

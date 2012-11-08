@@ -1,0 +1,8 @@
+<Start: SRS-162818-HeNBSFTP-100, Requirement>
+HeNB shall support SFTP for secure download of files for push or pull as defined in the table above.  HeNB shall support a SFTP client.  The SCMS shall support secure file transfer protocol (SFTP) server.  The HeNB shall support SHA-1 for integrity protection and AES-128-cbc for encryption. 
+	FRS Requirement: FRS-162818-Req-1          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-162818-HeNBSFTP-100>
+

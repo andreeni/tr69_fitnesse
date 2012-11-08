@@ -1,0 +1,8 @@
+<Start: SRS-162298-HeNBStrtUp-60, Requirement>
+The plug & play with TR-069 startup procedure shall be completed within the timeframe specified by the relevant KPI in the FTS for 162515 Key Performance Indicators for SCLR1.0 [A 25 ]  
+FRS Requirement: FRS-162298-Req-R1 (perf)          
+	Affected DPM Area: HeNB-OAM, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, Test          
+<End: SRS-162298-HeNBStrtUp-60>
+

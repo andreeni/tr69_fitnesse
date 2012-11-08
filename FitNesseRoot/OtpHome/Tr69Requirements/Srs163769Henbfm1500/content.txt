@@ -1,0 +1,9 @@
+<Start: SRS-163769-HeNBFM-1500, Requirement>
+SCMS shall provide a mechanism to display an aggregated real time status of all the HeNB. This status can be on-demand.
+Note: The request from customers is to show real-time how many HeNBs are in service, how many are out of service etc.
+FRS Requirement: FRS-163769-R3       
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-1500>
+

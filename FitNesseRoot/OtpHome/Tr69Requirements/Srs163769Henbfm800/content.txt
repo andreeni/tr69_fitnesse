@@ -1,0 +1,11 @@
+<Start: SRS-163769-HeNBFM-800, Requirement>
+HeNB shall support sending state change notifications (SCN) based on the eNB:: FMProfile::enableRealTimeSCN  settings configurable by the operator.
+If enableRealTimeSCN is true:
+•	Real Time: All SCNs are sent in real time.
+•	Logged: SCNs are stored in the HENB and pulled only on request.
+FRS Requirement: FRS-163769-R3          
+	Affected DPM Area: HeNB-OAM, SCMS, Test          
+	Release: SCLR1.1          
+	Network Element: HeNB-OAM, SCMS, Test          
+<End: SRS-163769-HeNBFM-800>
+
