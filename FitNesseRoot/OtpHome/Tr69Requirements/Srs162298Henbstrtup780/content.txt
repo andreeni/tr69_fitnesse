@@ -1,19 +1,19 @@
 <Start: SRS-162298-HeNBStrtUp-780, Requirement>
-When starting up, if the HeNB has not previously registered with HDM (registration status is not “true”), and it has been provided with the address of the assigned HDM it shall initiate a TR-069 session with that HDM using the username and password provisioned by the initial HDM and shall send an Inform Request containing the BOOTSTRAP event to the assigned HDM.
+When starting up, if the HeNB has not previously registered with HDM (registration status is not "true"), and it has been provided with the address of the assigned HDM it shall initiate a TR-069 session with that HDM using the username and password provisioned by the initial HDM and shall send an Inform Request containing the BOOTSTRAP event to the assigned HDM.
 The format of the Inform message shall be as follows:
-?	Device id
-•	Manufacturer = DeviceInfo::Manufacturer
-•	OUI = DeviceInfo::ManufacturerOUI
-•	ProductClass = DeviceInfo::ProductClass
-•	Serial Number = A truncated form of DeviceInfo::SerialNumber, containing the 12 numerical characters as specified in FRS 162839.
-?	Event = Bootstrap 
-?	MaxEnvelopes = 1
-?	CurrentTime = The current date & time known by the HeNB
-?	ParameterList shall contain the following
-?	DeviceInfo::SoftwareVersion
-?	Enb::mimVersion = “Null”
+ *	Device id
+  *	Manufacturer = DeviceInfo::Manufacturer
+  *	OUI = DeviceInfo::ManufacturerOUI
+  *	ProductClass = DeviceInfo::ProductClass
+  *	Serial Number = A truncated form of DeviceInfo::SerialNumber, containing the 12 numerical characters as specified in FRS 162839.
+ *	Event = Bootstrap 
+ *	MaxEnvelopes = 1
+ *	CurrentTime = The current date & time known by the HeNB
+ *	ParameterList shall contain the following
+ *	DeviceInfo::SoftwareVersion
+ *	Enb::mimVersion = "Null"
 Note: The username & password shall be obtained from ManagementServer::Username & ManagementServer::Username respectively.
-Note: By setting parameter Enb::mimVersion to “null”, the HeNB will trigger the HDM to initiate a a download of the current software image..
+Note: By setting parameter Enb::mimVersion to "null", the HeNB will trigger the HDM to initiate a a download of the current software image..
 FRS Requirement: FRS-162298-Req-R7          
 	Affected DPM Area: HeNB-OAM, SCMS, Test          
 	Release: SCLR1.1          

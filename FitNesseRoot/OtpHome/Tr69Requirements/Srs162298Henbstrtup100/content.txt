@@ -1,15 +1,15 @@
 <Start: SRS-162298-HeNBStrtUp-100, Requirement>
 At the factory the HeNB shall be provisioned with information before it is deployed. This shall  include the following information:
-•	EUI – as specified in 3GPP TS23.003
-•	OUI + serial number
-•	Operator Domain name – This will be used for two purposes:
+ *	EUI  as specified in 3GPP TS23.003
+ *	OUI + serial number
+ *	Operator Domain name  This will be used for two purposes:
 1. to resolve IP addresses during initial contact (before the HeNB has a MIB database). 
 2. as an expected identity to match the SeGW's certificate against.
-•	Own certificate chain
-•	Default SeGW FQDN 
-•	Trust Anchor CA certificates - used to authenticate the Default SeGW, Initial & Assigned HDMs
-•	Initial Generic SW – If a software image is not provisioned the HeNB shall execute its recovery software on startup.
-•	Recovery SW
+ * 	Own certificate chain
+ *	Default SeGW FQDN 
+ *	Trust Anchor CA certificates - used to authenticate the Default SeGW, Initial & Assigned HDMs
+ *	Initial Generic SW  If a software image is not provisioned the HeNB shall execute its recovery software on startup.
+ *	Recovery SW
 Note: Details on the format of the EUI, OUI & Serial Number can be found in the FRS for the 9762 Enterprise Cell 2x250mw Generic (feature #162839). Details on the use of the certificate chain & CA certificates can be found in SRS-eNB-MCI-NTK-SEC.
 FRS Requirement: FRS-162298-Req-R1          
 	Affected DPM Area: HeNB-OAM, SCMS, Test          

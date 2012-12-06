@@ -1,17 +1,17 @@
 <Start: SRS-162298-HeNBStrtUp-700, Requirement>
-When starting up, if the HeNB has not previously registered with HDM (registration status is not “true”), the HeNB shall initiate a TR-069 session to the Initial HDM with default username and password and send an Inform request containing the BOOTSTRAP event.  
+When starting up, if the HeNB has not previously registered with HDM (registration status is not "true"), the HeNB shall initiate a TR-069 session to the Initial HDM with default username and password and send an Inform request containing the BOOTSTRAP event.  
 The format of the Inform message shall be as follows:
-?	Device id
-•	Manufacturer = DeviceInfo::Manufacturer
-•	OUI = DeviceInfo::ManufacturerOUI
-•	ProductClass = DeviceInfo::ProductClass
-•	Serial Number = A truncated form of DeviceInfo::SerialNumber, containing the 12 numerical characters as specified in FRS 162839.
-?	Event = Bootstrap 
-?	MaxEnvelopes = 1
-?	CurrentTime = The current date & time known by the HeNB
-?	ParameterList shall contain the following
-?	DeviceInfo::SoftwareVersion
-?	Enb::mimVersion
+ *	Device id
+  * 	Manufacturer = DeviceInfo::Manufacturer
+  *	OUI = DeviceInfo::ManufacturerOUI
+  *	ProductClass = DeviceInfo::ProductClass
+  *	Serial Number = A truncated form of DeviceInfo::SerialNumber, containing the 12 numerical characters as specified in FRS 162839.
+ *	Event = Bootstrap 
+ *	MaxEnvelopes = 1
+ *	CurrentTime = The current date & time known by the HeNB
+ *	ParameterList shall contain the following
+ *	DeviceInfo::SoftwareVersion
+ *	Enb::mimVersion
 FRS Requirement: FRS-162298-Req-R6          
 	Affected DPM Area: HeNB-OAM, SCMS, Test          
 	Release: SCLR1.1          
