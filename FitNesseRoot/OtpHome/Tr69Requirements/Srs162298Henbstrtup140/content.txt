@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-140, Requirement>
-On startup the HeNB shall read its EUI from data stored in memory and populate MCISecurity::hnbUniqueIdentity with the value.
-FRS Requirement: FRS-162298-Req-R1          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-140>
-

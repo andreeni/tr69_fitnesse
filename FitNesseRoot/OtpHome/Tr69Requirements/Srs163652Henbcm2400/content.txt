@@ -1,8 +1,0 @@
-<Start: SRS-163652-HeNBCM-2400, Requirement>
-Customer documentation shall provide the capabilities available to configure the HeNB via bulk CM and via TR069. The customer document will provide details of which parameters can be configured via TR069. Note all parameters shall be provisionable via bulk CM.
-FRS Requirement: FRS-163652-Req-13        
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163652-HeNBCM-2400>
-

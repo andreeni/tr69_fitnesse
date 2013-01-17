@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-390, Requirement>
-If download of the initial software image fails. e.g (File server not responding/overload etc) the HeNB shall retry indefinitely. The retry period shall be 10 minutes.
-Note: If the recovery software is unable to download an initial software image the startup procedure cannot continue, hence it is reasonable to retry the download periodically. A factory reset or reboot will initiate the startup procedure again.
-FRS Requirement: FRS-162298-Req-R5          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-390>
-

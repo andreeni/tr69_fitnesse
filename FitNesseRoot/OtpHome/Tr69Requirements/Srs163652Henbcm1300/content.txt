@@ -1,8 +1,0 @@
-<Start: SRS-163652-HeNBCM-1300, Requirement>
-The format of the data in the bulk CM file shall be compatible with the file format supported by the macro eNB – Yang XML format (RFC 6241).
-FRS Requirement: FRS-163652-Req-4        
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163652-HeNBCM-1300>
-

@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-980, Requirement>
-After successfully registering with the assigned HDM and establishing an S1 connection the HeNB shall set the relevant LEDs to indicate it is in service, as defined in the Verizon FTS [A 24 ]  
-FRS Requirement: FRS-162298-Req-R15          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162298-HeNBStrtUp-980>
-

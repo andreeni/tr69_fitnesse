@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-180, Requirement>
-On startup the HeNB shall read the operator domain name from inventory data stored in memory and populate MCISecurity::mnoDomainName with the value.
-FRS Requirement: FRS-162298-Req-R1          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-180>
-

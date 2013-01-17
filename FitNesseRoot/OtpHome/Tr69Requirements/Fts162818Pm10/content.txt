@@ -1,8 +1,0 @@
-<Start: FTS-162818-PM-10, Requirement>
-SCMS shall set pmServerPath on the HeNB to specify the protocol, userid, IP address, port and path on the PM File Server where the HeNB PM files should be transferred.
-FRS Requirement: FR-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: FTS-162818-PM-10>
-

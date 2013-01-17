@@ -1,8 +1,0 @@
-<Start: FTS-162818-ACT-10, Requirement>
-When SCMS sets the notRunningSwDescrFileName on the HeNB, HeNB shall initiate a SFTP session to the location specified in the codeServerPath and download the SDF specified in notRunningSwDescrFileName.
-FRS Requirement: FR-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR2          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: FTS-162818-ACT-10>
-

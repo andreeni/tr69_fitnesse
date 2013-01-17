@@ -1,9 +1,0 @@
-<Start: SRS-163769-HeNBFM-1600, Requirement>
-SCMS shall provide a mechanism to show status on the HeNBs during upgrades. The status shall indicate how many are in progress, how many have been successfully upgraded, how many have failed, how many are waiting for GPS or RF fingerprinting to complete etc. This status can be on-demand.
-Note: SCMS team will create appropriate user stories to support this.
-FRS Requirement: FRS-163769-R3       
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163769-HeNBFM-1600>
-

@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-600, Requirement>
-The HeNB shall permanently maintain the status that it has been registered with HDM. This registration status shall be updated after sending a BOOTSTRAP Inform to the Assigned HDM, when the Inform response has been received.
-Note: A factory reset shall clear the registration status
-FRS Requirement: FRS-162298-Req-R7          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-600>
-

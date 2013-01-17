@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-760, Requirement>
-When the HeNB is required to register with the assigned HDM it shall first resolve the IPaddress of the assigned HDM by triggering a DNS Query to the internal DNS server using the attribute ManagementServer::URL.
-The DNS Query shall be sent using untagged Ethernet frames.
-FRS Requirement: FRS-162298-Req-R7          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-760>
-

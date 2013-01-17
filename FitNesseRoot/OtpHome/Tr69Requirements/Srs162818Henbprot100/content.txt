@@ -1,9 +1,0 @@
-<Start: SRS-162818-HeNBProt-100, Requirement>
-The HeNB and SCMS shall support the option of using IPv4 or IPv6 communications for OAM traffic.
-Note: Verizon is/has moved to IPv6 for all telecom traffic and are on IPv4 for OAM (May move to IPv6 as well in the future).	
-FRS Requirement: FRS-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162818-HeNBProt-100>
-

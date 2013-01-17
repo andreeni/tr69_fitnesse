@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-400, Requirement>
-On startup the HeNB shall trigger a DHCP Discovery procedure to determine its local DHCP Server. The DHCP Discovery message shall be sent using untagged Ethernet frames.
-FRS Requirement: FRS-162298-Req-R2          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-400>
-

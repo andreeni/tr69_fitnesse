@@ -1,9 +1,0 @@
-<Start: SRS-162818-HeNBIPSec-100, Requirement>
-IPSec shall be enabled between the HeNB and the SeGW for the secured IP data transmission.
-Note: This will then be used for all UDP/TCP traffic including TR-069, SNTP, SSH/SFTP etc.
-	FRS Requirement: FRS-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162818-HeNBIPSec-100>
-

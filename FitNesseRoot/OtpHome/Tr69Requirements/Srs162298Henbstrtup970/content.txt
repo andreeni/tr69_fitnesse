@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-970, Requirement>
-After the HeNB has downloaded and activated the latest software image and Bulk CM file it shall perform network listening to determine its PCI, TX Power & to perform RF Fingerprinting.
-Note: Refer to the Network listening feature [A 26 ] for more details.
-FRS Requirement: FRS-162298-Req-R13          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162298-HeNBStrtUp-970>
-

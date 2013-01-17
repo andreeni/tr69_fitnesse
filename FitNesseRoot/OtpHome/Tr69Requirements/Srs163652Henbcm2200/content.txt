@@ -1,9 +1,0 @@
-<Start: SRS-163652-HeNBCM-2200, Requirement>
-SCMS shall provide the capability to set PerHeNBProfile Parameters that override the same parameters in any of the other Profiles. This allows the operator to set a per HENb parameter without having to create a new Profile.
-Note: When pushing a bulk CM file to the HeNB SCMS includes all parameters in LocationProfile, OAMProfile, TransportProfile, MobilityProfile including parameters that are auto configured and any parameter that is in the PerHeNBProfile by overriding the parameters in the other Profiles such that the correct configuration is sent to the HeNB. 
-FRS Requirement: FRS-163652-Req-13        
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163652-HeNBCM-2200>
-

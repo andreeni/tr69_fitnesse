@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-340, Requirement>
-If the HeNB is using recovery software, after establishing an IPsec tunnel to the default SeGW it shall download an initial software image from the fileserver as defined in section 4.3.5. The address of the fileserver shall be determined using a DNS Query to the Internal DNS Server with the FQDN constructed as described in SRS-162298-HeNBStrtUp-360.
-FRS Requirement: FRS-162298-Req-R3, R5          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162298-HeNBStrtUp-340>
-

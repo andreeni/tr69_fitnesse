@@ -1,9 +1,0 @@
-<Start: SRS-163652-HeNBCM-2300, Requirement>
-If the Bulk CM file is triggered from SCMS while the HeNB is offline, the SCMS shall provide a mechanism to buffer the request and resend the request. 
-Note: This can be accomplished by setting a policy on the HDM.
-FRS Requirement: FRS-163652-Req-13        
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163652-HeNBCM-2300>
-

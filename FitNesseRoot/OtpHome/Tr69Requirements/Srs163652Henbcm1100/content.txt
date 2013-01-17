@@ -1,9 +1,0 @@
-<Start: SRS-163652-HeNBCM-1100, Requirement>
-The bulk CM file shall contain the complete set of parameters available in the MIM that can be configurable in the HeNB.
-Note: There are TR-106 parameters that are available and defined only for the TR-069 interface between the HeNB and HDM. Those will not be available in the bulk CM file.
-FRS Requirement: FRS-163652-Req-3        
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163652-HeNBCM-1100>
-

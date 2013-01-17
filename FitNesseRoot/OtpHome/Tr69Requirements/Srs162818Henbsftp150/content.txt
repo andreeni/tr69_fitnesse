@@ -1,8 +1,0 @@
-<Start: SRS-162818-HeNBSFTP-150, Requirement>
-SFTP shall be used to transfer PM result files to the SCMS.  The HeNB shall push the files to SCMS.
-FRS Requirement: FRS-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162818-HeNBSFTP-150>
-

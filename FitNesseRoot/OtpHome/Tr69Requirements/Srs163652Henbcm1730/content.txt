@@ -1,8 +1,0 @@
-<Start: SRS-163652-HeNBCM-1730, Requirement>
-SCMS shall automatically schedule download to the HeNB for any HeNB that did not accept the download RPC request on the first attempt. If there are multiple download requests during the interval when the HeNB could not be contacted then the latest download request will supersede the previous requests.
-FRS Requirement: FRS-163652-Req-7        
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163652-HeNBCM-1730>
-

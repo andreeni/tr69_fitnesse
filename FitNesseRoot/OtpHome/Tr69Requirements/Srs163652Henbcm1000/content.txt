@@ -1,9 +1,0 @@
-<Start: SRS-163652-HeNBCM-1000, Requirement>
-HeNB shall support the capability to pull the bulk CM file from the location provided by the SCMS in a secure manner (sftp). 
-Appropriate number (recommended 3) of sftp retries shall be attempted before a sftp is declared failed.
-FRS Requirement: FRS-163652-R2          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163652-HeNBCM-1000>
-

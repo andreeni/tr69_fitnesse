@@ -1,8 +1,0 @@
-<Start: SRS-162818-HeNBsNTP-100, Requirement>
-The HeNB uses Network Time Protocol for timing synchronization and shall implement a SNTP client that is compliant with RFC 1769 - Simple Network Time Protocol. 
-FRS Requirement: FRS-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162818-HeNBsNTP-100>
-

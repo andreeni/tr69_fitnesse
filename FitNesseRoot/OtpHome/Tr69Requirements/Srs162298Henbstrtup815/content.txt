@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-815, Requirement>
-During startup if the HDM triggers a location check procedure on the HeNB, the HeNB shall perform the procedures specified in  [A 22 ] to provide its location to HDM.
-FRS Requirement: FRS-162298-Req-R8          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-815>
-

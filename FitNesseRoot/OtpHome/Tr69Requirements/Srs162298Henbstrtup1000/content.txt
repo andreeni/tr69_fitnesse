@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-1000, Requirement>
-Once an HeNB has been successfully configured and in service, it shall perform a movement check on a subsequent reboot as specified in [A 22 ]    
-FRS Requirement: FRS-162298-Req-R14          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162298-HeNBStrtUp-1000>
-

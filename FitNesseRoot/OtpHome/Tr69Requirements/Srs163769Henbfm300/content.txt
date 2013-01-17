@@ -1,8 +1,0 @@
-<Start: SRS-163769-HeNBFM-300, Requirement>
-When the alarmReportingMechanism is set to EnableSubsetRT, the HeNB shall provide the capability for the operator to select the up to 50 alarms to be sent in real time using eNB:FMProfile: realTimeAlarmsList. All other alarms will be logged in the HeNB. 
-FRS Requirement: FRS-163769-R4          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163769-HeNBFM-300>
-

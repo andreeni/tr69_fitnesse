@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-440, Requirement>
-After the HeNB has discovered a DHCP Server it shall then send a DHCP Request to the Server to retrieve relevant IP configuration, including its Outer IP Address, the IP Address of the public DNS Server, Subnet Mask etc. The DHCP messages shall be sent using untagged Ethernet frames
-FRS Requirement: FRS-162298-Req-R2          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-440>
-

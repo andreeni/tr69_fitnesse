@@ -1,8 +1,0 @@
-<Start: FTS-162818-CSP-20, Requirement>
-All files for a software version shall reside in a single directory identified by “path” in the Code Server Path.
-FRS Requirement: FR-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR2          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: FTS-162818-CSP-20>
-

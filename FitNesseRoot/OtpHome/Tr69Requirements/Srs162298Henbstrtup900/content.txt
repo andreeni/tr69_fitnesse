@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-900, Requirement>
-If after registering with HDM, the HDM triggers the download of a bulk CM file, the HeNB shall follow the requirements specified in section Error! Reference source not found. to download and activate the file.
-Note: After the HeNB indicates to the HDM that it has successfully downloaded and activate the Bulk CM file, the HDM may well trigger a GetParametersValue method to synchronise any changed parameters.  
-FRS Requirement: FRS-162298-Req-R10, R11          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-900>
-

@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-740, Requirement>
-The HeNB shall start the registration timer after the HeNB's ManagementServer::URL is updated by the Initial HDM. See SRS-162298-HeNBStrtUp-860 for details.
-If the timer expires the HeNB shall take the actions specified in SRS-162298-HeNBStrtUp-880.
-FRS Requirement: FRS-162298-Req-R6          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-740>
-

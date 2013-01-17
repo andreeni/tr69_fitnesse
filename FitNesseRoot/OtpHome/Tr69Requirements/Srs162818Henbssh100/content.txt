@@ -1,8 +1,0 @@
-<Start: SRS-162818-HeNBSSH-100, Requirement>
-HeNB shall support SSHv2 with name and password authentication. SSH shall support SHA-1 for integrity protection and AES-128-cbc for encryption.  
-FRS Requirement: FRS-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162818-HeNBSSH-100>
-

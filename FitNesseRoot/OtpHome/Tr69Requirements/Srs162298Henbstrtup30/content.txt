@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-30, Requirement>
-When feature 162298 is enabled all contact between the HeNB & HDM during startup shall be via the relevant TR-069 Methods.
-Note: See section Error! Reference source not found. for more details
-FRS Requirement: FRS-162298-Req-R11          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162298-HeNBStrtUp-30>
-

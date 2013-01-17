@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-480, Requirement>
-Once an IP Address has been resolved for the Default SeGW the HeNB shall then trigger the establishment of an IPsec tunnel to that SeGW as specified in the eNB-MCI Transport SRS [A 23 ] 
-FRS Requirement: FRS-162298-Req-R4          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-480>
-

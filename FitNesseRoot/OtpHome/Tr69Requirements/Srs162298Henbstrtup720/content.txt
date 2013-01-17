@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-720, Requirement>
-When the Initial HDM receives a BOOTSTRAP inform from an HeNB with default username and password, it shall check whether the HeNB is pre-registered based on its serial number, and if so, shall then provide the HeNB with the address of the assigned HDM, by using a TR-069 SetParametersValue RPC Method to set ManagementServer::URL in the TR106 data model. The HDM shall also provide the username & password that the HeNB shall subsequently use when registering with the assigned HDM by setting ManagementServer::Username & ManagementServer::Password respectively.
-Note: If the HeNB is not pre-registered with the Initial HeNB, the HeNB will not be provisioned with the assigned HDM information and address. The HeNB will then subsequent re-register with the Initial HDM when its Periodic Inform timer expires. This allows the Initial HDM to control when unregistered HeNB will send Informs to it and will also allow the Initial HDM to periodically  check when an HeNB has been registered.
-FRS Requirement: FRS-162298-Req-R6          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162298-HeNBStrtUp-720>
-

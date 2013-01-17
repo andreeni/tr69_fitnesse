@@ -1,9 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-620, Requirement>
-When the HeNB is required to register with the initial HDM it shall first resolve the IPaddress of the initial HDM by triggering a DNS Query to the public DNS server using the initial HDM FQDN. The initial HDM FQDN shall be constructed as defined in requirement SRS-162298-HeNBStrtUp-640.
-The DNS Query shall be sent using untagged Ethernet frames.
-FRS Requirement: FRS-162298-Req-R6          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-620>
-

@@ -1,9 +1,0 @@
-<Start: SRS-162818-HeNBProt-450, Requirement>
-HeNB and SCMS shall provide a configurable timer of Periodic Informs. The timer range shall include 0 (turn off periodic informs), 5 mins to 24 hours with increments in mins. Default: 8 hours.
-Note: typical deployments shall be set to 8 hours, however for certain specific debugging or certain customers there may be a need for more proactive management.  The dimensioning guidelines need to clearly outline the consequences of reducing the intervals.
-FRS Requirement: FRS-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162818-HeNBProt-450>
-

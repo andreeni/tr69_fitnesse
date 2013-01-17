@@ -1,8 +1,0 @@
-<Start: FTS-162818-CSP-10, Requirement>
-SCMS shall set the Code Server Path on the HeNB before initiating a request for software download.
-	FRS Requirement: FR-162818-Req-1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR2          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: FTS-162818-CSP-10>
-

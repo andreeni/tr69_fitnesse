@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-810, Requirement>
-When the Assigned HDM receives a BOOT inform from an HeNB and the operator requires that that the location of the HeNB is verified, the HDM shall trigger the HeNB to perform a location check as specified in [A 22 ] 
-FRS Requirement: FRS-162298-Req-R8          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162298-HeNBStrtUp-810>
-

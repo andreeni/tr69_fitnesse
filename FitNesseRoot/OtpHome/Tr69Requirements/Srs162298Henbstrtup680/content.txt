@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-680, Requirement>
-Whenever the HeNB needs to initiate a TR-069 session towards HDM it shall first establish a TLS connection to HDM.
-FRS Requirement: FRS-162298-Req-R6, R7          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-162298-HeNBStrtUp-680>
-

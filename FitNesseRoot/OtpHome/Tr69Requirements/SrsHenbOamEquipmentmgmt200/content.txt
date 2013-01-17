@@ -1,8 +1,0 @@
-<Start: SRS-HeNB-OAM-EquipmentMgmt-200, Requirement>
-The HeNB shall raise equipment alarms if hardware faults are detected. The definition of the alarms associated with the hardware MOs can be found in “alarmsAndEventMaster.xls” spreadsheet.  
-FRS Requirement: FRS-162818-Req-??
-Affected DPM Area: eNB-OAM, SCMS, Test 
-Release: SCLR1.1          
-Network Element: eNB-OAM, SCMS, Test          
-<End: SRS-HeNB-OAM-DeviceMgmt-100>
-

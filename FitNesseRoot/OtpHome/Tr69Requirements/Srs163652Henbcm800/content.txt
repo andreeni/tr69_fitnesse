@@ -1,9 +1,0 @@
-<Start: SRS-163652-HeNBCM-800, Requirement>
-The SCMS shall use the TR069 download RPC to configure the Server IP address/FQDN (both IPv4 and IPv6 shall be supported), Port, full Path and file name of where the bulk CM file will be available. The bulk CM file name will be unique for this HeNB and the entire path and full name of the file shall be sent down by the SCMS.
-TR069 download RPC shall comply with the TR069 standards.
-Key based authentication shall be supported for SFTP. This enhancement shall be covered in 159296/156781.
-FRS Requirement: FRS-163652-R1          
-	Affected DPM Area: HeNB-OAM, SCMS, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, SCMS, Test          
-<End: SRS-163652-HeNBCM-800>

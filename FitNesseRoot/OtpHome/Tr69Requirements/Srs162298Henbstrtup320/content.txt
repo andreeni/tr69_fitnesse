@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-320, Requirement>
-If the HeNB is using recovery software it shall first retrieve its IP configuration and establish an IPsec tunnel to the default SeGW as defined in section 4.3.4.
-FRS Requirement: FRS-162298-Req-R4, R5          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-320>
-

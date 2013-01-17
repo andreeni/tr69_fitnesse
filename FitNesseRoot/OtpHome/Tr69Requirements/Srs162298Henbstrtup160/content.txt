@@ -1,8 +1,0 @@
-<Start: SRS-162298-HeNBStrtUp-160, Requirement>
-On startup the HeNB shall read the Default SeGW FQDN from data stored in memory. The HeNB shall populate Enb::securityGWFqdn with the value. 
-FRS Requirement: FRS-162298-Req-R1          
-	Affected DPM Area: HeNB-OAM, Test          
-	Release: SCLR1.1          
-	Network Element: HeNB-OAM, Test          
-<End: SRS-162298-HeNBStrtUp-160>
-
